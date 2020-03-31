@@ -34,12 +34,10 @@ func _on_Hook_hooked_onto_target(target_global_position: Vector2) -> void:
 	velocity = velocity})
 
 func enter(msg: Dictionary = {}) -> void:
-	pass
-	#owner.hook.connect("hooked_onto_target", self, "_on_Hook_hooked_onto_target")
+	owner.hook.connect("hooked_onto_target", self, "_on_Hook_hooked_onto_target")
 
 func exit() -> void:
-	pass
-	#owner.hook.disconnect("hooked_onto_target", self, "_on_Hook_hooked_onto_target")
+	owner.hook.disconnect("hooked_onto_target", self, "_on_Hook_hooked_onto_target")
 
 static func calculate_velocity(
 		old_velocity: Vector2, 

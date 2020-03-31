@@ -1,8 +1,6 @@
 extends MarginContainer
-"""
-Contains UI widgets that display debug info about the game world
-"""
 
+#### Metodos
 func _gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed('toggle_debug_menu'):
 		visible = not visible

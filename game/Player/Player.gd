@@ -2,9 +2,9 @@ class_name Player
 extends KinematicBody2D
 
 #### variables onready
-#onready var state_machine: StateMachine = $StateMachine
+onready var state_machine: StateMachine = $StateMachine
 onready var player_collider: CollisionShape2D = $PlayerCollider
-#onready var hook: Hook = $Hook
+onready var hook: Hook = $Hook
 
 #### Constantes
 const FLOOR_NORMAL: = Vector2.UP

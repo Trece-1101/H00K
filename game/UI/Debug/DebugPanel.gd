@@ -1,29 +1,38 @@
 tool
 extends Control
-"""
-Displays the values of properties of a given node
-You can directly change the `properties` property to display multiple values from the `reference` node
-E.g. properties = PoolStringArray(['speed', 'position', 'modulate'])
-"""
 
+#### onready variables
 onready var _container: VBoxContainer = $VBoxContainer/MarginContainer/VBoxContainer
 onready var _title: Label = $VBoxContainer/ReferenceName
-
 onready var reference: Node = get_node(reference_path) setget set_reference
 
+#### export variables
 export var reference_path: NodePath
 export var properties: PoolStringArray setget set_properties
 
 
+#### setters y getters
+func set_properties(value: PoolStringArray) -> void:
+	properties = value
+	if not reference:
+		return
+	_setup()
+
+func set_reference(value: Node) -> void:
+	reference = value
+	if reference:
+		_setup()
+	else:
+		_title.text = get_class()
+
+#### Metodos
 func _ready() -> void:
 	if not reference:
 		return
 	_setup()
 
-
 func _process(delta) -> void:
 	_update()
-
 
 func _setup() -> void:
 	_clear()
@@ -31,10 +40,8 @@ func _setup() -> void:
 	for property in properties:
 		track(property)
 
-
 func _get_configuration_warning() -> String:
-	return "" if not reference_path.is_empty() else "Reference Path should not be empty."
-
+	return "" if not reference_path.is_empty() else "La ruta de referencia no debe estar vacia."
 
 func track(property: String) -> void:
 	var label: = Label.new()
@@ -44,11 +51,9 @@ func track(property: String) -> void:
 	if not property in properties:
 		properties.append(property)
 
-
 func _clear() -> void:
 	for property_label in _container.get_children():
 		property_label.queue_free()
-
 
 func _update() -> void:
 	if Engine.editor_hint:
@@ -66,16 +71,3 @@ func _update() -> void:
 		label.text = "%s: %s" % [property.capitalize(), text]
 
 
-func set_properties(value: PoolStringArray) -> void:
-	properties = value
-	if not reference:
-		return
-	_setup()
-
-
-func set_reference(value: Node) -> void:
-	reference = value
-	if reference:
-		_setup()
-	else:
-		_title.text = get_class()
