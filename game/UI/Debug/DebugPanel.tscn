@@ -1,43 +1,47 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=1]
+[ext_resource path="res://assets/Theme/fonts/default_font_bold.tres" type="DynamicFont" id=1]
 [ext_resource path="res://game/UI/Debug/DebugPanel.gd" type="Script" id=2]
+[ext_resource path="res://assets/Theme/fonts/default_font.tres" type="DynamicFont" id=3]
+
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 3 )
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = ExtResource( 1 )
+Label/styles/normal = null
 
 [node name="DebugPanel" type="PanelContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1630.0
-margin_bottom = -998.0
-theme = ExtResource( 1 )
+margin_right = -539.0
+margin_bottom = -316.0
+theme = SubResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 84.0
-margin_bottom = 65.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 94.0
+margin_bottom = 37.0
 
-[node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 84.0
-margin_bottom = 17.0
+[node name="ReferenceName" type="Label" parent="VBoxContainer"]
+margin_right = 87.0
+margin_bottom = 11.0
 text = "DebugPanel"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 25.0
-margin_right = 84.0
-margin_bottom = 65.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/margin_right = 20
-custom_constants/margin_top = 20
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 20
+margin_top = 15.0
+margin_right = 87.0
+margin_bottom = 15.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 64.0
-margin_bottom = 20.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+margin_right = 87.0

@@ -34,8 +34,8 @@ initial_state = NodePath("Move/Idle")
 
 [node name="Move" type="Node" parent="StateMachine"]
 script = ExtResource( 4 )
-max_speed_default = Vector2( 350, 1000 )
-acceleration_default = Vector2( 5000, 2500 )
+max_speed_default = Vector2( 300, 800 )
+acceleration_default = Vector2( 3000, 3000 )
 
 [node name="Idle" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 5 )
@@ -46,5 +46,5 @@ script = ExtResource( 2 )
 [node name="Air" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 6 )
 jump_impulse = 700.0
-acceleration_x = 2000.0
+acceleration_x = 3200.0
 max_jump_count = 1

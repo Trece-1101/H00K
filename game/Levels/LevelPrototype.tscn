@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/Tilesets/DeepForestTileset.png" type="Texture" id=1]
 [ext_resource path="res://game/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/UI/Debug/DebugPanel.tscn" type="PackedScene" id=3]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -391,6 +392,36 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [node name="LevelPrototype" type="Node2D"]
 
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="DebugDock" type="MarginContainer" parent="UI"]
+margin_right = 133.0
+margin_bottom = 73.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column" type="VBoxContainer" parent="UI/DebugDock"]
+margin_right = 133.0
+margin_bottom = 114.0
+
+[node name="DebugPanel" parent="UI/DebugDock/Column" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 133.0
+margin_bottom = 70.0
+reference_path = NodePath("../../../../Player/StateMachine/Move")
+properties = PoolStringArray( "velocity", "acceleration", "max_speed" )
+
+[node name="DebugPanel2" parent="UI/DebugDock/Column" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 74.0
+margin_right = 133.0
+margin_bottom = 114.0
+reference_path = NodePath("../../../../Player/StateMachine")
+properties = PoolStringArray( "_state_name" )
+
 [node name="LevelWorldTileMap" type="TileMap" parent="."]
 tile_set = SubResource( 17 )
 cell_size = Vector2( 16, 16 )
@@ -400,3 +431,5 @@ tile_data = PoolIntArray( 53, 1610612741, 0, 54, 1610612740, 0, 55, 5, 0, 65589,
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 115, 138 )
+
+[editable path="Player"]
