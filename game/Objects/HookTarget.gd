@@ -13,7 +13,7 @@ export var radius: float = 6.0
 onready var timer: Timer = $Timer
 
 #### constantes
-const COLOR_ACTIVE: Color = Color(0.9375, 0.730906, 0.025635)
+const COLOR_ACTIVE: Color = Color( 0.55, 0, 0.55, 1 )
 const COLOR_INACTIVE: Color = Color(0.515625, 0.484941, 0.4552)
 
 #### variables

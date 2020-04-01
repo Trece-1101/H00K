@@ -12,7 +12,7 @@ var target: HookTarget setget set_target
 func set_target(value: HookTarget) -> void:
 	target = value
 	hooking_hint.visible = has_target()
-	print(has_target())
+	#print(has_target())
 	if target:
 		hooking_hint.global_position = target.global_position
 

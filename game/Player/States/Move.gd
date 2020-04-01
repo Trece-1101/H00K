@@ -24,6 +24,7 @@ func physics_process(delta: float) -> void:
 	velocity = calculate_velocity(velocity, max_speed, acceleration, delta,
 	get_move_direction())
 	velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
+	Events.emit_signal("player_moved", owner)
 	
 func _on_Hook_hooked_onto_target(target_global_position: Vector2) -> void:
 	var to_target: Vector2 = target_global_position - owner.global_position

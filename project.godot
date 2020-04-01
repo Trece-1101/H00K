@@ -51,6 +51,7 @@ config/icon="res://assets/Sprites/icon.png"
 [autoload]
 
 Steering="*res://game/Autoloads/Steering.gd"
+Events="*res://game/Autoloads/Events.gd"
 
 [debug]
 

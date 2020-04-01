@@ -17,9 +17,9 @@ begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Head" type="Sprite" parent="."]
-position = Vector2( 60.5297, -0.130506 )
+position = Vector2( 57, -0.130506 )
 rotation = 1.57079
-scale = Vector2( 0.349428, 0.349428 )
+scale = Vector2( 0.201239, 0.201239 )
 texture = ExtResource( 2 )
 offset = Vector2( -1.56991, -69.8977 )
 

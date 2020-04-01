@@ -8,7 +8,7 @@ onready var start_length: float = head.position.x
 
 #### variables
 var hook_position: = Vector2.ZERO setget set_hook_position
-var length: = 40.0 setget set_length
+var length: = 20.0 setget set_length
 
 #### setters y getters
 func set_length(value: float) -> void:

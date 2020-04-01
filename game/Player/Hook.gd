@@ -25,7 +25,7 @@ func physics_process(delta: float) -> void:
 	)
 	new_velocity = new_velocity if new_velocity.length() > arrive_push else new_velocity.normalized() * arrive_push
 	velocity = owner.move_and_slide(new_velocity, owner.FLOOR_NORMAL)
-	#Events.emit_signal("player_moved", owner)
+	Events.emit_signal("player_moved", owner)
 
 	var to_target: Vector2 = target_global_position - owner.global_position
 	var distance: = to_target.length()
