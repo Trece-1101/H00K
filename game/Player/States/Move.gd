@@ -9,11 +9,29 @@ o usar funcionalidades de él
 export var max_speed_default: = Vector2(500.0, 1500.0)
 export var acceleration_default: = Vector2(100000.0, 3000.0)
 export var max_speed_fall: = 800
+"""
+Todos estos valores default seran asignados a las variables correspondientes
+al iniciar el juego/nivel
+
+max_speed = la velocidad maxima que puede alcanzar el jugador. La velocidad horizontal
+	dictamina que tan rapido corre (+X +Velocidad) y la velocidad en vertical
+	dictamina que tanto puede saltar (no es la fuerza de salto) y a cuanta velocidad
+	puede caer (no es la gravedad, es mas bien que tan rapido puede llegar a caer)
+acceleration = la aceleracion horizontal (resistencia/friccion) y vertical (gravedad)
+	en este caso a menor aceleracion horizontal mas resistencia (+X +resistencia)
+	lo que significa que el jugador tarda mas en llegar a la max_speed y a mayor
+	aceleracion vertical mas gravedad (+Y +gravedad) lo que significa que el jugador
+	es mas pesado (cuesta mas saltar y cae mas rapido)
+max_speed_fall = la velocidad maxima a la que puede caer el player. Bajar este
+	valor puede dar la sensacion de flotar al caer, por el contrario subir este
+	valor puede hacer que la velocidad se incremente muchisimo desde grandes alturas
+"""
 
 #### variables
 var acceleration: = acceleration_default
 var max_speed: = max_speed_default
 var velocity: = Vector2.ZERO
+
 
 #### metodos
 func unhandled_input(event: InputEvent) -> void:
@@ -21,8 +39,10 @@ func unhandled_input(event: InputEvent) -> void:
 		_state_machine.transition_to("Move/Air", {impulse = true})
 
 func physics_process(delta: float) -> void:
+	if owner.is_on_floor():
+		max_speed = max_speed_default
 	velocity = calculate_velocity(velocity, max_speed, acceleration, delta,
-	get_move_direction())
+	get_move_direction(), max_speed_fall)
 	velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
 	Events.emit_signal("player_moved", owner)
 	
@@ -46,13 +66,14 @@ static func calculate_velocity(
 		acceleration: Vector2,
 		delta: float,
 		move_direction: Vector2,
-		max_speed_fall: = 1000
+		max_speed_fall = 800.0
 	) -> Vector2:
 	var new_velocity: = old_velocity
 	
 	new_velocity += move_direction * acceleration * delta
 	new_velocity.x = clamp(new_velocity.x, -max_speed.x, max_speed.x)
-	new_velocity.y = clamp(new_velocity.y, -max_speed.y, max_speed.y)	
+	new_velocity.y = clamp(new_velocity.y, -max_speed.y, max_speed_fall)
+	
 	return new_velocity
 
 

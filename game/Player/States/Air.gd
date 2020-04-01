@@ -6,9 +6,18 @@ Transicion a Idle o a Run
 """
 
 #### export variables
-export var jump_impulse: = 900.0
-export var acceleration_x: = 5000.0
-export var max_jump_count: = 2
+export var jump_impulse: float = 900.0
+export var acceleration_x: float = 5000.0
+export var max_jump_count: int = 2
+export var get_momentum: bool = false
+"""
+jump_impulse = fuerza del salto (que tan para arriba va)
+acceleration_x = la aceleracion horizontal cuando el jugador salta
+max_jump_count = la cantidad de veces que puede saltar al despegarse del suelo
+get_momentum = variable que indica si al saltar se mantiene la velocidad horizontal
+	hasta tocar el suelo o por si el contrario al soltar izquierda o derecha
+	dicha velocidad cae a 0
+"""
 
 #### onready variables
 onready var move: = get_parent()
@@ -33,11 +42,15 @@ func physics_process(delta: float) -> void:
 			target_state = "Move/Run"
 		
 		_state_machine.transition_to(target_state)
+	else:
+		if move.get_move_direction().x == 0.0 and not get_momentum:
+			move.velocity.x = 0.0
+
 
 func enter(msg: Dictionary = {}) -> void:
 	move.enter(msg)
 	
-	move.acceleration.x = acceleration_x	
+	move.acceleration.x = acceleration_x
 	if "velocity" in msg:
 		move.velocity = msg.velocity
 		move.max_speed.x = max(abs(msg.velocity.x), move.max_speed.x)
