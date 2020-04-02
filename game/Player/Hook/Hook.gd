@@ -24,7 +24,9 @@ signal hooked_onto_target(target_global_position)
 #### Setters y Getters
 func set_is_active(value: bool) -> void:
 	is_active = value
+	visible = value
 	set_process_unhandled_input(value)
+	set_physics_process(value)
 
 #### Metodos
 func can_hook() -> bool:

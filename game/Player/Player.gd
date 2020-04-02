@@ -5,7 +5,8 @@ extends KinematicBody2D
 onready var state_machine: StateMachine = $StateMachine
 onready var player_collider: CollisionShape2D = $PlayerCollider
 onready var hook: Hook = $Hook
-onready var camera_rig = $CameraRig
+onready var camera_rig: Position2D = $CameraRig
+onready var skin: Node2D = $PlayerSkin
 
 
 #### Constantes
@@ -20,6 +21,8 @@ func set_is_active(value: bool) -> void:
 	if not player_collider:
 		return
 	player_collider.disabled = not value
+	## TODO refactorizar esto cuando se implemente el daño
+	hook.set_is_active(value)
 
 
 #### DEBUG

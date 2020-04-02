@@ -23,7 +23,11 @@ func physics_process(delta: float) -> void:
 		target_global_position,
 		HOOK_MAX_SPEED
 	)
-	new_velocity = new_velocity if new_velocity.length() > arrive_push else new_velocity.normalized() * arrive_push
+	if new_velocity.length() > arrive_push:
+		new_velocity = new_velocity
+	else:
+		new_velocity.normalized() * arrive_push
+	#new_velocity = new_velocity if new_velocity.length() > arrive_push else new_velocity.normalized() * arrive_push
 	velocity = owner.move_and_slide(new_velocity, owner.FLOOR_NORMAL)
 	Events.emit_signal("player_moved", owner)
 
