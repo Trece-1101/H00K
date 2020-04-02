@@ -3,18 +3,27 @@ extends Position2D
 Rig to move a child camera based on the player's input, to give them more forward visibility
 """
 
-
-onready var camera: Camera2D = $ShakingCamera
-
+#### export variables
 export var offset: = Vector2(300.0, 300.0)
 export var mouse_range: = Vector2(100.0, 500.0)
 
-var is_active: = true
+#### onready variables
+onready var camera: Camera2D = $ShakingCamera
+
+#### variables
+var is_active: bool = true setget set_is_active, get_is_active
 
 
+#### Setters y Getters
+func set_is_active(value: bool) -> void:
+	is_active = value
+
+func get_is_active() -> bool:
+	return is_active
+
+#### metodos
 func _physics_process(delta: float) -> void:
 	update_position()
-
 
 func update_position(velocity: Vector2 = Vector2.ZERO) -> void:
 	"""Updates the camera rig's position based on the player's state and controller position"""

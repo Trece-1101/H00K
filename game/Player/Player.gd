@@ -31,4 +31,4 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_tree().reload_current_scene()
 	
 	if event.is_action_pressed("debug_player_die"):
-		state_machine.transition_to("Die")
+		self.state_machine.transition_to("Die")

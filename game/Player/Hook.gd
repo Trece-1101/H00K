@@ -39,6 +39,7 @@ func physics_process(delta: float) -> void:
 		_state_machine.transition_to("Move/Air", {velocity = velocity})
 
 func enter(msg: Dictionary = {}) -> void:
+	print(msg)
 	match msg:
 		{"target_global_position": var tgp, "velocity": var v}:
 			target_global_position = tgp

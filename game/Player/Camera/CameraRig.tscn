@@ -21,6 +21,8 @@ drag_margin_bottom = 0.0
 script = ExtResource( 2 )
 amplitude = 8.0
 duration = 0.8
+DAMP_EASING = 1.0
+is_shaking = false
 default_smoothing_speed = {
 "gamepad": 1,
 "mouse": 3

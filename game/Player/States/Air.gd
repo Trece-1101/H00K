@@ -9,6 +9,7 @@ Transicion a Idle o a Run
 export var jump_impulse: float = 900.0
 export var acceleration_x: float = 5000.0
 export var max_jump_count: int = 2
+export var max_dash_count: int = 1
 export var get_momentum: bool = false
 """
 jump_impulse = fuerza del salto (que tan para arriba va)
@@ -24,6 +25,7 @@ onready var move: = get_parent()
 
 #### variables
 var _jump_count = 0
+var _dash_count = 0
 
 #### Metodos
 func unhandled_input(event: InputEvent) -> void:
@@ -63,6 +65,7 @@ func enter(msg: Dictionary = {}) -> void:
 func exit() -> void:
 	move.acceleration = move.acceleration_default
 	_jump_count = 0
+	_dash_count = 0
 	move.exit()
 
 func jump() -> void:
