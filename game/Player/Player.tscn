@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://game/Player/States/Spawn.gd" type="Script" id=1]
 [ext_resource path="res://game/Player/States/Run.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://game/Player/PlayerSkin.tscn" type="PackedScene" id=11]
 [ext_resource path="res://game/Player/States/Die.gd" type="Script" id=12]
 [ext_resource path="res://game/Player/States/Dash.gd" type="Script" id=13]
+[ext_resource path="res://game/Player/States/Debug.gd" type="Script" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.9611, 14.8541 )
@@ -75,3 +76,6 @@ arrive_push = 600.0
 
 [node name="Die" type="Node" parent="StateMachine"]
 script = ExtResource( 12 )
+
+[node name="Debug" type="Node" parent="StateMachine"]
+script = ExtResource( 14 )

@@ -21,14 +21,17 @@ func set_is_active(value: bool) -> void:
 	if not player_collider:
 		return
 	player_collider.disabled = not value
-	## TODO refactorizar esto cuando se implemente el daño
+	## TODO: refactorizar esto cuando se implemente el daño
 	hook.set_is_active(value)
 
 
-#### DEBUG
+## TODO: solo DEBUG. REMOVER para version release
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_restart"):
 		get_tree().reload_current_scene()
 	
 	if event.is_action_pressed("debug_player_die"):
 		self.state_machine.transition_to("Die")
+	
+#	if event.is_action_pressed("debug_move"):
+#		self.state_machine.transition_to("Debug")

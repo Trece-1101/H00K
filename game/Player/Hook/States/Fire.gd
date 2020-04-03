@@ -7,6 +7,7 @@ func _on_Cooldown_timeout() -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	owner.cooldown.connect("timeout", self, "_on_Cooldown_timeout")
+	## TODO: no es esto exactamente lo que quiero
 	owner.set_is_slowmo(false)
 	owner.cooldown.start()
 
