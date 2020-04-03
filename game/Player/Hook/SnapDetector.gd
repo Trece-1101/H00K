@@ -1,5 +1,7 @@
 extends Area2D
-"""Detecta y devuelve el mejor punto de enganche para el gancho"""
+"""
+Detecta y devuelve el mejor punto de enganche para el gancho
+"""
 
 #### onready variables
 onready var hooking_hint: Position2D = $HookingHint
@@ -27,22 +29,32 @@ func _physics_process(delta: float) -> void:
 Devuelve el gancho mas cercano, saltea ganchos obstruidos
 """
 func find_best_target() -> HookTarget:
+	force_update_transform()
+	var targets: = get_overlapping_areas()	
+	if not targets:
+		return null
+	
 	var closest_target: HookTarget = null
-	var targets: = get_overlapping_areas()
-	for t in targets:
-		if not t.is_active:
+	var distance_to_closest:float = 100000.0
+	for target in targets:
+		if not target.is_active:
+			continue
+		
+		var distance: = global_position.distance_to(target.global_position)
+		if distance > distance_to_closest:
 			continue
 
-		# Skip the target if there is a collider in the way
+		# No toma al target si hay algo en el medio
 		ray_cast.global_position = global_position
-		ray_cast.cast_to = t.global_position - global_position
+		ray_cast.cast_to = target.global_position - global_position
+		ray_cast.force_update_transform()
 		if ray_cast.is_colliding():
 			continue
-
-		closest_target = t
-		break
-
+		
+		distance_to_closest = distance
+		closest_target = target
+	
 	return closest_target
 
 func has_target() -> bool:
-	return target != null
+	return self.target != null
