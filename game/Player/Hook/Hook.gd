@@ -12,7 +12,8 @@ onready var snap_detector: Area2D = $SnapDetector
 onready var cooldown: Timer = $Cooldown
 
 #### variables
-var is_active: = true setget set_is_active
+var is_active:bool = true setget set_is_active
+var is_slowmo:bool = false setget set_is_slowmo
 
 #### constantes
 const HOOKABLE_PHYSICS_LAYER: = 4
@@ -27,6 +28,17 @@ func set_is_active(value: bool) -> void:
 	visible = value
 	set_process_unhandled_input(value)
 	set_physics_process(value)
+
+## TODO: refactorizar esta bosta
+func set_is_slowmo(value: bool) -> void:
+	is_slowmo = value
+	if is_slowmo:
+		Engine.time_scale = 0.25
+	else:
+		Engine.time_scale = 1.0
+
+func get_is_slowmo() -> bool:
+	return is_slowmo
 
 #### Metodos
 func can_hook() -> bool:
