@@ -15,7 +15,7 @@
 [ext_resource path="res://game/Player/States/Dash.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 11.9611, 11.8833 )
+extents = Vector2( 11.9611, 14.8541 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 46
@@ -25,7 +25,6 @@ __meta__ = {
 }
 
 [node name="CameraRig" parent="." instance=ExtResource( 10 )]
-offset = Vector2( 50, 125 )
 
 [node name="Hook" parent="." instance=ExtResource( 8 )]
 position = Vector2( 0, -12 )
@@ -33,7 +32,7 @@ position = Vector2( 0, -12 )
 [node name="PlayerSkin" parent="." instance=ExtResource( 11 )]
 
 [node name="PlayerCollider" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -13 )
+position = Vector2( 0, -16 )
 scale = Vector2( 1.00325, 1.00982 )
 shape = SubResource( 1 )
 
@@ -49,8 +48,8 @@ script = ExtResource( 4 )
 __meta__ = {
 "_editor_description_": ""
 }
-max_speed_default = Vector2( 300, 800 )
-acceleration_default = Vector2( 1500, 3200 )
+max_speed_default = Vector2( 300, 1000 )
+acceleration_default = Vector2( 1500, 2000 )
 
 [node name="Idle" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 5 )
@@ -60,7 +59,7 @@ script = ExtResource( 2 )
 
 [node name="Air" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 6 )
-jump_impulse = 700.0
+jump_impulse = 600.0
 acceleration_x = 3200.0
 max_jump_count = 1
 
@@ -72,6 +71,7 @@ wait_time = 0.2
 
 [node name="Hook" type="Node" parent="StateMachine"]
 script = ExtResource( 9 )
+arrive_push = 600.0
 
 [node name="Die" type="Node" parent="StateMachine"]
 script = ExtResource( 12 )

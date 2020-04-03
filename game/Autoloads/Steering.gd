@@ -1,6 +1,6 @@
 extends Node
 
-const DEFAULT_MASS: = 2.0
+const DEFAULT_MASS: = 4.0
 const DEFAULT_SLOW_RADIUS: = 200.0
 const DEFAULT_MAX_SPEED: = 400.0
 

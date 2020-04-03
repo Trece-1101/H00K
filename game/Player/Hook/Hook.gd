@@ -34,7 +34,12 @@ func can_hook() -> bool:
 
 func get_aim_direction() -> Vector2:
 	var direction: = Vector2.ZERO
-	direction = (get_global_mouse_position() - global_position).normalized()
+	match Settings.controls:
+		Settings.GAMEPAD:
+			direction = Utils.get_aim_joystick_direction()
+		Settings.KB_MOUSE:
+			direction = (get_global_mouse_position() - global_position).normalized()
+			
 	return direction
 
 
