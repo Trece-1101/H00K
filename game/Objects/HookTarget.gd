@@ -39,7 +39,10 @@ func hooked_from(hook_position: Vector2) -> void:
 
 func set_is_active(value:bool) -> void:
 	is_active = value
-	self.color = COLOR_ACTIVE if is_active else COLOR_INACTIVE
+	if is_active:
+		self.color = COLOR_ACTIVE
+	else:
+		 self.color = COLOR_INACTIVE
 
 	if not is_active and not is_one_shot:
 		timer.start()

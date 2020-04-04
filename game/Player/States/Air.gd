@@ -6,19 +6,22 @@ Transicion a Idle o a Run
 """
 
 #### export variables
-export var jump_impulse: float = 900.0
+
 export var acceleration_x: float = 5000.0
 export var max_jump_count: int = 2
 export var max_dash_count: int = 1
 export var get_momentum: bool = false
 """
-jump_impulse = fuerza del salto (que tan para arriba va)
+
 acceleration_x = la aceleracion horizontal cuando el jugador salta
 max_jump_count = la cantidad de veces que puede saltar al despegarse del suelo
 get_momentum = variable que indica si al saltar se mantiene la velocidad horizontal
 	hasta tocar el suelo o por si el contrario al soltar izquierda o derecha
 	dicha velocidad cae a 0
 """
+
+#### señales
+signal jumped
 
 #### onready variables
 onready var move: = get_parent()
@@ -27,10 +30,13 @@ onready var move: = get_parent()
 var _jump_count = 0
 var _dash_count = 0
 
+
 #### Metodos
 func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump") and _jump_count < max_jump_count:
 		jump()
+	
+	emit_signal("jumped")
 	move.unhandled_input(event)
 
 func physics_process(delta: float) -> void:
@@ -61,6 +67,7 @@ func enter(msg: Dictionary = {}) -> void:
 		jump()
 	else:
 		_jump_count += 1
+	
 
 func exit() -> void:
 	move.acceleration = move.acceleration_default
@@ -69,7 +76,7 @@ func exit() -> void:
 	move.exit()
 
 func jump() -> void:
-	move.velocity += calculate_jump_velocity(jump_impulse)
+	move.velocity += calculate_jump_velocity(move.jump_impulse)
 	_jump_count += 1
 
 func calculate_jump_velocity(impulse: float = 0.0) -> Vector2:

@@ -9,6 +9,7 @@ o usar funcionalidades de él
 export var max_speed_default: = Vector2(500.0, 1500.0)
 export var acceleration_default: = Vector2(100000.0, 3000.0)
 export var max_speed_fall: = 800
+export var jump_impulse: float = 900.0
 """
 Todos estos valores default seran asignados a las variables correspondientes
 al iniciar el juego/nivel
@@ -25,6 +26,7 @@ acceleration = la aceleracion horizontal (resistencia/friccion) y vertical (grav
 max_speed_fall = la velocidad maxima a la que puede caer el player. Bajar este
 	valor puede dar la sensacion de flotar al caer, por el contrario subir este
 	valor puede hacer que la velocidad se incremente muchisimo desde grandes alturas
+jump_impulse = fuerza del salto (que tan para arriba va)
 """
 
 #### variables
@@ -61,9 +63,11 @@ func _on_Hook_hooked_onto_target(target_global_position: Vector2) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	owner.hook.connect("hooked_onto_target", self, "_on_Hook_hooked_onto_target")
+	$Air.connect("jumped", $Idle.auto_jump, "start")
 
 func exit() -> void:
 	owner.hook.disconnect("hooked_onto_target", self, "_on_Hook_hooked_onto_target")
+	$Air.disconnect("jumped", $Idle.auto_jump, "start")
 
 static func calculate_velocity(
 		old_velocity: Vector2, 

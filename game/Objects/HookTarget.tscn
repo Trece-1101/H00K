@@ -14,5 +14,5 @@ radius = 5.0
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.6
 one_shot = true

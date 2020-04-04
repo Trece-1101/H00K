@@ -7,7 +7,7 @@ Transicion a Correr o a Air
 
 #### onready variables
 onready var move: = get_parent()
-
+onready var auto_jump: Timer = $AutoJump
 
 #### Metodos
 func unhandled_input(event: InputEvent) -> void:
@@ -24,6 +24,11 @@ func enter(msg: Dictionary = {}) -> void:
 	
 	move.max_speed = move.max_speed_default
 	move.velocity = Vector2.ZERO
+	
+	if not auto_jump.is_stopped():
+		_state_machine.transition_to("Move/Air", {impulse = move.jump_impulse})
+		auto_jump.stop()
+		return
 
 func exit() -> void:
 	move.exit()
