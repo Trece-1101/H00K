@@ -63,11 +63,9 @@ func _on_Hook_hooked_onto_target(target_global_position: Vector2) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	owner.hook.connect("hooked_onto_target", self, "_on_Hook_hooked_onto_target")
-	$Air.connect("jumped", $Idle.auto_jump, "start")
 
 func exit() -> void:
 	owner.hook.disconnect("hooked_onto_target", self, "_on_Hook_hooked_onto_target")
-	$Air.disconnect("jumped", $Idle.auto_jump, "start")
 
 static func calculate_velocity(
 		old_velocity: Vector2, 

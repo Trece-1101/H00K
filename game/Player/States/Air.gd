@@ -11,6 +11,7 @@ export var acceleration_x: float = 5000.0
 export var max_jump_count: int = 2
 export var max_dash_count: int = 1
 export var get_momentum: bool = false
+export(float, 0.5, 0.9) var momentum_divider: float = 0.5
 """
 
 acceleration_x = la aceleracion horizontal cuando el jugador salta
@@ -36,7 +37,6 @@ func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump") and _jump_count < max_jump_count:
 		jump()
 	
-	emit_signal("jumped")
 	move.unhandled_input(event)
 
 func physics_process(delta: float) -> void:
@@ -52,7 +52,7 @@ func physics_process(delta: float) -> void:
 		_state_machine.transition_to(target_state)
 	else:
 		if move.get_move_direction().x == 0.0 and not get_momentum:
-			move.velocity.x = 0.0
+			move.velocity.x *= momentum_divider
 
 
 func enter(msg: Dictionary = {}) -> void:
