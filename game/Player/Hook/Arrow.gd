@@ -26,3 +26,8 @@ func set_hook_position(value: Vector2) -> void:
 			self, 'length', length, start_length, 
 			0.25, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	tween.start()
+	visible = true
+
+
+func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
+	visible = false

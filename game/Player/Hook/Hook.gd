@@ -11,6 +11,7 @@ onready var ray_cast: RayCast2D = $RayCast2D
 onready var arrow: Node2D = $Arrow
 onready var snap_detector: Area2D = $SnapDetector
 onready var cooldown: Timer = $Cooldown
+onready var target_circle:DrawingUtils = $TargetCircle
 
 #### variables
 var is_active:bool = true setget set_is_active
