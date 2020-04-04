@@ -54,6 +54,7 @@ Steering="*res://game/Autoloads/Steering.gd"
 Events="*res://game/Autoloads/Events.gd"
 Settings="*res://game/Autoloads/Settings.gd"
 Utils="*res://game/Autoloads/Utils.gd"
+DrawingUtils="*res://game/Autoloads/DrawingUtils.gd"
 
 [debug]
 

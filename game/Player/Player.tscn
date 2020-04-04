@@ -19,6 +19,7 @@
 extents = Vector2( 11.9611, 14.8541 )
 
 [node name="Player" type="KinematicBody2D"]
+position = Vector2( 1, 0 )
 collision_mask = 46
 script = ExtResource( 7 )
 __meta__ = {

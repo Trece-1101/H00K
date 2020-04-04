@@ -1,3 +1,4 @@
+tool
 extends Position2D
 class_name Hook
 """
@@ -41,8 +42,27 @@ func get_is_slowmo() -> bool:
 	return is_slowmo
 
 #### Metodos
+func _ready() -> void:
+	if Engine.editor_hint:
+		update()
+
+func _draw() -> void:
+	if not Engine.editor_hint:
+		return
+	
+	var radius: float = snap_detector.calculate_length()
+	DrawingUtils.draw_circle_outline(self, Vector2.ZERO, radius, Color.lightblue)
+
+#func has_target() -> bool:
+#	var has_target:bool = snap_detector.has_target()
+#	if not has_target and ray_cast.is_colliding():
+#		var collider: = ray_cast.get_collider()
+#		has_target = collider.get_collision_layer_bit(HOOKABLE_PHYSICS_LAYER)
+#	return has_target()
+
 func can_hook() -> bool:
 	return is_active and snap_detector.has_target() and cooldown.is_stopped()
+	#return is_active and has_target() and cooldown.is_stopped()
 
 func get_aim_direction() -> Vector2:
 	var direction: = Vector2.ZERO
@@ -54,4 +74,11 @@ func get_aim_direction() -> Vector2:
 			
 	return direction
 
+func get_hook_target() -> HookTarget:
+	return snap_detector.target
 
+func get_target_position() -> Vector2:
+	if snap_detector.target:
+		return snap_detector.target.global_position
+	else:
+		return ray_cast.get_collision_point()

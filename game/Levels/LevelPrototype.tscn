@@ -525,18 +525,21 @@ position = Vector2( 361, 276 )
 position = Vector2( 571, 276 )
 
 [node name="HookTarget4" parent="HookTargets" instance=ExtResource( 4 )]
-position = Vector2( 86, 178 )
+position = Vector2( 74, 289 )
+
+[node name="HookTarget7" parent="HookTargets" instance=ExtResource( 4 )]
+position = Vector2( 126, 289 )
 
 [node name="HookTarget5" parent="HookTargets" instance=ExtResource( 4 )]
 position = Vector2( -48, 261 )
 
 [node name="HookTarget6" parent="HookTargets" instance=ExtResource( 4 )]
-position = Vector2( -91, 261 )
+position = Vector2( -29, 144 )
 
 [node name="HookTarget2" parent="HookTargets" instance=ExtResource( 4 )]
 position = Vector2( 386, 96 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -108, 333 )
+position = Vector2( 193, 272 )
 
 [editable path="Player"]
