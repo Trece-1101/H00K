@@ -53,6 +53,11 @@ func physics_process(delta: float) -> void:
 	else:
 		if move.get_move_direction().x == 0.0 and not get_momentum:
 			move.velocity.x *= momentum_divider
+	
+	if owner.is_on_wall():
+		var wall_normal: float = owner.get_slide_collision(0).normal.x
+		_state_machine.transition_to("Move/Wall", 
+			{normal = wall_normal, velocity = move.velocity})
 
 
 func enter(msg: Dictionary = {}) -> void:
