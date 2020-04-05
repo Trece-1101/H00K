@@ -6,7 +6,6 @@ Transicion a Idle o a Run
 """
 
 #### export variables
-
 export var acceleration_x: float = 5000.0
 export var max_jump_count: int = 2
 export var max_dash_count: int = 1
@@ -26,6 +25,7 @@ signal jumped
 
 #### onready variables
 onready var move: = get_parent()
+onready var freeze_timer:Timer = $FreezeTimer
 
 #### variables
 var _jump_count = 0
@@ -40,7 +40,16 @@ func unhandled_input(event: InputEvent) -> void:
 	move.unhandled_input(event)
 
 func physics_process(delta: float) -> void:
-	move.physics_process(delta)
+	#move.physics_process(delta)
+	var direction: Vector2
+	if freeze_timer.is_stopped():
+		direction = move.get_move_direction()
+	else:
+		direction = Vector2(sign(move.velocity.x), 1.0)
+	
+	move.velocity = move.calculate_velocity(move.velocity, move.max_speed,
+		move.acceleration, delta, direction)
+	move.velocity = owner.move_and_slide(move.velocity, owner.FLOOR_NORMAL)
 	
 	if owner.is_on_floor():
 		var target_state: String
@@ -73,6 +82,10 @@ func enter(msg: Dictionary = {}) -> void:
 	else:
 		_jump_count += 1
 	
+	if "wall_jump" in msg:
+		freeze_timer.start()
+		move.max_speed.x = max(move.max_speed_default.x, abs(move.velocity.x))
+		move.acceleration.y = move.acceleration_default.y
 
 func exit() -> void:
 	move.acceleration = move.acceleration_default

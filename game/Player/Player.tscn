@@ -68,6 +68,10 @@ acceleration_x = 3200.0
 max_jump_count = 1
 momentum_divider = 0.8
 
+[node name="FreezeTimer" type="Timer" parent="StateMachine/Move/Air"]
+wait_time = 0.15
+one_shot = true
+
 [node name="Dash" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 13 )
 
@@ -76,6 +80,7 @@ wait_time = 0.2
 
 [node name="Wall" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 15 )
+wall_jump_strength = Vector2( 180, 200 )
 
 [node name="Hook" type="Node" parent="StateMachine"]
 script = ExtResource( 9 )
