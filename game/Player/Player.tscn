@@ -52,9 +52,9 @@ script = ExtResource( 4 )
 __meta__ = {
 "_editor_description_": ""
 }
-max_speed_default = Vector2( 300, 1000 )
-acceleration_default = Vector2( 1500, 2000 )
-jump_impulse = 500.0
+max_speed_default = Vector2( 220, 800 )
+acceleration_default = Vector2( 1000, 1800 )
+jump_impulse = 420.0
 
 [node name="Idle" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 5 )
@@ -84,7 +84,7 @@ wall_jump_strength = Vector2( 180, 200 )
 
 [node name="Hook" type="Node" parent="StateMachine"]
 script = ExtResource( 9 )
-arrive_push = 600.0
+arrive_push = 300.0
 
 [node name="Die" type="Node" parent="StateMachine"]
 script = ExtResource( 12 )
