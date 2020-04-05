@@ -36,4 +36,5 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func slowmo() -> void:
 	if can_slowmo:
-		hook.set_is_slowmo(true)
+		#hook.set_is_slowmo(true)
+		hook.set_is_slowmo(not hook.get_is_slowmo())

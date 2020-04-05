@@ -11,6 +11,7 @@ export var radius: float = 6.0
 
 #### onready variables
 onready var timer: Timer = $Timer
+onready var parent_name : String = get_parent().name
 #onready var player: Player
 
 #### constantes
@@ -54,5 +55,10 @@ func set_color(value:Color) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
-	if body.name == "Player":
+	if body.name == "Player" and parent_name == "EnemyTest":
+		body.slowmo()
+
+
+func _on_body_exited(body: Node) -> void:
+	if body.name == "Player" and parent_name == "EnemyTest":
 		body.slowmo()
