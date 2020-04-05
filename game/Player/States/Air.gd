@@ -5,6 +5,9 @@ Estado hijo que maneja el movimiento de Air
 Transicion a Idle o a Run
 """
 
+#### señales
+signal jumped
+
 #### export variables
 export var acceleration_x: float = 5000.0
 export var max_jump_count: int = 2
@@ -20,12 +23,10 @@ get_momentum = variable que indica si al saltar se mantiene la velocidad horizon
 	dicha velocidad cae a 0
 """
 
-#### señales
-signal jumped
-
 #### onready variables
 onready var move: = get_parent()
 onready var freeze_timer:Timer = $FreezeTimer
+onready var jump_delay: Timer = $JumpDelay
 
 #### variables
 var _jump_count = 0
@@ -34,9 +35,19 @@ var _dash_count = 0
 
 #### Metodos
 func unhandled_input(event: InputEvent) -> void:
+	#var move: = get_parent()
+	# Jump after falling off a ledge
+#	if event.is_action_pressed("jump"):
+#		if move.velocity.y >= 0.0 and jump_delay.time_left > 0.0 and owner.floor_detector.is_colliding():
+#			#move.velocity = calculate_jump_velocity(move.jump_impulse)
+#			jump()
+#		emit_signal("jumped")
+#	else:
+#		move.unhandled_input(event)
+	
 	if event.is_action_pressed("jump") and _jump_count < max_jump_count:
 		jump()
-	
+
 	move.unhandled_input(event)
 
 func physics_process(delta: float) -> void:
@@ -48,9 +59,15 @@ func physics_process(delta: float) -> void:
 	else:
 		direction = Vector2(sign(move.velocity.x), 1.0)
 	
-	move.velocity = move.calculate_velocity(move.velocity, move.max_speed,
-		move.acceleration, delta, direction)
+	move.velocity = move.calculate_velocity(
+		move.velocity, 
+		move.max_speed,
+		move.acceleration, 
+		delta, 
+		direction)
+	
 	move.velocity = owner.move_and_slide(move.velocity, owner.FLOOR_NORMAL)
+	Events.emit_signal("player_moved", owner)
 	
 	if owner.is_on_floor():
 		var target_state: String
@@ -63,6 +80,9 @@ func physics_process(delta: float) -> void:
 	else:
 		if move.get_move_direction().x == 0.0 and not get_momentum:
 			move.velocity.x *= momentum_divider
+		
+		if owner.wall_detector.is_against_ledge():
+			_state_machine.transition_to("Ledge", {move_state = move})
 	
 	if owner.is_on_wall():
 		var wall_normal: float = owner.get_slide_collision(0).normal.x
@@ -85,8 +105,10 @@ func enter(msg: Dictionary = {}) -> void:
 	
 	if "wall_jump" in msg:
 		freeze_timer.start()
-		move.max_speed.x = max(move.max_speed_default.x, abs(move.velocity.x))
-		move.acceleration.y = move.acceleration_default.y
+		move.acceleration = Vector2(acceleration_x, move.acceleration_default.y)
+		move.max_speed.x = max(abs(move.velocity.x), move.max_speed_default.x)
+	
+	jump_delay.start()
 
 func exit() -> void:
 	move.acceleration = move.acceleration_default

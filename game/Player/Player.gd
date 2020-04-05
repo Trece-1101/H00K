@@ -7,7 +7,10 @@ onready var player_collider: CollisionShape2D = $PlayerCollider
 onready var hook: Hook = $Hook
 onready var camera_rig: Position2D = $CameraRig
 onready var skin: Node2D = $PlayerSkin
+onready var wall_detector: WallDetector = $WallDetector
+onready var floor_detector: FloorDetector = $FloorDetector
 
+#### export variables
 export var can_slowmo: bool = true
 
 #### Constantes

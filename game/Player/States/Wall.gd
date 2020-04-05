@@ -47,16 +47,11 @@ func physics_process(delta: float) -> void:
 	# sign devuelve solo el signo + o - de la direccion, copado
 	var is_moving_away_from_wall: bool = sign(move.get_move_direction().x) == sign(_wall_normal)
 	
-	if is_moving_away_from_wall:
+	if is_moving_away_from_wall or not owner.wall_detector.is_against_wall():
 		_state_machine.transition_to("Move/Air", {velocity = _velocity})
-
-func jump() -> void:
-	var impulse: Vector2 = Vector2(_wall_normal, -1.0) * wall_jump_strength
-	var msg: Dictionary ={
-		velocity = impulse,
-		wall_jump = true
-	}
-	_state_machine.transition_to("Move/Air", msg)
+	
+	if owner.wall_detector.is_against_ledge():
+		_state_machine.transition_to("Ledge", {move_state = move})
 
 func enter(msg: Dictionary = {}) -> void:
 	move.enter(msg)
@@ -65,6 +60,14 @@ func enter(msg: Dictionary = {}) -> void:
 	_velocity.y = max(msg.velocity.y, -max_slide_speed)
 	#_velocity.y = clamp(msg.velocity.y,-max_slide_speed, max_slide_speed)
 
+func jump() -> void:
+	var impulse: Vector2 = Vector2(_wall_normal, -1.0) * wall_jump_strength
+	var msg: Dictionary = {
+		velocity = impulse,
+		wall_jump = true
+	}
+	_state_machine.transition_to("Move/Air", msg)
 
 func exit() -> void:
 	move.exit()
+
