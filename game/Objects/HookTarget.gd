@@ -11,6 +11,7 @@ export var radius: float = 6.0
 
 #### onready variables
 onready var timer: Timer = $Timer
+#onready var player: Player
 
 #### constantes
 const COLOR_ACTIVE: Color = Color( 0.55, 0, 0.55, 1 )
@@ -50,3 +51,8 @@ func set_is_active(value:bool) -> void:
 func set_color(value:Color) -> void:
 	color = value
 	update()
+
+
+func _on_body_entered(body: Node) -> void:
+	if body.name == "Player":
+		body.slowmo()

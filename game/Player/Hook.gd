@@ -23,6 +23,7 @@ func physics_process(delta: float) -> void:
 		target_global_position,
 		HOOK_MAX_SPEED
 	)
+	
 	if new_velocity.length() > arrive_push:
 		new_velocity = new_velocity
 	else:

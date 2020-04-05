@@ -8,6 +8,7 @@ onready var hook: Hook = $Hook
 onready var camera_rig: Position2D = $CameraRig
 onready var skin: Node2D = $PlayerSkin
 
+export var can_slowmo: bool = true
 
 #### Constantes
 const FLOOR_NORMAL: = Vector2.UP
@@ -32,3 +33,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("debug_player_die"):
 		self.state_machine.transition_to("Die")
+
+func slowmo() -> void:
+	if can_slowmo:
+		hook.set_is_slowmo(true)

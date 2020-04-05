@@ -27,6 +27,7 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
 }
+can_slowmo = false
 
 [node name="CameraRig" parent="." instance=ExtResource( 10 )]
 

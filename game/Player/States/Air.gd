@@ -41,6 +41,7 @@ func unhandled_input(event: InputEvent) -> void:
 
 func physics_process(delta: float) -> void:
 	#move.physics_process(delta)
+	#print(freeze_timer.time_left)
 	var direction: Vector2
 	if freeze_timer.is_stopped():
 		direction = move.get_move_direction()

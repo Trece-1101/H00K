@@ -11,7 +11,8 @@ func _on_Cooldown_timeout() -> void:
 func enter(msg: Dictionary = {}) -> void:
 	owner.cooldown.connect("timeout", self, "_on_Cooldown_timeout")
 	## TODO: no es esto exactamente lo que quiero
-	owner.set_is_slowmo(false)
+	#owner.set_is_slowmo(false)
+	#owner.set_is_slowmo(true)
 	owner.cooldown.start()
 
 	var target: HookTarget = owner.snap_detector.target
@@ -30,3 +31,5 @@ func enter(msg: Dictionary = {}) -> void:
 
 func exit() -> void:
 	owner.cooldown.disconnect("timeout", self, "_on_Cooldown_timeout")
+#	if owner.get_is_slowmo() == true:
+#		owner.set_is_slowmo(false)
