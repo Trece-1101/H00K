@@ -34,18 +34,20 @@ var _is_jump_interrupted: bool
 func unhandled_input(event: InputEvent) -> void:
 	#var move: = get_parent()
 	# Jump after falling off a ledge
-#	if event.is_action_pressed("jump"):
-#		if move.velocity.y >= 0.0 and jump_delay.time_left > 0.0:
-#			move.velocity = calculate_jump_velocity(move.jump_impulse)
-#		emit_signal("jumped")
-#	else:
-#		move.unhandled_input(event)
-	
-	if event.is_action_pressed("jump") and owner.is_on_floor():
-		jump()
+	if event.is_action_pressed("jump"):
+		if move.velocity.y >= 0.0 and jump_delay.time_left > 0.0:
+			#move.velocity = calculate_jump_velocity(move.jump_impulse)
+			jump()
 		emit_signal("jumped")
 	else:
 		move.unhandled_input(event)
+	
+#	if event.is_action_pressed("jump") and owner.is_on_floor():
+#		jump()
+#		emit_signal("jumped")
+#	else:
+#		move.unhandled_input(event)
+
 
 func physics_process(delta: float) -> void:
 	#move.physics_process(delta)
@@ -107,7 +109,7 @@ func enter(msg: Dictionary = {}) -> void:
 		move.acceleration = Vector2(acceleration_x, move.acceleration_default.y)
 		move.max_speed.x = max(abs(move.velocity.x), move.max_speed_default.x)
 	
-	#jump_delay.start()
+	jump_delay.start()
 
 func exit() -> void:
 	move.acceleration = move.acceleration_default
