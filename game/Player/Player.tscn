@@ -73,7 +73,6 @@ script = ExtResource( 2 )
 [node name="Air" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 6 )
 acceleration_x = 3200.0
-max_jump_count = 1
 momentum_divider = 0.8
 
 [node name="FreezeTimer" type="Timer" parent="StateMachine/Move/Air"]
@@ -92,8 +91,10 @@ wait_time = 0.2
 
 [node name="Wall" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 15 )
+slide_acceleration = 600.0
+default_max_slide_speed = 180.0
 friction_wall = 0.3
-wall_jump_strength = Vector2( 220, 200 )
+wall_jump_strength = Vector2( 250, 400 )
 
 [node name="Hook" type="Node" parent="StateMachine"]
 script = ExtResource( 9 )

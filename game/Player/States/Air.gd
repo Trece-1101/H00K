@@ -10,8 +10,6 @@ signal jumped
 
 #### export variables
 export var acceleration_x: float = 5000.0
-export var max_jump_count: int = 2
-export var max_dash_count: int = 1
 export var get_momentum: bool = false
 export(float, 0.5, 0.9) var momentum_divider: float = 0.5
 """
@@ -29,8 +27,6 @@ onready var freeze_timer:Timer = $FreezeTimer
 onready var jump_delay: Timer = $JumpDelay
 
 #### variables
-var _jump_count = 0
-var _dash_count = 0
 var _is_jump_interrupted: bool
 
 
@@ -39,21 +35,22 @@ func unhandled_input(event: InputEvent) -> void:
 	#var move: = get_parent()
 	# Jump after falling off a ledge
 #	if event.is_action_pressed("jump"):
-#		if move.velocity.y >= 0.0 and jump_delay.time_left > 0.0 and owner.floor_detector.is_colliding():
-#			#move.velocity = calculate_jump_velocity(move.jump_impulse)
-#			jump()
+#		if move.velocity.y >= 0.0 and jump_delay.time_left > 0.0:
+#			move.velocity = calculate_jump_velocity(move.jump_impulse)
 #		emit_signal("jumped")
 #	else:
 #		move.unhandled_input(event)
 	
-	if event.is_action_pressed("jump") and _jump_count < max_jump_count:
+	if event.is_action_pressed("jump") and owner.is_on_floor():
 		jump()
-
-	move.unhandled_input(event)
+		emit_signal("jumped")
+	else:
+		move.unhandled_input(event)
 
 func physics_process(delta: float) -> void:
 	#move.physics_process(delta)
 	#print(freeze_timer.time_left)
+
 	
 	_is_jump_interrupted = Input.is_action_just_released("jump") and move.velocity.y < 0.0
 	
@@ -93,7 +90,7 @@ func physics_process(delta: float) -> void:
 	if owner.is_on_wall():
 		var wall_normal: float = owner.get_slide_collision(0).normal.x
 		_state_machine.transition_to("Move/Wall", 
-			{normal = wall_normal, velocity = move.velocity})
+			{"normal": wall_normal, "velocity": move.velocity})
 
 
 func enter(msg: Dictionary = {}) -> void:
@@ -102,29 +99,22 @@ func enter(msg: Dictionary = {}) -> void:
 	move.acceleration.x = acceleration_x
 	if "velocity" in msg:
 		move.velocity = msg.velocity
-		move.max_speed.x = max(abs(msg.velocity.x), move.max_speed.x)
-		
+		move.max_speed.x = max(abs(msg.velocity.x), move.max_speed.x)		
 	if "impulse" in msg:
 		jump()
-	else:
-		_jump_count += 1
-	
 	if "wall_jump" in msg:
 		freeze_timer.start()
 		move.acceleration = Vector2(acceleration_x, move.acceleration_default.y)
 		move.max_speed.x = max(abs(move.velocity.x), move.max_speed_default.x)
 	
-	jump_delay.start()
+	#jump_delay.start()
 
 func exit() -> void:
 	move.acceleration = move.acceleration_default
-	_jump_count = 0
-	_dash_count = 0
 	move.exit()
 
 func jump() -> void:
 	move.velocity += calculate_jump_velocity(move.jump_impulse)
-	_jump_count += 1
 
 func calculate_jump_velocity(impulse: float = 0.0) -> Vector2:
 	return move.calculate_velocity(

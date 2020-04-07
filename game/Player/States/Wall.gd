@@ -32,17 +32,16 @@ var _pushing_against_wall: bool = true
 
 #### Metodos
 func unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_pressed("jump"):
+	#if Input.is_action_pressed("jump"):
+	if Input.is_action_just_pressed("jump"):
 		jump()
 
 func physics_process(delta: float) -> void:
-	if sign(_wall_normal) > 0.0 and Input.is_action_pressed("aim_joy_left"):
-		_pushing_against_wall = true
-	elif sign(_wall_normal) < 0.0 and Input.is_action_pressed("aim_joy_right"):
+	if ((sign(_wall_normal) > 0.0 and Input.is_action_pressed("aim_joy_left")) 
+		or (sign(_wall_normal) < 0.0 and Input.is_action_pressed("aim_joy_right"))):
 		_pushing_against_wall = true
 	else:
 		_pushing_against_wall = false
-	
 	
 	if not(_pushing_against_wall):
 		max_slide_speed = default_max_slide_speed * slide_speed_incrementor
@@ -68,6 +67,7 @@ func physics_process(delta: float) -> void:
 	
 	if owner.wall_detector.is_against_ledge():
 		_state_machine.transition_to("Ledge", {move_state = move})
+	
 
 func enter(msg: Dictionary = {}) -> void:
 	move.enter(msg)
