@@ -60,8 +60,9 @@ __meta__ = {
 "_editor_description_": ""
 }
 max_speed_default = Vector2( 220, 800 )
-acceleration_default = Vector2( 1000, 1800 )
-jump_impulse = 420.0
+acceleration_default = Vector2( 1000, 1600 )
+max_speed_fall = 500
+jump_impulse = 450.0
 
 [node name="Idle" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 5 )

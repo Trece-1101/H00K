@@ -31,6 +31,7 @@ onready var jump_delay: Timer = $JumpDelay
 #### variables
 var _jump_count = 0
 var _dash_count = 0
+var _is_jump_interrupted: bool
 
 
 #### Metodos
@@ -53,6 +54,9 @@ func unhandled_input(event: InputEvent) -> void:
 func physics_process(delta: float) -> void:
 	#move.physics_process(delta)
 	#print(freeze_timer.time_left)
+	
+	_is_jump_interrupted = Input.is_action_just_released("jump") and move.velocity.y < 0.0
+	
 	var direction: Vector2
 	if freeze_timer.is_stopped():
 		direction = move.get_move_direction()
@@ -64,7 +68,9 @@ func physics_process(delta: float) -> void:
 		move.max_speed,
 		move.acceleration, 
 		delta, 
-		direction)
+		direction,
+		move.max_speed_fall,
+		_is_jump_interrupted)
 	
 	move.velocity = owner.move_and_slide(move.velocity, owner.FLOOR_NORMAL)
 	Events.emit_signal("player_moved", owner)
@@ -126,5 +132,6 @@ func calculate_jump_velocity(impulse: float = 0.0) -> Vector2:
 		move.max_speed,
 		Vector2(0.0, impulse),
 		1.0,
-		Vector2.UP
+		Vector2.UP,
+		move.max_speed_fall
 	)

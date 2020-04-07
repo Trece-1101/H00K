@@ -73,11 +73,14 @@ static func calculate_velocity(
 		acceleration: Vector2,
 		delta: float,
 		move_direction: Vector2,
-		max_speed_fall = 800.0
+		max_speed_fall: float,
+		is_jump_interrupted: bool = false
 	) -> Vector2:
 	var new_velocity: = old_velocity
 	
 	new_velocity += move_direction * acceleration * delta
+	if is_jump_interrupted:
+		new_velocity.y = 0.0
 	new_velocity.x = clamp(new_velocity.x, -max_speed.x, max_speed.x)
 	new_velocity.y = clamp(new_velocity.y, -max_speed.y, max_speed_fall)
 	
