@@ -34,7 +34,6 @@ var acceleration: = acceleration_default
 var max_speed: = max_speed_default
 var velocity: = Vector2.ZERO
 
-
 #### metodos
 func unhandled_input(event: InputEvent) -> void:
 	if owner.is_on_floor() and event.is_action_pressed("jump"):
@@ -46,7 +45,7 @@ func unhandled_input(event: InputEvent) -> void:
 		_state_machine.transition_to("Debug")
 	
 
-func physics_process(delta: float) -> void:
+func physics_process(delta: float) -> void:	
 	if owner.is_on_floor():
 		max_speed = max_speed_default
 	velocity = calculate_velocity(velocity, max_speed, acceleration, delta,

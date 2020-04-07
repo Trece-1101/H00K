@@ -28,32 +28,22 @@ onready var jump_delay: Timer = $JumpDelay
 
 #### variables
 var _is_jump_interrupted: bool
-
+var _is_jumping: bool
 
 #### Metodos
 func unhandled_input(event: InputEvent) -> void:
 	#var move: = get_parent()
 	# Jump after falling off a ledge
 	if event.is_action_pressed("jump"):
-		if move.velocity.y >= 0.0 and jump_delay.time_left > 0.0:
-			#move.velocity = calculate_jump_velocity(move.jump_impulse)
-			jump()
-		emit_signal("jumped")
+		if (move.velocity.y >= 0.0 and jump_delay.time_left > 0.0
+			and not _is_jumping):
+			move.velocity = calculate_jump_velocity(move.jump_impulse)
+			_is_jumping = true
+		#emit_signal("jumped")
 	else:
 		move.unhandled_input(event)
-	
-#	if event.is_action_pressed("jump") and owner.is_on_floor():
-#		jump()
-#		emit_signal("jumped")
-#	else:
-#		move.unhandled_input(event)
 
-
-func physics_process(delta: float) -> void:
-	#move.physics_process(delta)
-	#print(freeze_timer.time_left)
-
-	
+func physics_process(delta: float) -> void:	
 	_is_jump_interrupted = Input.is_action_just_released("jump") and move.velocity.y < 0.0
 	
 	var direction: Vector2
@@ -98,14 +88,20 @@ func physics_process(delta: float) -> void:
 func enter(msg: Dictionary = {}) -> void:
 	move.enter(msg)
 	
+#	if !owner.is_on_floor() && move.was_on_floor():
+#		_is_jumping = false
+	
 	move.acceleration.x = acceleration_x
+	
 	if "velocity" in msg:
 		move.velocity = msg.velocity
-		move.max_speed.x = max(abs(msg.velocity.x), move.max_speed.x)		
+		move.max_speed.x = max(abs(msg.velocity.x), move.max_speed.x)
 	if "impulse" in msg:
 		jump()
+		_is_jumping = true
 	if "wall_jump" in msg:
 		freeze_timer.start()
+		_is_jumping = true
 		move.acceleration = Vector2(acceleration_x, move.acceleration_default.y)
 		move.max_speed.x = max(abs(move.velocity.x), move.max_speed_default.x)
 	
@@ -113,6 +109,7 @@ func enter(msg: Dictionary = {}) -> void:
 
 func exit() -> void:
 	move.acceleration = move.acceleration_default
+	_is_jumping = false
 	move.exit()
 
 func jump() -> void:
