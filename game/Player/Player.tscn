@@ -67,8 +67,16 @@ jump_impulse = 450.0
 [node name="Idle" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 5 )
 
+[node name="JumpBuffer" type="Timer" parent="StateMachine/Move/Idle"]
+wait_time = 0.13
+one_shot = true
+
 [node name="Run" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 2 )
+
+[node name="JumpBuffer" type="Timer" parent="StateMachine/Move/Run"]
+wait_time = 0.13
+one_shot = true
 
 [node name="Air" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 6 )
@@ -80,7 +88,7 @@ wait_time = 0.16
 one_shot = true
 
 [node name="JumpDelay" type="Timer" parent="StateMachine/Move/Air"]
-wait_time = 0.2
+wait_time = 0.1
 one_shot = true
 
 [node name="Dash" type="Node" parent="StateMachine/Move"]

@@ -19,7 +19,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		scale.x = 1
 
 func is_against_ledge() -> bool:
-	return is_active and ray_bottom.is_colliding() and not ray_top.is_colliding()
+	return (is_active 
+		and ray_bottom.is_colliding() 
+		and not ray_top.is_colliding())
 
 func is_against_wall() -> bool:
 	return is_active and (ray_bottom.is_colliding() or ray_top.is_colliding())

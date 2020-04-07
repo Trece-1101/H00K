@@ -32,16 +32,15 @@ var _is_jumping: bool
 
 #### Metodos
 func unhandled_input(event: InputEvent) -> void:
-	#var move: = get_parent()
-	# Jump after falling off a ledge
 	if event.is_action_pressed("jump"):
+		emit_signal("jumped")
 		if (move.velocity.y >= 0.0 and jump_delay.time_left > 0.0
 			and not _is_jumping):
 			move.velocity = calculate_jump_velocity(move.jump_impulse)
 			_is_jumping = true
-		#emit_signal("jumped")
 	else:
 		move.unhandled_input(event)
+
 
 func physics_process(delta: float) -> void:	
 	_is_jump_interrupted = Input.is_action_just_released("jump") and move.velocity.y < 0.0
@@ -76,7 +75,9 @@ func physics_process(delta: float) -> void:
 		if move.get_move_direction().x == 0.0 and not get_momentum:
 			move.velocity.x *= momentum_divider
 		
-		if owner.wall_detector.is_against_ledge():
+		if (owner.wall_detector.is_against_ledge()
+			and (Input.is_action_pressed("aim_joy_left")
+			or Input.is_action_pressed("aim_joy_right"))):
 			_state_machine.transition_to("Ledge", {move_state = move})
 	
 	if owner.is_on_wall():
@@ -110,6 +111,7 @@ func enter(msg: Dictionary = {}) -> void:
 func exit() -> void:
 	move.acceleration = move.acceleration_default
 	_is_jumping = false
+	
 	move.exit()
 
 func jump() -> void:

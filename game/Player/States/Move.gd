@@ -43,9 +43,9 @@ func unhandled_input(event: InputEvent) -> void:
 	## TODO: solo DEBUG
 	if event.is_action_pressed("debug_move"):
 		_state_machine.transition_to("Debug")
-	
 
-func physics_process(delta: float) -> void:	
+
+func physics_process(delta: float) -> void:
 	if owner.is_on_floor():
 		max_speed = max_speed_default
 	velocity = calculate_velocity(velocity, max_speed, acceleration, delta,
@@ -63,9 +63,12 @@ func _on_Hook_hooked_onto_target(target_global_position: Vector2) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	owner.hook.connect("hooked_onto_target", self, "_on_Hook_hooked_onto_target")
+	$Air.connect("jumped", $Idle.jump_buffer, "start")
+	$Air.connect("jumped", $Run.jump_buffer, "start")
 
 func exit() -> void:
 	owner.hook.disconnect("hooked_onto_target", self, "_on_Hook_hooked_onto_target")
+	$Air.disconnect("jumped", $Run.jump_buffer, "start")
 
 static func calculate_velocity(
 		old_velocity: Vector2, 
@@ -90,4 +93,4 @@ static func calculate_velocity(
 static func get_move_direction() -> Vector2:
 	return Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 1.0
-	)
+	)	
