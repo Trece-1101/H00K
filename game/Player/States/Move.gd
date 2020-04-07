@@ -6,10 +6,10 @@ Estados hijos relacionados al movimiento pueden delegar movimientos al padre
 o usar funcionalidades de él
 """
 #### export variables
-export var max_speed_default: = Vector2(500.0, 1500.0)
-export var acceleration_default: = Vector2(100000.0, 3000.0)
-export var max_speed_fall: = 800
-export var jump_impulse: float = 900.0
+export var max_speed_default: Vector2 = Vector2(220.0, 800.0)
+export var acceleration_default: Vector2 = Vector2(1000.0, 1600.0)
+export var max_speed_fall: float = 500.0
+export var jump_impulse: float = 450.0
 """
 Todos estos valores default seran asignados a las variables correspondientes
 al iniciar el juego/nivel

@@ -5,7 +5,8 @@ Mueve al player hasta el gancho
 """
 
 #### export variables
-export var arrive_push: = 500.0
+export var arrive_push: float = 350.0
+export var jump_after_hook: bool = false
 
 #### variables
 var target_global_position: = Vector2(INF, INF)
@@ -24,23 +25,24 @@ func physics_process(delta: float) -> void:
 		HOOK_MAX_SPEED
 	)
 	
+	
 	if new_velocity.length() > arrive_push:
 		new_velocity = new_velocity
 	else:
-		new_velocity.normalized() * arrive_push
+		new_velocity = new_velocity.normalized() * arrive_push
 	#new_velocity = new_velocity if new_velocity.length() > arrive_push else new_velocity.normalized() * arrive_push
 	velocity = owner.move_and_slide(new_velocity, owner.FLOOR_NORMAL)
 	Events.emit_signal("player_moved", owner)
-
+	
 	var to_target: Vector2 = target_global_position - owner.global_position
 	var distance: = to_target.length()
-
+	
 	if distance < velocity.length() * delta:
 		velocity = velocity.normalized() * arrive_push
-		_state_machine.transition_to("Move/Air", {velocity = velocity})
+		_state_machine.transition_to("Move/Air", 
+			{velocity = velocity, can_jump_after_hook = jump_after_hook})
 
 func enter(msg: Dictionary = {}) -> void:
-	#print(msg)
 	match msg:
 		{"target_global_position": var tgp, "velocity": var v}:
 			target_global_position = tgp

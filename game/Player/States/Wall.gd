@@ -4,10 +4,10 @@ Este estado maneja lo que respecta al jugador cuando choca contra la pared
 """
 
 #### export variables
-export var slide_acceleration: float = 800.0
-export var default_max_slide_speed: float = 200.0
-export(float, 0.05, 0.95) var friction_wall: float = 0.15
-export var wall_jump_strength: Vector2 = Vector2(300.0, 250.0)
+export var slide_acceleration: float = 600.0
+export var default_max_slide_speed: float = 180.0
+export(float, 0.05, 0.95) var friction_wall: float = 0.30
+export var wall_jump_strength: Vector2 = Vector2(250.0, 400.0)
 export(float, 1.1, 1.5) var slide_speed_incrementor = 1.3
 """
 slide_acceleration = si la velocidad de caida al tocar la pared es menor (ya esta

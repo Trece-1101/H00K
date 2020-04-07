@@ -546,19 +546,19 @@ position = Vector2( 160, 153 )
 position = Vector2( 386, 96 )
 
 [node name="HookTarget8" parent="HookTargets" instance=ExtResource( 4 )]
-position = Vector2( -400, 766 )
+position = Vector2( -470, 743 )
 
 [node name="HookTarget9" parent="HookTargets" instance=ExtResource( 4 )]
-position = Vector2( -596, 622 )
+position = Vector2( -557, 587 )
 
 [node name="HookTarget10" parent="HookTargets" instance=ExtResource( 4 )]
-position = Vector2( -464, 616 )
+position = Vector2( -420, 615 )
 
 [node name="HookTarget11" parent="HookTargets" instance=ExtResource( 4 )]
-position = Vector2( -339, 562 )
+position = Vector2( -255, 528 )
 
 [node name="HookTarget12" parent="HookTargets" instance=ExtResource( 4 )]
-position = Vector2( -111, 599 )
+position = Vector2( -200, 642 )
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -566,10 +566,10 @@ position = Vector2( -111, 599 )
 position = Vector2( -200, 817 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 334, 968 )
+position = Vector2( -334, 630 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 586, 817 )
+position = Vector2( -333, 698 )
 current = true
 
 [editable path="Player"]

@@ -45,7 +45,7 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "ledge"
 length = 0.1
 step = 0.0333333
@@ -62,8 +62,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "reset_pose"
+[sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -126,8 +125,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "spawn"
+[sub_resource type="Animation" id=4]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -167,15 +165,13 @@ tracks/2/keys = {
 }
 
 [node name="PlayerSkin" type="Node2D"]
-modulate = Color( 1, 0.563879, 0.563879, 1 )
-scale = Vector2( 0.305105, 0.305105 )
 script = ExtResource( 3 )
 
 [node name="PlayerAnimation" type="AnimationPlayer" parent="."]
 anims/die = SubResource( 1 )
-anims/ledge = SubResource( 4 )
-anims/reset_pose = SubResource( 2 )
-anims/spawn = SubResource( 3 )
+anims/ledge = SubResource( 2 )
+anims/reset_pose = SubResource( 3 )
+anims/spawn = SubResource( 4 )
 
 [node name="PlayerShadow" type="Sprite" parent="."]
 show_behind_parent = true

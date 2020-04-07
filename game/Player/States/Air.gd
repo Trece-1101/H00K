@@ -9,9 +9,8 @@ Transicion a Idle o a Run
 signal jumped
 
 #### export variables
-export var acceleration_x: float = 5000.0
-export var get_momentum: bool = false
-export(float, 0.5, 0.9) var momentum_divider: float = 0.5
+export var acceleration_x: float = 3500.0
+export(float, 0.5, 0.9) var momentum_divider: float = 0.8
 """
 
 acceleration_x = la aceleracion horizontal cuando el jugador salta
@@ -29,15 +28,17 @@ onready var jump_delay: Timer = $JumpDelay
 #### variables
 var _is_jump_interrupted: bool
 var _is_jumping: bool
+var _jump_after_hook: bool = false
 
 #### Metodos
 func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
 		emit_signal("jumped")
 		if (move.velocity.y >= 0.0 and jump_delay.time_left > 0.0
-			and not _is_jumping):
+			and not _is_jumping) or _jump_after_hook:
 			move.velocity = calculate_jump_velocity(move.jump_impulse)
 			_is_jumping = true
+			_jump_after_hook = false
 	else:
 		move.unhandled_input(event)
 
@@ -72,7 +73,7 @@ func physics_process(delta: float) -> void:
 		
 		_state_machine.transition_to(target_state)
 	else:
-		if move.get_move_direction().x == 0.0 and not get_momentum:
+		if move.get_move_direction().x == 0.0:
 			move.velocity.x *= momentum_divider
 		
 		if (owner.wall_detector.is_against_ledge()
@@ -88,10 +89,7 @@ func physics_process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	move.enter(msg)
-	
-#	if !owner.is_on_floor() && move.was_on_floor():
-#		_is_jumping = false
-	
+		
 	move.acceleration.x = acceleration_x
 	
 	if "velocity" in msg:
@@ -105,6 +103,8 @@ func enter(msg: Dictionary = {}) -> void:
 		_is_jumping = true
 		move.acceleration = Vector2(acceleration_x, move.acceleration_default.y)
 		move.max_speed.x = max(abs(move.velocity.x), move.max_speed_default.x)
+	if "can_jump_after_hook" in msg:
+		_jump_after_hook = msg.can_jump_after_hook
 	
 	jump_delay.start()
 
