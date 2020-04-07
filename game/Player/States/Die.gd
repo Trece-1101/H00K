@@ -14,5 +14,5 @@ func exit() -> void:
 
 func set_actives(active: bool) -> void:
 	owner.set_is_active(active)
-	if owner.camera_rig:
-		owner.camera_rig.set_is_active(active)
+#	if owner.camera_rig:
+#		owner.camera_rig.set_is_active(active)

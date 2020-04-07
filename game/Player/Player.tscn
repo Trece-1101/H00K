@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://game/Player/States/Spawn.gd" type="Script" id=1]
 [ext_resource path="res://game/Player/States/Run.gd" type="Script" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://game/Player/Player.gd" type="Script" id=7]
 [ext_resource path="res://game/Player/Hook/Hook.tscn" type="PackedScene" id=8]
 [ext_resource path="res://game/Player/Hook.gd" type="Script" id=9]
-[ext_resource path="res://game/Player/Camera/CameraRig.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/Player/PlayerSkin.tscn" type="PackedScene" id=11]
 [ext_resource path="res://game/Player/States/Die.gd" type="Script" id=12]
 [ext_resource path="res://game/Player/States/Dash.gd" type="Script" id=13]
@@ -30,8 +29,6 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
 }
-
-[node name="CameraRig" parent="." instance=ExtResource( 10 )]
 
 [node name="Hook" parent="." instance=ExtResource( 8 )]
 position = Vector2( 0, -12 )
@@ -97,6 +94,7 @@ script = ExtResource( 15 )
 
 [node name="Hook" type="Node" parent="StateMachine"]
 script = ExtResource( 9 )
+jump_after_hook = true
 
 [node name="Ledge" type="Node" parent="StateMachine"]
 script = ExtResource( 17 )
