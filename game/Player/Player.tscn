@@ -92,6 +92,7 @@ wait_time = 0.2
 
 [node name="Wall" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 15 )
+friction_wall = 0.3
 wall_jump_strength = Vector2( 220, 200 )
 
 [node name="Hook" type="Node" parent="StateMachine"]
