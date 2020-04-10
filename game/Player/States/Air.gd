@@ -33,10 +33,11 @@ var _jump_after_hook: bool = false
 #### Metodos
 func unhandled_input(event: InputEvent) -> void:	
 	if event.is_action_pressed("jump"):
-		var virtual_wall_normal:int = -(owner.wall_detector.scale.x)
-		if owner.wall_detector.is_against_wall() and !owner.is_on_floor():
+		var virtual_wall_normal:int
+		if check_if_can_wall_jump()["can"]:
+			virtual_wall_normal = check_if_can_wall_jump()["normal"]
 			_state_machine.transition_to("Move/Wall", 
-			{"normal": virtual_wall_normal, "velocity": move.velocity, "jump": true})
+				{"normal": virtual_wall_normal, "velocity": move.velocity, "jump": true})
 		else:
 			emit_signal("jumped")
 			if (move.velocity.y >= 0.0 and jump_delay.time_left > 0.0
@@ -86,7 +87,7 @@ func physics_process(delta: float) -> void:
 #			or Input.is_action_pressed("aim_joy_right"))):
 #				_state_machine.transition_to("Ledge", {move_state = move})
 	
-	if owner.is_on_wall() and owner.is_getting_input():
+	if owner.is_on_wall() and owner.is_getting_input() and move.velocity.y >= 0.0:
 		var wall_normal: float = owner.get_slide_collision(0).normal.x
 		_state_machine.transition_to("Move/Wall", 
 			{"normal": wall_normal, "velocity": move.velocity})
@@ -115,6 +116,18 @@ func exit() -> void:
 	_is_jumping = false
 	
 	move.exit()
+
+func check_if_can_wall_jump() -> Dictionary:
+	var result: Dictionary = {}
+	
+	if owner.left_wall_detector.is_against_wall() and !owner.is_on_floor():
+		result = {"can": true, "normal": 1}
+	elif owner.right_wall_detector.is_against_wall() and !owner.is_on_floor():
+		result = {"can": true, "normal": -1}
+	else:
+		result = {"can": false, "normal": 0}
+	
+	return result
 
 func jump() -> void:
 	move.velocity += calculate_jump_velocity(move.jump_impulse)

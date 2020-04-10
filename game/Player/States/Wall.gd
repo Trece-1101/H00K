@@ -8,7 +8,7 @@ export var slide_acceleration: float = 600.0
 export var default_max_slide_speed: float = 180.0
 export(float, 0.05, 0.95) var friction_wall: float = 0.30
 export var wall_jump_strength: Vector2 = Vector2(250.0, 400.0)
-export(float, 1.1, 1.5) var slide_speed_incrementor = 1.3
+export(float, 1.1, 3.0) var slide_speed_incrementor = 1.3
 """
 slide_acceleration = si la velocidad de caida al tocar la pared es menor (ya esta
 	bajando por la pared por ejemplo) va acelerando su caida
@@ -44,10 +44,13 @@ func physics_process(delta: float) -> void:
 		_pushing_against_wall = false
 	
 	if not(_pushing_against_wall):
-		max_slide_speed = default_max_slide_speed * slide_speed_incrementor
+		_state_machine.transition_to("Move/Air", {velocity = _velocity})
+		#max_slide_speed = default_max_slide_speed * slide_speed_incrementor
 	else:
 		max_slide_speed = default_max_slide_speed
 
+	if owner.is_on_floor():
+		_state_machine.transition_to("Move/Idle")
 	
 	if _velocity.y > max_slide_speed:
 		_velocity.y = lerp(_velocity.y, max_slide_speed, friction_wall)
@@ -57,17 +60,14 @@ func physics_process(delta: float) -> void:
 	#_velocity.y = clamp(_velocity.y,-max_slide_speed, max_slide_speed)
 	_velocity = owner.move_and_slide(_velocity, owner.FLOOR_NORMAL)
 	
-	if owner.is_on_floor():
-		_state_machine.transition_to("Move/Idle")
 	
 	# sign devuelve solo el signo + o - de la direccion, copado
-	is_moving_away_from_wall = sign(move.get_move_direction().x) == sign(_wall_normal)
+#	is_moving_away_from_wall = sign(move.get_move_direction().x) == sign(_wall_normal)
+#
+#	if is_moving_away_from_wall or not owner.wall_detector.is_against_wall():
+#		#print("caer")
+#		_state_machine.transition_to("Move/Air", {velocity = _velocity})
 	
-	if is_moving_away_from_wall or not owner.wall_detector.is_against_wall():
-		#print("caer")
-		_state_machine.transition_to("Move/Air", {velocity = _velocity})
-	
-
 	
 #	if owner.wall_detector.is_against_ledge():
 #		_state_machine.transition_to("Ledge", {move_state = move})
@@ -90,8 +90,8 @@ func jump() -> void:
 		velocity = impulse,
 		wall_jump = true
 	}
-	if is_moving_away_from_wall or !owner.is_getting_input():
-		owner.wall_detector.scale.x *= -1
+#	if is_moving_away_from_wall or !owner.is_getting_input():
+#		owner.wall_detector.scale.x *= -1
 	_state_machine.transition_to("Move/Air", msg)
 
 func exit() -> void:

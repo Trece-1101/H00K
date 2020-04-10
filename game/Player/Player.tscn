@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://game/Player/States/Spawn.gd" type="Script" id=1]
 [ext_resource path="res://game/Player/States/Run.gd" type="Script" id=2]
@@ -9,12 +9,13 @@
 [ext_resource path="res://game/Player/Player.gd" type="Script" id=7]
 [ext_resource path="res://game/Player/Hook/Hook.tscn" type="PackedScene" id=8]
 [ext_resource path="res://game/Player/Hook.gd" type="Script" id=9]
+[ext_resource path="res://game/Player/LeftWallDetector.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/Player/PlayerSkin.tscn" type="PackedScene" id=11]
 [ext_resource path="res://game/Player/States/Die.gd" type="Script" id=12]
 [ext_resource path="res://game/Player/States/Dash.gd" type="Script" id=13]
 [ext_resource path="res://game/Player/States/Debug.gd" type="Script" id=14]
 [ext_resource path="res://game/Player/States/Wall.gd" type="Script" id=15]
-[ext_resource path="res://game/Player/WallDetector.tscn" type="PackedScene" id=16]
+[ext_resource path="res://game/Player/RightWallDetector.tscn" type="PackedScene" id=16]
 [ext_resource path="res://game/Player/States/Ledge.gd" type="Script" id=17]
 [ext_resource path="res://game/Player/FloorDetector.tscn" type="PackedScene" id=18]
 
@@ -35,12 +36,14 @@ position = Vector2( 0, -30 )
 
 [node name="PlayerSkin" parent="." instance=ExtResource( 11 )]
 
+[node name="LeftWallDetector" parent="." instance=ExtResource( 10 )]
+
+[node name="RightWallDetector" parent="." instance=ExtResource( 16 )]
+
 [node name="PlayerCollider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -30 )
 scale = Vector2( 1.00325, 1.00982 )
 shape = SubResource( 1 )
-
-[node name="WallDetector" parent="." instance=ExtResource( 16 )]
 
 [node name="FloorDetector" parent="." instance=ExtResource( 18 )]
 
@@ -59,7 +62,7 @@ __meta__ = {
 max_speed_default = Vector2( 300, 800 )
 acceleration_default = Vector2( 1800, 1600 )
 max_speed_fall = 550.0
-jump_impulse = 500.0
+jump_impulse = 560.0
 
 [node name="Idle" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 5 )
@@ -95,7 +98,7 @@ wait_time = 0.2
 
 [node name="Wall" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 15 )
-wall_jump_strength = Vector2( 300, 400 )
+wall_jump_strength = Vector2( 200, 400 )
 slide_speed_incrementor = 1.5
 
 [node name="Hook" type="Node" parent="StateMachine"]
