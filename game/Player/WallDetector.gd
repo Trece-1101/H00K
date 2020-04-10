@@ -13,10 +13,11 @@ func _ready() -> void:
 	assert(ray_bottom.cast_to.x >= 0)
 	
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("move_left"):
-		scale.x = -1
-	elif event.is_action_pressed("move_right"):
-		scale.x = 1
+	if !Utils.get_aim_joystick_direction() == Vector2.ZERO:
+		if event.is_action_pressed("move_left"):
+			scale.x = -1
+		elif event.is_action_pressed("move_right"):
+			scale.x = 1
 
 func is_against_ledge() -> bool:
 	return (is_active 

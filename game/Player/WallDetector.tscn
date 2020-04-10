@@ -16,7 +16,7 @@ __meta__ = {
 }
 
 [node name="RayBottom" type="RayCast2D" parent="."]
-position = Vector2( 12, -2 )
+position = Vector2( 12, -3 )
 enabled = true
 exclude_parent = false
 cast_to = Vector2( 10, 0 )

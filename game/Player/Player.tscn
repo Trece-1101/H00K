@@ -19,7 +19,7 @@
 [ext_resource path="res://game/Player/FloorDetector.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 11.9611, 14.8541 )
+extents = Vector2( 13.9546, 27.7277 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 1, 0 )
@@ -31,12 +31,12 @@ __meta__ = {
 }
 
 [node name="Hook" parent="." instance=ExtResource( 8 )]
-position = Vector2( 0, -12 )
+position = Vector2( 0, -30 )
 
 [node name="PlayerSkin" parent="." instance=ExtResource( 11 )]
 
 [node name="PlayerCollider" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -16 )
+position = Vector2( 0, -30 )
 scale = Vector2( 1.00325, 1.00982 )
 shape = SubResource( 1 )
 

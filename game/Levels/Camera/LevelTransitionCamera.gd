@@ -10,13 +10,18 @@ onready var step_y = ProjectSettings.get("display/window/size/height")
 onready var player: Player = get_parent().get_node("Player")
 
 #### variables
-var current_position_x: int
-var current_position_y: int
+export var start_room: int = 1
 var steping = false
 var borders: Dictionary = {"top": 0, "bottom": 0, "left": 0, "right": 0}
 
 #### Metodos
 func _ready() -> void:
+	if start_room <= 0:
+		start_room = 1
+	
+	global_position.x = (step_x * start_room) / 2
+	global_position.y = (step_y * start_room) / 2
+	
 	borders["top"] = global_position.y - (step_y / 2)
 	borders["bottom"] = global_position.y + (step_y / 2)
 	borders["left"] = global_position.x - (step_x / 2)

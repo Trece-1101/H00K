@@ -68,6 +68,7 @@ func enter(msg: Dictionary = {}) -> void:
 
 func exit() -> void:
 	owner.hook.disconnect("hooked_onto_target", self, "_on_Hook_hooked_onto_target")
+	$Air.disconnect("jumped", $Idle.jump_buffer, "start")
 	$Air.disconnect("jumped", $Run.jump_buffer, "start")
 
 static func calculate_velocity(
@@ -93,4 +94,4 @@ static func calculate_velocity(
 static func get_move_direction() -> Vector2:
 	return Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 1.0
-	)	
+	)

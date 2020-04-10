@@ -16,6 +16,7 @@ onready var target_circle:DrawingUtils = $TargetCircle
 #### variables
 var is_active:bool = true setget set_is_active
 var is_slowmo:bool = false setget set_is_slowmo
+var last_aim_direction: Vector2 = Vector2.ZERO
 
 #### constantes
 const HOOKABLE_PHYSICS_LAYER: = 4
@@ -70,9 +71,12 @@ func get_aim_direction() -> Vector2:
 	match Settings.controls:
 		Settings.GAMEPAD:
 			direction = Utils.get_aim_joystick_direction()
+			if direction != Vector2(0, 0):
+				last_aim_direction = direction
+			else:
+				direction = last_aim_direction
 		Settings.KB_MOUSE:
 			direction = (get_global_mouse_position() - global_position).normalized()
-			
 	return direction
 
 func get_hook_target() -> HookTarget:

@@ -41,3 +41,8 @@ func slowmo() -> void:
 	if can_slowmo:
 		#hook.set_is_slowmo(true)
 		hook.set_is_slowmo(not hook.get_is_slowmo())
+
+func is_getting_input() -> bool:
+	if !Utils.get_aim_joystick_direction() == Vector2.ZERO:
+		return true
+	return false

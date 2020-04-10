@@ -29,10 +29,10 @@ onready var max_slide_speed = default_max_slide_speed
 var _wall_normal: float = -1.0
 var _velocity: Vector2 = Vector2.ZERO
 var _pushing_against_wall: bool = true
+var is_moving_away_from_wall: bool = false
 
 #### Metodos
 func unhandled_input(event: InputEvent) -> void:
-	#if Input.is_action_pressed("jump"):
 	if Input.is_action_just_pressed("jump"):
 		jump()
 
@@ -60,7 +60,7 @@ func physics_process(delta: float) -> void:
 		_state_machine.transition_to("Move/Idle")
 	
 	# sign devuelve solo el signo + o - de la direccion, copado
-	var is_moving_away_from_wall: bool = sign(move.get_move_direction().x) == sign(_wall_normal)
+	is_moving_away_from_wall = sign(move.get_move_direction().x) == sign(_wall_normal)
 	
 	if is_moving_away_from_wall or not owner.wall_detector.is_against_wall():
 		_state_machine.transition_to("Move/Air", {velocity = _velocity})
@@ -82,6 +82,8 @@ func jump() -> void:
 		velocity = impulse,
 		wall_jump = true
 	}
+	if is_moving_away_from_wall or !owner.is_getting_input():
+		owner.wall_detector.scale.x *= -1
 	_state_machine.transition_to("Move/Air", msg)
 
 func exit() -> void:
