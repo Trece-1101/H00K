@@ -53,6 +53,7 @@ func physics_process(delta: float) -> void:
 		_velocity.y = lerp(_velocity.y, max_slide_speed, friction_wall)
 	else:
 		_velocity.y += slide_acceleration * delta
+	
 	#_velocity.y = clamp(_velocity.y,-max_slide_speed, max_slide_speed)
 	_velocity = owner.move_and_slide(_velocity, owner.FLOOR_NORMAL)
 	
@@ -63,17 +64,24 @@ func physics_process(delta: float) -> void:
 	is_moving_away_from_wall = sign(move.get_move_direction().x) == sign(_wall_normal)
 	
 	if is_moving_away_from_wall or not owner.wall_detector.is_against_wall():
+		#print("caer")
 		_state_machine.transition_to("Move/Air", {velocity = _velocity})
 	
-	if owner.wall_detector.is_against_ledge():
-		_state_machine.transition_to("Ledge", {move_state = move})
+
+	
+#	if owner.wall_detector.is_against_ledge():
+#		_state_machine.transition_to("Ledge", {move_state = move})
 	
 
 func enter(msg: Dictionary = {}) -> void:
 	move.enter(msg)
-	
 	_wall_normal = msg.normal
 	_velocity.y = max(msg.velocity.y, -max_slide_speed)
+	
+	if "jump" in msg:
+		jump()
+
+	
 	#_velocity.y = clamp(msg.velocity.y,-max_slide_speed, max_slide_speed)
 
 func jump() -> void:

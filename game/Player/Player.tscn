@@ -56,6 +56,10 @@ script = ExtResource( 4 )
 __meta__ = {
 "_editor_description_": ""
 }
+max_speed_default = Vector2( 300, 800 )
+acceleration_default = Vector2( 1800, 1600 )
+max_speed_fall = 550.0
+jump_impulse = 500.0
 
 [node name="Idle" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 5 )
@@ -73,7 +77,7 @@ one_shot = true
 
 [node name="Air" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 6 )
-acceleration_x = 3200.0
+acceleration_x = 3000.0
 
 [node name="FreezeTimer" type="Timer" parent="StateMachine/Move/Air"]
 wait_time = 0.16
@@ -91,6 +95,8 @@ wait_time = 0.2
 
 [node name="Wall" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 15 )
+wall_jump_strength = Vector2( 300, 400 )
+slide_speed_incrementor = 1.5
 
 [node name="Hook" type="Node" parent="StateMachine"]
 script = ExtResource( 9 )
