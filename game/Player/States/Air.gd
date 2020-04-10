@@ -40,9 +40,14 @@ func unhandled_input(event: InputEvent) -> void:
 				{"normal": virtual_wall_normal, "velocity": move.velocity, "jump": true})
 		else:
 			emit_signal("jumped")
-			if (move.velocity.y >= 0.0 and jump_delay.time_left > 0.0
-				and not _is_jumping) or _jump_after_hook:
-				move.velocity = calculate_jump_velocity(move.jump_impulse)
+			if ((move.velocity.y >= 0.0 and jump_delay.time_left > 0.0
+			and not _is_jumping) or _jump_after_hook):
+				if _jump_after_hook:
+					move.velocity.y = 0.0
+					move.velocity = calculate_jump_velocity(move.hook_jump_impulse)
+				else:
+					move.velocity = calculate_jump_velocity(move.jump_impulse)
+					
 				_is_jumping = true
 				_jump_after_hook = false
 	else:
@@ -119,14 +124,14 @@ func exit() -> void:
 
 func check_if_can_wall_jump() -> Dictionary:
 	var result: Dictionary = {}
-	
+
 	if owner.left_wall_detector.is_against_wall() and !owner.is_on_floor():
 		result = {"can": true, "normal": 1}
 	elif owner.right_wall_detector.is_against_wall() and !owner.is_on_floor():
 		result = {"can": true, "normal": -1}
 	else:
 		result = {"can": false, "normal": 0}
-	
+
 	return result
 
 func jump() -> void:
