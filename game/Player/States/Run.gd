@@ -14,6 +14,9 @@ func unhandled_input(event: InputEvent) -> void:
 	move.unhandled_input(event)
 
 func physics_process(delta: float) -> void:
+	if !owner.get_is_alive():
+		owner.set_is_alive(true)
+	
 	if owner.is_on_floor():
 		if move.get_move_direction().x == 0.0:
 			_state_machine.transition_to("Move/Idle")

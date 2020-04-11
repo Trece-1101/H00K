@@ -54,7 +54,10 @@ func unhandled_input(event: InputEvent) -> void:
 		move.unhandled_input(event)
 
 
-func physics_process(delta: float) -> void:	
+func physics_process(delta: float) -> void:
+	if !owner.get_is_alive():
+			owner.set_is_alive(true)
+	
 	_is_jump_interrupted = Input.is_action_just_released("jump") and move.velocity.y < 0.0
 	
 	var direction: Vector2

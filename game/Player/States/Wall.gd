@@ -36,7 +36,7 @@ func unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("jump"):
 		jump()
 
-func physics_process(delta: float) -> void:
+func physics_process(delta: float) -> void:	
 	if ((sign(_wall_normal) > 0.0 and Input.is_action_pressed("aim_joy_left")) 
 		or (sign(_wall_normal) < 0.0 and Input.is_action_pressed("aim_joy_right"))):
 		_pushing_against_wall = true
