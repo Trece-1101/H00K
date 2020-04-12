@@ -9,7 +9,7 @@ export var arrive_push: float = 350.0
 export var jump_after_hook: bool = false
 
 #### variables
-var target_global_position: = Vector2(INF, INF)
+var target_global_position: = Vector2.INF
 var velocity: = Vector2.ZERO
 
 #### constantes
@@ -25,17 +25,20 @@ func physics_process(delta: float) -> void:
 		HOOK_MAX_SPEED
 	)
 
+	var low_speed = false
+
 	if new_velocity.length() > arrive_push:
 		new_velocity = new_velocity
 	else:
 		new_velocity = new_velocity.normalized() * arrive_push
+		low_speed = true
 	
 	if owner.is_on_ceiling():
 		_state_machine.transition_to("Move/Air", 
 			{velocity = velocity, can_jump_after_hook = jump_after_hook})
 		
 	velocity = owner.move_and_slide(new_velocity, owner.FLOOR_NORMAL)
-	Events.emit_signal("player_moved", owner)
+	#Events.emit_signal("player_moved", owner)
 	
 	var to_target: Vector2 = target_global_position - owner.global_position
 	var distance: = to_target.length()
@@ -44,8 +47,11 @@ func physics_process(delta: float) -> void:
 		velocity = velocity.normalized() * arrive_push
 		_state_machine.transition_to("Move/Air", 
 			{velocity = velocity, can_jump_after_hook = jump_after_hook})
-
-
+	else:
+		if low_speed:
+			#print("bug")
+			_state_machine.transition_to("Move/Air", 
+			{velocity = velocity, can_jump_after_hook = jump_after_hook})
 
 func enter(msg: Dictionary = {}) -> void:
 	match msg:
@@ -54,5 +60,5 @@ func enter(msg: Dictionary = {}) -> void:
 			velocity = v
 
 func exit() -> void:
-	target_global_position = Vector2(INF, INF)
+	target_global_position = Vector2.INF
 	velocity = Vector2.ZERO
