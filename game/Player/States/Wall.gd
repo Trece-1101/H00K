@@ -60,7 +60,7 @@ func physics_process(delta: float) -> void:
 	if (!owner.right_wall_detector.is_against_wall()
 	and !owner.left_wall_detector.is_against_wall()):
 		if !owner.is_on_wall():
-			_state_machine.transition_to("Move/Air", {velocity = _velocity})
+			_state_machine.transition_to("Move/Air", {velocity = _velocity, is_jumping = true})
 	
 	#_velocity.y = clamp(_velocity.y,-max_slide_speed, max_slide_speed)
 	_velocity = owner.move_and_slide(_velocity, owner.FLOOR_NORMAL)
@@ -93,7 +93,8 @@ func jump() -> void:
 	var impulse: Vector2 = Vector2(_wall_normal, -1.0) * wall_jump_strength
 	var msg: Dictionary = {
 		velocity = impulse,
-		wall_jump = true
+		wall_jump = true,
+		is_jumping = true
 	}
 #	if is_moving_away_from_wall or !owner.is_getting_input():
 #		owner.wall_detector.scale.x *= -1

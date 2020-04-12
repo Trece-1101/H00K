@@ -38,6 +38,7 @@ func unhandled_input(event: InputEvent) -> void:
 			virtual_wall_normal = check_if_can_wall_jump()["normal"]
 			_state_machine.transition_to("Move/Wall", 
 				{"normal": virtual_wall_normal, "velocity": move.velocity, "jump": true})
+			_is_jumping = true
 		else:
 			emit_signal("jumped")
 			if ((move.velocity.y >= 0.0 and jump_delay.time_left > 0.0
@@ -108,11 +109,13 @@ func enter(msg: Dictionary = {}) -> void:
 	
 	if "velocity" in msg:
 		move.velocity = msg.velocity
+		if "is_jumping" in msg:
+			_is_jumping = msg.is_jumping
 		move.max_speed.x = max(abs(msg.velocity.x), move.max_speed.x)
 	if "impulse" in msg:
 		jump()
 		_is_jumping = true
-	if "wall_jump" in msg:
+	if "wall_jump" in msg and check_if_can_wall_jump()["can"]:
 		wall_jump()
 	if "can_jump_after_hook" in msg:
 		_jump_after_hook = msg.can_jump_after_hook

@@ -24,7 +24,6 @@ const HOOKABLE_PHYSICS_LAYER: = 4
 #### señales
 signal hooked_onto_target(target_global_position)
 
-
 #### Setters y Getters
 func set_is_active(value: bool) -> void:
 	is_active = value

@@ -24,13 +24,16 @@ func physics_process(delta: float) -> void:
 		target_global_position,
 		HOOK_MAX_SPEED
 	)
-	
-	
+
 	if new_velocity.length() > arrive_push:
 		new_velocity = new_velocity
 	else:
 		new_velocity = new_velocity.normalized() * arrive_push
-	#new_velocity = new_velocity if new_velocity.length() > arrive_push else new_velocity.normalized() * arrive_push
+	
+	if owner.is_on_ceiling():
+		_state_machine.transition_to("Move/Air", 
+			{velocity = velocity, can_jump_after_hook = jump_after_hook})
+		
 	velocity = owner.move_and_slide(new_velocity, owner.FLOOR_NORMAL)
 	Events.emit_signal("player_moved", owner)
 	
@@ -41,6 +44,8 @@ func physics_process(delta: float) -> void:
 		velocity = velocity.normalized() * arrive_push
 		_state_machine.transition_to("Move/Air", 
 			{velocity = velocity, can_jump_after_hook = jump_after_hook})
+
+
 
 func enter(msg: Dictionary = {}) -> void:
 	match msg:

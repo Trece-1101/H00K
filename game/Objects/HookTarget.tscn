@@ -3,18 +3,18 @@
 [ext_resource path="res://game/Objects/HookTarget.gd" type="Script" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 25.1794
+radius = 8.0
 
 [node name="HookTarget" type="Area2D"]
 collision_layer = 16
 script = ExtResource( 1 )
-radius = 5.0
+radius = 6.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.6
+wait_time = 0.8
 one_shot = true
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
