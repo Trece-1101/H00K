@@ -20,7 +20,7 @@
 [ext_resource path="res://game/Player/FloorDetector.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 13.9546, 27.7277 )
+extents = Vector2( 11.9611, 27.7277 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 1, 0 )

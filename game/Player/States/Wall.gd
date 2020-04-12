@@ -56,6 +56,11 @@ func physics_process(delta: float) -> void:
 		_velocity.y = lerp(_velocity.y, max_slide_speed, friction_wall)
 	else:
 		_velocity.y += slide_acceleration * delta
+
+	if (!owner.right_wall_detector.is_against_wall()
+	and !owner.left_wall_detector.is_against_wall()):
+		if !owner.is_on_wall():
+			_state_machine.transition_to("Move/Air", {velocity = _velocity})
 	
 	#_velocity.y = clamp(_velocity.y,-max_slide_speed, max_slide_speed)
 	_velocity = owner.move_and_slide(_velocity, owner.FLOOR_NORMAL)
