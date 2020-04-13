@@ -3,6 +3,5 @@
 [ext_resource path="res://game/Levels/Camera/LevelTransitionCamera.gd" type="Script" id=1]
 
 [node name="LevelTransitionCamera" type="Camera2D"]
-position = Vector2( 320, 180 )
 current = true
 script = ExtResource( 1 )

@@ -58,7 +58,7 @@ func move_camera(move_to: String) -> void:
 		borders["right"] = borders["left"]
 		borders["left"] += step_x 
 	
-	print_borders()
+	#print_borders()
 
 func print_borders() -> void:
 	print("----------------------------")

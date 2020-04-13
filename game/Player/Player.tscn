@@ -42,7 +42,6 @@ position = Vector2( 0, -30 )
 
 [node name="PlayerCollider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -30 )
-scale = Vector2( 1.00325, 1.00982 )
 shape = SubResource( 1 )
 
 [node name="FloorDetector" parent="." instance=ExtResource( 18 )]
