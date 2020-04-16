@@ -103,7 +103,6 @@ slide_speed_incrementor = 1.5
 
 [node name="Hook" type="Node" parent="StateMachine"]
 script = ExtResource( 9 )
-arrive_push = 350.0
 jump_after_hook = true
 
 [node name="Ledge" type="Node" parent="StateMachine"]

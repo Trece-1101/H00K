@@ -11,6 +11,7 @@ export var jump_after_hook: bool = false
 #### variables
 var target_global_position: = Vector2.INF
 var velocity: = Vector2.ZERO
+var release_from_hook:bool = false
 
 #### constantes
 const HOOK_MAX_SPEED: = 1600.0
@@ -48,18 +49,18 @@ func physics_process(delta: float) -> void:
 		_state_machine.transition_to("Move/Air", 
 			{velocity = velocity, can_jump_after_hook = jump_after_hook})
 	else:
-		if low_speed:
-			pass
-#			print("bug")
-#			_state_machine.transition_to("Move/Air", 
-#			{velocity = velocity, can_jump_after_hook = jump_after_hook})
+		if release_from_hook:
+			_state_machine.transition_to("Move/Air", 
+			{velocity = velocity * 0.6, can_jump_after_hook = jump_after_hook})
 
 func enter(msg: Dictionary = {}) -> void:
+	release_from_hook = false
 	match msg:
 		{"target_global_position": var tgp, "velocity": var v}:
 			target_global_position = tgp
 			velocity = v
 
 func exit() -> void:
+	release_from_hook = false
 	target_global_position = Vector2.INF
 	velocity = Vector2.ZERO
