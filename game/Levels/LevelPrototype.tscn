@@ -940,7 +940,7 @@ __meta__ = {
 position = Vector2( 711, 124 )
 
 [node name="HookTarget3" parent="Room1/HookTargets" instance=ExtResource( 4 )]
-position = Vector2( 75.1035, 361.029 )
+position = Vector2( 70, 297 )
 
 [node name="Enemies" type="Node" parent="Room1"]
 

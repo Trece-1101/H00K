@@ -49,9 +49,10 @@ func physics_process(delta: float) -> void:
 			{velocity = velocity, can_jump_after_hook = jump_after_hook})
 	else:
 		if low_speed:
-			#print("bug")
-			_state_machine.transition_to("Move/Air", 
-			{velocity = velocity, can_jump_after_hook = jump_after_hook})
+			pass
+#			print("bug")
+#			_state_machine.transition_to("Move/Air", 
+#			{velocity = velocity, can_jump_after_hook = jump_after_hook})
 
 func enter(msg: Dictionary = {}) -> void:
 	match msg:

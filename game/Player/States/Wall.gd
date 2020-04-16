@@ -80,6 +80,7 @@ func physics_process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	move.enter(msg)
+	move.get_node("Air")._jump_after_hook = false
 	_wall_normal = msg.normal
 	_velocity.y = max(msg.velocity.y, -max_slide_speed)
 	
