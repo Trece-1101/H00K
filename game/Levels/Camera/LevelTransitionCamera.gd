@@ -2,7 +2,6 @@ extends Camera2D
 
 #### export variables
 
-
 #### onready variables
 onready var window_size = OS.get_window_size()
 onready var step_x = ProjectSettings.get("display/window/size/width")
@@ -10,17 +9,19 @@ onready var step_y = ProjectSettings.get("display/window/size/height")
 onready var player: Player = get_parent().get_node("Player")
 
 #### variables
-export var start_room: int = 1
+export var start_room_fila: int = 1
+export var start_room_columna: int = 1
 var steping = false
 var borders: Dictionary = {"top": 0, "bottom": 0, "left": 0, "right": 0}
 
 #### Metodos
 func _ready() -> void:
-	if start_room <= 0:
-		start_room = 1
+	if start_room_fila == 0 or start_room_columna == 0:
+		start_room_fila = 1
+		start_room_columna = 1
 	
-	global_position.x = (step_x * start_room) / 2
-	global_position.y = (step_y * start_room) / 2
+	global_position.x = (step_x * start_room_fila) / 2
+	global_position.y = (step_y * start_room_columna) / 2
 	
 	borders["top"] = global_position.y - (step_y / 2)
 	borders["bottom"] = global_position.y + (step_y / 2)
