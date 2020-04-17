@@ -45,3 +45,8 @@ script = ExtResource( 5 )
 
 [node name="Fire" type="Node" parent="StateMachine/Aim"]
 script = ExtResource( 6 )
+
+[node name="SlowmoTapTimer" type="Timer" parent="StateMachine/Aim/Fire"]
+wait_time = 0.18
+one_shot = true
+[connection signal="timeout" from="StateMachine/Aim/Fire/SlowmoTapTimer" to="StateMachine/Aim/Fire" method="_on_SlowmoTapTimer_timeout"]

@@ -17,6 +17,7 @@ onready var target_circle:DrawingUtils = $TargetCircle
 var is_active:bool = true setget set_is_active
 var is_slowmo:bool = false setget set_is_slowmo
 var last_aim_direction: Vector2 = Vector2.ZERO
+var can_slowmo: bool = false setget set_can_slowmo, get_can_slowmo
 
 #### constantes
 const HOOKABLE_PHYSICS_LAYER: = 4
@@ -31,11 +32,20 @@ func set_is_active(value: bool) -> void:
 	set_process_unhandled_input(value)
 	set_physics_process(value)
 
+func set_can_slowmo(value: bool) -> void:
+	can_slowmo = value
+
+func get_can_slowmo() -> bool:
+	return can_slowmo
+
 ## TODO: refactorizar esta bosta
 func set_is_slowmo(value: bool) -> void:
 	is_slowmo = value
 	if is_slowmo:
-		Engine.time_scale = 0.25
+		Engine.time_scale = 0.05
+		var timer: = get_tree().create_timer(0.08)
+		yield(timer, "timeout")
+		Engine.time_scale = 1.0
 	else:
 		Engine.time_scale = 1.0
 
@@ -46,6 +56,10 @@ func get_is_slowmo() -> bool:
 func _ready() -> void:
 	if Engine.editor_hint:
 		update()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("slowmo") and can_slowmo:
+		set_is_slowmo(true)
 
 func _draw() -> void:
 	if not Engine.editor_hint:

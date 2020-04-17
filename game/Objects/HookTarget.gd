@@ -57,10 +57,11 @@ func set_color(value:Color) -> void:
 func _on_body_entered(body: Node) -> void:
 	if body.name == "Player":
 		body.get_node("StateMachine/Hook").release_from_hook = true
-		if parent_name == "EnemyTest":
-			body.slowmo()
+#		if parent_name == "EnemyTest":
+#			body.slowmo()
 
 
 func _on_body_exited(body: Node) -> void:
-	if body.name == "Player" and parent_name == "EnemyTest":
-		body.slowmo()
+	pass
+#	if body.name == "Player" and parent_name == "EnemyTest":
+#		body.slowmo()
