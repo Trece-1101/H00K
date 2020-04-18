@@ -43,7 +43,7 @@ func set_is_slowmo(value: bool) -> void:
 	is_slowmo = value
 	if is_slowmo:
 		Engine.time_scale = 0.05
-		var timer: = get_tree().create_timer(0.08)
+		var timer: = get_tree().create_timer(0.05)
 		yield(timer, "timeout")
 		Engine.time_scale = 1.0
 	else:
