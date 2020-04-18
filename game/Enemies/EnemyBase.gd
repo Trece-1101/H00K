@@ -19,3 +19,10 @@ func _physics_process(delta: float) -> void:
 
 func set_queue(value: bool) -> void:
 	$EnemyVisualQueue.visible = value
+
+func set_arrow_queue(value: bool) -> void:
+	$EnemyArrowQueue.visible = value
+
+
+func _on_PlayerEnterDirection_body_entered(body: Node) -> void:
+	print(body.name)

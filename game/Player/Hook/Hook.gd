@@ -42,10 +42,12 @@ func get_can_slowmo() -> bool:
 func set_is_slowmo(value: bool) -> void:
 	is_slowmo = value
 	if is_slowmo:
+		get_node("StateMachine/Aim/Fire").set_visual_arrow_on_enemy(true)
 		Engine.time_scale = 0.05
 		var timer: = get_tree().create_timer(0.05)
 		yield(timer, "timeout")
 		Engine.time_scale = 1.0
+		get_node("StateMachine/Aim/Fire").set_visual_arrow_on_enemy(false)
 	else:
 		Engine.time_scale = 1.0
 

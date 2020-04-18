@@ -44,6 +44,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_player_die"):
 		self.state_machine.transition_to("Die")
 
+
 func _physics_process(delta: float) -> void:
 	if is_alive:
 		check_damage()
