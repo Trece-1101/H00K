@@ -62,6 +62,7 @@ max_speed_default = Vector2( 300, 800 )
 acceleration_default = Vector2( 1800, 1600 )
 max_speed_fall = 550.0
 jump_impulse = 560.0
+fatality_impulse = 650.0
 hook_jump_impulse = 380.0
 
 [node name="Idle" type="Node" parent="StateMachine/Move"]

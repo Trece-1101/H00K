@@ -8,6 +8,7 @@ export(Vector2) var velocity = Vector2.ZERO
 var move_direction: Vector2 = Vector2(0.0, 1.0)
 var set_aim:bool = false
 var start_rotation:float = 0.0
+var is_alive:bool = true
 onready var arrow_queue: Position2D = $EnemyArrowQueue
 
 
@@ -51,6 +52,7 @@ func set_queue(value: bool) -> void:
 
 func set_arrow_queue(value: bool, rotation: Vector2) -> void:
 	arrow_queue.visible = value
+	is_alive = false
 	if rotation.x <= 0:
 		start_rotation = -45
 	else:
@@ -63,8 +65,13 @@ func set_arrow_queue(value: bool, rotation: Vector2) -> void:
 
 
 func _on_PlayerEnterDirection_body_entered(body: Node) -> void:
-	pass
-	#print(body.name)
+	if not is_alive:
+		$EnemyCollisionBody.set_deferred("disabled", true)
+		$EnemyCollisionFeets.set_deferred("disabled", true)
+		$PlayerEnterDirection/CollisionShape2D.set_deferred("disabled", true)
+		$EnemySprite.visible = false
+	else:
+		body.die()
 
 func get_aim_direction() -> Vector2:
 	var direction: = Vector2.ZERO
@@ -74,3 +81,8 @@ func get_aim_direction() -> Vector2:
 		Settings.KB_MOUSE:
 			direction = (get_global_mouse_position() - global_position).normalized()
 	return direction
+
+
+func _on_PlayerImpulseZone_body_entered(body: Node) -> void:
+	if not is_alive:
+		body.get_node("StateMachine/Move/Air").fatality()

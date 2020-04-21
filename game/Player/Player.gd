@@ -44,15 +44,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_player_die"):
 		self.state_machine.transition_to("Die")
 
-
 func _physics_process(delta: float) -> void:
 	if is_alive:
 		check_damage()
-
-#func slowmo() -> void:
-#	if can_slowmo:
-#		#hook.set_is_slowmo(true)
-#		hook.set_is_slowmo(not hook.get_is_slowmo())
 
 func is_getting_input() -> bool:
 	if !Utils.get_aim_joystick_direction() == Vector2.ZERO:
@@ -64,6 +58,8 @@ func check_damage() -> void:
 	if collision_counter > -1:
 		var col = get_slide_collision(collision_counter)
 		if col.collider.is_in_group("Damage"):
-			is_alive = false
-			self.state_machine.transition_to("Die")
-		
+			die()
+
+func die() -> void:
+	is_alive = false
+	self.state_machine.transition_to("Die")

@@ -143,6 +143,10 @@ func check_if_can_wall_jump() -> Dictionary:
 func jump() -> void:
 	move.velocity += calculate_jump_velocity(move.jump_impulse)
 
+func fatality() -> void:
+	#move.velocity.y = 0.0
+	move.velocity = calculate_jump_velocity(move.fatality_impulse)
+
 func wall_jump() -> void:
 	freeze_timer.start()
 	_is_jumping = true

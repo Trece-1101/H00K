@@ -10,6 +10,7 @@ export var max_speed_default: Vector2 = Vector2(220.0, 800.0)
 export var acceleration_default: Vector2 = Vector2(1000.0, 1600.0)
 export var max_speed_fall: float = 500.0
 export var jump_impulse: float = 450.0
+export var fatality_impulse: float = 500.0
 export var hook_jump_impulse: float = 200.0
 """
 Todos estos valores default seran asignados a las variables correspondientes
