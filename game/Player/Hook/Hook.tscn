@@ -16,6 +16,7 @@ var length: = cast_to.length()
 
 [node name="Hook" type="Position2D"]
 script = ExtResource( 1 )
+slowmo_time = 2.0
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 cast_to = Vector2( 160, 0 )

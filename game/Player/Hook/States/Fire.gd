@@ -42,8 +42,8 @@ func enter(msg: Dictionary = {}) -> void:
 #	if owner.get_is_slowmo() == true:
 #		owner.set_is_slowmo(false)
 
-func set_visual_arrow_on_enemy(value: bool) -> void:
-	target.get_parent().set_arrow_queue(value)
+func set_visual_arrow_on_enemy(value: bool, rotation:Vector2) -> void:
+	target.get_parent().set_arrow_queue(value, rotation)
 
 func _on_SlowmoTapTimer_timeout() -> void:
 	owner.set_can_slowmo(false)

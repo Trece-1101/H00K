@@ -28,6 +28,9 @@ func set_hook_position(value: Vector2) -> void:
 	tween.start()
 	visible = true
 
+func get_hook_to_target() -> Vector2:
+	var to_target: = hook_position - global_position
+	return to_target.normalized()
 
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	visible = false

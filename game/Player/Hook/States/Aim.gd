@@ -1,5 +1,12 @@
 extends State
 
+#### Variables
+var can_aim:bool = true setget set_can_aim
+
+#### Setters y Getters
+func set_can_aim(value: bool):
+	can_aim = value
+
 
 #### Metodos
 func unhandled_input(event: InputEvent) -> void:
@@ -17,9 +24,10 @@ func unhandled_input(event: InputEvent) -> void:
 
 
 func physics_process(delta: float) -> void:
-	var cast: Vector2 = owner.get_aim_direction() * owner.ray_cast.length
-	var angle: float = cast.angle()
-	owner.ray_cast.cast_to = cast
-	owner.target_circle.rotation = angle
-	owner.snap_detector.rotation = angle
-	owner.ray_cast.force_raycast_update()
+	if can_aim:
+		var cast: Vector2 = owner.get_aim_direction() * owner.ray_cast.length
+		var angle: float = cast.angle()
+		owner.ray_cast.cast_to = cast
+		owner.target_circle.rotation = angle
+		owner.snap_detector.rotation = angle
+		owner.ray_cast.force_raycast_update()

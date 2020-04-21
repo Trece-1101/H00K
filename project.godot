@@ -78,7 +78,6 @@ DrawingUtils="*res://game/Autoloads/DrawingUtils.gd"
 
 window/size/width=960
 window/size/height=540
-window/size/always_on_top=true
 window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="2d"

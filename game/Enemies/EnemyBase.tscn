@@ -21,6 +21,7 @@ velocity = Vector2( 150, 450 )
 [node name="EnemyArrowQueue" type="Position2D" parent="."]
 visible = false
 position = Vector2( 0, -19 )
+z_index = 100
 
 [node name="ArrowSprite" type="Sprite" parent="EnemyArrowQueue"]
 position = Vector2( 0, -41 )
@@ -48,6 +49,7 @@ shape = SubResource( 1 )
 position = Vector2( 0, -39 )
 
 [node name="PlayerEnterDirection" type="Area2D" parent="."]
+visible = false
 monitorable = false
 collision_layer = 0
 

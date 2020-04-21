@@ -13,6 +13,9 @@ onready var snap_detector: Area2D = $SnapDetector
 onready var cooldown: Timer = $Cooldown
 onready var target_circle:DrawingUtils = $TargetCircle
 
+#### export variables
+export(float) var slowmo_time = 1.0
+
 #### variables
 var is_active:bool = true setget set_is_active
 var is_slowmo:bool = false setget set_is_slowmo
@@ -42,12 +45,15 @@ func get_can_slowmo() -> bool:
 func set_is_slowmo(value: bool) -> void:
 	is_slowmo = value
 	if is_slowmo:
-		get_node("StateMachine/Aim/Fire").set_visual_arrow_on_enemy(true)
+		#print(arrow.get_hook_to_target())
+		get_node("StateMachine/Aim/Fire").set_visual_arrow_on_enemy(true, arrow.get_hook_to_target())
+		get_node("StateMachine/Aim").set_can_aim(false)
 		Engine.time_scale = 0.05
-		var timer: = get_tree().create_timer(0.05)
+		var timer: = get_tree().create_timer(slowmo_time * 0.1)
 		yield(timer, "timeout")
 		Engine.time_scale = 1.0
-		get_node("StateMachine/Aim/Fire").set_visual_arrow_on_enemy(false)
+		get_node("StateMachine/Aim/Fire").set_visual_arrow_on_enemy(false, arrow.get_hook_to_target())
+		get_node("StateMachine/Aim").set_can_aim(true)
 	else:
 		Engine.time_scale = 1.0
 
