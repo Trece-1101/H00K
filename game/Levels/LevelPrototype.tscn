@@ -1000,6 +1000,6 @@ modulate = Color( 0.509804, 0.0470588, 0.0470588, 1 )
 position = Vector2( 1440, 270 )
 
 [node name="EnemyBase" parent="." instance=ExtResource( 12 )]
-position = Vector2( 2422, 351 )
+position = Vector2( 2523, 469 )
 
 [editable path="Player"]
