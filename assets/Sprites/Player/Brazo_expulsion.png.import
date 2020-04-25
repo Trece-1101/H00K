@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Brazo_expulsion.png-3f46a847d2f29be7532b8fa41bbf1d71.stex"
+path="res://.import/Brazo_expulsion.png-97263b8eb7466a396ca24d28cad85397.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Brazo_expulsion.png"
-dest_files=[ "res://.import/Brazo_expulsion.png-3f46a847d2f29be7532b8fa41bbf1d71.stex" ]
+source_file="res://assets/Sprites/Player/Brazo_expulsion.png"
+dest_files=[ "res://.import/Brazo_expulsion.png-97263b8eb7466a396ca24d28cad85397.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
