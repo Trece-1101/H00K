@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hook_final.png-fd5dea2ed27a6556d1b2fe56c104f158.stex"
+path="res://.import/hook_final.png-c1c798b5aa368b3297db2e01c999a944.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/hook_final.png"
-dest_files=[ "res://.import/hook_final.png-fd5dea2ed27a6556d1b2fe56c104f158.stex" ]
+source_file="res://assets/Sprites/Player/hook_final.png"
+dest_files=[ "res://.import/hook_final.png-c1c798b5aa368b3297db2e01c999a944.stex" ]
 
 [params]
 
