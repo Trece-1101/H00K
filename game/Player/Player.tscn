@@ -20,7 +20,7 @@
 [ext_resource path="res://game/Player/FloorDetector.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 11.9611, 27.7277 )
+extents = Vector2( 7, 15 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 1, 0 )
@@ -32,16 +32,19 @@ __meta__ = {
 }
 
 [node name="Hook" parent="." instance=ExtResource( 8 )]
-position = Vector2( 0, -30 )
+position = Vector2( -3, -22 )
 
 [node name="PlayerSkin" parent="." instance=ExtResource( 11 )]
+position = Vector2( 0, -1 )
 
 [node name="LeftWallDetector" parent="." instance=ExtResource( 10 )]
+position = Vector2( 5, 0 )
 
 [node name="RightWallDetector" parent="." instance=ExtResource( 16 )]
+position = Vector2( -5, 0 )
 
 [node name="PlayerCollider" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -30 )
+position = Vector2( 0, -16 )
 shape = SubResource( 1 )
 
 [node name="FloorDetector" parent="." instance=ExtResource( 18 )]

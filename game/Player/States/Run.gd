@@ -14,6 +14,8 @@ func unhandled_input(event: InputEvent) -> void:
 	move.unhandled_input(event)
 
 func physics_process(delta: float) -> void:
+	owner.skin.scale.x = move.get_sprite_direction(owner.skin.scale.x)
+	
 	if !owner.get_is_alive():
 		owner.set_is_alive(true)
 	
@@ -27,10 +29,13 @@ func physics_process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	move.enter(msg)
+	owner.skin.play("run")
+	owner.skin.connect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
 	
 	if not jump_buffer.is_stopped():
 		_state_machine.transition_to("Move/Air", {impulse = move.jump_impulse})
 		jump_buffer.stop()
 
 func exit() -> void:
+	owner.skin.disconnect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
 	move.exit()

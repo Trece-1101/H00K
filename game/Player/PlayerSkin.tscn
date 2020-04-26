@@ -242,16 +242,18 @@ anims/run = SubResource( 7 )
 anims/spawn = SubResource( 8 )
 
 [node name="PlayerShadow" type="Sprite" parent="."]
+visible = false
 show_behind_parent = true
 position = Vector2( 0, -1 )
 scale = Vector2( 0.158762, 0.158762 )
 texture = ExtResource( 2 )
 
 [node name="PlayerSprite" type="Sprite" parent="."]
-position = Vector2( 1.62331, -20.5161 )
+position = Vector2( 1, -15 )
 texture = SubResource( 9 )
 vframes = 8
 hframes = 12
+frame = 12
 __meta__ = {
 "_editor_description_": ""
 }
