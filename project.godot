@@ -63,7 +63,7 @@ _global_script_class_icons={
 [application]
 
 config/name="KataneroPrototype"
-run/main_scene="res://game/Levels/LevelPrototype.tscn"
+run/main_scene="res://game/Levels/LevelOne.tscn"
 config/icon="res://assets/Sprites/icon.png"
 
 [autoload]
