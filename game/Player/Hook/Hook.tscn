@@ -30,6 +30,7 @@ script = SubResource( 1 )
 [node name="TargetCircle" type="Node2D" parent="."]
 script = ExtResource( 7 )
 offset = Vector2( 40, 0 )
+color = Color( 0.40625, 0, 0.285645, 1 )
 
 [node name="SnapDetector" parent="." instance=ExtResource( 3 )]
 
