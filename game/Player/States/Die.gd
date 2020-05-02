@@ -2,6 +2,8 @@ extends State
 
 #### Metodos
 func _on_PlayerAnimation_animation_finished(animation_name: String) -> void:
+	#owner.get_current_room().reset()
+	get_tree().reload_current_scene()
 	_state_machine.transition_to("Spawn")
 
 func enter(msg: Dictionary = {}) -> void:

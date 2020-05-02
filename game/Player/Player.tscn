@@ -117,3 +117,6 @@ script = ExtResource( 12 )
 
 [node name="Debug" type="Node" parent="StateMachine"]
 script = ExtResource( 14 )
+
+[node name="BorderDetector" type="Position2D" parent="."]
+position = Vector2( 12, -32 )

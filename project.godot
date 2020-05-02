@@ -35,6 +35,11 @@ _global_script_classes=[ {
 "path": "res://game/Player/Player.gd"
 }, {
 "base": "Node",
+"class": "Room",
+"language": "GDScript",
+"path": "res://game/Levels/Rooms/Room.gd"
+}, {
+"base": "Node",
 "class": "State",
 "language": "GDScript",
 "path": "res://game/StateMachine/State.gd"
@@ -55,6 +60,7 @@ _global_script_class_icons={
 "Hook": "",
 "HookTarget": "",
 "Player": "",
+"Room": "",
 "State": "",
 "StateMachine": "",
 "WallDetector": ""
@@ -73,6 +79,7 @@ Events="*res://game/Autoloads/Events.gd"
 Settings="*res://game/Autoloads/Settings.gd"
 Utils="*res://game/Autoloads/Utils.gd"
 DrawingUtils="*res://game/Autoloads/DrawingUtils.gd"
+Game="*res://game/Autoloads/Game.gd"
 
 [display]
 

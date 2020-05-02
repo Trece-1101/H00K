@@ -10,6 +10,7 @@ onready var skin: Node2D = $PlayerSkin
 onready var left_wall_detector: WallDetector = $LeftWallDetector
 onready var right_wall_detector: WallDetector = $RightWallDetector
 onready var floor_detector: FloorDetector = $FloorDetector
+onready var border_detector: Position2D = $BorderDetector
 
 #### export variables
 export var can_slowmo: bool = true
@@ -18,8 +19,10 @@ export var can_slowmo: bool = true
 const FLOOR_NORMAL: = Vector2.UP
 
 #### Variables
-var is_active: = true setget set_is_active
-var is_alive:bool = true
+var is_active := true setget set_is_active
+var is_alive :bool = true setget set_is_alive, get_is_alive
+var current_room : Room = null setget set_current_room, get_current_room
+
 
 #### Setters y Getters
 func set_is_active(value: bool) -> void:
@@ -36,13 +39,20 @@ func get_is_alive() -> bool:
 func set_is_alive(value: bool) -> void:
 	is_alive = value
 
+func set_current_room(room: Room) -> void:
+	current_room = room
+
+func get_current_room() -> Room:
+	return current_room
+
+
 ## TODO: solo DEBUG. REMOVER para version release
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_restart"):
 		get_tree().reload_current_scene()
 	
-	if event.is_action_pressed("debug_player_die"):
-		self.state_machine.transition_to("Die")
+#	if event.is_action_pressed("debug_player_die"):
+#		self.state_machine.transition_to("Die")
 
 func _physics_process(delta: float) -> void:
 	if is_alive:

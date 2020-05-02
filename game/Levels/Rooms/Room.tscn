@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/Levels/Rooms/SaveArea.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/Levels/Rooms/Room.gd" type="Script" id=2]
+
+[node name="Room" type="Node"]
+script = ExtResource( 2 )
+
+[node name="SaveArea" parent="." instance=ExtResource( 1 )]
+[connection signal="body_entered" from="SaveArea" to="." method="_on_SaveArea_body_entered"]
