@@ -12,6 +12,7 @@ export var max_speed_fall: float = 500.0
 export var jump_impulse: float = 450.0
 export var fatality_impulse: float = 500.0
 export var hook_jump_impulse: float = 200.0
+export var transition_impulse: float = 150.0
 """
 Todos estos valores default seran asignados a las variables correspondientes
 al iniciar el juego/nivel
@@ -93,6 +94,13 @@ static func calculate_velocity(
 	
 	return new_velocity
 
+func apply_impulse(direction: String) -> void:
+	if direction == "right":
+		velocity.x += transition_impulse
+	elif direction == "left":
+		velocity.x -= transition_impulse
+	elif direction == "top":
+		velocity.y -= transition_impulse
 
 static func get_move_direction() -> Vector2:
 	return Vector2(

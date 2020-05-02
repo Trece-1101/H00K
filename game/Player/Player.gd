@@ -3,9 +3,9 @@ extends KinematicBody2D
 
 #### variables onready
 onready var state_machine: StateMachine = $StateMachine
+onready var move: State = $StateMachine/Move
 onready var player_collider: CollisionShape2D = $PlayerCollider
 onready var hook: Hook = $Hook
-#onready var camera_rig: Position2D = $CameraRig
 onready var skin: Node2D = $PlayerSkin
 onready var left_wall_detector: WallDetector = $LeftWallDetector
 onready var right_wall_detector: WallDetector = $RightWallDetector
@@ -63,12 +63,20 @@ func is_getting_input() -> bool:
 		return true
 	return false
 
+func apply_move_impulse(impulse_direction: String) -> void:
+	move.apply_impulse(impulse_direction)
+
 func check_damage() -> void:
-	var collision_counter = get_slide_count() - 1
-	if collision_counter > -1:
-		var col = get_slide_collision(collision_counter)
-		if col.collider.is_in_group("Damage"):
+	#var collision_counter = get_slide_count() - 1
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		if collision.collider.is_in_group("Damage"):
 			die()
+
+#	if collision_counter > -1:
+#		var col = get_slide_collision(collision_counter)
+#		if col.collider.is_in_group("Damage"):
+#			die()
 
 func die() -> void:
 	is_alive = false

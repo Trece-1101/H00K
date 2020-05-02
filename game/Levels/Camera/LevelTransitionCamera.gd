@@ -17,6 +17,7 @@ export var start_room_columna: int = 1
 export var transition_time: float = 0.5
 var steping := false
 var borders: Dictionary = {"top": 0, "bottom": 0, "left": 0, "right": 0}
+var last_moved : String = ""
 
 #### Metodos
 func _ready() -> void:
@@ -62,6 +63,7 @@ func _process(delta: float) -> void:
 func move_camera(move_to: String) -> void:
 	var new_global_position: Vector2 = Vector2.ZERO
 	transition = true
+	last_moved = move_to
 	if move_to == "top":
 		new_global_position.y = global_position.y - step_y
 		new_global_position.x = global_position.x
@@ -107,3 +109,4 @@ func _on_Timer_timeout() -> void:
 
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	get_tree().paused = false
+	player.apply_move_impulse(last_moved)

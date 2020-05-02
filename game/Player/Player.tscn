@@ -67,6 +67,7 @@ max_speed_fall = 550.0
 jump_impulse = 560.0
 fatality_impulse = 650.0
 hook_jump_impulse = 380.0
+transition_impulse = 300.0
 
 [node name="Idle" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 5 )
@@ -119,4 +120,4 @@ script = ExtResource( 12 )
 script = ExtResource( 14 )
 
 [node name="BorderDetector" type="Position2D" parent="."]
-position = Vector2( 12, -32 )
+position = Vector2( -6, -32 )
