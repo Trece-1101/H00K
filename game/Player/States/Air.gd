@@ -56,6 +56,8 @@ func unhandled_input(event: InputEvent) -> void:
 
 
 func physics_process(delta: float) -> void:
+	owner.skin.scale.x = move.get_sprite_direction(owner.skin.scale.x)
+		
 	if !owner.get_is_alive():
 			owner.set_is_alive(true)
 	
@@ -103,8 +105,11 @@ func physics_process(delta: float) -> void:
 
 
 func enter(msg: Dictionary = {}) -> void:
-	move.enter(msg)
-		
+	move.enter(msg)	
+	
+	owner.skin.play("jump")
+	owner.skin.connect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
+	
 	move.acceleration.x = acceleration_x
 	
 	if "velocity" in msg:
@@ -126,6 +131,8 @@ func exit() -> void:
 	move.acceleration = move.acceleration_default
 	_is_jumping = false
 	
+	owner.skin.disconnect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
+	
 	move.exit()
 
 func check_if_can_wall_jump() -> Dictionary:
@@ -142,6 +149,10 @@ func check_if_can_wall_jump() -> Dictionary:
 
 func jump() -> void:
 	move.velocity += calculate_jump_velocity(move.jump_impulse)
+
+func fatality() -> void:
+	#move.velocity.y = 0.0
+	move.velocity = calculate_jump_velocity(move.fatality_impulse)
 
 func wall_jump() -> void:
 	freeze_timer.start()

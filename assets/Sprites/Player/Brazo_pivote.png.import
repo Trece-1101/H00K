@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Idle.png-84ae0b3a3559468886c78f58c0a63590.stex"
+path="res://.import/Brazo_pivote.png-2290bfa7425683883c89e506882291f5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Idle.png"
-dest_files=[ "res://.import/Idle.png-84ae0b3a3559468886c78f58c0a63590.stex" ]
+source_file="res://assets/Sprites/Player/Brazo_pivote.png"
+dest_files=[ "res://.import/Brazo_pivote.png-2290bfa7425683883c89e506882291f5.stex" ]
 
 [params]
 

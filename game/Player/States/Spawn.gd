@@ -20,14 +20,11 @@ func _on_PlayerAnimation_animation_finished(animation_name: String) -> void:
 	_state_machine.transition_to("Move/Idle")
 
 func enter(msg: Dictionary = {}) -> void:
-#	#owner.is_active = false
-#	var active = false
-#	owner.set_is_active(active)
-#	if owner.camera_rig:
-#		#owner.camera_rig.is_active = false
-#		owner.camera_rig.set_is_active(active)
 	owner.set_is_active(false)
-	owner.position = _start_position
+	if Game.get_player_respawn_position() == Vector2.ZERO:
+		owner.position = _start_position
+	else:
+		owner.position = Game.get_player_respawn_position()
 	owner.skin.play("spawn")
 	owner.skin.connect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
 

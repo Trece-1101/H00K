@@ -22,6 +22,9 @@ func physics_process(delta: float) -> void:
 func enter(msg: Dictionary = {}) -> void:
 	move.enter(msg)
 	
+	owner.skin.play("idle_stand")
+	owner.skin.connect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
+	
 	move.max_speed = move.max_speed_default
 	move.velocity = Vector2.ZERO
 	
@@ -31,4 +34,5 @@ func enter(msg: Dictionary = {}) -> void:
 
 
 func exit() -> void:
+	owner.skin.disconnect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
 	move.exit()

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 22.8689, 49 )
+
+[node name="SaveArea" type="Area2D"]
+modulate = Color( 0.00392157, 0.501961, 0, 1 )
+collision_layer = 64
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="RespawnPoint" type="Position2D" parent="."]
+position = Vector2( 0, 49 )
