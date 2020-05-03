@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/Tilesets/DeepForestTileset.png" type="Texture" id=1]
 [ext_resource path="res://game/UI/Debug/DebugDock.gd" type="Script" id=2]
 [ext_resource path="res://game/UI/Debug/FPSLabel.gd" type="Script" id=3]
 [ext_resource path="res://assets/Tilesets/LevelOne.tres" type="TileSet" id=4]
+[ext_resource path="res://game/Objects/Door.tscn" type="PackedScene" id=5]
 [ext_resource path="res://game/Objects/HookTarget.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/Theme/DebugPanel.theme" type="Theme" id=7]
 [ext_resource path="res://game/Levels/Rooms/Room.gd" type="Script" id=8]
@@ -11,7 +12,8 @@
 [ext_resource path="res://game/Levels/Rooms/SaveArea.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/UI/Debug/DebugPanel.tscn" type="PackedScene" id=11]
 [ext_resource path="res://game/Player/Player.tscn" type="PackedScene" id=12]
-[ext_resource path="res://game/Levels/Rooms/Room.tscn" type="PackedScene" id=13]
+[ext_resource path="res://game/Objects/Sensor.tscn" type="PackedScene" id=13]
+[ext_resource path="res://game/Levels/LevelState.gd" type="Script" id=14]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 2.07253, 15.6233, 2.55705, 8.84003, 8.14133, 8.0269, 13.7009, 9.48605, 14.0239, 16 )
@@ -64,6 +66,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 1/z_index = 0
 
 [node name="LevelOne" type="Node2D"]
+script = ExtResource( 14 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -138,8 +141,22 @@ position = Vector2( 153.301, 298.55 )
 [node name="HookTarget1" parent="Room1/HookTargets" instance=ExtResource( 6 )]
 position = Vector2( 550.98, 110.58 )
 
+[node name="Sensors" type="Node" parent="Room1"]
+
+[node name="Sensor" parent="Room1/Sensors" instance=ExtResource( 13 )]
+position = Vector2( 96.1965, 401.372 )
+
+[node name="Sensor2" parent="Room1/Sensors" instance=ExtResource( 13 )]
+position = Vector2( 225.884, 481.004 )
+
+[node name="Sensor3" parent="Room1/Sensors" instance=ExtResource( 13 )]
+position = Vector2( 655.18, 272.146 )
+
 [node name="SaveArea" parent="Room1" instance=ExtResource( 10 )]
 position = Vector2( 144.754, 430.825 )
+
+[node name="Door" parent="Room1" instance=ExtResource( 5 )]
+position = Vector2( 960.671, 397.786 )
 
 [node name="Room2" type="Node" parent="."]
 script = ExtResource( 8 )
@@ -155,6 +172,11 @@ position = Vector2( 1666.71, 93.4211 )
 
 [node name="SaveArea" parent="Room2" instance=ExtResource( 10 )]
 position = Vector2( 995, 430 )
+
+[node name="Door" parent="Room2" instance=ExtResource( 5 )]
+position = Vector2( 1921.32, 46.113 )
+
+[node name="Sensors" type="Node" parent="Room2"]
 
 [node name="Room3" type="Node" parent="."]
 script = ExtResource( 8 )
@@ -174,6 +196,12 @@ position = Vector2( 2472.44, 390.06 )
 [node name="SaveArea" parent="Room3" instance=ExtResource( 10 )]
 position = Vector2( 1957, 93 )
 
+[node name="Door" parent="Room3" instance=ExtResource( 5 )]
+position = Vector2( 2088.91, 542.685 )
+rotation = 1.5708
+
+[node name="Sensors" type="Node" parent="Room3"]
+
 [node name="Room4" type="Node" parent="."]
 script = ExtResource( 8 )
 room_row_col = Vector2( 2, 3 )
@@ -189,6 +217,11 @@ position = Vector2( 2731.24, 709.739 )
 [node name="SaveArea" parent="Room4" instance=ExtResource( 10 )]
 position = Vector2( 2026.44, 685.148 )
 
+[node name="Door" parent="Room4" instance=ExtResource( 5 )]
+position = Vector2( 2881.61, 942.548 )
+
+[node name="Sensors" type="Node" parent="Room4"]
+
 [node name="Room5" type="Node" parent="."]
 script = ExtResource( 8 )
 room_row_col = Vector2( 2, 4 )
@@ -203,6 +236,11 @@ position = Vector2( 3280.65, 705.958 )
 
 [node name="SaveArea" parent="Room5" instance=ExtResource( 10 )]
 position = Vector2( 2903.14, 974.639 )
+
+[node name="Door" parent="Room5" instance=ExtResource( 5 )]
+position = Vector2( 3839.39, 800.713 )
+
+[node name="Sensors" type="Node" parent="Room5"]
 
 [node name="Room6" type="Node" parent="."]
 script = ExtResource( 8 )
@@ -224,6 +262,11 @@ is_one_shot = true
 [node name="SaveArea" parent="Room6" instance=ExtResource( 10 )]
 position = Vector2( 3880.74, 829.151 )
 
+[node name="Door" parent="Room6" instance=ExtResource( 5 )]
+position = Vector2( 4741.01, 590.999 )
+
+[node name="Sensors" type="Node" parent="Room6"]
+
 [node name="Room7" type="Node" parent="."]
 script = ExtResource( 8 )
 room_row_col = Vector2( 2, 6 )
@@ -233,7 +276,7 @@ room_row_col = Vector2( 2, 6 )
 [node name="SaveArea" parent="Room7" instance=ExtResource( 10 )]
 position = Vector2( 4841.92, 638.456 )
 
-[node name="Room8" parent="." instance=ExtResource( 13 )]
+[node name="Sensors" type="Node" parent="Room7"]
 
 [node name="TileMaps" type="Node" parent="."]
 
@@ -260,7 +303,7 @@ __meta__ = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 12 )]
-position = Vector2( 143.155, 479.32 )
+position = Vector2( 140.364, 478.939 )
 
 [node name="StateMachine" parent="Player" index="6"]
 initial_state = NodePath("../../../LevelOne/Player/StateMachine/Spawn")
@@ -268,7 +311,6 @@ initial_state = NodePath("../../../LevelOne/Player/StateMachine/Spawn")
 [node name="LevelTransitionCamera" parent="." instance=ExtResource( 9 )]
 modulate = Color( 0.509804, 0.0470588, 0.0470588, 1 )
 position = Vector2( 1440.36, 276.43 )
-start_room_columna = 2
 [connection signal="body_entered" from="Room1/SaveArea" to="Room1" method="_on_SaveArea_body_entered"]
 [connection signal="body_entered" from="Room2/SaveArea" to="Room2" method="_on_SaveArea_body_entered"]
 [connection signal="body_entered" from="Room3/SaveArea" to="Room3" method="_on_SaveArea_body_entered"]
@@ -276,7 +318,5 @@ start_room_columna = 2
 [connection signal="body_entered" from="Room5/SaveArea" to="Room5" method="_on_SaveArea_body_entered"]
 [connection signal="body_entered" from="Room6/SaveArea" to="Room6" method="_on_SaveArea_body_entered"]
 [connection signal="body_entered" from="Room7/SaveArea" to="Room7" method="_on_SaveArea_body_entered"]
-
-[editable path="Room8"]
 
 [editable path="Player"]
