@@ -8,10 +8,10 @@ export(Vector2) var velocity = Vector2.ZERO
 var is_alive : bool = true
 
 #### Onready Variables
-onready var move_direction: Vector2 = Vector2(-1.0, 1.0)
+onready var move_direction: Vector2 = Vector2(1.0, 1.0)
 
 #### Metodos
-func _physics_process(delta: float) -> void:
+func physics_process(delta: float) -> void:
 	var movement: Vector2
 
 	movement = velocity * move_direction
