@@ -1,16 +1,20 @@
 extends Enemy
 
 #### Variables
-var _position : int = 1
 var can_move : bool = true
 
-#### Variables onready
-onready var turn_positions = {
-	'UpRight': $UpRightTurn.global_position,
-	'UpLeft': $UpLeftTurn.global_position,
-	'DownRight': $DownRightTurn.global_position,
-	'DownLeft': $DownLeftTurn.global_position 
-}
+#### Varibales Onready
+onready var _void_detector : RayCast2D = $VoidDetector
 
 func _ready() -> void:
-	_position = 4 if move_direction.x == 1 else 1
+	_void_detector.position.x *= move_direction.x
+
+func _physics_process(delta: float) -> void:
+	if _void_detector.is_colliding():
+		print("piso")
+	else:
+		change_direction()
+
+func change_direction() -> void:
+	move_direction.x *= -1
+	_void_detector.position.x *= -1
