@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/Enemies/Orugacop.gd" type="Script" id=2]
+
+[node name="Orugacop" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+velocity = Vector2( 150, 150 )
+
+[node name="UpRightTurn" type="Position2D" parent="." index="2"]
+position = Vector2( 48.9632, -0.25703 )
+
+[node name="UpLeftTurn" type="Position2D" parent="." index="3"]
+position = Vector2( -45.6218, 0.128508 )
+
+[node name="DownRightTurn" type="Position2D" parent="." index="4"]
+position = Vector2( 49.0917, 34.0557 )
+
+[node name="DownLeftTurn" type="Position2D" parent="." index="5"]
+position = Vector2( -43.9512, 33.4132 )
