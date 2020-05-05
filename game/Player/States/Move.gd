@@ -52,8 +52,10 @@ func physics_process(delta: float) -> void:
 	if owner.is_on_floor():
 		max_speed = max_speed_default
 		get_node("Air")._jump_after_hook = false
+	
 	velocity = calculate_velocity(velocity, max_speed, acceleration, delta,
 	get_move_direction(), max_speed_fall)
+
 	velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
 	Events.emit_signal("player_moved", owner)
 	
