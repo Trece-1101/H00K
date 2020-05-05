@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game/Enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://game/Enemies/EnemySkin.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/Enemies/ExplosionArea.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 12.047, 5.0237 )
+extents = Vector2( 10.168, 2.84444 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 12.8472, 2.07764 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 39.6795
 
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 4
@@ -15,5 +22,27 @@ velocity = Vector2( 100, 100 )
 [node name="EnemySkin" parent="." instance=ExtResource( 2 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -5.30614 )
+position = Vector2( 0, -3.34136 )
 shape = SubResource( 1 )
+
+[node name="BodyDetector" type="Area2D" parent="."]
+monitorable = false
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyDetector"]
+position = Vector2( 0, -8.45448 )
+shape = SubResource( 3 )
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+monitorable = false
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 0, -10.0724 )
+shape = SubResource( 2 )
+
+[node name="ExplosionArea" parent="." instance=ExtResource( 3 )]
+[connection signal="body_entered" from="BodyDetector" to="." method="_on_BodyDetector_body_entered"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
+[connection signal="body_entered" from="ExplosionArea" to="." method="_on_ExplosionArea_body_entered"]
