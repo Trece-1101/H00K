@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://game/Player/Hook/Arrow.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/hook.png" type="Texture" id=2]
+[ext_resource path="res://assets/Sprites/Player/Hook.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 2.23607
@@ -20,11 +20,9 @@ begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Head" type="Sprite" parent="."]
-position = Vector2( 17, 5.96046e-08 )
 rotation = 1.57079
-scale = Vector2( 0.0685538, 0.0685538 )
 texture = ExtResource( 2 )
-offset = Vector2( -1.56991, -69.8977 )
+hframes = 3
 
 [node name="Tween" type="Tween" parent="."]
 
