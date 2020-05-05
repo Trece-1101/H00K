@@ -872,6 +872,8 @@ position = Vector2( 311, 183 )
 
 [node name="SaveArea" parent="Room1" instance=ExtResource( 8 )]
 
+[node name="Sensors" type="Node" parent="Room1"]
+
 [node name="Room2" type="Node" parent="."]
 script = ExtResource( 13 )
 
@@ -889,6 +891,8 @@ position = Vector2( 1605.86, 143.037 )
 [node name="SaveArea" parent="Room2" instance=ExtResource( 8 )]
 position = Vector2( 996, 48 )
 
+[node name="Sensors" type="Node" parent="Room2"]
+
 [node name="Room3" type="Node" parent="."]
 script = ExtResource( 13 )
 
@@ -905,6 +909,8 @@ position = Vector2( 2775, 314 )
 
 [node name="SaveArea" parent="Room3" instance=ExtResource( 8 )]
 position = Vector2( 1983, 206 )
+
+[node name="Sensors" type="Node" parent="Room3"]
 
 [node name="TileMaps" type="Node" parent="."]
 

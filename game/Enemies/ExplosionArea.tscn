@@ -145,3 +145,4 @@ shape = SubResource( 1 )
 scale = Vector2( 3.59443, 3.14967 )
 frames = SubResource( 2 )
 animation = "explosion"
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

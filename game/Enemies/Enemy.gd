@@ -28,9 +28,20 @@ func physics_process(delta: float) -> void:
 
 func _on_PlayerDetector_body_entered(body: Node) -> void:
 	if body.name == "Player":
+		velocity = Vector2.ZERO
+		skin_animation.connect("animation_finished", self, "explode")
 		skin_animation.play("go_explode")
-		explosion_area.explode()
 
+func explode(anim_name: String) -> void:
+	explosion_area.explode()
+	skin_animation.disconnect("animation_finished", self, "explode")
+	die()
+
+func die() -> void:
+	$EnemySkin.visible = false
+	$CollisionShape2D.set_deferred("disabled", true)
+	$BodyDetector/CollisionShape2D.set_deferred("disabled", true)
+	$PlayerDetector/CollisionShape2D.set_deferred("disabled", true)
 
 func _on_BodyDetector_body_entered(body: Node) -> void:
 	if body.name == "Player":
