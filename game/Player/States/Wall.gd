@@ -83,7 +83,7 @@ func physics_process(delta: float) -> void:
 func enter(msg: Dictionary = {}) -> void:
 	move.enter(msg)
 	
-	#owner.skin.play("jump")
+	owner.skin.play("wallslide")
 	#owner.skin.connect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
 	
 	move.get_node("Air")._jump_after_hook = false
@@ -108,6 +108,6 @@ func jump() -> void:
 	_state_machine.transition_to("Move/Air", msg)
 
 func exit() -> void:
-	#owner.skin.connect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
+	#owner.skin.disconnect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
 	move.exit()
 ################################################################################

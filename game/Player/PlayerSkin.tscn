@@ -62,7 +62,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=3]
 resource_name = "idlehook_mid"
 length = 0.48
 step = 0.08
@@ -79,7 +79,7 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7, 8, 59 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=4]
 resource_name = "idlehook_midbot"
 length = 0.48
 step = 0.08
@@ -96,7 +96,7 @@ tracks/0/keys = {
 "values": [ 9, 10, 11, 12, 13, 42 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=5]
 resource_name = "idlehook_midtop"
 length = 0.48
 step = 0.08
@@ -113,7 +113,7 @@ tracks/0/keys = {
 "values": [ 16, 17, 18, 19, 20, 52 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=6]
 resource_name = "idlehook_top"
 length = 0.48
 step = 0.08
@@ -130,7 +130,7 @@ tracks/0/keys = {
 "values": [ 21, 22, 23, 24, 25, 57 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
 length = 0.62
 loop = true
 step = 0.08
@@ -147,7 +147,7 @@ tracks/0/keys = {
 "values": [ 26, 27, 28, 29, 30, 31 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=8]
 resource_name = "jumphook_bot"
 length = 0.4
 step = 0.08
@@ -164,7 +164,7 @@ tracks/0/keys = {
 "values": [ 32, 33, 34, 35, 36 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=9]
 resource_name = "jumphook_mid"
 length = 0.4
 step = 0.08
@@ -181,7 +181,7 @@ tracks/0/keys = {
 "values": [ 37, 38, 39, 40, 41 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=10]
 resource_name = "jumphook_midbot"
 length = 0.4
 step = 0.08
@@ -198,7 +198,7 @@ tracks/0/keys = {
 "values": [ 42, 43, 44, 45, 46 ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=11]
 resource_name = "jumphook_midtop"
 length = 0.4
 step = 0.08
@@ -215,7 +215,7 @@ tracks/0/keys = {
 "values": [ 48, 49, 50, 51, 52 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=12]
 resource_name = "jumphook_top"
 length = 0.4
 step = 0.08
@@ -232,7 +232,7 @@ tracks/0/keys = {
 "values": [ 53, 54, 55, 56, 57 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=13]
 length = 0.0666666
 step = 0.0333333
 tracks/0/type = "value"
@@ -248,7 +248,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=14]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -311,7 +311,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=15]
 length = 0.6
 loop = true
 step = 0.06
@@ -328,7 +328,7 @@ tracks/0/keys = {
 "values": [ 80, 81, 82, 83, 84, 85, 86, 87, 88, 89 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=16]
 length = 0.38
 step = 0.04
 tracks/0/type = "value"
@@ -368,8 +368,7 @@ tracks/2/keys = {
 "values": [ 64, 65, 66, 67, 68, 69, 70, 71, 72, 73 ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "wallslide"
+[sub_resource type="Animation" id=17]
 length = 0.16
 step = 0.08
 tracks/0/type = "value"
@@ -379,10 +378,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.08 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.08, 0.16 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 90, 91 ]
+"values": [ 90, 91, 90 ]
 }
 
 [node name="PlayerSkin" type="Node2D"]
@@ -391,21 +390,21 @@ script = ExtResource( 3 )
 [node name="PlayerAnimation" type="AnimationPlayer" parent="."]
 anims/die = SubResource( 1 )
 anims/idle_stand = SubResource( 2 )
-anims/idlehook_mid = SubResource( 12 )
-anims/idlehook_midbot = SubResource( 13 )
-anims/idlehook_midtop = SubResource( 9 )
-anims/idlehook_top = SubResource( 10 )
-anims/jump = SubResource( 4 )
-anims/jumphook_bot = SubResource( 14 )
-anims/jumphook_mid = SubResource( 15 )
-anims/jumphook_midbot = SubResource( 16 )
-anims/jumphook_midtop = SubResource( 17 )
-anims/jumphook_top = SubResource( 18 )
-anims/ledge = SubResource( 5 )
-anims/reset_pose = SubResource( 6 )
-anims/run = SubResource( 7 )
-anims/spawn = SubResource( 8 )
-anims/wallslide = SubResource( 11 )
+anims/idlehook_mid = SubResource( 3 )
+anims/idlehook_midbot = SubResource( 4 )
+anims/idlehook_midtop = SubResource( 5 )
+anims/idlehook_top = SubResource( 6 )
+anims/jump = SubResource( 7 )
+anims/jumphook_bot = SubResource( 8 )
+anims/jumphook_mid = SubResource( 9 )
+anims/jumphook_midbot = SubResource( 10 )
+anims/jumphook_midtop = SubResource( 11 )
+anims/jumphook_top = SubResource( 12 )
+anims/ledge = SubResource( 13 )
+anims/reset_pose = SubResource( 14 )
+anims/run = SubResource( 15 )
+anims/spawn = SubResource( 16 )
+anims/wallslide = SubResource( 17 )
 
 [node name="PlayerShadow" type="Sprite" parent="."]
 visible = false
@@ -419,7 +418,6 @@ position = Vector2( 1, -18 )
 texture = ExtResource( 1 )
 vframes = 6
 hframes = 16
-frame = 26
 __meta__ = {
 "_editor_description_": ""
 }

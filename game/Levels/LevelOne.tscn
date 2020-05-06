@@ -127,6 +127,7 @@ is_one_shot = true
 
 [node name="HookTarget2" parent="Room1/HookTargets" instance=ExtResource( 6 )]
 position = Vector2( 153.301, 298.55 )
+is_one_shot = true
 
 [node name="HookTarget1" parent="Room1/HookTargets" instance=ExtResource( 6 )]
 position = Vector2( 550.98, 110.58 )

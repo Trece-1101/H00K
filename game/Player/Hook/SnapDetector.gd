@@ -3,21 +3,28 @@ extends Area2D
 """
 Detecta y devuelve el mejor punto de enganche para el gancho
 """
+################################################################################
+#### variables
+var target: HookTarget setget set_target
+var last_target: HookTarget
 
 #### onready variables
 onready var hooking_hint: Position2D = $HookingHint
 onready var ray_cast: RayCast2D = $RayCast2D
+################################################################################
 
-#### variables
-var target: HookTarget setget set_target
-
+################################################################################
 #### setters y getters
 func set_target(value: HookTarget) -> void:
 	target = value
 	hooking_hint.visible = has_target()
-	#print(has_target())
 	if target:
-		hooking_hint.global_position = target.global_position
+		last_target = target
+		target.focus_gain()
+		#hooking_hint.global_position = target.global_position
+	else:
+		if last_target != null:
+			last_target.focus_lost()
 
 #### Metodos
 func _ready() -> void:
@@ -31,7 +38,7 @@ Devuelve el gancho mas cercano, saltea ganchos obstruidos
 """
 func find_best_target() -> HookTarget:
 	force_update_transform()
-	var targets: = get_overlapping_areas()	
+	var targets: = get_overlapping_areas()
 	if not targets:
 		return null
 	
@@ -70,6 +77,4 @@ func calculate_length() -> float:
 		length = max(length, capsule_length)
 	
 	return length
-
-
-
+################################################################################

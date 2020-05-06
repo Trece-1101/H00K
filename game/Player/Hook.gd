@@ -54,6 +54,8 @@ func physics_process(delta: float) -> void:
 			{velocity = velocity * 0.6, can_jump_after_hook = jump_after_hook})
 
 func enter(msg: Dictionary = {}) -> void:
+	owner.skin.play("idlehook_mid")
+	owner.skin.connect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
 	release_from_hook = false
 	match msg:
 		{"target_global_position": var tgp, "velocity": var v}:
@@ -61,6 +63,7 @@ func enter(msg: Dictionary = {}) -> void:
 			velocity = v
 
 func exit() -> void:
+	owner.skin.disconnect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
 	release_from_hook = false
 	target_global_position = Vector2.INF
 	velocity = Vector2.ZERO
