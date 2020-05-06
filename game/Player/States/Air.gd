@@ -4,7 +4,7 @@ extends State
 Estado hijo que maneja el movimiento de Air
 Transicion a Idle o a Run
 """
-
+################################################################################
 #### señales
 signal jumped
 
@@ -12,24 +12,24 @@ signal jumped
 export var acceleration_x: float = 3500.0
 export(float, 0.5, 0.9) var momentum_divider: float = 0.8
 """
-
 acceleration_x = la aceleracion horizontal cuando el jugador salta
 max_jump_count = la cantidad de veces que puede saltar al despegarse del suelo
 get_momentum = variable que indica si al saltar se mantiene la velocidad horizontal
 	hasta tocar el suelo o por si el contrario al soltar izquierda o derecha
 	dicha velocidad cae a 0
 """
-
-#### onready variables
-onready var move: = get_parent()
-onready var freeze_timer:Timer = $FreezeTimer
-onready var jump_delay: Timer = $JumpDelay
-
 #### variables
 var _is_jump_interrupted: bool
 var _is_jumping: bool
 var _jump_after_hook: bool = false
 
+#### onready variables
+onready var move: = get_parent()
+onready var freeze_timer:Timer = $FreezeTimer
+onready var jump_delay: Timer = $JumpDelay
+################################################################################
+
+################################################################################
 #### Metodos
 func unhandled_input(event: InputEvent) -> void:	
 	if event.is_action_pressed("jump"):
@@ -169,3 +169,4 @@ func calculate_jump_velocity(impulse: float = 0.0) -> Vector2:
 		Vector2.UP,
 		move.max_speed_fall
 	)
+################################################################################

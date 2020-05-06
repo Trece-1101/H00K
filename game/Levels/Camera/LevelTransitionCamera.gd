@@ -1,6 +1,13 @@
 extends Camera2D
 
-#### export variables
+################################################################################
+#### variables
+export var start_room_fila: int = 1
+export var start_room_columna: int = 1
+export var transition_time: float = 0.5
+var steping := false
+var borders: Dictionary = {"top": 0, "bottom": 0, "left": 0, "right": 0}
+var last_moved : String = ""
 
 #### onready variables
 onready var window_size = OS.get_window_size()
@@ -10,15 +17,9 @@ onready var player: Player = get_parent().get_node("Player")
 onready var tween: Tween = $Tween
 onready var timer: Timer = $Timer
 onready var transition := false
+################################################################################
 
-#### variables
-export var start_room_fila: int = 1
-export var start_room_columna: int = 1
-export var transition_time: float = 0.5
-var steping := false
-var borders: Dictionary = {"top": 0, "bottom": 0, "left": 0, "right": 0}
-var last_moved : String = ""
-
+################################################################################
 #### Metodos
 func _ready() -> void:
 	pause_mode = Node.PAUSE_MODE_PROCESS
@@ -35,14 +36,11 @@ func _ready() -> void:
 	global_position.x = (step_x / 2) + (step_x * (start_room_columna - 1))
 	global_position.y = (step_y / 2) + (step_y * (start_room_fila - 1))
 
-
 func set_start_borders() -> void:
 	borders["top"] = step_y * (start_room_fila - 1)
 	borders["bottom"] = step_y * start_room_fila
 	borders["left"] = step_x * (start_room_columna - 1)
 	borders["right"] = step_x * start_room_columna
-
-
 
 func _process(delta: float) -> void:
 	if not transition:
@@ -110,3 +108,4 @@ func _on_Timer_timeout() -> void:
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	get_tree().paused = false
 	player.apply_move_impulse(last_moved)
+################################################################################

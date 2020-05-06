@@ -1,8 +1,10 @@
 extends State
-
 """
 Mueve al player hasta el gancho
 """
+################################################################################
+#### constantes
+const HOOK_MAX_SPEED: = 1600.0
 
 #### export variables
 export var arrive_push: float = 350.0
@@ -12,11 +14,9 @@ export var jump_after_hook: bool = false
 var target_global_position: = Vector2.INF
 var velocity: = Vector2.ZERO
 var release_from_hook:bool = false
+################################################################################
 
-#### constantes
-const HOOK_MAX_SPEED: = 1600.0
-
-
+################################################################################
 #### Metodos
 func physics_process(delta: float) -> void:
 	var new_velocity: = Steering.arrive_to(
@@ -64,3 +64,4 @@ func exit() -> void:
 	release_from_hook = false
 	target_global_position = Vector2.INF
 	velocity = Vector2.ZERO
+################################################################################

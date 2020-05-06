@@ -2,7 +2,7 @@ extends State
 """
 Este estado maneja lo que respecta al jugador cuando choca contra la pared
 """
-
+################################################################################
 #### export variables
 export var slide_acceleration: float = 600.0
 export var default_max_slide_speed: float = 180.0
@@ -21,16 +21,18 @@ jump_wall_strength = la fuerza con la que el jugador se impulsa desde la pared.
 	En este caso a cuanto mayor X -> mas lejania horizontal y a cuanto mas Y ->
 	mayor verticalidad
 """
-#### onready variables
-onready var move: = get_parent()
-onready var max_slide_speed = default_max_slide_speed
-
 #### variables
 var _wall_normal: float = -1.0
 var _velocity: Vector2 = Vector2.ZERO
 var _pushing_against_wall: bool = true
 var is_moving_away_from_wall: bool = false
 
+#### onready variables
+onready var move: = get_parent()
+onready var max_slide_speed = default_max_slide_speed
+################################################################################
+
+################################################################################
 #### Metodos
 func unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("jump"):
@@ -108,4 +110,4 @@ func jump() -> void:
 func exit() -> void:
 	#owner.skin.connect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
 	move.exit()
-
+################################################################################

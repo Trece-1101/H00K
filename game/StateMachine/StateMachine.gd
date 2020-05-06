@@ -1,19 +1,23 @@
 extends Node
 class_name StateMachine
 
-
+################################################################################
 #### export variables
 export var initial_state: = NodePath()
 
 #### onready variables
 onready var state: State = get_node(initial_state) setget set_state
 onready var _state_name: = state.name
+################################################################################
 
+################################################################################
 #### Setters y getters
 func set_state(value: State) -> void:
 	state = value
 	_state_name = state.name
+################################################################################
 
+################################################################################
 #### Metodos
 func _init() -> void:
 	add_to_group("state_machine")
@@ -36,5 +40,5 @@ func transition_to(target_state_path: String, msg: Dictionary = {}) -> void:
 	state.exit()
 	self.state = target_state
 	state.enter(msg)
-
+################################################################################
 

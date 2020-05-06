@@ -5,6 +5,10 @@ Estado padre que abstrae y maneja movimientos basicos
 Estados hijos relacionados al movimiento pueden delegar movimientos al padre
 o usar funcionalidades de él
 """
+################################################################################
+#### variables
+var velocity: = Vector2.ZERO
+
 #### export variables
 export var max_speed_default: Vector2 = Vector2(220.0, 800.0)
 export var acceleration_default: Vector2 = Vector2(1000.0, 1600.0)
@@ -31,17 +35,16 @@ max_speed_fall = la velocidad maxima a la que puede caer el player. Bajar este
 	valor puede hacer que la velocidad se incremente muchisimo desde grandes alturas
 jump_impulse = fuerza del salto (que tan para arriba va)
 """
+#### Variables onready
+onready var acceleration: = acceleration_default
+onready var max_speed: = max_speed_default
+################################################################################
 
-#### variables
-var acceleration: = acceleration_default
-var max_speed: = max_speed_default
-var velocity: = Vector2.ZERO
-
+################################################################################
 #### metodos
 func unhandled_input(event: InputEvent) -> void:
 	if owner.is_on_floor() and event.is_action_pressed("jump"):
 		_state_machine.transition_to("Move/Air", {impulse = true})
-		#_state_machine.transition_to("Move/Air", {impulse = jump_impulse})
 	
 	## TODO: solo DEBUG
 	if event.is_action_pressed("debug_move"):
@@ -122,4 +125,4 @@ static func get_sprite_direction(last_direction: float) -> float:
 			result = -1.0
 	
 	return result
-
+################################################################################

@@ -295,7 +295,7 @@ __meta__ = {
 [node name="Player" parent="." instance=ExtResource( 12 )]
 position = Vector2( 140.364, 478.939 )
 
-[node name="StateMachine" parent="Player" index="6"]
+[node name="StateMachine" parent="Player" index="7"]
 initial_state = NodePath("../../../LevelOne/Player/StateMachine/Spawn")
 
 [node name="LevelTransitionCamera" parent="." instance=ExtResource( 9 )]

@@ -1,18 +1,16 @@
 tool
-extends Position2D
 class_name Hook
+extends Position2D
 """
 Tira un raycast que interactua con cuerpos enganchables 
 y calcula un vector que tira.
 """
+################################################################################
+#### señales
+signal hooked_onto_target(target_global_position)
 
-#### onready variables
-onready var ray_cast: RayCast2D = $RayCast2D
-onready var arrow: Node2D = $Arrow
-onready var snap_detector: Area2D = $SnapDetector
-onready var cooldown: Timer = $Cooldown
-onready var target_circle:DrawingUtils = $TargetCircle
-onready var arm: Sprite = $Arm
+#### constantes
+const HOOKABLE_PHYSICS_LAYER: = 4
 
 #### export variables
 export(float) var slowmo_time = 1.0
@@ -23,12 +21,15 @@ var is_slowmo:bool = false setget set_is_slowmo
 var last_aim_direction: Vector2 = Vector2.ZERO
 var can_slowmo: bool = false setget set_can_slowmo, get_can_slowmo
 
-#### constantes
-const HOOKABLE_PHYSICS_LAYER: = 4
+#### onready variables
+onready var ray_cast: RayCast2D = $RayCast2D
+onready var arrow: Node2D = $Arrow
+onready var snap_detector: Area2D = $SnapDetector
+onready var cooldown: Timer = $Cooldown
+onready var target_circle:DrawingUtils = $TargetCircle
+################################################################################
 
-#### señales
-signal hooked_onto_target(target_global_position)
-
+################################################################################
 #### Setters y Getters
 func set_is_active(value: bool) -> void:
 	is_active = value
@@ -46,7 +47,6 @@ func get_can_slowmo() -> bool:
 func set_is_slowmo(value: bool) -> void:
 	is_slowmo = value
 	if is_slowmo:
-		#print(arrow.get_hook_to_target())
 		get_node("StateMachine/Aim/Fire").set_visual_arrow_on_enemy(true, arrow.get_hook_to_target())
 		get_node("StateMachine/Aim").set_can_aim(false)
 		Engine.time_scale = 0.05
@@ -60,7 +60,9 @@ func set_is_slowmo(value: bool) -> void:
 
 func get_is_slowmo() -> bool:
 	return is_slowmo
+################################################################################
 
+################################################################################
 #### Metodos
 func _ready() -> void:
 	if Engine.editor_hint:
@@ -77,16 +79,8 @@ func _draw() -> void:
 	var radius: float = snap_detector.calculate_length()
 	DrawingUtils.draw_circle_outline(self, Vector2.ZERO, radius, Color.lightblue)
 
-#func has_target() -> bool:
-#	var has_target:bool = snap_detector.has_target()
-#	if not has_target and ray_cast.is_colliding():
-#		var collider: = ray_cast.get_collider()
-#		has_target = collider.get_collision_layer_bit(HOOKABLE_PHYSICS_LAYER)
-#	return has_target()
-
 func can_hook() -> bool:
 	return is_active and snap_detector.has_target() and cooldown.is_stopped()
-	#return is_active and has_target() and cooldown.is_stopped()
 
 func get_aim_direction() -> Vector2:
 	var direction: = Vector2.ZERO
@@ -109,3 +103,4 @@ func get_target_position() -> Vector2:
 		return snap_detector.target.global_position
 	else:
 		return ray_cast.get_collision_point()
+################################################################################

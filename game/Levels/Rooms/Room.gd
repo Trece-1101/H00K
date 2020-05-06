@@ -1,14 +1,21 @@
-extends Node
 class_name Room
+extends Node
 
+################################################################################
+#### Export variables
+export var room_row_col : Vector2 = Vector2.ZERO
+
+#### Variables
 var room_name : String = "Room"
 var sensor_left := 0
 var door : Door
 
+#### Onready variables
 onready var respawn_point : Position2D = $SaveArea/RespawnPoint
+################################################################################
 
-export var room_row_col : Vector2 = Vector2.ZERO
-
+################################################################################
+#### Metodos
 func _ready() -> void:
 	room_name = self.name
 	if get_node("Sensors"):
@@ -35,3 +42,4 @@ func activate_sensor() -> void:
 	sensor_left -= 1
 	if sensor_left <= 0:
 		door.open_door()
+################################################################################

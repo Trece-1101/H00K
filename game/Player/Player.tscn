@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://game/Player/States/Spawn.gd" type="Script" id=1]
 [ext_resource path="res://game/Player/States/Run.gd" type="Script" id=2]
@@ -12,11 +12,9 @@
 [ext_resource path="res://game/Player/LeftWallDetector.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/Player/PlayerSkin.tscn" type="PackedScene" id=11]
 [ext_resource path="res://game/Player/States/Die.gd" type="Script" id=12]
-[ext_resource path="res://game/Player/States/Dash.gd" type="Script" id=13]
 [ext_resource path="res://game/Player/States/Debug.gd" type="Script" id=14]
 [ext_resource path="res://game/Player/States/Wall.gd" type="Script" id=15]
 [ext_resource path="res://game/Player/RightWallDetector.tscn" type="PackedScene" id=16]
-[ext_resource path="res://game/Player/States/Ledge.gd" type="Script" id=17]
 [ext_resource path="res://game/Player/FloorDetector.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -42,6 +40,9 @@ position = Vector2( 5, 0 )
 
 [node name="RightWallDetector" parent="." instance=ExtResource( 16 )]
 position = Vector2( -5, 0 )
+
+[node name="BorderDetector" type="Position2D" parent="."]
+position = Vector2( -6, -32 )
 
 [node name="PlayerCollider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -16 )
@@ -95,12 +96,6 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
-[node name="Dash" type="Node" parent="StateMachine/Move"]
-script = ExtResource( 13 )
-
-[node name="DashTimer" type="Timer" parent="StateMachine/Move/Dash"]
-wait_time = 0.2
-
 [node name="Wall" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 15 )
 wall_jump_strength = Vector2( 200, 400 )
@@ -110,14 +105,8 @@ slide_speed_incrementor = 1.5
 script = ExtResource( 9 )
 jump_after_hook = true
 
-[node name="Ledge" type="Node" parent="StateMachine"]
-script = ExtResource( 17 )
-
 [node name="Die" type="Node" parent="StateMachine"]
 script = ExtResource( 12 )
 
 [node name="Debug" type="Node" parent="StateMachine"]
 script = ExtResource( 14 )
-
-[node name="BorderDetector" type="Position2D" parent="."]
-position = Vector2( -6, -32 )
