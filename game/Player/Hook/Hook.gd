@@ -7,7 +7,7 @@ y calcula un vector que tira.
 """
 ################################################################################
 #### señales
-signal hooked_onto_target(target_global_position)
+signal hooked_onto_target(target_global_position, hooking_angle)
 
 #### constantes
 const HOOKABLE_PHYSICS_LAYER: = 4

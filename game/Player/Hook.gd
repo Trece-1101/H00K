@@ -14,6 +14,7 @@ export var jump_after_hook: bool = false
 var target_global_position: = Vector2.INF
 var velocity: = Vector2.ZERO
 var release_from_hook:bool = false
+var hooking_angle : float = 0.0
 ################################################################################
 
 ################################################################################
@@ -53,14 +54,34 @@ func physics_process(delta: float) -> void:
 			_state_machine.transition_to("Move/Air", 
 			{velocity = velocity * 0.6, can_jump_after_hook = jump_after_hook})
 
-func enter(msg: Dictionary = {}) -> void:
-	owner.skin.play("idlehook_mid")
-	owner.skin.connect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
+func enter(msg: Dictionary = {}) -> void:	
 	release_from_hook = false
+#	print(msg["hooking_angle"])
 	match msg:
-		{"target_global_position": var tgp, "velocity": var v}:
+		{"target_global_position": var tgp, "velocity": var v, "hooking_angle": var angle}:
 			target_global_position = tgp
 			velocity = v
+			hooking_angle = angle
+	
+	animate()
+
+func animate() -> void:
+	print(hooking_angle)
+	var animation_name : String = ""
+	if (hooking_angle >= 0 and hooking_angle <= 45) or (hooking_angle > -135 and hooking_angle <= 180):
+		animation_name = "jumphook_midbot"
+	elif (hooking_angle > 45 and hooking_angle <= 135):
+		animation_name = "jumphook_bot"
+	elif (hooking_angle < 0 and hooking_angle >= -45) or (hooking_angle < -135 and hooking_angle >= -180):
+		animation_name = "jumphook_midtop"
+	elif (hooking_angle < -45 and hooking_angle >= -135):
+		animation_name = "jumphook_top"
+	
+	print(animation_name)
+		
+		
+	owner.skin.play("jumphook_mid")
+	owner.skin.connect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
 
 func exit() -> void:
 	owner.skin.disconnect("animation_finished", self, "_on_PlayerAnimation_animation_finished")

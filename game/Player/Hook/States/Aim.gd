@@ -1,13 +1,20 @@
 extends State
 
+################################################################################
 #### Variables
-var can_aim:bool = true setget set_can_aim
+var can_aim : bool = true setget set_can_aim
 
+#### Variables onready
+onready var fire : State = $Fire
+################################################################################
+
+################################################################################
 #### Setters y Getters
 func set_can_aim(value: bool):
 	can_aim = value
+################################################################################
 
-
+################################################################################
 #### Metodos
 func unhandled_input(event: InputEvent) -> void:
 #	if event.is_action_pressed("debug_slowmo") and owner.can_hook():
@@ -20,8 +27,6 @@ func unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("hook") and owner.can_hook():
 		_state_machine.transition_to("Aim/Fire")
-	
-
 
 func physics_process(delta: float) -> void:
 	if can_aim:
@@ -29,5 +34,7 @@ func physics_process(delta: float) -> void:
 		var angle: float = cast.angle()
 		owner.ray_cast.cast_to = cast
 		owner.target_circle.rotation = angle
+		fire.set_hooking_angle(rad2deg(angle))
 		owner.snap_detector.rotation = angle
 		owner.ray_cast.force_raycast_update()
+################################################################################

@@ -62,13 +62,13 @@ func physics_process(delta: float) -> void:
 	velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
 	Events.emit_signal("player_moved", owner)
 	
-func _on_Hook_hooked_onto_target(target_global_position: Vector2) -> void:
+func _on_Hook_hooked_onto_target(target_global_position: Vector2, hooking_angle: float) -> void:
 	var to_target: Vector2 = target_global_position - owner.global_position
 	if owner.is_on_floor() and to_target.y > 0.0:
 		return
 	
 	_state_machine.transition_to("Hook", {target_global_position = target_global_position,
-	velocity = velocity})
+	velocity = velocity, hooking_angle = hooking_angle})
 
 func enter(msg: Dictionary = {}) -> void:
 	owner.hook.connect("hooked_onto_target", self, "_on_Hook_hooked_onto_target")

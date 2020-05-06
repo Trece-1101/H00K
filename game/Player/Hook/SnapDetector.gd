@@ -9,7 +9,7 @@ var target: HookTarget setget set_target
 var last_target: HookTarget
 
 #### onready variables
-onready var hooking_hint: Position2D = $HookingHint
+#onready var hooking_hint: Position2D = $HookingHint
 onready var ray_cast: RayCast2D = $RayCast2D
 ################################################################################
 
@@ -17,7 +17,7 @@ onready var ray_cast: RayCast2D = $RayCast2D
 #### setters y getters
 func set_target(value: HookTarget) -> void:
 	target = value
-	hooking_hint.visible = has_target()
+	#hooking_hint.visible = has_target()
 	if target:
 		last_target = target
 		target.focus_gain()

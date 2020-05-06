@@ -1,7 +1,17 @@
 extends State
 
+################################################################################
 var target: HookTarget
+var hooking_angle : float = 0.0 setget set_hooking_angle
+################################################################################
 
+################################################################################
+#### Setters y Getters
+func set_hooking_angle(value: float) -> void:
+	hooking_angle = value
+################################################################################
+
+################################################################################
 #### Metodos
 func physics_process(delta: float) -> void:
 	get_parent().physics_process(delta)
@@ -10,17 +20,14 @@ func _on_Cooldown_timeout() -> void:
 	_state_machine.transition_to("Aim")
 
 func enter(msg: Dictionary = {}) -> void:
-	owner.cooldown.connect("timeout", self, "_on_Cooldown_timeout", [], CONNECT_ONESHOT)
-	
+	owner.cooldown.connect("timeout", self, "_on_Cooldown_timeout", [], CONNECT_ONESHOT)	
 	#owner.is_aiming = false
 	owner.cooldown.start()
-
 	#var target: HookTarget = owner.snap_detector.target
 	target = owner.snap_detector.target
 	if target:
 		owner.arrow.hook_position = target.global_position
-		target.hooked_from(owner.global_position)
-	
+		target.hooked_from(owner.global_position)	
 	#var target: HookTarget = owner.get_hook_target()
 #	if target:
 #		owner.arrow.hook_position = target.global_position
@@ -35,7 +42,7 @@ func enter(msg: Dictionary = {}) -> void:
 		$SlowmoTapTimer.start()
 		target.get_parent().set_queue(true)
 	
-	owner.emit_signal("hooked_onto_target", target.global_position)
+	owner.emit_signal("hooked_onto_target", target.global_position, hooking_angle)
 
 #func exit() -> void:
 #	owner.cooldown.disconnect("timeout", self, "_on_Cooldown_timeout")
@@ -48,3 +55,4 @@ func set_visual_arrow_on_enemy(value: bool, rotation:Vector2) -> void:
 func _on_SlowmoTapTimer_timeout() -> void:
 	owner.set_can_slowmo(false)
 	target.get_parent().set_queue(false)
+################################################################################
