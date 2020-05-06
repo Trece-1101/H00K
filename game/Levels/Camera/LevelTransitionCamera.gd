@@ -1,13 +1,16 @@
 extends Camera2D
 
 ################################################################################
-#### variables
+#### Variables export
 export var start_room_fila: int = 1
 export var start_room_columna: int = 1
 export var transition_time: float = 0.5
+
+#### Variables
 var steping := false
 var borders: Dictionary = {"top": 0, "bottom": 0, "left": 0, "right": 0}
 var last_moved : String = ""
+var death_count : int = 0
 
 #### onready variables
 onready var window_size = OS.get_window_size()
@@ -32,6 +35,7 @@ func _ready() -> void:
 		start_room_columna = Game.get_camera_start().y
 	
 	set_start_borders()
+	set_death_count_label()
 	
 	global_position.x = (step_x / 2) + (step_x * (start_room_columna - 1))
 	global_position.y = (step_y / 2) + (step_y * (start_room_fila - 1))
@@ -103,7 +107,10 @@ func print_borders() -> void:
 		print(border, " - ", borders[border])
 
 func saving() -> void:
-	$AnimationPlayer.play("guardando")
+	$AnimationPlayer.play("saving")
+
+func set_death_count_label() -> void:
+	$LabelDeathCount.text = "x{death}".format({"death": Game.get_player_death_count()})
 
 func _on_Timer_timeout() -> void:
 	transition = false

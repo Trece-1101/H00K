@@ -73,7 +73,7 @@ func check_damage() -> void:
 	#var collision_counter = get_slide_count() - 1
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
-		if collision.collider.is_in_group("Damage"):
+		if collision.collider.is_in_group("Damage") and is_alive:
 			die()
 
 #	if collision_counter > -1:
@@ -83,5 +83,6 @@ func check_damage() -> void:
 
 func die() -> void:
 	is_alive = false
+	Game.increment_death_count()
 	self.state_machine.transition_to("Die")
 ################################################################################

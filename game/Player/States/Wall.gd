@@ -93,10 +93,9 @@ func enter(msg: Dictionary = {}) -> void:
 	if "jump" in msg:
 		jump()
 
-	
-	#_velocity.y = clamp(msg.velocity.y,-max_slide_speed, max_slide_speed)
-
 func jump() -> void:
+	owner.skin.scale.x *= -1
+	owner.border_detector.position.x = -owner.skin.scale.x * 6
 	var impulse: Vector2 = Vector2(_wall_normal, -1.0) * wall_jump_strength
 	var msg: Dictionary = {
 		velocity = impulse,
