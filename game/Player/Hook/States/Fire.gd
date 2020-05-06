@@ -3,12 +3,29 @@ extends State
 ################################################################################
 var target: HookTarget
 var hooking_angle : float = 0.0 setget set_hooking_angle
+var hooking_animation: String = ""
 ################################################################################
 
 ################################################################################
 #### Setters y Getters
 func set_hooking_angle(value: float) -> void:
 	hooking_angle = value
+
+func set_hooking_animation() -> void:
+	if ((hooking_angle >= -30.00 and hooking_angle <= 30.00) or 
+			(hooking_angle >= 165.00 and hooking_angle <= 190.00) or
+			(hooking_angle <= -165.00 and hooking_angle >= -190.00)):
+		hooking_animation = "jumphook_mid"
+	elif (hooking_angle < -30.00 and hooking_angle >= -75.00) or (hooking_angle <= -120.00 and hooking_angle > -165.00):
+		hooking_animation = "jumphook_midtop"
+	elif (hooking_angle < -75.00 and hooking_angle > -120.00):
+		hooking_animation = "jumphook_top"
+	elif (hooking_angle > 30.00 and hooking_angle <= 75.00) or (hooking_angle > 120.00 and hooking_angle <= 165.00):
+		hooking_animation = "jumphook_midbot"
+	elif (hooking_angle > 75.00 and hooking_angle <= 120.00):
+		hooking_animation = "jumphook_bot"
+	else:
+		print("error")
 ################################################################################
 
 ################################################################################
@@ -42,7 +59,8 @@ func enter(msg: Dictionary = {}) -> void:
 		$SlowmoTapTimer.start()
 		target.get_parent().set_queue(true)
 	
-	owner.emit_signal("hooked_onto_target", target.global_position, hooking_angle)
+	set_hooking_animation()
+	owner.emit_signal("hooked_onto_target", target.global_position, hooking_animation)
 
 #func exit() -> void:
 #	owner.cooldown.disconnect("timeout", self, "_on_Cooldown_timeout")
