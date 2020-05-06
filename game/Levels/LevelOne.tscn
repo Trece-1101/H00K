@@ -309,8 +309,7 @@ position = Vector2( 140.364, 478.939 )
 initial_state = NodePath("../../../LevelOne/Player/StateMachine/Spawn")
 
 [node name="LevelTransitionCamera" parent="." instance=ExtResource( 9 )]
-modulate = Color( 0.509804, 0.0470588, 0.0470588, 1 )
-position = Vector2( 1440.36, 276.43 )
+position = Vector2( 480, 270 )
 [connection signal="body_entered" from="Room1/SaveArea" to="Room1" method="_on_SaveArea_body_entered"]
 [connection signal="body_entered" from="Room2/SaveArea" to="Room2" method="_on_SaveArea_body_entered"]
 [connection signal="body_entered" from="Room3/SaveArea" to="Room3" method="_on_SaveArea_body_entered"]

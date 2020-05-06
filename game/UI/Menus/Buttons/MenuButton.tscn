@@ -2,7 +2,8 @@
 
 [ext_resource path="res://assets/Fonts/SevenOh_8x16_Mono_32.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Sprites/arrow.png" type="Texture" id=2]
-[ext_resource path="res://game/UI/Menus/MenuButton.gd" type="Script" id=3]
+[ext_resource path="res://game/UI/Menus/Buttons/MenuButton.gd" type="Script" id=3]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "off_hover"

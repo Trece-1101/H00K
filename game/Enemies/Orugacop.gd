@@ -37,7 +37,7 @@ func select_start_direction() -> void:
 	move_direction.x = start_direction
 
 func mirror_detectors() -> void:
-	rotation_modifier *= move_direction.x
+	rotation_modifier *= int(move_direction.x)
 	void_detector.position.x *= move_direction.x
 	center_detector.position.x *= move_direction.x
 

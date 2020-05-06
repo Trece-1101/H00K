@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "can_hook"
 length = 0.001
 step = 0.02
@@ -23,8 +23,7 @@ tracks/0/keys = {
 "values": [ 5 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "close"
+[sub_resource type="Animation" id=3]
 length = 0.001
 step = 0.02
 tracks/0/type = "value"
@@ -101,14 +100,14 @@ wait_time = 0.8
 one_shot = true
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 1.44798, 1.44798 )
+scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 hframes = 7
 frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/can_hook = SubResource( 3 )
-anims/close = SubResource( 2 )
+anims/can_hook = SubResource( 2 )
+anims/close = SubResource( 3 )
 anims/go_open = SubResource( 4 )
 anims/hooked = SubResource( 5 )
 anims/open = SubResource( 6 )

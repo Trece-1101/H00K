@@ -1,8 +1,12 @@
+class_name LevelState
 extends Node2D
 
 ################################################################################
 #### Variables
 var close_door := {}
+
+#### Variables onready
+onready var camera : Camera2D = $LevelTransitionCamera
 ################################################################################
 
 ################################################################################
@@ -15,4 +19,7 @@ func _ready() -> void:
 func close_last_door() -> void:
 	var room = get_node(close_door['room'])
 	room.get_node(close_door['door']).close_door()
+
+func saving_notice() -> void:
+	camera.saving()
 ################################################################################

@@ -56,7 +56,6 @@ func physics_process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:	
 	release_from_hook = false
-#	print(msg["hooking_angle"])
 	match msg:
 		{"target_global_position": var tgp, "velocity": var v, "hooking_animation": var animation}:
 			target_global_position = tgp

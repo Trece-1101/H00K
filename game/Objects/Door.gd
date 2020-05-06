@@ -18,3 +18,8 @@ func open_door() -> void:
 	if not is_door_open:
 		is_door_open = true
 		$AnimationPlayer.play("open")
+
+func instant_close_door() -> void:
+	if is_door_open:
+		is_door_open = false
+		$AnimationPlayer.play("instant_close")

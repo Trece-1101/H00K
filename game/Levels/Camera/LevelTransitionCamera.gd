@@ -102,6 +102,9 @@ func print_borders() -> void:
 	for border in borders:
 		print(border, " - ", borders[border])
 
+func saving() -> void:
+	$AnimationPlayer.play("guardando")
+
 func _on_Timer_timeout() -> void:
 	transition = false
 
