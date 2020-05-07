@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 22.8689, 49 )
+extents = Vector2( 2.75703, 78.466 )
 
 [node name="SaveArea" type="Area2D"]
 modulate = Color( 0.00392157, 0.501961, 0, 1 )

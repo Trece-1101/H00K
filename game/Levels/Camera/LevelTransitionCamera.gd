@@ -111,6 +111,7 @@ func saving() -> void:
 
 func set_death_count_label() -> void:
 	$LabelDeathCount.text = "x{death}".format({"death": Game.get_player_death_count()})
+	$AnimationPlayer.play("show_death_count")
 
 func _on_Timer_timeout() -> void:
 	transition = false

@@ -153,7 +153,10 @@ position = Vector2( 225.884, 481.004 )
 position = Vector2( 655.18, 272.146 )
 
 [node name="SaveArea" parent="Room1" instance=ExtResource( 10 )]
-position = Vector2( 144.754, 430.825 )
+position = Vector2( 136.578, 430.825 )
+
+[node name="RespawnPoint" parent="Room1/SaveArea" index="1"]
+position = Vector2( 38.5429, 49 )
 
 [node name="Door" parent="Room1" instance=ExtResource( 5 )]
 position = Vector2( 960.671, 397.786 )
@@ -171,7 +174,10 @@ position = Vector2( 1402.9, 135.829 )
 position = Vector2( 1666.71, 93.4211 )
 
 [node name="SaveArea" parent="Room2" instance=ExtResource( 10 )]
-position = Vector2( 995, 430 )
+position = Vector2( 964.886, 430 )
+
+[node name="RespawnPoint" parent="Room2/SaveArea" index="1"]
+position = Vector2( 100.535, 49 )
 
 [node name="Door" parent="Room2" instance=ExtResource( 5 )]
 position = Vector2( 1921.32, 46.113 )
@@ -215,7 +221,13 @@ position = Vector2( 2370.66, 794.557 )
 position = Vector2( 2731.24, 709.739 )
 
 [node name="SaveArea" parent="Room4" instance=ExtResource( 10 )]
-position = Vector2( 2026.44, 685.148 )
+position = Vector2( 2026.44, 638.721 )
+
+[node name="CollisionShape2D" parent="Room4/SaveArea" index="0"]
+rotation = 1.5708
+
+[node name="RespawnPoint" parent="Room4/SaveArea" index="1"]
+position = Vector2( 0, 96.2011 )
 
 [node name="Door" parent="Room4" instance=ExtResource( 5 )]
 position = Vector2( 2881.61, 942.548 )
@@ -303,7 +315,7 @@ __meta__ = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 12 )]
-position = Vector2( 140.364, 478.939 )
+position = Vector2( 174.523, 478.678 )
 
 [node name="StateMachine" parent="Player" index="7"]
 initial_state = NodePath("../../../LevelOne/Player/StateMachine/Spawn")
@@ -317,5 +329,11 @@ position = Vector2( 480, 270 )
 [connection signal="body_entered" from="Room5/SaveArea" to="Room5" method="_on_SaveArea_body_entered"]
 [connection signal="body_entered" from="Room6/SaveArea" to="Room6" method="_on_SaveArea_body_entered"]
 [connection signal="body_entered" from="Room7/SaveArea" to="Room7" method="_on_SaveArea_body_entered"]
+
+[editable path="Room1/SaveArea"]
+
+[editable path="Room2/SaveArea"]
+
+[editable path="Room4/SaveArea"]
 
 [editable path="Player"]
