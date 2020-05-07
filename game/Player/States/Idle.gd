@@ -1,14 +1,15 @@
 extends State
-
 """
 Estado hijo que maneja el movimiento de idle
 Transicion a Correr o a Air
 """
-
+################################################################################
 #### onready variables
 onready var move: = get_parent()
 onready var jump_buffer: Timer = $JumpBuffer
+################################################################################
 
+################################################################################
 #### Metodos
 func unhandled_input(event: InputEvent) -> void:
 	move.unhandled_input(event)
@@ -36,3 +37,4 @@ func enter(msg: Dictionary = {}) -> void:
 func exit() -> void:
 	owner.skin.disconnect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
 	move.exit()
+################################################################################

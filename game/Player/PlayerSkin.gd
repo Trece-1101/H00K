@@ -1,12 +1,14 @@
 extends Node2D
 
-#### onready variables
-onready var animation: AnimationPlayer = $PlayerAnimation
-
+################################################################################
 #### señales
 signal animation_finished(animation_name)
 
+#### onready variables
+onready var animation: AnimationPlayer = $PlayerAnimation
+################################################################################
 
+################################################################################
 #### Metodos
 func _ready() -> void:
 	animation.connect("animation_finished", self,
@@ -21,3 +23,4 @@ func play(animation_name: String, data: Dictionary = {}) -> void:
 		position = data["from"]
 	animation.stop()
 	animation.play(animation_name)
+################################################################################

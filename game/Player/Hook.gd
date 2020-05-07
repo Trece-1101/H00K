@@ -1,8 +1,10 @@
 extends State
-
 """
 Mueve al player hasta el gancho
 """
+################################################################################
+#### constantes
+const HOOK_MAX_SPEED: = 1600.0
 
 #### export variables
 export var arrive_push: float = 350.0
@@ -12,11 +14,10 @@ export var jump_after_hook: bool = false
 var target_global_position: = Vector2.INF
 var velocity: = Vector2.ZERO
 var release_from_hook:bool = false
+var hooking_animation : String = ""
+################################################################################
 
-#### constantes
-const HOOK_MAX_SPEED: = 1600.0
-
-
+################################################################################
 #### Metodos
 func physics_process(delta: float) -> void:
 	var new_velocity: = Steering.arrive_to(
@@ -53,14 +54,20 @@ func physics_process(delta: float) -> void:
 			_state_machine.transition_to("Move/Air", 
 			{velocity = velocity * 0.6, can_jump_after_hook = jump_after_hook})
 
-func enter(msg: Dictionary = {}) -> void:
+func enter(msg: Dictionary = {}) -> void:	
 	release_from_hook = false
 	match msg:
-		{"target_global_position": var tgp, "velocity": var v}:
+		{"target_global_position": var tgp, "velocity": var v, "hooking_animation": var animation}:
 			target_global_position = tgp
 			velocity = v
+			hooking_animation = animation
+
+	owner.skin.play(hooking_animation)
+	owner.skin.connect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
 
 func exit() -> void:
+	owner.skin.disconnect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
 	release_from_hook = false
 	target_global_position = Vector2.INF
 	velocity = Vector2.ZERO
+################################################################################

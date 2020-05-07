@@ -1,0 +1,86 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://game/UI/Menus/Buttons/NewGameButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Fonts/Revamped.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://game/UI/Menus/Buttons/ExitButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/UI/Menus/Buttons/OptionsButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/Sprites/hook.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 54
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 40.0
+margin_top = 20.0
+margin_right = 920.0
+margin_bottom = 520.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameName" type="Label" parent="Menu"]
+margin_right = 880.0
+margin_bottom = 58.0
+custom_fonts/font = SubResource( 1 )
+text = "Katanero"
+
+[node name="CenterRow" type="HBoxContainer" parent="Menu"]
+margin_top = 62.0
+margin_right = 880.0
+margin_bottom = 457.0
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+margin_right = 300.0
+margin_bottom = 395.0
+size_flags_horizontal = 5
+size_flags_vertical = 3
+custom_constants/separation = 8
+alignment = 1
+
+[node name="NewGameButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 1 )]
+margin_top = 122.0
+margin_bottom = 167.0
+
+[node name="OptionsButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
+margin_top = 175.0
+margin_bottom = 220.0
+
+[node name="ExitButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
+margin_top = 228.0
+margin_bottom = 273.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu/CenterRow"]
+margin_left = 304.0
+margin_right = 880.0
+margin_bottom = 395.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Chracters" type="TextureRect" parent="Menu/CenterRow/CenterContainer"]
+margin_left = 205.0
+margin_top = 88.0
+margin_right = 370.0
+margin_bottom = 307.0
+texture = ExtResource( 6 )
+
+[node name="VersionLabel" type="Label" parent="Menu"]
+margin_top = 461.0
+margin_right = 880.0
+margin_bottom = 500.0
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 2 )
+text = "Version 1.0.0
+333 Games"
+align = 2

@@ -1,21 +1,26 @@
 extends Node2D
 
+################################################################################
+#### variables
+var hook_position: = Vector2.ZERO setget set_hook_position
+var length: = 20.0 setget set_length
+
 #### onready variables
 onready var head: Line2D = $Head
 onready var tail: Line2D = $Tail
 onready var tween: Tween = $Tween
 onready var start_length: float = head.position.x
+################################################################################
 
-#### variables
-var hook_position: = Vector2.ZERO setget set_hook_position
-var length: = 20.0 setget set_length
-
+################################################################################
 #### setters y getters
 func set_length(value: float) -> void:
 	length = value
 	tail.points[-1].x = length
 	head.position.x = tail.points[-1].x + tail.position.x
+################################################################################
 
+################################################################################
 #### Metodos
 func set_hook_position(value: Vector2) -> void:
 	hook_position = value
@@ -34,3 +39,4 @@ func get_hook_to_target() -> Vector2:
 
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	visible = false
+################################################################################

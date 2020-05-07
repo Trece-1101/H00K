@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://game/Objects/Door.gd"
 }, {
 "base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://game/Enemies/Enemy.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "EnemyBase",
 "language": "GDScript",
 "path": "res://game/Enemies/EnemyBase.gd"
@@ -33,6 +38,11 @@ _global_script_classes=[ {
 "class": "HookTarget",
 "language": "GDScript",
 "path": "res://game/Objects/HookTarget.gd"
+}, {
+"base": "Node2D",
+"class": "LevelState",
+"language": "GDScript",
+"path": "res://game/Levels/LevelState.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -61,10 +71,12 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Door": "",
+"Enemy": "",
 "EnemyBase": "",
 "FloorDetector": "",
 "Hook": "",
 "HookTarget": "",
+"LevelState": "",
 "Player": "",
 "Room": "",
 "State": "",

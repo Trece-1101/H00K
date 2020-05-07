@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/Enemies/Orugacop.gd" type="Script" id=2]
+
+[node name="Orugacop" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+velocity = Vector2( 20, 20 )
+
+[node name="VoidDetector" type="RayCast2D" parent="." index="2"]
+position = Vector2( 15, 0 )
+enabled = true
+cast_to = Vector2( 0, 20 )
+collision_mask = 2
+collide_with_areas = true
+
+[node name="CenterDetector" type="RayCast2D" parent="." index="3"]
+position = Vector2( -1.41677, 0 )
+enabled = true
+cast_to = Vector2( 0, 20 )
+collision_mask = 2
+collide_with_areas = true

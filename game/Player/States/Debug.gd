@@ -1,5 +1,5 @@
 extends State
-
+################################################################################
 #### export variables
 export var speed:Vector2 = Vector2(600.0, 600.0)
 
@@ -8,8 +8,9 @@ var velocity
 
 #### onready variables
 onready var sprinting:bool = false
+################################################################################
 
-
+################################################################################
 #### Metodos
 func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_sprint"):
@@ -44,3 +45,4 @@ static func get_move_direction() -> Vector2:
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("debug_move_down") - Input.get_action_strength("debug_move_up")
 	)
+################################################################################

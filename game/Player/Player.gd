@@ -1,6 +1,18 @@
 class_name Player
 extends KinematicBody2D
 
+################################################################################
+#### Constantes
+const FLOOR_NORMAL: = Vector2.UP
+
+#### export variables
+export var can_slowmo: bool = true
+
+#### Variables
+var is_active := true setget set_is_active
+var is_alive :bool = true setget set_is_alive, get_is_alive
+var current_room : Room = null setget set_current_room, get_current_room
+
 #### variables onready
 onready var state_machine: StateMachine = $StateMachine
 onready var move: State = $StateMachine/Move
@@ -11,19 +23,9 @@ onready var left_wall_detector: WallDetector = $LeftWallDetector
 onready var right_wall_detector: WallDetector = $RightWallDetector
 onready var floor_detector: FloorDetector = $FloorDetector
 onready var border_detector: Position2D = $BorderDetector
+################################################################################
 
-#### export variables
-export var can_slowmo: bool = true
-
-#### Constantes
-const FLOOR_NORMAL: = Vector2.UP
-
-#### Variables
-var is_active := true setget set_is_active
-var is_alive :bool = true setget set_is_alive, get_is_alive
-var current_room : Room = null setget set_current_room, get_current_room
-
-
+################################################################################
 #### Setters y Getters
 func set_is_active(value: bool) -> void:
 	is_active = value
@@ -45,7 +47,7 @@ func set_current_room(room: Room) -> void:
 func get_current_room() -> Room:
 	return current_room
 
-
+################################################################################
 ## TODO: solo DEBUG. REMOVER para version release
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_restart"):
@@ -54,6 +56,7 @@ func _unhandled_input(event: InputEvent) -> void:
 #	if event.is_action_pressed("debug_player_die"):
 #		self.state_machine.transition_to("Die")
 
+################################################################################
 func _physics_process(delta: float) -> void:
 	if is_alive:
 		check_damage()
@@ -70,7 +73,7 @@ func check_damage() -> void:
 	#var collision_counter = get_slide_count() - 1
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
-		if collision.collider.is_in_group("Damage"):
+		if collision.collider.is_in_group("Damage") and is_alive:
 			die()
 
 #	if collision_counter > -1:
@@ -80,4 +83,6 @@ func check_damage() -> void:
 
 func die() -> void:
 	is_alive = false
+	Game.increment_death_count()
 	self.state_machine.transition_to("Die")
+################################################################################
