@@ -7,6 +7,7 @@ y calcula un vector que tira.
 """
 ################################################################################
 #### señales
+# warning-ignore:unused_signal
 signal hooked_onto_target(target_global_position, hooking_animation)
 
 #### constantes

@@ -60,7 +60,7 @@ func physics_process(delta: float) -> void:
 	get_move_direction(), max_speed_fall)
 
 	velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
-	Events.emit_signal("player_moved", owner)
+	#Events.emit_signal("player_moved", owner)
 	
 func _on_Hook_hooked_onto_target(target_global_position: Vector2, hooking_animation: String) -> void:
 	var to_target: Vector2 = target_global_position - owner.global_position
@@ -70,7 +70,7 @@ func _on_Hook_hooked_onto_target(target_global_position: Vector2, hooking_animat
 	_state_machine.transition_to("Hook", {target_global_position = target_global_position,
 	velocity = velocity, hooking_animation = hooking_animation})
 
-func enter(msg: Dictionary = {}) -> void:
+func enter(_msg: Dictionary = {}) -> void:
 	owner.hook.connect("hooked_onto_target", self, "_on_Hook_hooked_onto_target")
 	$Air.connect("jumped", $Idle.jump_buffer, "start")
 	$Air.connect("jumped", $Run.jump_buffer, "start")
@@ -82,20 +82,20 @@ func exit() -> void:
 
 static func calculate_velocity(
 		old_velocity: Vector2, 
-		max_speed: Vector2,
-		acceleration: Vector2,
+		max_speed_func: Vector2,
+		acceleration_func: Vector2,
 		delta: float,
 		move_direction: Vector2,
-		max_speed_fall: float,
+		max_speed_fall_func: float,
 		is_jump_interrupted: bool = false
 	) -> Vector2:
 	var new_velocity: = old_velocity
 	
-	new_velocity += move_direction * acceleration * delta
+	new_velocity += move_direction * acceleration_func * delta
 	if is_jump_interrupted:
 		new_velocity.y = 0.0
-	new_velocity.x = clamp(new_velocity.x, -max_speed.x, max_speed.x)
-	new_velocity.y = clamp(new_velocity.y, -max_speed.y, max_speed_fall)
+	new_velocity.x = clamp(new_velocity.x, -max_speed_func.x, max_speed_func.x)
+	new_velocity.y = clamp(new_velocity.y, -max_speed_func.y, max_speed_fall_func)
 	
 	return new_velocity
 

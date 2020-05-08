@@ -37,6 +37,6 @@ func get_hook_to_target() -> Vector2:
 	var to_target: = hook_position - global_position
 	return to_target.normalized()
 
-func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
+func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
 	visible = false
 ################################################################################

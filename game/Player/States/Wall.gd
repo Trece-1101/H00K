@@ -34,7 +34,7 @@ onready var max_slide_speed = default_max_slide_speed
 
 ################################################################################
 #### Metodos
-func unhandled_input(event: InputEvent) -> void:
+func unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("jump"):
 		jump()
 

@@ -6,14 +6,14 @@ export(Vector2) var velocity = Vector2.ZERO
 
 #### Variables
 var move_direction: Vector2 = Vector2(0.0, 1.0)
-var set_aim:bool = false
-var start_rotation:float = 0.0
-var is_alive:bool = true
+var set_aim: bool = false
+var start_rotation: float = 0.0
+var is_alive: bool = true
 onready var arrow_queue: Position2D = $EnemyArrowQueue
 
 
 #### Metodos
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	velocity = velocity * move_direction
 	if set_aim:
 		var cast: Vector2 = get_aim_direction()
@@ -26,19 +26,19 @@ func _physics_process(delta: float) -> void:
 	move_and_slide(velocity, Vector2.UP)
 
 func check_arrow_rotation(
-	start_rotation: float,
+	start_rotation_internal: float,
 	cast: Vector2,
 	angle: float
 	) -> void:
 	var arrow_rotation: float = 0
 	
 	if cast == Vector2.ZERO:
-		arrow_rotation = start_rotation
+		arrow_rotation = start_rotation_internal
 	else:
-		if start_rotation == 45:
+		if start_rotation_internal == 45:
 			arrow_rotation = clamp(angle, -90, 0)
 			arrow_queue.rotation_degrees = arrow_rotation + 90
-		elif start_rotation == -45:
+		elif start_rotation_internal == -45:
 			#print("angle {an}".format({"an": angle}))
 			if angle >= 180:
 				angle = -180

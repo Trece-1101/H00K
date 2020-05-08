@@ -36,7 +36,7 @@ func physics_process(delta: float) -> void:
 func _on_Cooldown_timeout() -> void:
 	_state_machine.transition_to("Aim")
 
-func enter(msg: Dictionary = {}) -> void:
+func enter(_msg: Dictionary = {}) -> void:
 	owner.cooldown.connect("timeout", self, "_on_Cooldown_timeout", [], CONNECT_ONESHOT)	
 	#owner.is_aiming = false
 	owner.cooldown.start()

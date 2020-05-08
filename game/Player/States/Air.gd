@@ -79,7 +79,7 @@ func physics_process(delta: float) -> void:
 		_is_jump_interrupted)
 	
 	move.velocity = owner.move_and_slide(move.velocity, owner.FLOOR_NORMAL)
-	Events.emit_signal("player_moved", owner)
+	#Events.emit_signal("player_moved", owner)
 	
 	if owner.is_on_floor():
 		var target_state: String

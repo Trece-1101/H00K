@@ -14,13 +14,13 @@ func _ready() -> void:
 	yield(owner, "ready")
 	_start_position = owner.position
 
-func _on_PlayerAnimation_animation_finished(animation_name: String) -> void:
+func _on_PlayerAnimation_animation_finished(_animation_name: String) -> void:
 	if not owner.is_on_floor():
 		_state_machine.transition_to("Air")
 	
 	_state_machine.transition_to("Move/Idle")
 
-func enter(msg: Dictionary = {}) -> void:
+func enter(_msg: Dictionary = {}) -> void:
 	owner.set_is_active(false)
 	if Game.get_player_respawn_position() == Vector2.ZERO:
 		owner.position = _start_position

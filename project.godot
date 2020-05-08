@@ -99,6 +99,10 @@ Utils="*res://game/Autoloads/Utils.gd"
 DrawingUtils="*res://game/Autoloads/DrawingUtils.gd"
 Game="*res://game/Autoloads/Game.gd"
 
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/size/width=960

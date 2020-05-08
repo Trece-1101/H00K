@@ -31,8 +31,8 @@ func _ready() -> void:
 		start_room_fila = start_room_fila
 		start_room_columna = start_room_columna
 	else:
-		start_room_fila = Game.get_camera_start().x
-		start_room_columna = Game.get_camera_start().y
+		start_room_fila = int(Game.get_camera_start().x)
+		start_room_columna = int(Game.get_camera_start().y)
 	
 	set_start_borders()
 	set_death_count_label()
@@ -46,7 +46,7 @@ func set_start_borders() -> void:
 	borders["left"] = step_x * (start_room_columna - 1)
 	borders["right"] = step_x * start_room_columna
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not transition:
 		if player.global_position.y < borders["top"]:
 			move_camera("top")
@@ -107,16 +107,19 @@ func print_borders() -> void:
 		print(border, " - ", borders[border])
 
 func saving() -> void:
-	$AnimationPlayer.play("saving")
+	#$AnimationPlayer.play("saving")
+	($AnimationPlayer as AnimationPlayer).play("saving")
 
 func set_death_count_label() -> void:
+	$AnimationPlayer.stop()
 	$LabelDeathCount.text = "x{death}".format({"death": Game.get_player_death_count()})
-	$AnimationPlayer.play("show_death_count")
+	($AnimationPlayer as AnimationPlayer).play("show_death_count")
+	#$AnimationPlayer.play("show_death_count")
 
 func _on_Timer_timeout() -> void:
 	transition = false
 
-func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
+func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
 	get_tree().paused = false
 	player.apply_move_impulse(last_moved)
 ################################################################################

@@ -57,7 +57,7 @@ func _unhandled_input(event: InputEvent) -> void:
 #		self.state_machine.transition_to("Die")
 
 ################################################################################
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if is_alive:
 		check_damage()
 

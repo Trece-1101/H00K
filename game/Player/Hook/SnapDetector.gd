@@ -30,7 +30,7 @@ func set_target(value: HookTarget) -> void:
 func _ready() -> void:
 	ray_cast.set_as_toplevel(true)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	self.target = find_best_target()
 
 """
