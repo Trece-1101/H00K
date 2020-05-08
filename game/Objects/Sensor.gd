@@ -11,3 +11,4 @@ func activate() -> void:
 func _on_body_entered(body: Node) -> void:
 	if body.name == "Player" and not active:
 		activate()
+		$Activated.play()

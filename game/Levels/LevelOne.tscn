@@ -280,6 +280,9 @@ position = Vector2( 4841.92, 638.456 )
 
 [node name="Sensors" type="Node" parent="Room7"]
 
+[node name="Door" parent="Room7" instance=ExtResource( 5 )]
+position = Vector2( 5554.64, 909.253 )
+
 [node name="TileMaps" type="Node" parent="."]
 
 [node name="LevelWorldTileMap" type="TileMap" parent="TileMaps"]

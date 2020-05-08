@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/Sounds/SFX/pass_room_1.wav" type="AudioStream" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2.75703, 78.466 )
@@ -15,3 +17,8 @@ shape = SubResource( 1 )
 
 [node name="RespawnPoint" type="Position2D" parent="."]
 position = Vector2( 0, 49 )
+
+[node name="PassRoom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -35.0
+pitch_scale = 2.0

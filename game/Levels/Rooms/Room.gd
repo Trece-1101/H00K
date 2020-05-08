@@ -3,23 +3,24 @@ extends Node
 
 ################################################################################
 #### Export variables
-export var room_row_col : Vector2 = Vector2.ZERO
+export var room_row_col: Vector2 = Vector2.ZERO
 
 #### Variables
-var room_name : String = "Room"
+var room_name: String = "Room"
 var sensor_left := 0
-var door : Door
-var already_save : bool = false
+var door: Door
+var already_save: bool = false
 
 #### Onready variables
-onready var respawn_point : Position2D = $SaveArea/RespawnPoint
-onready var level : LevelState = get_parent()
+onready var respawn_point: Position2D = $SaveArea/RespawnPoint
+onready var level: LevelState = get_parent()
 ################################################################################
 
 ################################################################################
 #### Metodos
 func _ready() -> void:
 	room_name = self.name
+	
 	if get_node("Sensors"):
 		get_sensors()
 
@@ -41,6 +42,7 @@ func _on_SaveArea_body_entered(body: Node) -> void:
 		if !already_save:
 			level.saving_notice()
 			already_save = true
+			$SaveArea/PassRoom.play()
 #		print("saved at {rp}".format({'rp': respawn_point.global_position}))
 
 func activate_sensor() -> void:
