@@ -8,6 +8,7 @@ func _on_PlayerAnimation_animation_finished(_animation_name: String) -> void:
 	_state_machine.transition_to("Spawn")
 
 func enter(_msg: Dictionary = {}) -> void:
+	Game.set_player_last_state("Die")
 	owner.skin.play("die")
 	owner.skin.connect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
 

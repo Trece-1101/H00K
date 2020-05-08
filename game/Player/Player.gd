@@ -10,8 +10,8 @@ export var can_slowmo: bool = true
 
 #### Variables
 var is_active := true setget set_is_active
-var is_alive :bool = true setget set_is_alive, get_is_alive
-var current_room : Room = null setget set_current_room, get_current_room
+var is_alive: bool = true setget set_is_alive, get_is_alive
+var current_room: Room = null setget set_current_room, get_current_room
 
 #### variables onready
 onready var state_machine: StateMachine = $StateMachine
@@ -23,6 +23,7 @@ onready var left_wall_detector: WallDetector = $LeftWallDetector
 onready var right_wall_detector: WallDetector = $RightWallDetector
 onready var floor_detector: FloorDetector = $FloorDetector
 onready var border_detector: Position2D = $BorderDetector
+onready var respawn_sound: AudioStreamPlayer = $SFX/Respawn
 ################################################################################
 
 ################################################################################

@@ -30,7 +30,6 @@ func get_sensors() -> void:
 	var sensors = get_node("Sensors").get_children()
 	if not sensors.empty():
 		door = get_node("Door")
-		#door.close_door()
 		door.instant_close_door()
 		sensor_left = sensors.size()
 

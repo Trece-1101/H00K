@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/Sprites/icon.png" type="Texture" id=1]
 [ext_resource path="res://game/Objects/Door.gd" type="Script" id=2]
+[ext_resource path="res://assets/Sounds/SFX/close_door_3.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/Sounds/SFX/open_door_2.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 48.8922, 33.5427 )
@@ -23,6 +25,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, -39.3034 ), Vector2( 0, 40 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ClosingDoor:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -55,6 +69,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 0, 40 ), Vector2( 0, -40 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("OpeningDoor:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="Door" type="Area2D"]
 collision_layer = 2
@@ -82,4 +108,14 @@ shape = SubResource( 2 )
 anims/close = SubResource( 3 )
 anims/instant_close = SubResource( 4 )
 anims/open = SubResource( 5 )
+
+[node name="ClosingDoor" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -14.0
+pitch_scale = 1.2
+
+[node name="OpeningDoor" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -14.0
+pitch_scale = 1.5
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
