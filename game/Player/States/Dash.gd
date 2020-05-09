@@ -17,7 +17,7 @@ func enter(msg: Dictionary = {}) -> void:
 
 func physics_process(delta: float) -> void:
 	velocity = owner.move_and_slide(direction * dash_speed, owner.FLOOR_NORMAL)
-	Events.emit_signal("player_moved", owner)
+	#Events.emit_signal("player_moved", owner)
 
 func _on_DashTimer_timeout() -> void:
 	_state_machine.transition_to("Move/Air", {velocity = velocity/2})

@@ -100,7 +100,6 @@ wait_time = 0.8
 one_shot = true
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 hframes = 7
 frame = 4
@@ -112,4 +111,3 @@ anims/go_open = SubResource( 4 )
 anims/hooked = SubResource( 5 )
 anims/open = SubResource( 6 )
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]

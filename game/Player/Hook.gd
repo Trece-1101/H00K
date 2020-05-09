@@ -27,13 +27,13 @@ func physics_process(delta: float) -> void:
 		HOOK_MAX_SPEED
 	)
 
-	var low_speed = false
+	var _low_speed = false
 
 	if new_velocity.length() > arrive_push:
 		new_velocity = new_velocity
 	else:
 		new_velocity = new_velocity.normalized() * arrive_push
-		low_speed = true
+		_low_speed = true
 	
 	if owner.is_on_ceiling():
 		_state_machine.transition_to("Move/Air", 
@@ -57,6 +57,9 @@ func physics_process(delta: float) -> void:
 func enter(msg: Dictionary = {}) -> void:	
 	release_from_hook = false
 	match msg:
+# warning-ignore:unassigned_variable
+# warning-ignore:unassigned_variable
+# warning-ignore:unassigned_variable
 		{"target_global_position": var tgp, "velocity": var v, "hooking_animation": var animation}:
 			target_global_position = tgp
 			velocity = v

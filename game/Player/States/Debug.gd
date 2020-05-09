@@ -27,14 +27,14 @@ func unhandled_input(event: InputEvent) -> void:
 		owner.position += owner.get_local_mouse_position()
 
 func physics_process(delta: float) -> void:
-	var direction:Vector2 = get_move_direction()
-	var multiplier: float
+	var direction : Vector2 = get_move_direction()
+	#var multiplier: float
 	
 	velocity = direction * speed
 	owner.position += velocity * delta
-	Events.emit_signal("player_moved")
+	#Events.emit_signal("player_moved")
 
-func enter(msg: Dictionary = {}) -> void:
+func enter(_msg: Dictionary = {}) -> void:
 	owner.set_is_active(false)
 
 func exit() -> void:

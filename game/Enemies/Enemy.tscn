@@ -43,6 +43,14 @@ position = Vector2( 0, -10.0724 )
 shape = SubResource( 3 )
 
 [node name="ExplosionArea" parent="." instance=ExtResource( 3 )]
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+scale = Vector2( 8.50003, 8.12188 )
+process_parent = true
+physics_process_parent = true
+__meta__ = {
+"_editor_description_": ""
+}
 [connection signal="body_entered" from="BodyDetector" to="." method="_on_BodyDetector_body_entered"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
 [connection signal="body_entered" from="ExplosionArea" to="." method="_on_ExplosionArea_body_entered"]
