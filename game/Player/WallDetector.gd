@@ -24,6 +24,9 @@ func is_against_ledge() -> bool:
 func is_against_wall() -> bool:
 	return is_active and (ray_bottom.is_colliding() or ray_top.is_colliding())
 
+func is_all_body_against_wall() -> bool:
+	return is_active and (ray_bottom.is_colliding() or ray_top.is_colliding() or head.is_colliding())
+
 func head_at_wall_level() -> bool:
 	return head.is_colliding()
 
