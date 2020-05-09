@@ -16,7 +16,7 @@ func unhandled_input(event: InputEvent) -> void:
 
 func physics_process(delta: float) -> void:
 	owner.skin.scale.x = move.get_sprite_direction(owner.skin.scale.x)
-	owner.border_detector.position.x = -owner.skin.scale.x * 6
+	owner.border_detector.position.x = owner.skin.scale.x * 16
 	
 	if !owner.get_is_alive():
 		owner.set_is_alive(true)

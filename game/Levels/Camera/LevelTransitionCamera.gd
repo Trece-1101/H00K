@@ -57,11 +57,6 @@ func _process(_delta: float) -> void:
 		elif player.border_detector.global_position.x > borders["right"]:
 			move_camera("right")
 
-#		elif player.global_position.x < borders["left"]:
-#			move_camera("left")
-#		elif player.global_position.x > borders["right"]:
-#			move_camera("right")
-
 func move_camera(move_to: String) -> void:
 	var new_global_position: Vector2 = Vector2.ZERO
 	transition = true

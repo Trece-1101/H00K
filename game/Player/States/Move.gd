@@ -7,7 +7,8 @@ o usar funcionalidades de él
 """
 ################################################################################
 #### variables
-var velocity: = Vector2.ZERO
+var velocity: Vector2 = Vector2.ZERO
+var transition_move: int = 40
 
 #### export variables
 export var max_speed_default: Vector2 = Vector2(220.0, 800.0)
@@ -101,9 +102,9 @@ static func calculate_velocity(
 
 func apply_impulse(direction: String) -> void:
 	if direction == "right":
-		velocity.x += transition_impulse
+		owner.global_position.x += transition_move
 	elif direction == "left":
-		velocity.x -= transition_impulse
+		owner.global_position.x -= transition_move
 	elif direction == "top":
 		velocity.y -= transition_impulse
 

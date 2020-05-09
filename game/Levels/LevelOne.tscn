@@ -154,7 +154,7 @@ position = Vector2( 225.884, 481.004 )
 position = Vector2( 655.18, 272.146 )
 
 [node name="SaveArea" parent="Room1" instance=ExtResource( 10 )]
-position = Vector2( 136.578, 430.825 )
+position = Vector2( 155.598, 431.082 )
 
 [node name="RespawnPoint" parent="Room1/SaveArea" index="1"]
 position = Vector2( 38.5429, 49 )
@@ -175,13 +175,13 @@ position = Vector2( 1402.9, 135.829 )
 position = Vector2( 1666.71, 93.4211 )
 
 [node name="SaveArea" parent="Room2" instance=ExtResource( 10 )]
-position = Vector2( 964.886, 430 )
+position = Vector2( 982.235, 430.771 )
 
 [node name="RespawnPoint" parent="Room2/SaveArea" index="1"]
-position = Vector2( 100.535, 49 )
+position = Vector2( 46.1739, 49 )
 
 [node name="Door" parent="Room2" instance=ExtResource( 5 )]
-position = Vector2( 1921.32, 46.113 )
+position = Vector2( 1911.81, 45.6373 )
 
 [node name="Sensors" type="Node" parent="Room2"]
 
@@ -322,7 +322,7 @@ __meta__ = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 12 )]
-position = Vector2( 174.523, 478.678 )
+position = Vector2( 179.779, 480.609 )
 
 [node name="StateMachine" parent="Player" index="7"]
 initial_state = NodePath("../../../LevelOne/Player/StateMachine/Spawn")

@@ -101,7 +101,7 @@ modulate = Color( 0.0745098, 1, 0.109804, 1 )
 shape = SubResource( 1 )
 
 [node name="PlayerDetector" type="CollisionShape2D" parent="."]
-position = Vector2( 51.728, 48.0538 )
+position = Vector2( 28.5923, 48.1759 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

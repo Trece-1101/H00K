@@ -43,7 +43,7 @@ position = Vector2( 5, 0 )
 position = Vector2( -5, 0 )
 
 [node name="BorderDetector" type="Position2D" parent="."]
-position = Vector2( -6, -32 )
+position = Vector2( 16, -32 )
 
 [node name="PlayerCollider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -16 )

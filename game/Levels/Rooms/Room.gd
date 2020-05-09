@@ -21,6 +21,9 @@ onready var level: LevelState = get_parent()
 func _ready() -> void:
 	room_name = self.name
 	
+	if Game.get_player_current_room() == room_name:
+		$SaveArea/CollisionShape2D.set_deferred("disabled", true)
+	
 	if get_node("Sensors"):
 		get_sensors()
 
@@ -39,10 +42,15 @@ func _on_SaveArea_body_entered(body: Node) -> void:
 		Game.set_player_respawn_position(respawn_point.global_position)
 		Game.set_player_current_room(room_name)
 		Game.set_camera_start(room_row_col)
-		if !already_save:
-			level.saving_notice()
-			already_save = true
-			$SaveArea/PassRoom.play()
+		
+		level.saving_notice()
+		$SaveArea/PassRoom.play()
+		$SaveArea/CollisionShape2D.set_deferred("disabled", true)
+		
+#		if !already_save:
+#			level.saving_notice()
+#			already_save = true
+#			$SaveArea/PassRoom.play()
 #		print("saved at {rp}".format({'rp': respawn_point.global_position}))
 
 func activate_sensor() -> void:
