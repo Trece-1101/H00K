@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/Levels/LevelState.gd"
 }, {
+"base": "Line2D",
+"class": "PathPoints",
+"language": "GDScript",
+"path": "res://game/Objects/Pathpoints.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -77,6 +82,7 @@ _global_script_class_icons={
 "Hook": "",
 "HookTarget": "",
 "LevelState": "",
+"PathPoints": "",
 "Player": "",
 "Room": "",
 "State": "",
