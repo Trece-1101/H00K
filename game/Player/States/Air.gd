@@ -22,6 +22,7 @@ get_momentum = variable que indica si al saltar se mantiene la velocidad horizon
 var _is_jump_interrupted: bool
 var _is_jumping: bool
 var _jump_after_hook: bool = false
+var _key_pushing: bool = false
 
 #### onready variables
 onready var move: = get_parent()
@@ -33,7 +34,7 @@ onready var jump_delay: Timer = $JumpDelay
 #### Metodos
 func unhandled_input(event: InputEvent) -> void:	
 	if event.is_action_pressed("jump"):
-		var virtual_wall_normal:int
+		var virtual_wall_normal: int
 		if check_if_can_wall_jump()["can"]:
 			virtual_wall_normal = check_if_can_wall_jump()["normal"]
 			_state_machine.transition_to("Move/Wall", 
@@ -53,6 +54,11 @@ func unhandled_input(event: InputEvent) -> void:
 				_jump_after_hook = false
 	else:
 		move.unhandled_input(event)
+	
+	if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_A):
+		_key_pushing = true
+	else:
+		_key_pushing = false
 
 
 func physics_process(delta: float) -> void:
@@ -98,7 +104,8 @@ func physics_process(delta: float) -> void:
 #			or Input.is_action_pressed("aim_joy_right"))):
 #				_state_machine.transition_to("Ledge", {move_state = move})
 	
-	if owner.is_on_wall() and owner.is_getting_input() and move.velocity.y >= 0.0:
+	
+	if owner.is_on_wall() and (owner.is_getting_input() or _key_pushing) and move.velocity.y >= 0.0:
 		var wall_normal: float = owner.get_slide_collision(0).normal.x
 		_state_machine.transition_to("Move/Wall", 
 			{"normal": wall_normal, "velocity": move.velocity})
