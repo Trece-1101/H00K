@@ -9,6 +9,7 @@ func _ready() -> void:
 
 func explode() -> void:
 	explosion_area.set_deferred("disabled", false)
+	$AudioStreamPlayer.play()
 	$AnimatedSprite.play("explosion")
 
 func disable_area() -> void:

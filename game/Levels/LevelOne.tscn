@@ -186,7 +186,7 @@ position = Vector2( 1921.32, 46.113 )
 [node name="Sensors" type="Node" parent="Room2"]
 
 [node name="Orugacop" parent="Room2" instance=ExtResource( 15 )]
-position = Vector2( 1557.94, 255.37 )
+position = Vector2( 1561.75, 256.341 )
 
 [node name="Room3" type="Node" parent="."]
 script = ExtResource( 8 )
