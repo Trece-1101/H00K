@@ -26,6 +26,7 @@ var _wall_normal: float = -1.0
 var _velocity: Vector2 = Vector2.ZERO
 var _pushing_against_wall: bool = true
 var is_moving_away_from_wall: bool = false
+var is_sliding: bool = false
 
 #### onready variables
 onready var move: = get_parent()
@@ -39,6 +40,10 @@ func unhandled_input(_event: InputEvent) -> void:
 		jump()
 
 func physics_process(delta: float) -> void:
+	if (owner.right_wall_detector.head_at_wall_level() or owner.left_wall_detector.head_at_wall_level()) and !is_sliding:
+		is_sliding = true
+		owner.skin.play("wallslide")
+	
 	if ((sign(_wall_normal) > 0.0 and Input.is_action_pressed("move_left")) 
 		or (sign(_wall_normal) < 0.0 and Input.is_action_pressed("move_right"))):
 		_pushing_against_wall = true
@@ -83,7 +88,8 @@ func physics_process(delta: float) -> void:
 func enter(msg: Dictionary = {}) -> void:
 	move.enter(msg)
 	
-	owner.skin.play("wallslide")
+	if owner.right_wall_detector.head_at_wall_level() or owner.left_wall_detector.head_at_wall_level():
+		owner.skin.play("wallslide")
 	#owner.skin.connect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
 	
 	move.get_node("Air")._jump_after_hook = false
@@ -108,5 +114,6 @@ func jump() -> void:
 
 func exit() -> void:
 	#owner.skin.disconnect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
+	is_sliding = false
 	move.exit()
 ################################################################################

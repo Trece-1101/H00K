@@ -64,7 +64,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 max_speed_default = Vector2( 300, 800 )
-acceleration_default = Vector2( 1800, 1600 )
+acceleration_default = Vector2( 2000, 1600 )
 max_speed_fall = 550.0
 jump_impulse = 560.0
 fatality_impulse = 650.0
