@@ -21,11 +21,6 @@ texture = ExtResource( 1 )
 position = Vector2( 0, -1.89388 )
 shape = SubResource( 1 )
 
-[node name="Activated" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-volume_db = -30.0
-bus = "Sensor"
-
 [node name="PlayerHologram" type="Sprite" parent="."]
 visible = false
 modulate = Color( 0.188235, 0.631373, 0.901961, 0.411765 )
@@ -33,4 +28,9 @@ position = Vector2( 0, -21.5297 )
 texture = ExtResource( 4 )
 vframes = 6
 hframes = 16
+
+[node name="Activated" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -30.0
+bus = "Sensor"
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

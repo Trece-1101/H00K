@@ -1,12 +1,19 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://game/UI/Menus/Buttons/MenuButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Sounds/SFX/Buttons/Interface_UI_15.wav" type="AudioStream" id=2]
 
 [node name="LoadGameButton" instance=ExtResource( 1 )]
+margin_right = 320.0
+rect_min_size = Vector2( 320, 45 )
 
 [node name="Label" parent="." index="0"]
 custom_constants/shadow_offset_x = 3
 text = "Cargar Partida"
 
 [node name="Sprite" parent="." index="1"]
-position = Vector2( 321.851, 27.2672 )
+position = Vector2( 305.091, 24.4738 )
+
+[node name="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource( 2 )
+bus = "Button"

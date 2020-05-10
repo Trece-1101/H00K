@@ -156,7 +156,7 @@ position = Vector2( 225.884, 481.004 )
 position = Vector2( 655.18, 272.146 )
 
 [node name="SaveArea" parent="Room1" instance=ExtResource( 10 )]
-position = Vector2( 155.598, 431.082 )
+position = Vector2( 163.301, 431.082 )
 
 [node name="RespawnPoint" parent="Room1/SaveArea" index="1"]
 position = Vector2( 38.5429, 49 )
@@ -177,10 +177,10 @@ position = Vector2( 1402.9, 135.829 )
 position = Vector2( 1666.71, 93.4211 )
 
 [node name="SaveArea" parent="Room2" instance=ExtResource( 10 )]
-position = Vector2( 982.235, 430.771 )
+position = Vector2( 989.263, 428.771 )
 
 [node name="RespawnPoint" parent="Room2/SaveArea" index="1"]
-position = Vector2( 46.1739, 49 )
+position = Vector2( 90.5418, 51 )
 
 [node name="Door" parent="Room2" instance=ExtResource( 5 )]
 position = Vector2( 1911.81, 45.6373 )
@@ -191,20 +191,10 @@ position = Vector2( 1911.81, 45.6373 )
 position = Vector2( 1561.75, 256.341 )
 
 [node name="MovingPlatform" parent="Room2" instance=ExtResource( 16 )]
-position = Vector2( 1355.74, 358.483 )
-speed = 350.0
-wait_time = 0.2
+position = Vector2( 1360.01, 281 )
 
 [node name="Pathpoints" parent="Room2/MovingPlatform" instance=ExtResource( 17 )]
-points = PoolVector2Array( 1359.54, 359.844, 1358.74, 122.082, 1719.09, 121.384, 1719.79, 361.614 )
-
-[node name="MovingPlatform2" parent="Room2" instance=ExtResource( 16 )]
-position = Vector2( 1716.25, 120.58 )
-speed = 350.0
-wait_time = 0.2
-
-[node name="Pathpoints" parent="Room2/MovingPlatform2" instance=ExtResource( 17 )]
-points = PoolVector2Array( 1718.33, 120.479, 1718.96, 361.237, 1359.72, 358.086, 1356.56, 121.11 )
+points = PoolVector2Array( 1359.48, 79.3949, 1720.62, 78.1344, 1719.99, 398.934, 1358.85, 400.825 )
 
 [node name="Room3" type="Node" parent="."]
 script = ExtResource( 8 )
@@ -269,7 +259,7 @@ position = Vector2( 3175.31, 831.16 )
 position = Vector2( 3280.65, 705.958 )
 
 [node name="SaveArea" parent="Room5" instance=ExtResource( 10 )]
-position = Vector2( 2903.14, 974.639 )
+position = Vector2( 2915.43, 974.639 )
 
 [node name="Door" parent="Room5" instance=ExtResource( 5 )]
 position = Vector2( 3839.39, 800.713 )

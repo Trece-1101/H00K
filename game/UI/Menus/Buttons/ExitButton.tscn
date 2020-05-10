@@ -1,12 +1,18 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://game/UI/Menus/Buttons/MenuButton.tscn" type="PackedScene" id=1]
-
+[ext_resource path="res://assets/Sounds/SFX/Buttons/Interface_UI_17.wav" type="AudioStream" id=2]
 
 [node name="ExitButton" instance=ExtResource( 1 )]
+margin_right = 130.0
+rect_min_size = Vector2( 145, 45 )
 
 [node name="Label" parent="." index="0"]
 text = "Salir"
 
 [node name="Sprite" parent="." index="1"]
-position = Vector2( 147.829, 24.2672 )
+position = Vector2( 127.577, 26.3622 )
+
+[node name="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource( 2 )
+bus = "Button"

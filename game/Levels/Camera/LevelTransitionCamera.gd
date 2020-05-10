@@ -1,3 +1,4 @@
+class_name LevelTransitionCamera
 extends Camera2D
 
 ################################################################################
@@ -5,6 +6,8 @@ extends Camera2D
 export var start_room_fila: int = 1
 export var start_room_columna: int = 1
 export var transition_time: float = 0.5
+export var shake_displacement: Vector2 = Vector2(30.0, 30.0)
+export var shake_speed: float = 0.06
 
 #### Variables
 var steping := false
@@ -18,6 +21,7 @@ onready var step_x = ProjectSettings.get("display/window/size/width")
 onready var step_y = ProjectSettings.get("display/window/size/height")
 onready var player: Player = get_parent().get_node("Player")
 onready var tween: Tween = $Tween
+onready var shake_tween: Tween = $ShakeTween
 onready var timer: Timer = $Timer
 onready var transition := false
 ################################################################################
@@ -85,7 +89,6 @@ func move_camera(move_to: String) -> void:
 #	print("global_position {gp}".format({'gp': global_position}))
 #	print("new_global_position {ngp}".format({'ngp': new_global_position}))
 	smooth_transition(new_global_position)
-	
 
 func smooth_transition(new_global_position: Vector2) -> void:
 	get_tree().paused = true
@@ -110,6 +113,20 @@ func set_death_count_label() -> void:
 	$LabelDeathCount.text = "x{death}".format({"death": Game.get_player_death_count()})
 	($AnimationPlayer as AnimationPlayer).play("show_death_count")
 	#$AnimationPlayer.play("show_death_count")
+
+func camara_shake() -> void:
+	var shake_x = rand_range(-shake_displacement.x, shake_displacement.x)
+	var shake_y = rand_range(-shake_displacement.y, shake_displacement.y)
+	shake_tween.interpolate_property(
+		self,
+		"offset",
+		Vector2(shake_x, shake_y),
+		Vector2.ZERO,
+		shake_speed,
+		Tween.TRANS_SINE,
+		tween.EASE_IN_OUT)
+	
+	shake_tween.start()
 
 func _on_Timer_timeout() -> void:
 	transition = false

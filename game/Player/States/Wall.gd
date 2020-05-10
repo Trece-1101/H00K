@@ -91,6 +91,8 @@ func physics_process(delta: float) -> void:
 func enter(msg: Dictionary = {}) -> void:
 	move.enter(msg)
 	
+	owner.slide_sound.play()
+	
 	if owner.right_wall_detector.head_at_wall_level() or owner.left_wall_detector.head_at_wall_level():
 		owner.skin.play("wallslide")
 	#owner.skin.connect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
@@ -111,6 +113,8 @@ func jump() -> void:
 		wall_jump = true,
 		is_jumping = true
 	}
+	
+	owner.jump_sound.play()
 #	if is_moving_away_from_wall or !owner.is_getting_input():
 #		owner.wall_detector.scale.x *= -1
 	_state_machine.transition_to("Move/Air", msg)

@@ -11,19 +11,23 @@ export var can_slowmo: bool = true
 #### Variables
 var is_active := true setget set_is_active
 var is_alive: bool = true setget set_is_alive, get_is_alive
-var current_room: Room = null setget set_current_room, get_current_room
+#var current_room: Room = null setget set_current_room, get_current_room
 
 #### variables onready
 onready var state_machine: StateMachine = $StateMachine
 onready var move: State = $StateMachine/Move
-onready var player_collider: CollisionShape2D = $PlayerCollider
 onready var hook: Hook = $Hook
+onready var player_collider: CollisionShape2D = $PlayerCollider
 onready var skin: Node2D = $PlayerSkin
 onready var left_wall_detector: WallDetector = $LeftWallDetector
 onready var right_wall_detector: WallDetector = $RightWallDetector
 onready var floor_detector: FloorDetector = $FloorDetector
 onready var border_detector: Position2D = $BorderDetector
 onready var respawn_sound: AudioStreamPlayer = $SFX/Respawn
+onready var jump_sound: AudioStreamPlayer = $SFX/Jump
+onready var hook_sound: AudioStreamPlayer = $SFX/Hook
+onready var slide_sound: AudioStreamPlayer = $SFX/Slide
+onready var impulse_sound: AudioStreamPlayer = $SFX/Impulse
 ################################################################################
 
 ################################################################################
@@ -42,18 +46,17 @@ func get_is_alive() -> bool:
 func set_is_alive(value: bool) -> void:
 	is_alive = value
 
-func set_current_room(room: Room) -> void:
-	current_room = room
-
-func get_current_room() -> Room:
-	return current_room
-
+#func set_current_room(room: Room) -> void:
+#	current_room = room
+#
+#func get_current_room() -> Room:
+#	return current_room
 ################################################################################
 ## TODO: solo DEBUG. REMOVER para version release
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_restart"):
 		get_tree().reload_current_scene()
-	
+
 #	if event.is_action_pressed("debug_player_die"):
 #		self.state_machine.transition_to("Die")
 

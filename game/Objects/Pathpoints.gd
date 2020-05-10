@@ -60,7 +60,7 @@ func get_next_position() -> Vector2:
 			current_point_position = (current_point_position + 1) % points.size()
 		Mode.PING_PONG:
 			var index: int = current_point_position + direction
-			if index < 0 or index == points.size() -1:
+			if index < 0 or index == points.size():
 				direction *= -1
 			current_point_position += direction
 	

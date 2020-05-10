@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://game/Player/States/Spawn.gd" type="Script" id=1]
 [ext_resource path="res://game/Player/States/Run.gd" type="Script" id=2]
@@ -16,7 +16,11 @@
 [ext_resource path="res://game/Player/States/Debug.gd" type="Script" id=14]
 [ext_resource path="res://game/Player/States/Wall.gd" type="Script" id=15]
 [ext_resource path="res://game/Player/RightWallDetector.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/Sounds/SFX/jump_2.wav" type="AudioStream" id=17]
 [ext_resource path="res://game/Player/FloorDetector.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/Sounds/SFX/wall_slide_1.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/Sounds/SFX/hook_1.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/Sounds/SFX/impulse_1.wav" type="AudioStream" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 15 )
@@ -117,4 +121,22 @@ script = ExtResource( 14 )
 [node name="Respawn" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 13 )
 volume_db = -25.0
+pitch_scale = 2.0
+
+[node name="Jump" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 17 )
+volume_db = -40.0
+
+[node name="Slide" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 19 )
+volume_db = -30.0
+
+[node name="Hook" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 20 )
+volume_db = -30.0
+pitch_scale = 1.5
+
+[node name="Impulse" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 21 )
+volume_db = -40.0
 pitch_scale = 2.0
