@@ -52,6 +52,7 @@ func unhandled_input(event: InputEvent) -> void:
 					
 				_is_jumping = true
 				_jump_after_hook = false
+				owner.jump_sound.play()
 	else:
 		move.unhandled_input(event)
 	
@@ -156,6 +157,7 @@ func check_if_can_wall_jump() -> Dictionary:
 
 func jump() -> void:
 	move.velocity += calculate_jump_velocity(move.jump_impulse)
+	owner.jump_sound.play()
 
 func fatality() -> void:
 	#move.velocity.y = 0.0

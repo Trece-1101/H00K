@@ -53,3 +53,4 @@ func get_last_door_closed() -> Dictionary:
 #### Metodos
 func increment_death_count() -> void:
 	player_death_count += 1
+################################################################################

@@ -73,8 +73,11 @@ z_index = 100
 current = true
 script = ExtResource( 1 )
 transition_time = 0.8
+shake_displacement = Vector2( 2.2, 3.2 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="ShakeTween" type="Tween" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

@@ -22,3 +22,10 @@ enabled = true
 exclude_parent = false
 cast_to = Vector2( 8, 0 )
 collision_mask = 2
+
+[node name="Head" type="RayCast2D" parent="."]
+position = Vector2( 12, -34 )
+enabled = true
+exclude_parent = false
+cast_to = Vector2( 8, 0 )
+collision_mask = 2

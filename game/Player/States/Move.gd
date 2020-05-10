@@ -59,8 +59,9 @@ func physics_process(delta: float) -> void:
 	
 	velocity = calculate_velocity(velocity, max_speed, acceleration, delta,
 	get_move_direction(), max_speed_fall)
-
-	velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
+	
+	velocity = owner.move_and_slide_with_snap(velocity, Vector2.DOWN * 20.0, owner.FLOOR_NORMAL)
+	#velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
 	#Events.emit_signal("player_moved", owner)
 	
 func _on_Hook_hooked_onto_target(target_global_position: Vector2, hooking_animation: String) -> void:
@@ -114,7 +115,7 @@ static func get_move_direction() -> Vector2:
 	)
 
 static func get_sprite_direction(last_direction: float) -> float:
-	var direction:float = get_move_direction().x
+	var direction: float = get_move_direction().x
 	var result
 	
 	if direction == 0.0:
