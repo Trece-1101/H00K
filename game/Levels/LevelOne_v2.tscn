@@ -377,7 +377,27 @@ position = Vector2( 11587, 160.587 )
 [node name="HookTargets" type="Node" parent="Room15"]
 
 [node name="HookTarget19" parent="Room15/HookTargets" instance=ExtResource( 1 )]
-position = Vector2( 12025.9, 78.0221 )
+position = Vector2( 12024.3, 78.0221 )
+
+[node name="Room16" parent="." instance=ExtResource( 3 )]
+room_row_col = Vector2( 2, 13 )
+
+[node name="SaveArea" parent="Room16" index="0"]
+position = Vector2( 11631.5, 672.871 )
+
+[node name="CollisionShape2D" parent="Room16/SaveArea" index="0"]
+rotation = 1.5708
+
+[node name="RespawnPoint" parent="Room16/SaveArea" index="1"]
+position = Vector2( 0, 30 )
+
+[node name="Door" parent="Room16" index="1"]
+position = Vector2( 11413.6, 778.323 )
+
+[node name="HookTargets" type="Node" parent="Room16"]
+
+[node name="HookTarget20" parent="Room16/HookTargets" instance=ExtResource( 1 )]
+position = Vector2( 11969.5, 709.309 )
 
 [node name="TileMaps" type="Node" parent="."]
 
@@ -404,7 +424,7 @@ __meta__ = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 12399.4, 206.872 )
+position = Vector2( 11625.2, 703.95 )
 
 [node name="StateMachine" parent="Player" index="7"]
 initial_state = NodePath("../../../LevelOne/Player/StateMachine/Spawn")
@@ -412,6 +432,7 @@ initial_state = NodePath("../../../LevelOne/Player/StateMachine/Spawn")
 [node name="LevelTransitionCamera" parent="." instance=ExtResource( 2 )]
 modulate = Color( 0.509804, 0.0470588, 0.0470588, 1 )
 position = Vector2( 12000, 810 )
+start_room_fila = 2
 start_room_columna = 13
 
 [editable path="Room1"]
@@ -453,5 +474,9 @@ start_room_columna = 13
 [editable path="Room15"]
 
 [editable path="Room15/SaveArea"]
+
+[editable path="Room16"]
+
+[editable path="Room16/SaveArea"]
 
 [editable path="Player"]
