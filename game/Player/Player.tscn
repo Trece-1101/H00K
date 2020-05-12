@@ -55,6 +55,7 @@ shape = SubResource( 1 )
 
 [node name="FloorDetector" parent="." instance=ExtResource( 18 )]
 position = Vector2( 0, -0.995771 )
+collide_with_areas = true
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
