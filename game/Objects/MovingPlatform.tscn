@@ -1,19 +1,27 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game/Objects/MovingPlatform.gd" type="Script" id=1]
-[ext_resource path="res://assets/Sprites/icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/Sprites/Npc/PlataformaMovil/PlataformaMovilVerde2.png" type="Texture" id=2]
+[ext_resource path="res://assets/Sprites/Npc/PlataformaMovil/PlataformaMovilVerde3.png" type="Texture" id=3]
+[ext_resource path="res://assets/Sprites/Npc/PlataformaMovil/PlataformaMovilVerde1.png" type="Texture" id=4]
+
+[sub_resource type="AnimatedTexture" id=2]
+frames = 3
+frame_0/texture = ExtResource( 4 )
+frame_1/texture = ExtResource( 2 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 3 )
+frame_2/delay_sec = 0.0
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 25.694, 7.73508 )
+extents = Vector2( 32.0683, 8.04166 )
 
 [node name="MovingPlatform" type="KinematicBody2D"]
 motion/sync_to_physics = true
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0, 0, 0, 1 )
-scale = Vector2( 0.792207, 0.245641 )
-texture = ExtResource( 2 )
+texture = SubResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
 playback_process_mode = 0
@@ -27,6 +35,7 @@ process_mode = 0
 one_shot = true
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+position = Vector2( 0, -0.0537338 )
 scale = Vector2( 8.09614, 4.69498 )
 process_parent = true
 physics_process_parent = true
