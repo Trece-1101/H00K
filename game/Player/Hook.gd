@@ -15,6 +15,8 @@ var target_global_position: = Vector2.INF
 var velocity: = Vector2.ZERO
 var release_from_hook:bool = false
 var hooking_animation : String = ""
+
+
 ################################################################################
 
 ################################################################################
@@ -70,9 +72,8 @@ func enter(msg: Dictionary = {}) -> void:
 	owner.hook_sound.play()
 	owner.skin.play(hooking_animation)
 	owner.skin.connect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
-	
-	## TODO: buscarle otra vuelta a esto
-	owner.get_parent().get_node("LevelTransitionCamera").camara_shake()
+
+	owner.level_camera.camara_shake()
 
 func exit() -> void:
 	owner.skin.disconnect("animation_finished", self, "_on_PlayerAnimation_animation_finished")

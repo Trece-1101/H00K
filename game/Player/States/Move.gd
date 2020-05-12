@@ -8,7 +8,7 @@ o usar funcionalidades de él
 ################################################################################
 #### variables
 var velocity: Vector2 = Vector2.ZERO
-var transition_move: int = 40
+var transition_move: int = 45
 
 #### export variables
 export var max_speed_default: Vector2 = Vector2(220.0, 800.0)

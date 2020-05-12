@@ -28,6 +28,7 @@ onready var jump_sound: AudioStreamPlayer = $SFX/Jump
 onready var hook_sound: AudioStreamPlayer = $SFX/Hook
 onready var slide_sound: AudioStreamPlayer = $SFX/Slide
 onready var impulse_sound: AudioStreamPlayer = $SFX/Impulse
+onready var level_camera := get_parent().get_node("LevelTransitionCamera")
 ################################################################################
 
 ################################################################################
@@ -45,12 +46,6 @@ func get_is_alive() -> bool:
 
 func set_is_alive(value: bool) -> void:
 	is_alive = value
-
-#func set_current_room(room: Room) -> void:
-#	current_room = room
-#
-#func get_current_room() -> Room:
-#	return current_room
 ################################################################################
 ## TODO: solo DEBUG. REMOVER para version release
 func _unhandled_input(event: InputEvent) -> void:

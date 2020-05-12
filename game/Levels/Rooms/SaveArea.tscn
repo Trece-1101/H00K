@@ -3,10 +3,11 @@
 [ext_resource path="res://assets/Sounds/SFX/pass_room_1.wav" type="AudioStream" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 2.75703, 78.466 )
+extents = Vector2( 12.589, 78.466 )
 
 [node name="SaveArea" type="Area2D"]
-modulate = Color( 0.00392157, 0.501961, 0, 1 )
+modulate = Color( 1, 0.890196, 0, 1 )
+z_index = 1
 collision_layer = 64
 __meta__ = {
 "_edit_group_": true
