@@ -1,12 +1,13 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/Tilesets/LevelOne.tres" type="TileSet" id=1]
+[ext_resource path="res://game/Levels/LevelOne.tres" type="TileSet" id=1]
 [ext_resource path="res://game/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/Levels/Rooms/Room.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game/Levels/Camera/LevelTransitionCamera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/Objects/HookTarget.tscn" type="PackedScene" id=5]
 [ext_resource path="res://game/Objects/Door.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game/Levels/LevelState.gd" type="Script" id=7]
+
 
 [node name="PrototypeTransition" type="Node2D"]
 script = ExtResource( 7 )

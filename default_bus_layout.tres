@@ -9,7 +9,7 @@ resource_name = "Reverb"
 [sub_resource type="AudioEffectFilter" id=3]
 resource_name = "Filter"
 
-[sub_resource type="AudioEffectReverb" id=5]
+[sub_resource type="AudioEffectReverb" id=4]
 resource_name = "Reverb"
 
 [resource]
@@ -32,5 +32,5 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = -15.7883
 bus/2/send = "Master"
-bus/2/effect/0/effect = SubResource( 5 )
+bus/2/effect/0/effect = SubResource( 4 )
 bus/2/effect/0/enabled = true
