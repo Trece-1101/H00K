@@ -26,7 +26,7 @@ onready var border_detector: Position2D = $BorderDetector
 onready var respawn_sound: AudioStreamPlayer = $SFX/Respawn
 onready var jump_sound: AudioStreamPlayer = $SFX/Jump
 onready var hook_sound: AudioStreamPlayer = $SFX/Hook
-onready var slide_sound: AudioStreamPlayer = $SFX/Slide
+onready var die_sound: AudioStreamPlayer = $SFX/Die
 onready var impulse_sound: AudioStreamPlayer = $SFX/Impulse
 onready var level_camera := get_parent().get_node("LevelTransitionCamera")
 ################################################################################
@@ -37,7 +37,8 @@ func set_is_active(value: bool) -> void:
 	is_active = value
 	if not player_collider:
 		return
-	player_collider.disabled = not value
+	#player_collider.disabled = not value
+	player_collider.call_deferred("disabled", not value)
 	## TODO: refactorizar esto cuando se implemente el daño
 	hook.set_is_active(value)
 

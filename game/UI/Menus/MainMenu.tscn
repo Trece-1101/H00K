@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://game/UI/Menus/Buttons/NewGameButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Fonts/Revamped.otf" type="DynamicFontData" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://game/UI/Menus/Buttons/LoadGameButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/Backgrounds/MainMenuFalopa.png" type="Texture" id=8]
 [ext_resource path="res://game/UI/Menus/MainMenu.gd" type="Script" id=9]
+[ext_resource path="res://assets/Sounds/Music/main_menu.ogg" type="AudioStream" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 54
@@ -184,3 +185,8 @@ align = 2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fade_in = SubResource( 3 )
 anims/fade_out = SubResource( 4 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+autoplay = true
+bus = "Music"

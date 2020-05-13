@@ -8,6 +8,7 @@ func _on_PlayerAnimation_animation_finished(_animation_name: String) -> void:
 
 func enter(_msg: Dictionary = {}) -> void:
 	Game.set_player_last_state("Die")
+	owner.die_sound.play()
 	owner.skin.play("die")
 	owner.skin.connect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
 

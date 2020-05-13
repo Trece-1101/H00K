@@ -116,6 +116,7 @@ Settings="*res://game/Autoloads/Settings.gd"
 Utils="*res://game/Autoloads/Utils.gd"
 DrawingUtils="*res://game/Autoloads/DrawingUtils.gd"
 Game="*res://game/Autoloads/Game.gd"
+GlobalMusic="*res://game/Autoloads/GlobalMusic.tscn"
 
 [debug]
 
