@@ -1,4 +1,4 @@
 extends Node
 
 
-signal player_moved(player)
+#signal player_moved(player)

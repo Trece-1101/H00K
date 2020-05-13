@@ -31,7 +31,7 @@ func _ready() -> void:
 		return
 	_setup()
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	_update()
 
 func _setup() -> void:

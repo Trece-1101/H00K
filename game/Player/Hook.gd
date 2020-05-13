@@ -15,6 +15,8 @@ var target_global_position: = Vector2.INF
 var velocity: = Vector2.ZERO
 var release_from_hook:bool = false
 var hooking_animation : String = ""
+
+
 ################################################################################
 
 ################################################################################
@@ -27,13 +29,13 @@ func physics_process(delta: float) -> void:
 		HOOK_MAX_SPEED
 	)
 
-	var low_speed = false
+	var _low_speed = false
 
 	if new_velocity.length() > arrive_push:
 		new_velocity = new_velocity
 	else:
 		new_velocity = new_velocity.normalized() * arrive_push
-		low_speed = true
+		_low_speed = true
 	
 	if owner.is_on_ceiling():
 		_state_machine.transition_to("Move/Air", 
@@ -49,21 +51,29 @@ func physics_process(delta: float) -> void:
 		velocity = velocity.normalized() * arrive_push
 		_state_machine.transition_to("Move/Air", 
 			{velocity = velocity, can_jump_after_hook = jump_after_hook})
+		owner.impulse_sound.play()
 	else:
 		if release_from_hook:
 			_state_machine.transition_to("Move/Air", 
 			{velocity = velocity * 0.6, can_jump_after_hook = jump_after_hook})
+			owner.impulse_sound.play()
 
 func enter(msg: Dictionary = {}) -> void:	
 	release_from_hook = false
 	match msg:
+# warning-ignore:unassigned_variable
+# warning-ignore:unassigned_variable
+# warning-ignore:unassigned_variable
 		{"target_global_position": var tgp, "velocity": var v, "hooking_animation": var animation}:
 			target_global_position = tgp
 			velocity = v
 			hooking_animation = animation
-
+	
+	owner.hook_sound.play()
 	owner.skin.play(hooking_animation)
 	owner.skin.connect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
+
+	owner.level_camera.camara_shake()
 
 func exit() -> void:
 	owner.skin.disconnect("animation_finished", self, "_on_PlayerAnimation_animation_finished")

@@ -12,6 +12,7 @@ func set_hooking_angle(value: float) -> void:
 	hooking_angle = value
 
 func set_hooking_animation() -> void:
+	#hooking_animation = "jumphook_mid"
 	if ((hooking_angle >= -30.00 and hooking_angle <= 30.00) or 
 			(hooking_angle >= 165.00 and hooking_angle <= 190.00) or
 			(hooking_angle <= -165.00 and hooking_angle >= -190.00)):
@@ -36,7 +37,7 @@ func physics_process(delta: float) -> void:
 func _on_Cooldown_timeout() -> void:
 	_state_machine.transition_to("Aim")
 
-func enter(msg: Dictionary = {}) -> void:
+func enter(_msg: Dictionary = {}) -> void:
 	owner.cooldown.connect("timeout", self, "_on_Cooldown_timeout", [], CONNECT_ONESHOT)	
 	#owner.is_aiming = false
 	owner.cooldown.start()

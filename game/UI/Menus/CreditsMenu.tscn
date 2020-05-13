@@ -1,0 +1,16 @@
+[gd_scene format=2]
+
+[node name="CreditsMenu" type="Control"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 443.213
+margin_top = 278.697
+margin_right = 506.213
+margin_bottom = 292.697
+text = "CREDITOS"
+__meta__ = {
+"_edit_use_anchors_": false
+}

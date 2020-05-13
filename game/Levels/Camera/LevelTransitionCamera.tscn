@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://game/Levels/Camera/LevelTransitionCamera.gd" type="Script" id=1]
 [ext_resource path="res://assets/Fonts/Revamped.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/Fonts/Seven Oh Ess 8x8 Monospaced.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/Sprites/skull.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 13
@@ -67,21 +68,72 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("skull:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("skull:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("skull:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -53.0209, 1.62278 ), Vector2( -53.0209, 1.62278 ), Vector2( 359.387, -228.925 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("LabelDeathCount:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -28, -9 ), Vector2( -28, -9 ), Vector2( 384.408, -239.548 ) ]
+}
 
 [node name="LevelTransitionCamera" type="Camera2D"]
 z_index = 100
 current = true
 script = ExtResource( 1 )
 transition_time = 0.8
+shake_displacement = Vector2( 2.2, 3.2 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="ShakeTween" type="Tween" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="Label" type="Label" parent="."]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 0.0588235 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -95,6 +147,13 @@ text = "Guardando..."
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="skull" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -53.0209, 1.62278 )
+scale = Vector2( 3.82769, 3.8277 )
+texture = ExtResource( 4 )
 
 [node name="LabelDeathCount" type="Label" parent="."]
 visible = false

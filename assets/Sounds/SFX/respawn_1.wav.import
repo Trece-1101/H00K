@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/respawn_1.wav-c114339eaa0c771b25f1f8347b9a4d69.sample"
+
+[deps]
+
+source_file="res://assets/Sounds/SFX/respawn_1.wav"
+dest_files=[ "res://.import/respawn_1.wav-c114339eaa0c771b25f1f8347b9a4d69.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

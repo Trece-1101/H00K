@@ -75,8 +75,7 @@ func _on_body_entered(body: Node) -> void:
 #		if parent_name == "EnemyBase":
 #			queue_free()
 
-func _on_body_exited(body: Node) -> void:
-	pass
+#func _on_body_exited(body: Node) -> void:
 #	if body.name == "Player" and parent_name == "EnemyTest":
 #		body.slowmo()
 ################################################################################

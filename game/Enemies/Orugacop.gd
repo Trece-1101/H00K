@@ -18,9 +18,9 @@ func _ready() -> void:
 	velocity.x = start_velocity.x
 	velocity.x *= move_direction.x
 	velocity.y = gravity
-	mirror_detectors()	
+	mirror_detectors()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if can_move:
 		move_and_slide(velocity)
 		if !void_detector.is_colliding():

@@ -7,7 +7,16 @@
 [node name="Room" type="Node"]
 script = ExtResource( 2 )
 
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color( 0.784314, 0.345098, 0.972549, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="SaveArea" parent="." instance=ExtResource( 1 )]
+z_index = 30
 
 [node name="Door" parent="." instance=ExtResource( 3 )]
 

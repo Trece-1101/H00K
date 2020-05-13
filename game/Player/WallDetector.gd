@@ -8,6 +8,7 @@ export var is_active:bool = true
 #### onready variables
 onready var ray_bottom: RayCast2D = $RayBottom
 onready var ray_top: RayCast2D = $RayTop
+onready var head: RayCast2D = $Head
 ################################################################################
 
 ################################################################################
@@ -22,6 +23,12 @@ func is_against_ledge() -> bool:
 
 func is_against_wall() -> bool:
 	return is_active and (ray_bottom.is_colliding() or ray_top.is_colliding())
+
+func is_all_body_against_wall() -> bool:
+	return is_active and (ray_bottom.is_colliding() or ray_top.is_colliding() or head.is_colliding())
+
+func head_at_wall_level() -> bool:
+	return head.is_colliding()
 
 func get_cast_to_direction() -> Vector2:
 	return ray_top.cast_to * scale
