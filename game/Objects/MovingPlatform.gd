@@ -47,6 +47,7 @@ func _on_Timer_timeout() -> void:
 	var distance_to_target := position.distance_to(target_position)
 	tween.interpolate_property(self, "position", position, target_position, distance_to_target / speed)
 	tween.start()
+	$AudioStreamPlayer2D.play()
 
 
 func _on_Tween_tween_all_completed() -> void:

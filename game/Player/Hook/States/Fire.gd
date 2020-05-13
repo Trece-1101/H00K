@@ -12,6 +12,7 @@ func set_hooking_angle(value: float) -> void:
 	hooking_angle = value
 
 func set_hooking_animation() -> void:
+	#hooking_animation = "jumphook_mid"
 	if ((hooking_angle >= -30.00 and hooking_angle <= 30.00) or 
 			(hooking_angle >= 165.00 and hooking_angle <= 190.00) or
 			(hooking_angle <= -165.00 and hooking_angle >= -190.00)):

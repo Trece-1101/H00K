@@ -26,7 +26,7 @@ onready var border_detector: Position2D = $BorderDetector
 onready var respawn_sound: AudioStreamPlayer = $SFX/Respawn
 onready var jump_sound: AudioStreamPlayer = $SFX/Jump
 onready var hook_sound: AudioStreamPlayer = $SFX/Hook
-onready var slide_sound: AudioStreamPlayer = $SFX/Slide
+onready var die_sound: AudioStreamPlayer = $SFX/Die
 onready var impulse_sound: AudioStreamPlayer = $SFX/Impulse
 onready var level_camera := get_parent().get_node("LevelTransitionCamera")
 ################################################################################
@@ -37,7 +37,8 @@ func set_is_active(value: bool) -> void:
 	is_active = value
 	if not player_collider:
 		return
-	player_collider.disabled = not value
+	#player_collider.disabled = not value
+	player_collider.call_deferred("disabled", not value)
 	## TODO: refactorizar esto cuando se implemente el daño
 	hook.set_is_active(value)
 
@@ -47,15 +48,9 @@ func get_is_alive() -> bool:
 func set_is_alive(value: bool) -> void:
 	is_alive = value
 ################################################################################
-## TODO: solo DEBUG. REMOVER para version release
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_restart"):
-		get_tree().reload_current_scene()
-
-#	if event.is_action_pressed("debug_player_die"):
-#		self.state_machine.transition_to("Die")
 
 ################################################################################
+#### Metodos
 func _physics_process(_delta: float) -> void:
 	if is_alive:
 		check_damage()
@@ -69,19 +64,14 @@ func apply_move_impulse(impulse_direction: String) -> void:
 	move.apply_impulse(impulse_direction)
 
 func check_damage() -> void:
-#	var collision_counter = get_slide_count() - 1
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
 		if collision.collider.is_in_group("Damage") and is_alive:
 			die()
 
-#	if collision_counter > -1:
-#		var col = get_slide_collision(collision_counter)
-#		if col.collider.is_in_group("Damage"):
-#			die()
-
 func die() -> void:
 	is_alive = false
+	set_is_active(false)
 	Game.increment_death_count()
 	self.state_machine.transition_to("Die")
 ################################################################################

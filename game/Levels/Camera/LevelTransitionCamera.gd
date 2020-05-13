@@ -30,8 +30,12 @@ onready var transition := false
 ################################################################################
 #### Metodos
 func _ready() -> void:
-	pause_mode = Node.PAUSE_MODE_PROCESS
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	pause_mode = Node.PAUSE_MODE_PROCESS	
+	
+	if Game.get_main_controls() == Settings.GAMEPAD:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	if Game.get_camera_start() == Vector2.ZERO:
 		start_room_fila = start_room_fila
@@ -41,7 +45,8 @@ func _ready() -> void:
 		start_room_columna = int(Game.get_camera_start().y)
 	
 	set_start_borders()
-	set_death_count_label()
+	if Game.get_player_last_state() == "Die":
+		set_death_count_label()
 	
 	create_shake_list()
 	

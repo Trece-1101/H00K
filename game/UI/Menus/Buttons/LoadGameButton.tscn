@@ -8,12 +8,10 @@ margin_right = 320.0
 rect_min_size = Vector2( 320, 45 )
 
 [node name="Label" parent="." index="0"]
-custom_constants/shadow_offset_x = 3
 text = "Cargar Partida"
 
 [node name="Sprite" parent="." index="1"]
-position = Vector2( 305.091, 24.4738 )
+position = Vector2( 309.979, 24 )
 
 [node name="AudioStreamPlayer" parent="." index="3"]
 stream = ExtResource( 2 )
-bus = "Button"

@@ -54,10 +54,10 @@ radius = 81.8538
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 106 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 31 ), ExtResource( 27 ), ExtResource( 25 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 18 ), ExtResource( 28 ), ExtResource( 34 ), ExtResource( 33 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 30 ), ExtResource( 22 ), ExtResource( 15 ), ExtResource( 20 ), ExtResource( 8 ), ExtResource( 32 ), ExtResource( 10 ), ExtResource( 24 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 35 ), ExtResource( 17 ), ExtResource( 23 ), ExtResource( 9 ), ExtResource( 29 ), ExtResource( 26 ), ExtResource( 19 ), ExtResource( 36 ), ExtResource( 21 ), ExtResource( 37 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 41 ), ExtResource( 40 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 44 ), ExtResource( 118 ) ],
+"frames": [ ExtResource( 106 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 31 ), ExtResource( 27 ), ExtResource( 25 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 18 ), ExtResource( 28 ), ExtResource( 34 ), ExtResource( 33 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 30 ), ExtResource( 22 ), ExtResource( 15 ), ExtResource( 20 ), ExtResource( 8 ), ExtResource( 32 ), ExtResource( 10 ), ExtResource( 24 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 35 ), ExtResource( 17 ), ExtResource( 23 ), ExtResource( 9 ), ExtResource( 29 ), ExtResource( 26 ), ExtResource( 19 ), ExtResource( 36 ), ExtResource( 21 ), ExtResource( 37 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 41 ), ExtResource( 40 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 118 ) ],
 "loop": false,
 "name": "explosion",
-"speed": 40.0
+"speed": 60.0
 } ]
 
 [node name="ExplosionRange" type="Area2D"]
@@ -69,7 +69,7 @@ script = ExtResource( 121 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 3.59443, 3.14967 )
+scale = Vector2( 4.67292, 3.87361 )
 frames = SubResource( 2 )
 animation = "explosion"
 
@@ -77,4 +77,9 @@ animation = "explosion"
 stream = ExtResource( 122 )
 volume_db = -5.0
 pitch_scale = 1.2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

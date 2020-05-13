@@ -8,6 +8,7 @@ var player_last_state: String = "" setget set_player_last_state, get_player_last
 var player_current_room: String = "Room1" setget set_player_current_room, get_player_current_room
 var camera_start: Vector2 = Vector2.ZERO setget set_camera_start, get_camera_start
 var last_door_closed := {}
+var main_control := Settings.GAMEPAD
 ################################################################################
 
 ################################################################################
@@ -47,6 +48,12 @@ func set_last_door_closed(door: String, room: String) -> void:
 
 func get_last_door_closed() -> Dictionary:
 	return last_door_closed
+
+func get_main_controls():
+	return main_control
+
+func set_main_controls(value) -> void:
+	main_control = value
 ################################################################################
 
 ################################################################################

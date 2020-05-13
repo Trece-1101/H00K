@@ -27,7 +27,8 @@ onready var ray_cast: RayCast2D = $RayCast2D
 onready var arrow: Node2D = $Arrow
 onready var snap_detector: Area2D = $SnapDetector
 onready var cooldown: Timer = $Cooldown
-onready var target_circle:DrawingUtils = $TargetCircle
+onready var target_circle: DrawingUtils = $TargetCircle
+onready var arrow_indicator: Sprite = $ArrowIndicator
 ################################################################################
 
 ################################################################################
@@ -65,20 +66,20 @@ func get_is_slowmo() -> bool:
 
 ################################################################################
 #### Metodos
-func _ready() -> void:
-	if Engine.editor_hint:
-		update()
+#func _ready() -> void:
+#	if Engine.editor_hint:
+#		update()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("slowmo") and can_slowmo:
 		set_is_slowmo(true)
 
-func _draw() -> void:
-	if not Engine.editor_hint:
-		return
-	
-	var radius: float = snap_detector.calculate_length()
-	DrawingUtils.draw_circle_outline(self, Vector2.ZERO, radius, Color.lightblue)
+#func _draw() -> void:
+#	if not Engine.editor_hint:
+#		return
+#
+#	var radius: float = snap_detector.calculate_length()
+#	DrawingUtils.draw_circle_outline(self, Vector2.ZERO, radius, Color.lightblue)
 
 func can_hook() -> bool:
 	return is_active and snap_detector.has_target() and cooldown.is_stopped()
