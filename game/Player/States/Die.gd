@@ -3,7 +3,6 @@ extends State
 ################################################################################
 #### Metodos
 func _on_PlayerAnimation_animation_finished(_animation_name: String) -> void:
-	#owner.get_current_room().reset()
 	get_tree().reload_current_scene()
 	_state_machine.transition_to("Spawn")
 
