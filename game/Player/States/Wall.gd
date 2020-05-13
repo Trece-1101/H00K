@@ -91,7 +91,7 @@ func physics_process(delta: float) -> void:
 func enter(msg: Dictionary = {}) -> void:
 	move.enter(msg)
 	
-	owner.slide_sound.play()
+	#owner.slide_sound.play()
 	
 	if owner.right_wall_detector.head_at_wall_level() or owner.left_wall_detector.head_at_wall_level():
 		owner.skin.play("wallslide")

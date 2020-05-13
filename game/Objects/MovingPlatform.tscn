@@ -18,6 +18,7 @@ frame_2/delay_sec = 0.0
 extents = Vector2( 32.0683, 8.04166 )
 
 [node name="MovingPlatform" type="KinematicBody2D"]
+z_index = 36
 collision_layer = 128
 motion/sync_to_physics = true
 script = ExtResource( 1 )
