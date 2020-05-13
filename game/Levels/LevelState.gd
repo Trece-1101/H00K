@@ -19,6 +19,7 @@ func _ready() -> void:
 func close_last_door() -> void:
 	var room = get_node(close_door['room'])
 	room.get_node(close_door['door']).instant_close_door()
+	
 
 func saving_notice() -> void:
 	camera.saving()

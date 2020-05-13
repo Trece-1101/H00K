@@ -27,7 +27,9 @@ onready var ray_cast: RayCast2D = $RayCast2D
 onready var arrow: Node2D = $Arrow
 onready var snap_detector: Area2D = $SnapDetector
 onready var cooldown: Timer = $Cooldown
-onready var target_circle:DrawingUtils = $TargetCircle
+onready var target_circle: DrawingUtils = $TargetCircle
+onready var far_target_circle: DrawingUtils = $FarTargetCircle
+onready var arrow_indicator: Sprite = $ArrowIndicator
 ################################################################################
 
 ################################################################################

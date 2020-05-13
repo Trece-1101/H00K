@@ -55,7 +55,6 @@ shape = SubResource( 1 )
 
 [node name="FloorDetector" parent="." instance=ExtResource( 18 )]
 position = Vector2( 0, -0.995771 )
-cast_to = Vector2( 0, 15 )
 collide_with_areas = true
 
 [node name="StateMachine" type="Node" parent="."]
@@ -71,7 +70,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 max_speed_default = Vector2( 300, 800 )
-acceleration_default = Vector2( 2000, 1600 )
+acceleration_default = Vector2( 5000, 1600 )
 max_speed_fall = 550.0
 jump_impulse = 560.0
 fatality_impulse = 650.0

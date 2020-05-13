@@ -1213,15 +1213,13 @@ __meta__ = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 12753.4, 510.433 )
+position = Vector2( 155.494, 511.991 )
 
 [node name="StateMachine" parent="Player" index="7"]
 initial_state = NodePath("../../../LevelOne/Player/StateMachine/Spawn")
 
 [node name="LevelTransitionCamera" parent="." instance=ExtResource( 2 )]
-modulate = Color( 0.509804, 0.0470588, 0.0470588, 1 )
 position = Vector2( 14880, -2970 )
-start_room_columna = 14
 transition_time = 0.6
 
 [editable path="Room1"]
