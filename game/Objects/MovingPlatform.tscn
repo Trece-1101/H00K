@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://game/Objects/MovingPlatform.gd" type="Script" id=1]
 [ext_resource path="res://assets/Sprites/Npc/PlataformaMovil/PlataformaMovilVerde2.png" type="Texture" id=2]
 [ext_resource path="res://assets/Sprites/Npc/PlataformaMovil/PlataformaMovilVerde3.png" type="Texture" id=3]
 [ext_resource path="res://assets/Sprites/Npc/PlataformaMovil/PlataformaMovilVerde1.png" type="Texture" id=4]
+[ext_resource path="res://assets/Sounds/SFX/platform_1.wav" type="AudioStream" id=5]
 
 [sub_resource type="AnimatedTexture" id=1]
 frames = 3
@@ -40,5 +41,10 @@ position = Vector2( 0, -0.0537338 )
 scale = Vector2( 8.09614, 4.69498 )
 process_parent = true
 physics_process_parent = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+volume_db = -48.0
+pitch_scale = 3.0
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
