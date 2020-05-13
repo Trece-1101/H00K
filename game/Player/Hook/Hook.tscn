@@ -30,7 +30,6 @@ script = SubResource( 1 )
 [node name="TargetCircle" type="Node2D" parent="."]
 visible = false
 script = ExtResource( 7 )
-offset = Vector2( 40, 0 )
 
 [node name="ArrowIndicator" type="Sprite" parent="."]
 modulate = Color( 1, 0.984314, 0, 1 )
@@ -38,11 +37,6 @@ position = Vector2( 0.00522709, 0.0118542 )
 scale = Vector2( 0.0256444, 0.0256444 )
 texture = ExtResource( 8 )
 offset = Vector2( 1980.85, 1.32915 )
-
-[node name="FarTargetCircle" type="Node2D" parent="."]
-visible = false
-script = ExtResource( 7 )
-offset = Vector2( 180, 0 )
 
 [node name="SnapDetector" parent="." instance=ExtResource( 3 )]
 

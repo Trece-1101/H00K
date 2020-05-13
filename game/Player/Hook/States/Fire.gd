@@ -12,21 +12,21 @@ func set_hooking_angle(value: float) -> void:
 	hooking_angle = value
 
 func set_hooking_animation() -> void:
-	hooking_animation = "jumphook_mid"
-#	if ((hooking_angle >= -30.00 and hooking_angle <= 30.00) or 
-#			(hooking_angle >= 165.00 and hooking_angle <= 190.00) or
-#			(hooking_angle <= -165.00 and hooking_angle >= -190.00)):
-#		hooking_animation = "jumphook_mid"
-#	elif (hooking_angle < -30.00 and hooking_angle >= -75.00) or (hooking_angle <= -120.00 and hooking_angle > -165.00):
-#		hooking_animation = "jumphook_midtop"
-#	elif (hooking_angle < -75.00 and hooking_angle > -120.00):
-#		hooking_animation = "jumphook_top"
-#	elif (hooking_angle > 30.00 and hooking_angle <= 75.00) or (hooking_angle > 120.00 and hooking_angle <= 165.00):
-#		hooking_animation = "jumphook_midbot"
-#	elif (hooking_angle > 75.00 and hooking_angle <= 120.00):
-#		hooking_animation = "jumphook_bot"
-#	else:
-#		print("error")
+	#hooking_animation = "jumphook_mid"
+	if ((hooking_angle >= -30.00 and hooking_angle <= 30.00) or 
+			(hooking_angle >= 165.00 and hooking_angle <= 190.00) or
+			(hooking_angle <= -165.00 and hooking_angle >= -190.00)):
+		hooking_animation = "jumphook_mid"
+	elif (hooking_angle < -30.00 and hooking_angle >= -75.00) or (hooking_angle <= -120.00 and hooking_angle > -165.00):
+		hooking_animation = "jumphook_midtop"
+	elif (hooking_angle < -75.00 and hooking_angle > -120.00):
+		hooking_animation = "jumphook_top"
+	elif (hooking_angle > 30.00 and hooking_angle <= 75.00) or (hooking_angle > 120.00 and hooking_angle <= 165.00):
+		hooking_animation = "jumphook_midbot"
+	elif (hooking_angle > 75.00 and hooking_angle <= 120.00):
+		hooking_animation = "jumphook_bot"
+	else:
+		print("error")
 ################################################################################
 
 ################################################################################
