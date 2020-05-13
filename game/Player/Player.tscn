@@ -20,7 +20,7 @@
 [ext_resource path="res://game/Player/FloorDetector.tscn" type="PackedScene" id=18]
 [ext_resource path="res://assets/Sounds/SFX/wall_slide_1.wav" type="AudioStream" id=19]
 [ext_resource path="res://assets/Sounds/SFX/hook_1.wav" type="AudioStream" id=20]
-[ext_resource path="res://assets/Sounds/SFX/impulse_1.wav" type="AudioStream" id=21]
+[ext_resource path="res://assets/Sounds/SFX/impulse_3.wav" type="AudioStream" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 15 )
@@ -128,7 +128,9 @@ pitch_scale = 2.0
 
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 17 )
-volume_db = -40.0
+volume_db = -30.0
+pitch_scale = 1.6
+bus = "Jump"
 
 [node name="Slide" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 19 )
@@ -141,5 +143,5 @@ pitch_scale = 1.5
 
 [node name="Impulse" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 21 )
-volume_db = -40.0
-pitch_scale = 2.0
+volume_db = -35.0
+pitch_scale = 1.5

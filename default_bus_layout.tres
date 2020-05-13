@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=5 format=2]
+[gd_resource type="AudioBusLayout" load_steps=7 format=2]
 
 [sub_resource type="AudioEffectPhaser" id=1]
 resource_name = "Phaser"
@@ -11,6 +11,12 @@ resource_name = "Filter"
 
 [sub_resource type="AudioEffectReverb" id=4]
 resource_name = "Reverb"
+
+[sub_resource type="AudioEffectFilter" id=5]
+resource_name = "Filter"
+
+[sub_resource type="AudioEffectStereoEnhance" id=6]
+resource_name = "StereoEnhance"
 
 [resource]
 bus/0/volume_db = 0.0672607
@@ -34,3 +40,13 @@ bus/2/volume_db = -15.7883
 bus/2/send = "Master"
 bus/2/effect/0/effect = SubResource( 4 )
 bus/2/effect/0/enabled = true
+bus/3/name = "Jump"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = "Master"
+bus/3/effect/0/effect = SubResource( 5 )
+bus/3/effect/0/enabled = true
+bus/3/effect/1/effect = SubResource( 6 )
+bus/3/effect/1/enabled = true
