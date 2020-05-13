@@ -11,8 +11,7 @@ rect_min_size = Vector2( 145, 45 )
 text = "Salir"
 
 [node name="Sprite" parent="." index="1"]
-position = Vector2( 127.577, 26.3622 )
+position = Vector2( 147.131, 24 )
 
 [node name="AudioStreamPlayer" parent="." index="3"]
 stream = ExtResource( 2 )
-bus = "Button"

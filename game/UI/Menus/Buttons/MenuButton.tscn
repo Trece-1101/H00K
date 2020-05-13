@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/Fonts/SevenOh_8x16_Mono_32.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/Sprites/arrow.png" type="Texture" id=2]
+[ext_resource path="res://assets/Sprites/arrow_indicator.png" type="Texture" id=2]
 [ext_resource path="res://game/UI/Menus/Buttons/MenuButton.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
@@ -85,8 +85,9 @@ tracks/2/keys = {
 }
 
 [node name="MenuButton" type="Button"]
+margin_top = -0.250351
 margin_right = 300.0
-margin_bottom = 45.0
+margin_bottom = 44.7496
 rect_min_size = Vector2( 300, 45 )
 flat = true
 expand_icon = true
@@ -102,7 +103,7 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 300, 40 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 5
 text = "Texto"
 valign = 1
@@ -111,9 +112,9 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 142.829, 27.2672 )
-rotation = -1.5708
-scale = Vector2( 1.35674, 1.32701 )
+position = Vector2( 140.826, 23.2617 )
+rotation = 3.14159
+scale = Vector2( 0.0353419, 0.0345674 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

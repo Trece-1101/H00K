@@ -9,8 +9,7 @@
 text = "Nueva Partida"
 
 [node name="Sprite" parent="." index="1"]
-position = Vector2( 283.663, 25.1619 )
+position = Vector2( 290.474, 24 )
 
 [node name="AudioStreamPlayer" parent="." index="3"]
 stream = ExtResource( 2 )
-bus = "Button"
