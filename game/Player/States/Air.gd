@@ -126,12 +126,16 @@ func enter(msg: Dictionary = {}) -> void:
 			_is_jumping = msg.is_jumping
 		move.max_speed.x = max(abs(msg.velocity.x), move.max_speed.x)
 	if "impulse" in msg:
+		if "platform" in msg:
+			move.velocity.y = 0.0
 		jump()
 		_is_jumping = true
 	if "wall_jump" in msg and check_if_can_wall_jump()["can"]:
 		wall_jump()
 	if "can_jump_after_hook" in msg:
 		_jump_after_hook = msg.can_jump_after_hook
+	
+		
 	
 	jump_delay.start()
 

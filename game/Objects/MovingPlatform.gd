@@ -1,9 +1,10 @@
 tool
+class_name MovingPlatform
 extends KinematicBody2D
 
 ################################################################################
 #### Variables export
-export var speed: float = 200.0
+export(float, 50.0, 250.0, 0.5) var speed := 200.0
 export var wait_time: float = 1.0 setget set_wait_time
 
 #### Varibales onready

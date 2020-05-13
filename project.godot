@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/Levels/Camera/LevelTransitionCamera.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "MovingPlatform",
+"language": "GDScript",
+"path": "res://game/Objects/MovingPlatform.gd"
+}, {
 "base": "Line2D",
 "class": "PathPoints",
 "language": "GDScript",
@@ -88,6 +93,7 @@ _global_script_class_icons={
 "HookTarget": "",
 "LevelState": "",
 "LevelTransitionCamera": "",
+"MovingPlatform": "",
 "PathPoints": "",
 "Player": "",
 "Room": "",
@@ -266,6 +272,7 @@ debug_shake={
 2d_physics/layer_5="Hookable"
 2d_physics/layer_6="PassThrough"
 2d_physics/layer_7="SavePoint"
+2d_physics/layer_8="MovingPlatform"
 
 [rendering]
 

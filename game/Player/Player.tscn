@@ -26,7 +26,7 @@
 extents = Vector2( 7, 15 )
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 1, 0 )
+position = Vector2( 1, 0.995771 )
 z_index = 50
 collision_mask = 46
 script = ExtResource( 7 )
@@ -54,6 +54,9 @@ position = Vector2( 0, -16 )
 shape = SubResource( 1 )
 
 [node name="FloorDetector" parent="." instance=ExtResource( 18 )]
+position = Vector2( 0, -0.995771 )
+cast_to = Vector2( 0, 15 )
+collide_with_areas = true
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -115,6 +118,7 @@ script = ExtResource( 12 )
 
 [node name="Debug" type="Node" parent="StateMachine"]
 script = ExtResource( 14 )
+speed = Vector2( 1800, 1800 )
 
 [node name="SFX" type="Node" parent="."]
 

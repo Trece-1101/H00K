@@ -45,8 +45,11 @@ onready var max_speed: = max_speed_default
 #### metodos
 func unhandled_input(event: InputEvent) -> void:
 	if owner.is_on_floor() and event.is_action_pressed("jump"):
-		_state_machine.transition_to("Move/Air", {impulse = true})
-	
+		if !owner.floor_detector.is_in_platform():
+			_state_machine.transition_to("Move/Air", {impulse = true})
+		else:
+			_state_machine.transition_to("Move/Air", {impulse = true, platform = true})
+
 	## TODO: solo DEBUG
 	if event.is_action_pressed("debug_move"):
 		_state_machine.transition_to("Debug")
