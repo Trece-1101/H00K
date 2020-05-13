@@ -69,7 +69,7 @@ func apply_move_impulse(impulse_direction: String) -> void:
 	move.apply_impulse(impulse_direction)
 
 func check_damage() -> void:
-	#var collision_counter = get_slide_count() - 1
+#	var collision_counter = get_slide_count() - 1
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
 		if collision.collider.is_in_group("Damage") and is_alive:
