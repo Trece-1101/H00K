@@ -1,7 +1,6 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/Sprites/Player/Player.png" type="Texture" id=1]
-[ext_resource path="res://assets/Sprites/shadow.png" type="Texture" id=2]
 [ext_resource path="res://game/Player/PlayerSkin.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
@@ -417,13 +416,6 @@ anims/reset_pose = SubResource( 14 )
 anims/run = SubResource( 15 )
 anims/spawn = SubResource( 16 )
 anims/wallslide = SubResource( 17 )
-
-[node name="PlayerShadow" type="Sprite" parent="."]
-visible = false
-show_behind_parent = true
-position = Vector2( 0, -1 )
-scale = Vector2( 0.158762, 0.158762 )
-texture = ExtResource( 2 )
 
 [node name="PlayerSprite" type="Sprite" parent="."]
 position = Vector2( 1, -18 )
