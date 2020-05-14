@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/Sprites/Npc/Orugacop/Orugacop-SmallRed2.png" type="Texture" id=5]
 [ext_resource path="res://assets/Sprites/Npc/Orugacop/Orugacop-SmallRed1.png" type="Texture" id=6]
 
-[sub_resource type="AnimatedTexture" id=4]
+[sub_resource type="AnimatedTexture" id=1]
 frames = 4
 frame_0/texture = ExtResource( 6 )
 frame_1/texture = ExtResource( 5 )
@@ -17,7 +17,7 @@ frame_2/delay_sec = 0.0
 frame_3/texture = ExtResource( 4 )
 frame_3/delay_sec = 0.0
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 length = 0.2
 step = 0.2
 tracks/0/type = "value"
@@ -114,10 +114,10 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -4.5 )
 scale = Vector2( 1, -1 )
-texture = SubResource( 4 )
+texture = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/go_explode = SubResource( 5 )
+anims/go_explode = SubResource( 2 )
 anims/reset = SubResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
