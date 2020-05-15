@@ -17,14 +17,19 @@ func set_hooking_animation() -> void:
 			(hooking_angle >= 165.00 and hooking_angle <= 190.00) or
 			(hooking_angle <= -165.00 and hooking_angle >= -190.00)):
 		hooking_animation = "jumphook_mid"
+		owner.ghost_sprite = "res://assets/Sprites/Player/Frames/hook_mid.png"
 	elif (hooking_angle < -30.00 and hooking_angle >= -75.00) or (hooking_angle <= -120.00 and hooking_angle > -165.00):
 		hooking_animation = "jumphook_midtop"
+		owner.ghost_sprite = "res://assets/Sprites/Player/Frames/hook_mid_top.png"
 	elif (hooking_angle < -75.00 and hooking_angle > -120.00):
 		hooking_animation = "jumphook_top"
+		owner.ghost_sprite = "res://assets/Sprites/Player/Frames/hook_top.png"
 	elif (hooking_angle > 30.00 and hooking_angle <= 75.00) or (hooking_angle > 120.00 and hooking_angle <= 165.00):
 		hooking_animation = "jumphook_midbot"
+		owner.ghost_sprite = "res://assets/Sprites/Player/Frames/hook_mid_bot.png"
 	elif (hooking_angle > 75.00 and hooking_angle <= 120.00):
 		hooking_animation = "jumphook_bot"
+		owner.ghost_sprite = "res://assets/Sprites/Player/Frames/hook_bot.png"
 	else:
 		print("error")
 ################################################################################

@@ -112,6 +112,9 @@ slide_speed_incrementor = 1.5
 script = ExtResource( 9 )
 jump_after_hook = true
 
+[node name="GhostTimer" type="Timer" parent="StateMachine/Hook"]
+wait_time = 0.04
+
 [node name="Die" type="Node" parent="StateMachine"]
 script = ExtResource( 12 )
 
@@ -144,3 +147,4 @@ bus = "Player"
 stream = ExtResource( 21 )
 pitch_scale = 1.5
 bus = "Player"
+[connection signal="timeout" from="StateMachine/Hook/GhostTimer" to="StateMachine/Hook" method="_on_GhostTimer_timeout"]
