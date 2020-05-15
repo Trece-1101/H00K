@@ -12,6 +12,7 @@ extents = Vector2( 13.8301, 2.47991 )
 z_index = 48
 collision_layer = 32
 script = ExtResource( 2 )
+reset_time = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.0897446, -2.3851 )
@@ -20,7 +21,7 @@ shape = SubResource( 1 )
 [node name="PlayerHologram" type="Sprite" parent="."]
 visible = false
 modulate = Color( 0, 0.505882, 1, 0.4 )
-position = Vector2( 0, -20.7342 )
+position = Vector2( 0.89959, -20.7342 )
 texture = ExtResource( 4 )
 vframes = 6
 hframes = 16
@@ -47,4 +48,7 @@ frame = 6
 stream = ExtResource( 3 )
 volume_db = -30.0
 bus = "Sensor"
+
+[node name="Timer" type="Timer" parent="."]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
