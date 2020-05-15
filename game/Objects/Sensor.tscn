@@ -12,7 +12,6 @@ extents = Vector2( 13.8301, 2.47991 )
 z_index = 48
 collision_layer = 32
 script = ExtResource( 2 )
-reset_time = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.0897446, -2.3851 )

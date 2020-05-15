@@ -339,8 +339,8 @@ position = Vector2( 9600, -272.466 )
 [node name="HookTarget13" parent="Room11/HookTargets" instance=ExtResource( 1 )]
 position = Vector2( 8902.24, -409.356 )
 
-[node name="HookTarget14" parent="Room11/HookTargets" instance=ExtResource( 1 )]
-position = Vector2( 9296.26, -313.651 )
+[node name="HookTarget15" parent="Room11/HookTargets" instance=ExtResource( 1 )]
+position = Vector2( 9118.22, -418.31 )
 
 [node name="Room12" parent="." instance=ExtResource( 3 )]
 room_row_col = Vector2( 0, 11 )
@@ -1221,7 +1221,7 @@ __meta__ = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 10754.4, -304.075 )
+position = Vector2( 8722.6, -322.342 )
 
 [node name="StateMachine" parent="Player" index="7"]
 initial_state = NodePath("../../../LevelOne/Player/StateMachine/Spawn")
@@ -1232,7 +1232,7 @@ bus = "Master"
 [node name="LevelTransitionCamera" parent="." instance=ExtResource( 2 )]
 position = Vector2( 14880, -2970 )
 start_room_fila = 0
-start_room_columna = 12
+start_room_columna = 10
 transition_time = 0.6
 
 [editable path="Room1"]

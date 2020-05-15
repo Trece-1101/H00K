@@ -11,14 +11,20 @@ export var arrive_push: float = 350.0
 export var jump_after_hook: bool = false
 
 #### variables
-var target_global_position: = Vector2.INF
-var velocity: = Vector2.ZERO
-var release_from_hook:bool = false
-var hooking_animation : String = ""
+var target_global_position := Vector2.INF
+var velocity := Vector2.ZERO
+var release_from_hook: bool = false setget set_release_from_hook, get_release_from_hook
+var hooking_animation: String = ""
 var sprite_offset := Vector2(1, -18)
 
 onready var ghost := preload("res://game/Player/Ghost.tscn")
 ################################################################################
+#### Setters y Getters
+func set_release_from_hook(value: bool) -> void:
+	release_from_hook = value
+
+func get_release_from_hook() -> bool:
+	return release_from_hook
 
 ################################################################################
 #### Metodos

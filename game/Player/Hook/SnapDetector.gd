@@ -18,14 +18,14 @@ onready var ray_cast: RayCast2D = $RayCast2D
 func set_target(value: HookTarget) -> void:
 	target = value
 	#hooking_hint.visible = has_target()
-	if target:
+	if target and target.get_is_active():
 		last_target = target
 		target.focus_gain()
 		#hooking_hint.global_position = target.global_position
 	else:
 		if last_target != null:
 			last_target.focus_lost()
-
+################################################################################
 #### Metodos
 func _ready() -> void:
 	ray_cast.set_as_toplevel(true)
@@ -38,12 +38,12 @@ Devuelve el gancho mas cercano, saltea ganchos obstruidos
 """
 func find_best_target() -> HookTarget:
 	force_update_transform()
-	var targets: = get_overlapping_areas()
+	var targets := get_overlapping_areas()
 	if not targets:
 		return null
 	
 	var closest_target: HookTarget = null
-	var distance_to_closest:float = 100000.0
+	var distance_to_closest: float = 100000.0
 	for target in targets:
 		if not target.is_active:
 			continue

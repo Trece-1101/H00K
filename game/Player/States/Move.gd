@@ -112,7 +112,15 @@ func apply_impulse(direction: String) -> void:
 	elif direction == "top":
 		velocity.y -= transition_impulse
 
+## TODO: esto liquida el movimiento con KB
+## SOLUCIONALO
 static func get_move_direction() -> Vector2:
+	return Vector2(Utils.get_aim_joystick_strenght().x, 1.0)
+#	return Vector2(
+#		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 1.0
+#	)
+
+static func get_move_kb_direction() -> Vector2:
 	return Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 1.0
 	)
