@@ -18,6 +18,8 @@ export var jump_impulse: float = 450.0
 export var fatality_impulse: float = 500.0
 export var hook_jump_impulse: float = 200.0
 export var transition_impulse: float = 150.0
+export var spring_impulse_multiplier: float = 2.2
+export var spring_minimun_speed: float = 200.0
 """
 Todos estos valores default seran asignados a las variables correspondientes
 al iniciar el juego/nivel
@@ -111,6 +113,12 @@ func apply_impulse(direction: String) -> void:
 		owner.global_position.x -= transition_move
 	elif direction == "top":
 		velocity.y -= transition_impulse
+
+func apply_bumper_impulse(fall_speed: float) -> void:
+	if fall_speed < spring_minimun_speed:
+		fall_speed = spring_minimun_speed
+	velocity.y -= fall_speed * spring_impulse_multiplier
+	#print("fall speed: {fs} - velocity.y: {vy}".format({'fs': fall_speed, 'vy': velocity.y}))
 
 ## TODO: esto liquida el movimiento con KB
 ## SOLUCIONALO

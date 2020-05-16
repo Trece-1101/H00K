@@ -379,6 +379,7 @@ debug_shake={
 2d_physics/layer_6="PassThrough"
 2d_physics/layer_7="SavePoint"
 2d_physics/layer_8="MovingPlatform"
+2d_physics/layer_9="Bumper"
 
 [rendering]
 
