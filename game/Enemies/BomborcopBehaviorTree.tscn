@@ -1,0 +1,81 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://game/Enemies/Tasks/NearWall.gd" type="Script" id=1]
+[ext_resource path="res://game/BehaviorTree/Sequence.gd" type="Script" id=2]
+[ext_resource path="res://game/BehaviorTree/BehaviorTree.gd" type="Script" id=3]
+[ext_resource path="res://game/Enemies/Tasks/WasChasing.gd" type="Script" id=4]
+[ext_resource path="res://game/Enemies/Tasks/SameOrientation.gd" type="Script" id=6]
+[ext_resource path="res://game/BehaviorTree/Selector.gd" type="Script" id=7]
+[ext_resource path="res://game/Enemies/Tasks/Move.gd" type="Script" id=8]
+[ext_resource path="res://game/BehaviorTree/Succeder.gd" type="Script" id=9]
+[ext_resource path="res://game/BehaviorTree/Failer.gd" type="Script" id=10]
+[ext_resource path="res://game/Enemies/Tasks/NearVoid.gd" type="Script" id=13]
+[ext_resource path="res://game/Enemies/Tasks/PlayerOnSight.gd" type="Script" id=14]
+[ext_resource path="res://game/Enemies/Tasks/TurnAround.gd" type="Script" id=15]
+[ext_resource path="res://game/Enemies/Tasks/ChangeSpeed.gd" type="Script" id=16]
+
+[node name="BehaviorTree" type="Node"]
+script = ExtResource( 3 )
+
+[node name="MalitoBT" type="Node" parent="."]
+script = ExtResource( 7 )
+
+[node name="ChasePlayer" type="Node" parent="MalitoBT"]
+script = ExtResource( 2 )
+
+[node name="PlayerOnSight" type="Node" parent="MalitoBT/ChasePlayer"]
+script = ExtResource( 14 )
+
+[node name="Check orientation" type="Node" parent="MalitoBT/ChasePlayer"]
+script = ExtResource( 9 )
+
+[node name="CheckOrientation" type="Node" parent="MalitoBT/ChasePlayer/Check orientation"]
+script = ExtResource( 2 )
+
+[node name="SameOrientation" type="Node" parent="MalitoBT/ChasePlayer/Check orientation/CheckOrientation"]
+script = ExtResource( 6 )
+
+[node name="TurnAround" type="Node" parent="MalitoBT/ChasePlayer/Check orientation/CheckOrientation"]
+script = ExtResource( 15 )
+
+[node name="Move" type="Node" parent="MalitoBT/ChasePlayer"]
+script = ExtResource( 8 )
+
+[node name="PatrolType" type="Node" parent="MalitoBT"]
+script = ExtResource( 7 )
+
+[node name="Failer" type="Node" parent="MalitoBT/PatrolType"]
+script = ExtResource( 10 )
+
+[node name="CameFromChase" type="Node" parent="MalitoBT/PatrolType/Failer"]
+script = ExtResource( 2 )
+
+[node name="WasChasing" type="Node" parent="MalitoBT/PatrolType/Failer/CameFromChase"]
+script = ExtResource( 4 )
+
+[node name="ChangeSpeed" type="Node" parent="MalitoBT/PatrolType/Failer/CameFromChase"]
+script = ExtResource( 16 )
+
+[node name="PatrolNormal" type="Node" parent="MalitoBT/PatrolType"]
+script = ExtResource( 2 )
+
+[node name="CheckTurn" type="Node" parent="MalitoBT/PatrolType/PatrolNormal"]
+script = ExtResource( 9 )
+
+[node name="CheckTurn" type="Node" parent="MalitoBT/PatrolType/PatrolNormal/CheckTurn"]
+script = ExtResource( 2 )
+
+[node name="CheckTurn" type="Node" parent="MalitoBT/PatrolType/PatrolNormal/CheckTurn/CheckTurn"]
+script = ExtResource( 7 )
+
+[node name="NearWall" type="Node" parent="MalitoBT/PatrolType/PatrolNormal/CheckTurn/CheckTurn/CheckTurn"]
+script = ExtResource( 1 )
+
+[node name="NearVoid" type="Node" parent="MalitoBT/PatrolType/PatrolNormal/CheckTurn/CheckTurn/CheckTurn"]
+script = ExtResource( 13 )
+
+[node name="TurnAround" type="Node" parent="MalitoBT/PatrolType/PatrolNormal/CheckTurn/CheckTurn"]
+script = ExtResource( 15 )
+
+[node name="Move" type="Node" parent="MalitoBT/PatrolType/PatrolNormal"]
+script = ExtResource( 8 )

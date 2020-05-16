@@ -116,6 +116,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Vector2( -28, -9 ), Vector2( -28, -9 ), Vector2( 384.408, -239.548 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("ColorRect:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="LevelTransitionCamera" type="Camera2D"]
 z_index = 100
@@ -133,7 +145,7 @@ one_shot = true
 
 [node name="Label" type="Label" parent="."]
 visible = false
-modulate = Color( 1, 1, 1, 0.0588235 )
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -164,7 +176,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -28.0
 margin_top = -9.0
-margin_right = 32.0
+margin_right = 32.0001
 margin_bottom = 11.0
 custom_fonts/font = SubResource( 2 )
 text = "x80"
@@ -175,5 +187,19 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/saving = SubResource( 3 )
 anims/show_death_count = SubResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -480.0
+margin_top = -270.0
+margin_right = 480.0
+margin_bottom = 270.0
+rect_min_size = Vector2( 960, 540 )
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

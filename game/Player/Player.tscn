@@ -26,9 +26,9 @@
 extents = Vector2( 7, 15 )
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 1, 0.995771 )
+position = Vector2( 1, 1 )
 z_index = 50
-collision_mask = 46
+collision_mask = 494
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
@@ -100,7 +100,7 @@ wait_time = 0.16
 one_shot = true
 
 [node name="JumpDelay" type="Timer" parent="StateMachine/Move/Air"]
-wait_time = 0.1
+wait_time = 0.15
 one_shot = true
 
 [node name="Wall" type="Node" parent="StateMachine/Move"]
@@ -111,6 +111,9 @@ slide_speed_incrementor = 1.5
 [node name="Hook" type="Node" parent="StateMachine"]
 script = ExtResource( 9 )
 jump_after_hook = true
+
+[node name="GhostTimer" type="Timer" parent="StateMachine/Hook"]
+wait_time = 0.04
 
 [node name="Die" type="Node" parent="StateMachine"]
 script = ExtResource( 12 )
@@ -144,3 +147,4 @@ bus = "Player"
 stream = ExtResource( 21 )
 pitch_scale = 1.5
 bus = "Player"
+[connection signal="timeout" from="StateMachine/Hook/GhostTimer" to="StateMachine/Hook" method="_on_GhostTimer_timeout"]

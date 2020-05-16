@@ -53,8 +53,11 @@ func _on_SaveArea_body_entered(body: Node) -> void:
 #			$SaveArea/PassRoom.play()
 #		print("saved at {rp}".format({'rp': respawn_point.global_position}))
 
-func activate_sensor() -> void:
-	sensor_left -= 1
+func activate_sensor(value: int) -> void:
+	sensor_left -= value
 	if sensor_left <= 0:
 		door.open_door()
+
+func get_left_sensors() -> int:
+	return sensor_left
 ################################################################################

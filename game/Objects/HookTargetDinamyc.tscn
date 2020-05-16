@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/Objects/HookTarget.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/Objects/HookTargetDinamyc.gd" type="Script" id=2]
+
+[node name="HookTargetDinamyc" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+timer_open = 2.5
+timer_close = 1.5
+
+[node name="OpenTime" type="Timer" parent="." index="5"]
+wait_time = 2.0
+one_shot = true
+
+[node name="CloseTime" type="Timer" parent="." index="6"]
+one_shot = true
+[connection signal="timeout" from="OpenTime" to="." method="_on_TimerOpen_timeout"]
+[connection signal="timeout" from="CloseTime" to="." method="_on_TimerClose_timeout"]
