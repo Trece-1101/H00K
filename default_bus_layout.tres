@@ -13,7 +13,6 @@ resource_name = "Filter"
 resource_name = "Reverb"
 
 [resource]
-bus/0/mute = true
 bus/0/volume_db = 0.0672607
 bus/1/name = "Sensor"
 bus/1/solo = false

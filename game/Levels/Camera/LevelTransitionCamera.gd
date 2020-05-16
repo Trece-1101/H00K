@@ -45,18 +45,25 @@ func _ready() -> void:
 		start_room_columna = int(Game.get_camera_start().y)
 	
 	set_start_borders()
+	
 	if Game.get_player_last_state() == "Die":
 		set_death_count_label()
 	
 	create_shake_list()
 	
-	global_position.x = (step_x / 2) + (step_x * (start_room_columna - 1))
-	global_position.y = (step_y / 2) + (step_y * (start_room_fila - 1))
+	var camera_x = (step_x * 0.5) + (step_x * (start_room_columna - 1))
+	var camera_y = (step_y * 0.5) + (step_y * (start_room_fila - 1))
+	
+	global_position = Vector2(camera_x, camera_y)
+	
+	#global_position.x = (step_x / 2) + (step_x * (start_room_columna - 1))
+	#global_position.y = (step_y / 2) + (step_y * (start_room_fila - 1))
 
 
 func _process(_delta: float) -> void:
 	if not transition:
-		if player.global_position.y < borders["top"]:
+		#if player.global_position.y < borders["top"]:
+		if player.border_detector.global_position.y < borders["top"]:
 			move_camera("top")
 		elif player.global_position.y > borders["bottom"]:
 			move_camera("bottom")
