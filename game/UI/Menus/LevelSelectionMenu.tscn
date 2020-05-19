@@ -1,0 +1,201 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/Fonts/MainLabel.tres" type="DynamicFont" id=2]
+[ext_resource path="res://game/UI/Menus/Buttons/MenuButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Backgrounds/Main_Menu_01.png" type="Texture" id=5]
+[ext_resource path="res://game/UI/Menus/LevelSelectionMenu.gd" type="Script" id=6]
+[ext_resource path="res://game/UI/Menus/Buttons/LevelButton.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "main_animation"
+length = 30.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRectRight:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 10, 15, 20, 25, 30 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.960784 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.960784 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.960784 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.960784 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRectLeft:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5, 10, 15, 20, 25, 30 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.960784 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.960784 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.960784 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="LevelSelectionMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRectRight" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.960784 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRectLeft" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "main_animation"
+anims/main_animation = SubResource( 1 )
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = 20.0
+margin_right = -40.0
+margin_bottom = -20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleLevel" type="Label" parent="MainContainer"]
+margin_right = 880.0
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 2 )
+text = "Seleccion Nivel"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="MainContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 62.0
+margin_right = 880.0
+margin_bottom = 66.0
+
+[node name="HSeparator2" type="HSeparator" parent="MainContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 70.0
+margin_right = 880.0
+margin_bottom = 74.0
+
+[node name="HSeparator3" type="HSeparator" parent="MainContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 78.0
+margin_right = 880.0
+margin_bottom = 82.0
+
+[node name="OptionsContainer" type="VBoxContainer" parent="MainContainer"]
+margin_top = 86.0
+margin_right = 880.0
+margin_bottom = 435.0
+size_flags_horizontal = 5
+size_flags_vertical = 3
+
+[node name="OptionPanel" type="Panel" parent="MainContainer/OptionsContainer"]
+margin_right = 880.0
+margin_bottom = 349.0
+rect_min_size = Vector2( 200, 200 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="MainContainer/OptionsContainer/OptionPanel"]
+anchor_left = 0.06
+anchor_top = 0.05
+anchor_right = 0.063
+anchor_bottom = 0.05
+margin_left = 0.4
+margin_top = 0.02
+margin_right = 770.4
+margin_bottom = 172.02
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level1" parent="MainContainer/OptionsContainer/OptionPanel/GridContainer" instance=ExtResource( 7 )]
+margin_left = 0.0
+margin_top = 0.0
+size_flags_vertical = 1
+level_to_load = "res://game/Levels/LevelOne_v2.tscn"
+
+[node name="Level2" parent="MainContainer/OptionsContainer/OptionPanel/GridContainer" instance=ExtResource( 7 )]
+margin_left = 260.0
+margin_top = 0.0
+margin_right = 510.0
+size_flags_vertical = 1
+text = "Level 2"
+
+[node name="Level3" parent="MainContainer/OptionsContainer/OptionPanel/GridContainer" instance=ExtResource( 7 )]
+margin_left = 520.0
+margin_top = 0.0
+margin_right = 770.0
+size_flags_vertical = 1
+text = "Level 3"
+
+[node name="Level4" parent="MainContainer/OptionsContainer/OptionPanel/GridContainer" instance=ExtResource( 7 )]
+margin_left = 0.0
+margin_top = 90.0
+margin_bottom = 170.0
+size_flags_vertical = 1
+text = "Level 4"
+
+[node name="Level5" parent="MainContainer/OptionsContainer/OptionPanel/GridContainer" instance=ExtResource( 7 )]
+margin_left = 260.0
+margin_top = 90.0
+margin_right = 510.0
+margin_bottom = 170.0
+size_flags_vertical = 1
+text = "Level 5"
+
+[node name="Level6" parent="MainContainer/OptionsContainer/OptionPanel/GridContainer" instance=ExtResource( 7 )]
+margin_left = 520.0
+margin_top = 90.0
+margin_right = 770.0
+margin_bottom = 170.0
+size_flags_vertical = 1
+text = "Level 6"
+
+[node name="HSeparator4" type="HSeparator" parent="MainContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 439.0
+margin_right = 880.0
+margin_bottom = 443.0
+
+[node name="HSeparator5" type="HSeparator" parent="MainContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 447.0
+margin_right = 880.0
+margin_bottom = 451.0
+
+[node name="MenuButton" parent="MainContainer" instance=ExtResource( 3 )]
+margin_top = 455.0
+margin_right = 880.0
+margin_bottom = 500.0
+next_scene = "res://game/UI/Menus/TesterMainMenu.tscn"
+
+[node name="Label" parent="MainContainer/MenuButton" index="0"]
+text = "Volver"
+
+[editable path="MainContainer/OptionsContainer/OptionPanel/GridContainer/Level1"]
+
+[editable path="MainContainer/MenuButton"]

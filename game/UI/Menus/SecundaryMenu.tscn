@@ -1,0 +1,146 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/Backgrounds/Main_Menu_01.png" type="Texture" id=1]
+[ext_resource path="res://assets/Fonts/MainLabel.tres" type="DynamicFont" id=2]
+[ext_resource path="res://game/UI/Menus/Buttons/MenuButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Fonts/SevenOh_8x16_Mono_32.tres" type="DynamicFont" id=4]
+[ext_resource path="res://game/UI/Menus/Buttons/SecundaryButton.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "main_animation"
+length = 30.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRectRight:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 10, 15, 20, 25, 30 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.960784 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.960784 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.960784 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.960784 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRectLeft:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5, 10, 15, 20, 25, 30 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.960784 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.960784 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.960784 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="SecundaryMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRectRight" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRectLeft" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "main_animation"
+anims/main_animation = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = 20.0
+margin_right = -40.0
+margin_bottom = -20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 880.0
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 2 )
+text = "Menu"
+
+[node name="CenterRow" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 62.0
+margin_right = 880.0
+margin_bottom = 451.0
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="VBoxContainer/CenterRow"]
+margin_right = 300.0
+margin_bottom = 389.0
+size_flags_horizontal = 5
+size_flags_vertical = 3
+alignment = 1
+
+[node name="SecundaryButton" parent="VBoxContainer/CenterRow/Buttons" instance=ExtResource( 5 )]
+margin_top = 98.0
+margin_bottom = 143.0
+
+[node name="SecundaryButton2" parent="VBoxContainer/CenterRow/Buttons" instance=ExtResource( 5 )]
+margin_top = 147.0
+margin_bottom = 192.0
+
+[node name="SecundaryButton3" parent="VBoxContainer/CenterRow/Buttons" instance=ExtResource( 5 )]
+margin_top = 196.0
+margin_bottom = 241.0
+
+[node name="SecundaryButton4" parent="VBoxContainer/CenterRow/Buttons" instance=ExtResource( 5 )]
+margin_top = 245.0
+margin_bottom = 290.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterRow"]
+margin_left = 304.0
+margin_right = 880.0
+margin_bottom = 389.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/CenterRow/VBoxContainer"]
+margin_right = 576.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 4 )
+text = "Texto"
+align = 1
+
+[node name="Panel" type="Panel" parent="VBoxContainer/CenterRow/VBoxContainer"]
+modulate = Color( 0, 0, 0, 0 )
+margin_top = 42.0
+margin_right = 576.0
+margin_bottom = 389.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MenuButton" parent="VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 455.0
+margin_right = 880.0
+margin_bottom = 500.0
+
+[node name="Label" parent="VBoxContainer/MenuButton" index="0"]
+text = "Volver"
+
+[node name="Sprite" parent="VBoxContainer/MenuButton" index="1"]
+position = Vector2( 150.798, 23.2617 )
+
+[editable path="VBoxContainer/MenuButton"]

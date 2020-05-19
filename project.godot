@@ -99,6 +99,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/BehaviorTree/Limiter.gd"
 }, {
+"base": "Button",
+"class": "MenuCustomButton",
+"language": "GDScript",
+"path": "res://game/UI/Menus/Buttons/MenuButton.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "MovingPlatform",
 "language": "GDScript",
@@ -193,6 +198,7 @@ _global_script_class_icons={
 "LevelState": "",
 "LevelTransitionCamera": "",
 "Limiter": "res://assets/Sprites/BehaviorTree/limiter.png",
+"MenuCustomButton": "",
 "MovingPlatform": "",
 "PathPoints": "",
 "Player": "",
