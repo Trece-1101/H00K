@@ -1,5 +1,7 @@
 extends Control
 
+var ok_answer := false
+
 export var next_scene: String
 
 onready var user := $LogPanel/ColorRect/UserInput
@@ -17,19 +19,31 @@ func _on_Salir_button_down() -> void:
 	get_tree().quit()
 
 func _on_Enter_button_down() -> void:
-	load_next_scene()
+	if user.text == "omar13" and password.text == "passomar13":
+		pop_up_show($OK)
+		ok_answer = true
+	else:
+		pop_up_show($Error)
+		ok_answer = false
 
-func log_error() -> void:
-	$Error.show()
-	$ErrorTimer.start()
+
+func pop_up_show(popup: Popup) -> void:
+	popup.show()
+	$Timer.start()
 	user.editable = false
 	password.editable = false
+	$LogPanel/ColorRect/Salir.disabled = true
 
-func _on_ErrorTimer_timeout() -> void:
-	$Error.hide()
-	user.text = ""
-	password.text = ""
-	user.editable = true
-	password.editable = true
-	user.grab_focus()
+
+func _on_Timer_timeout() -> void:
+	if ok_answer:
+		load_next_scene()
+	else:
+		$Error.hide()
+		user.text = ""
+		password.text = ""
+		user.editable = true
+		password.editable = true
+		$LogPanel/ColorRect/Salir.disabled = false
+		user.grab_focus()
 

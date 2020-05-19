@@ -1,21 +1,22 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Fonts/Revamped.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Fonts/Jamma 8x16 Monospaced.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/UI/Menus/LoginMenu.gd" type="Script" id=3]
 [ext_resource path="res://assets/Fonts/Jamma 8x8 Monospaced.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/Backgrounds/Main_Menu_01.png" type="Texture" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 20
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 14
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=4]
 size = 30
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
@@ -36,6 +37,25 @@ __meta__ = {
 }
 next_scene = "res://game/UI/Menus/TesterMainMenu.tscn"
 
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.133333 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.133333 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -44,6 +64,9 @@ margin_top = -2.5509
 margin_right = -0.568787
 margin_bottom = -2.5509
 color = Color( 0, 0, 0, 0.52549 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="LogPanel" type="PanelContainer" parent="."]
 anchor_left = 0.5
@@ -71,7 +94,7 @@ margin_left = 17.1703
 margin_top = -46.9001
 margin_right = 124.17
 margin_bottom = -13.9001
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Usuario"
 align = 2
 valign = 1
@@ -86,7 +109,7 @@ margin_left = 42.235
 margin_top = 16.4097
 margin_right = 123.235
 margin_bottom = 49.4097
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Pass"
 align = 2
 valign = 1
@@ -103,7 +126,7 @@ margin_left = -269.0
 margin_top = -46.5
 margin_right = -29.0
 margin_bottom = -13.5
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 max_length = 25
 __meta__ = {
 "_edit_use_anchors_": false
@@ -118,7 +141,7 @@ margin_left = -269.0
 margin_top = 16.945
 margin_right = -29.0
 margin_bottom = 49.945
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 max_length = 25
 secret = true
 __meta__ = {
@@ -141,7 +164,7 @@ margin_left = -53.5
 margin_top = 9.50005
 margin_right = 53.5
 margin_bottom = 42.5
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 text = "LOGIN"
 align = 1
 valign = 1
@@ -188,6 +211,9 @@ margin_left = 277.0
 margin_top = 407.0
 margin_right = 686.0
 margin_bottom = 450.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="ColorRect" parent="Error"]
 anchor_right = 1.0
@@ -215,9 +241,44 @@ text = "Error en inicio de sesion"
 align = 1
 valign = 1
 
-[node name="ErrorTimer" type="Timer" parent="."]
+[node name="OK" type="Popup" parent="."]
+margin_left = 277.0
+margin_top = 407.0
+margin_right = 686.0
+margin_bottom = 450.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="OK"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.76944
+margin_top = -0.76944
+margin_right = -0.76944
+margin_bottom = -0.76944
+color = Color( 0.176471, 0.556863, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="OK/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -199.55
+margin_top = -11.6443
+margin_right = 200.45
+margin_bottom = 11.3557
+custom_fonts/font = SubResource( 6 )
+text = "Iniciando Sesion"
+align = 1
+valign = 1
+
+[node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 [connection signal="button_down" from="LogPanel/ColorRect/Enter" to="." method="_on_Enter_button_down"]
 [connection signal="button_down" from="LogPanel/ColorRect/Salir" to="." method="_on_Salir_button_down"]
-[connection signal="timeout" from="ErrorTimer" to="." method="_on_ErrorTimer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

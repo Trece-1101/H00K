@@ -1,84 +1,18 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Fonts/Revamped.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://game/UI/Menus/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://game/UI/Menus/Buttons/NewGameButton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://game/UI/Menus/Buttons/LoadGameButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/UI/Menus/Buttons/SelectLevelButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/UI/Menus/Buttons/OptionsButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://game/UI/Menus/Buttons/ExitButton.tscn" type="PackedScene" id=6]
-[ext_resource path="res://game/UI/Menus/Buttons/CreditsButton.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/Sprites/Player/Cover.png" type="Texture" id=8]
+[ext_resource path="res://assets/Fonts/MainLabel.tres" type="DynamicFont" id=7]
+[ext_resource path="res://game/UI/Menus/Buttons/SecundaryButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/Backgrounds/Main_Menu_01.png" type="Texture" id=9]
 [ext_resource path="res://assets/Sounds/Music/main_menu.ogg" type="AudioStream" id=10]
 
 [sub_resource type="DynamicFont" id=1]
-size = 54
 font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 1 )
-
-[sub_resource type="Animation" id=3]
-resource_name = "fade_in"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "fade_out"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "menu_animated"
-length = 20.0
-loop = true
-step = 1.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("Menu/CenterRow/CenterContainer/PlayerSprite:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 4, 6, 8, 17, 20 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0.101961, 0.101961, 0.101961, 1 ), Color( 0.470588, 0.470588, 0.470588, 1 ), Color( 0.701961, 0.701961, 0.701961, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Menu/CenterRow/CenterContainer/PlayerSprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 4, 9, 12, 16, 20 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1.22242, 1.22242 ), Vector2( 1.22242, 1.22242 ), Vector2( 1.5, 1.5 ), Vector2( 1.5, 1.5 ), Vector2( 1.22242, 1.22242 ), Vector2( 1.22242, 1.22242 ) ]
-}
 
 [node name="TesterMainMenu" type="Control"]
 anchor_right = 1.0
@@ -117,7 +51,7 @@ __meta__ = {
 [node name="GameName" type="Label" parent="Menu"]
 margin_right = 880.0
 margin_bottom = 58.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 7 )
 text = "Katanero Test Mode"
 
 [node name="CenterRow" type="HBoxContainer" parent="Menu"]
@@ -127,7 +61,7 @@ margin_bottom = 457.0
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
-margin_right = 320.0
+margin_right = 300.0
 margin_bottom = 395.0
 size_flags_horizontal = 5
 size_flags_vertical = 3
@@ -137,96 +71,78 @@ alignment = 1
 [node name="HSeparator4" type="HSeparator" parent="Menu/CenterRow/Buttons"]
 modulate = Color( 1, 1, 1, 0 )
 margin_top = 33.0
-margin_right = 320.0
+margin_right = 300.0
 margin_bottom = 37.0
 
 [node name="HSeparator5" type="HSeparator" parent="Menu/CenterRow/Buttons"]
 modulate = Color( 1, 1, 1, 0 )
 margin_top = 45.0
-margin_right = 320.0
+margin_right = 300.0
 margin_bottom = 49.0
 
 [node name="HSeparator6" type="HSeparator" parent="Menu/CenterRow/Buttons"]
 modulate = Color( 1, 1, 1, 0 )
 margin_top = 57.0
-margin_right = 320.0
+margin_right = 300.0
 margin_bottom = 61.0
 
 [node name="NewGameButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
 margin_top = 69.0
-margin_right = 320.0
 margin_bottom = 114.0
+next_scene = "res://game/Levels/LevelOne_v2.tscn"
 
-[node name="LoadGameButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
+[node name="SelectLevelButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
 margin_top = 122.0
 margin_bottom = 167.0
+next_scene = "res://game/UI/Menus/LevelSelectionMenu.tscn"
 
 [node name="OptionsButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 5 )]
 margin_top = 175.0
-margin_right = 320.0
+margin_right = 300.0
 margin_bottom = 220.0
 next_scene = "res://game/UI/Menus/OptionsMenu.tscn"
 
-[node name="CreditsButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 7 )]
-margin_top = 228.0
-margin_right = 320.0
-margin_bottom = 273.0
-next_scene = "res://game/UI/Menus/CreditsMenu.tscn"
-
 [node name="HSeparator" type="HSeparator" parent="Menu/CenterRow/Buttons"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 281.0
-margin_right = 320.0
-margin_bottom = 285.0
+margin_top = 228.0
+margin_right = 300.0
+margin_bottom = 232.0
 
 [node name="HSeparator2" type="HSeparator" parent="Menu/CenterRow/Buttons"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 293.0
-margin_right = 320.0
-margin_bottom = 297.0
+margin_top = 240.0
+margin_right = 300.0
+margin_bottom = 244.0
 
 [node name="HSeparator3" type="HSeparator" parent="Menu/CenterRow/Buttons"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 305.0
-margin_right = 320.0
-margin_bottom = 309.0
+margin_top = 252.0
+margin_right = 300.0
+margin_bottom = 256.0
 
 [node name="ExitButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 6 )]
-margin_top = 317.0
-margin_right = 320.0
-margin_bottom = 362.0
+margin_top = 264.0
+margin_right = 300.0
+margin_bottom = 309.0
 next_scene = "exit"
 
-[node name="CenterContainer" type="CenterContainer" parent="Menu/CenterRow"]
-margin_left = 324.0
-margin_right = 880.0
-margin_bottom = 395.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="PlayerSprite" type="Sprite" parent="Menu/CenterRow/CenterContainer"]
-modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 274.095, 240.27 )
-scale = Vector2( 1.22242, 1.22242 )
-texture = ExtResource( 8 )
+[node name="SecundaryButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 8 )]
+margin_top = 317.0
+margin_bottom = 362.0
 
 [node name="VersionLabel" type="Label" parent="Menu"]
 margin_top = 461.0
 margin_right = 880.0
 margin_bottom = 500.0
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Version 1.0.0
 333 Games"
 align = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "menu_animated"
-anims/fade_in = SubResource( 3 )
-anims/fade_out = SubResource( 4 )
-anims/menu_animated = SubResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 autoplay = true
 bus = "Music"
+
+[editable path="Menu/CenterRow/Buttons/SecundaryButton"]
