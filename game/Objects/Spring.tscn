@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/Sprites/Objects/spring_frame5.png" type="Texture" id=8]
 [ext_resource path="res://game/Objects/Spring.gd" type="Script" id=9]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 5 ) ],
 "loop": false,
@@ -27,13 +27,14 @@ animations = [ {
 extents = Vector2( 15.7746, 1.90403 )
 
 [node name="Spring" type="Area2D"]
+z_index = 42
 collision_layer = 256
 script = ExtResource( 9 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -7.32526 )
 scale = Vector2( 0.88554, 0.45984 )
-frames = SubResource( 4 )
+frames = SubResource( 1 )
 animation = "idle"
 
 [node name="Ejecter" type="CollisionShape2D" parent="."]
