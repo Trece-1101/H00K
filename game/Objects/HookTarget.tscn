@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/Objects/HookTarget.gd" type="Script" id=1]
 [ext_resource path="res://assets/Sprites/Npc/HookPoint.png" type="Texture" id=2]
+[ext_resource path="res://assets/Sprites/light.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
@@ -22,6 +23,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 5 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Light2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -37,6 +50,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Light2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -71,6 +96,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 6 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Light2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "open"
@@ -87,8 +124,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 4 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Light2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [node name="HookTarget" type="Area2D"]
+z_index = 40
 collision_layer = 16
 script = ExtResource( 1 )
 
@@ -99,17 +149,23 @@ shape = SubResource( 1 )
 wait_time = 0.8
 one_shot = true
 
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 1, 1 )
-texture = ExtResource( 2 )
-hframes = 7
-frame = 4
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/can_hook = SubResource( 2 )
 anims/close = SubResource( 3 )
 anims/go_open = SubResource( 4 )
 anims/hooked = SubResource( 5 )
 anims/open = SubResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+hframes = 7
+frame = 4
+
+[node name="Light2D" type="Light2D" parent="."]
+visible = false
+scale = Vector2( 0.462754, 0.462754 )
+texture = ExtResource( 3 )
+texture_scale = 0.2
+energy = 2.0
+range_z_max = 35
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -3,7 +3,7 @@ extends Node
 signal constrols_changed
 
 enum { KB_MOUSE, GAMEPAD }
-var controls: = KB_MOUSE setget set_controls
+var controls := KB_MOUSE setget set_controls
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventJoypadButton or event is InputEventJoypadMotion:

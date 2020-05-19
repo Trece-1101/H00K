@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://game/Player/States/Spawn.gd" type="Script" id=1]
 [ext_resource path="res://game/Player/States/Run.gd" type="Script" id=2]
@@ -12,18 +12,23 @@
 [ext_resource path="res://game/Player/LeftWallDetector.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/Player/PlayerSkin.tscn" type="PackedScene" id=11]
 [ext_resource path="res://game/Player/States/Die.gd" type="Script" id=12]
+[ext_resource path="res://assets/Sounds/SFX/respawn_2.wav" type="AudioStream" id=13]
 [ext_resource path="res://game/Player/States/Debug.gd" type="Script" id=14]
 [ext_resource path="res://game/Player/States/Wall.gd" type="Script" id=15]
 [ext_resource path="res://game/Player/RightWallDetector.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/Sounds/SFX/jump_3.wav" type="AudioStream" id=17]
 [ext_resource path="res://game/Player/FloorDetector.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/Sounds/SFX/die_1.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/Sounds/SFX/hook_1.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/Sounds/SFX/impulse_3.wav" type="AudioStream" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 15 )
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 1, 0 )
+position = Vector2( 1, 1 )
 z_index = 50
-collision_mask = 46
+collision_mask = 494
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
@@ -42,13 +47,15 @@ position = Vector2( 5, 0 )
 position = Vector2( -5, 0 )
 
 [node name="BorderDetector" type="Position2D" parent="."]
-position = Vector2( -6, -32 )
+position = Vector2( 16, -32 )
 
 [node name="PlayerCollider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -16 )
 shape = SubResource( 1 )
 
 [node name="FloorDetector" parent="." instance=ExtResource( 18 )]
+position = Vector2( 0, -0.995771 )
+collide_with_areas = true
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -63,7 +70,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 max_speed_default = Vector2( 300, 800 )
-acceleration_default = Vector2( 1800, 1600 )
+acceleration_default = Vector2( 5000, 1600 )
 max_speed_fall = 550.0
 jump_impulse = 560.0
 fatality_impulse = 650.0
@@ -93,7 +100,7 @@ wait_time = 0.16
 one_shot = true
 
 [node name="JumpDelay" type="Timer" parent="StateMachine/Move/Air"]
-wait_time = 0.1
+wait_time = 0.15
 one_shot = true
 
 [node name="Wall" type="Node" parent="StateMachine/Move"]
@@ -105,8 +112,39 @@ slide_speed_incrementor = 1.5
 script = ExtResource( 9 )
 jump_after_hook = true
 
+[node name="GhostTimer" type="Timer" parent="StateMachine/Hook"]
+wait_time = 0.04
+
 [node name="Die" type="Node" parent="StateMachine"]
 script = ExtResource( 12 )
 
 [node name="Debug" type="Node" parent="StateMachine"]
 script = ExtResource( 14 )
+speed = Vector2( 1800, 1800 )
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Respawn" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 13 )
+pitch_scale = 2.0
+bus = "Player"
+
+[node name="Jump" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 17 )
+volume_db = -15.0
+bus = "Player"
+
+[node name="Die" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 19 )
+bus = "Player"
+
+[node name="Hook" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 20 )
+pitch_scale = 1.5
+bus = "Player"
+
+[node name="Impulse" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 21 )
+pitch_scale = 1.5
+bus = "Player"
+[connection signal="timeout" from="StateMachine/Hook/GhostTimer" to="StateMachine/Hook" method="_on_GhostTimer_timeout"]

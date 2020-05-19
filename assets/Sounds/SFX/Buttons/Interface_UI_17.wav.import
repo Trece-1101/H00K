@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Interface_UI_17.wav-ed6a9eb5db9d3639aab8b2555e5a978b.sample"
+
+[deps]
+
+source_file="res://assets/Sounds/SFX/Buttons/Interface_UI_17.wav"
+dest_files=[ "res://.import/Interface_UI_17.wav-ed6a9eb5db9d3639aab8b2555e5a978b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

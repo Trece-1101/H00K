@@ -7,7 +7,8 @@ o usar funcionalidades de él
 """
 ################################################################################
 #### variables
-var velocity: = Vector2.ZERO
+var velocity: Vector2 = Vector2.ZERO
+var transition_move: int = 45
 
 #### export variables
 export var max_speed_default: Vector2 = Vector2(220.0, 800.0)
@@ -17,6 +18,8 @@ export var jump_impulse: float = 450.0
 export var fatality_impulse: float = 500.0
 export var hook_jump_impulse: float = 200.0
 export var transition_impulse: float = 150.0
+export var spring_impulse_multiplier: float = 2.2
+export var spring_minimun_speed: float = 200.0
 """
 Todos estos valores default seran asignados a las variables correspondientes
 al iniciar el juego/nivel
@@ -44,8 +47,11 @@ onready var max_speed: = max_speed_default
 #### metodos
 func unhandled_input(event: InputEvent) -> void:
 	if owner.is_on_floor() and event.is_action_pressed("jump"):
-		_state_machine.transition_to("Move/Air", {impulse = true})
-	
+		if !owner.floor_detector.is_in_platform():
+			_state_machine.transition_to("Move/Air", {impulse = true})
+		else:
+			_state_machine.transition_to("Move/Air", {impulse = true, platform = true})
+
 	## TODO: solo DEBUG
 	if event.is_action_pressed("debug_move"):
 		_state_machine.transition_to("Debug")
@@ -58,9 +64,10 @@ func physics_process(delta: float) -> void:
 	
 	velocity = calculate_velocity(velocity, max_speed, acceleration, delta,
 	get_move_direction(), max_speed_fall)
-
-	velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
-	Events.emit_signal("player_moved", owner)
+	
+	velocity = owner.move_and_slide_with_snap(velocity, Vector2.DOWN * 20.0, owner.FLOOR_NORMAL)
+	#velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
+	#Events.emit_signal("player_moved", owner)
 	
 func _on_Hook_hooked_onto_target(target_global_position: Vector2, hooking_animation: String) -> void:
 	var to_target: Vector2 = target_global_position - owner.global_position
@@ -70,7 +77,7 @@ func _on_Hook_hooked_onto_target(target_global_position: Vector2, hooking_animat
 	_state_machine.transition_to("Hook", {target_global_position = target_global_position,
 	velocity = velocity, hooking_animation = hooking_animation})
 
-func enter(msg: Dictionary = {}) -> void:
+func enter(_msg: Dictionary = {}) -> void:
 	owner.hook.connect("hooked_onto_target", self, "_on_Hook_hooked_onto_target")
 	$Air.connect("jumped", $Idle.jump_buffer, "start")
 	$Air.connect("jumped", $Run.jump_buffer, "start")
@@ -82,38 +89,52 @@ func exit() -> void:
 
 static func calculate_velocity(
 		old_velocity: Vector2, 
-		max_speed: Vector2,
-		acceleration: Vector2,
+		max_speed_func: Vector2,
+		acceleration_func: Vector2,
 		delta: float,
 		move_direction: Vector2,
-		max_speed_fall: float,
+		max_speed_fall_func: float,
 		is_jump_interrupted: bool = false
 	) -> Vector2:
 	var new_velocity: = old_velocity
 	
-	new_velocity += move_direction * acceleration * delta
+	new_velocity += move_direction * acceleration_func * delta
 	if is_jump_interrupted:
 		new_velocity.y = 0.0
-	new_velocity.x = clamp(new_velocity.x, -max_speed.x, max_speed.x)
-	new_velocity.y = clamp(new_velocity.y, -max_speed.y, max_speed_fall)
+	new_velocity.x = clamp(new_velocity.x, -max_speed_func.x, max_speed_func.x)
+	new_velocity.y = clamp(new_velocity.y, -max_speed_func.y, max_speed_fall_func)
 	
 	return new_velocity
 
 func apply_impulse(direction: String) -> void:
 	if direction == "right":
-		velocity.x += transition_impulse
+		owner.global_position.x += transition_move
 	elif direction == "left":
-		velocity.x -= transition_impulse
+		owner.global_position.x -= transition_move
 	elif direction == "top":
 		velocity.y -= transition_impulse
 
+func apply_bumper_impulse(fall_speed: float) -> void:
+	if fall_speed < spring_minimun_speed:
+		fall_speed = spring_minimun_speed
+	velocity.y -= fall_speed * spring_impulse_multiplier
+	#print("fall speed: {fs} - velocity.y: {vy}".format({'fs': fall_speed, 'vy': velocity.y}))
+
+## TODO: esto liquida el movimiento con KB
+## SOLUCIONALO
 static func get_move_direction() -> Vector2:
+	return Vector2(Utils.get_aim_joystick_strenght().x, 1.0)
+#	return Vector2(
+#		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 1.0
+#	)
+
+static func get_move_kb_direction() -> Vector2:
 	return Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 1.0
 	)
 
 static func get_sprite_direction(last_direction: float) -> float:
-	var direction:float = get_move_direction().x
+	var direction: float = get_move_direction().x
 	var result
 	
 	if direction == 0.0:
