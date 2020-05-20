@@ -138,7 +138,7 @@ func saving() -> void:
 
 func set_death_count_label() -> void:
 	$AnimationPlayer.stop()
-	$LabelDeathCount.text = "x{death}".format({"death": Game.get_player_death_count()})
+	$LabelDeathCount.text = "x{death}".format({"death": GamePerformance.get_player_death_count()})
 	($AnimationPlayer as AnimationPlayer).play("show_death_count")
 	#$AnimationPlayer.play("show_death_count")
 

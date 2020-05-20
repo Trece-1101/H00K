@@ -72,6 +72,6 @@ func check_damage() -> void:
 func die() -> void:
 	is_alive = false
 	set_is_active(false)
-	Game.increment_death_count()
+	GamePerformance.increment_death_count(Game.get_player_current_level())
 	self.state_machine.transition_to("Die")
 ################################################################################

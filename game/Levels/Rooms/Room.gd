@@ -46,12 +46,8 @@ func _on_SaveArea_body_entered(body: Node) -> void:
 		level.saving_notice()
 		$SaveArea/PassRoom.play()
 		$SaveArea/CollisionShape2D.set_deferred("disabled", true)
-		
-#		if !already_save:
-#			level.saving_notice()
-#			already_save = true
-#			$SaveArea/PassRoom.play()
-#		print("saved at {rp}".format({'rp': respawn_point.global_position}))
+		GamePerformance.add_time(level.get_level_name(), OS.get_unix_time())
+		GamePerformance.get_time_performance(level.get_level_name())
 
 func activate_sensor(value: int) -> void:
 	sensor_left -= value
