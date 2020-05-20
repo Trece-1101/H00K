@@ -36,7 +36,9 @@ func get_time_performance(level_name: String) -> void:
 			var minutes = elapsed / 60
 			var seconds = elapsed % 60
 			var str_elapsed = "%02d : %02d" % [minutes, seconds]
-			print("elapsed --  ", str_elapsed)
+			print("------------------------")
+			print("Tiempo Total", str_elapsed)
+			print(str_elapsed)
 ################################################################################
 
 ################################################################################
