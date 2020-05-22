@@ -2,40 +2,46 @@ extends Node
 
 ################################################################################
 #### Variables
-var player_death_count: int = 0
-var player_respawn_position: Vector2 = Vector2.ZERO setget set_player_respawn_position, get_player_respawn_position
-var player_last_state: String = "" setget set_player_last_state, get_player_last_state
-var player_current_room: String = "Room1" setget set_player_current_room, get_player_current_room
+#var player_respawn_position: Vector2 = Vector2.ZERO setget set_player_respawn_position, get_player_respawn_position
+#var player_last_state: String = "Init" setget set_player_last_state, get_player_last_state
+#var player_current_room: String = "Room1" setget set_player_current_room, get_player_current_room
 var camera_start: Vector2 = Vector2.ZERO setget set_camera_start, get_camera_start
 var last_door_closed := {}
 var main_control := Settings.GAMEPAD
+
+var player_state = {
+	"respawn_position": Vector2.ZERO,
+	"last_state": "Init",
+	"current_room": "Room1",
+	"current_level": ""
+	}
 ################################################################################
 
 ################################################################################
 #### Setters y Getters
-func set_player_death_count(value: int) -> void:
-	player_death_count = value
-
-func get_player_death_count() -> int:
-	return player_death_count
-
 func set_player_last_state(value: String) -> void:
-	player_last_state = value
+	player_state["last_state"] = value
 
 func get_player_last_state() -> String:
-	return player_last_state
+	return player_state["last_state"]
 
 func set_player_respawn_position(value: Vector2) -> void:
-	player_respawn_position = value
+	player_state["respawn_position"] = value
 
 func get_player_respawn_position() -> Vector2:
-	return player_respawn_position
+	return player_state["respawn_position"]
 
 func set_player_current_room(value: String) -> void:
-	player_current_room = value
+	player_state["current_room"] = value
 
 func get_player_current_room() -> String:
-	return player_current_room
+	return player_state["current_room"]
+
+func set_player_current_level(value: String) -> void:
+	player_state["current_level"] = value
+
+func get_player_current_level() -> String:
+	return player_state["current_level"]
 
 func set_camera_start(value: Vector2) -> void:
 	camera_start = value
@@ -57,7 +63,4 @@ func set_main_controls(value) -> void:
 ################################################################################
 
 ################################################################################
-#### Metodos
-func increment_death_count() -> void:
-	player_death_count += 1
-################################################################################
+

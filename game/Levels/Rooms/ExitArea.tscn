@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8.29785, 48.4592 )
+
+[node name="ExitArea" type="Area2D"]
+modulate = Color( 1, 0.886275, 0, 1 )
+z_index = 30
+collision_layer = 64
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="PassLevel" type="AudioStreamPlayer" parent="."]

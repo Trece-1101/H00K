@@ -61,7 +61,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if not transition:
+	if not transition and not player.exiting:
 		#if player.global_position.y < borders["top"]:
 		if player.border_detector.global_position.y < borders["top"]:
 			move_camera("top")
@@ -138,7 +138,7 @@ func saving() -> void:
 
 func set_death_count_label() -> void:
 	$AnimationPlayer.stop()
-	$LabelDeathCount.text = "x{death}".format({"death": Game.get_player_death_count()})
+	$LabelDeathCount.text = "x{death}".format({"death": GamePerformance.get_player_death_count()})
 	($AnimationPlayer as AnimationPlayer).play("show_death_count")
 	#$AnimationPlayer.play("show_death_count")
 

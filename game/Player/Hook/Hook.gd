@@ -30,13 +30,17 @@ onready var cooldown: Timer = $Cooldown
 onready var target_circle: DrawingUtils = $TargetCircle
 onready var arrow_indicator: Sprite = $ArrowIndicator
 onready var ghost_sprite: String = ""
+onready var can_move := true
 ################################################################################
-
+func get_can_move() -> bool:
+	return can_move
 ################################################################################
 #### Setters y Getters
 func set_is_active(value: bool) -> void:
 	is_active = value
 	visible = value
+	$StateMachine/Aim.set_can_aim(value)
+	can_move = value
 	set_process_unhandled_input(value)
 	set_physics_process(value)
 
