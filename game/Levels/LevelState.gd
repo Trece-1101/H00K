@@ -50,3 +50,8 @@ func close_last_door() -> void:
 func saving_notice() -> void:
 	camera.saving()
 ################################################################################
+
+
+func _on_ExitArea_body_entered(body: Node) -> void:
+	#body.die()
+	body.disable_collider()

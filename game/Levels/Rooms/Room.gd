@@ -37,6 +37,10 @@ func get_sensors() -> void:
 		door.instant_close_door()
 		sensor_left = sensors.size()
 
+func close_my_door() -> void:
+	door = get_node("Door")
+	door.close_door()
+
 func _on_SaveArea_body_entered(body: Node) -> void:
 	if body.name == 'Player':
 		Game.set_player_respawn_position(respawn_point.global_position)

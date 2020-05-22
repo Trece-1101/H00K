@@ -61,7 +61,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if not transition:
+	if not transition and not player.exiting:
 		#if player.global_position.y < borders["top"]:
 		if player.border_detector.global_position.y < borders["top"]:
 			move_camera("top")

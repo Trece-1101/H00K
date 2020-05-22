@@ -11,6 +11,7 @@ export var can_slowmo: bool = true
 #### Variables
 var is_active := true setget set_is_active
 var is_alive: bool = true setget set_is_alive, get_is_alive
+var exiting: bool = false
 #var current_room: Room = null setget set_current_room, get_current_room
 
 #### variables onready
@@ -29,6 +30,7 @@ onready var hook_sound: AudioStreamPlayer = $SFX/Hook
 onready var die_sound: AudioStreamPlayer = $SFX/Die
 onready var impulse_sound: AudioStreamPlayer = $SFX/Impulse
 onready var level_camera := get_parent().get_node("LevelTransitionCamera")
+onready var can_move := true
 ################################################################################
 
 ################################################################################
@@ -41,6 +43,12 @@ func set_is_active(value: bool) -> void:
 	player_collider.call_deferred("disabled", not value)
 	## TODO: refactorizar esto cuando se implemente el daño
 	hook.set_is_active(value)
+
+func set_can_move(value: bool) -> void:
+	can_move = value
+
+func get_can_move() -> bool:
+	return can_move
 
 func get_is_alive() -> bool:
 	return is_alive
@@ -68,6 +76,15 @@ func check_damage() -> void:
 		var collision = get_slide_collision(i)
 		if collision.collider.is_in_group("Damage") and is_alive:
 			die()
+
+func test() -> void:
+	print("Hola mundo soy el player")
+
+func disable_collider() -> void:
+	can_move = false
+	set_is_active(false)
+	hook.set_is_active(false)
+	exiting = true
 
 func die() -> void:
 	is_alive = false
