@@ -64,9 +64,10 @@ func unhandled_input(event: InputEvent) -> void:
 
 func physics_process(delta: float) -> void:
 	owner.skin.scale.x = move.get_sprite_direction(owner.skin.scale.x)
-		
-	if !owner.get_is_alive():
-			owner.set_is_alive(true)
+	
+#	TODO: mmmmmmmm y esto???
+#	if not owner.get_is_alive():
+#		owner.set_is_alive(true)
 	
 	_is_jump_interrupted = Input.is_action_just_released("jump") and move.velocity.y < 0.0
 	

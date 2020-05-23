@@ -57,10 +57,7 @@ func unhandled_input(event: InputEvent) -> void:
 		_state_machine.transition_to("Debug")
 
 
-func physics_process(delta: float) -> void:
-	if not owner.get_can_move():
-		return
-	
+func physics_process(delta: float) -> void:	
 	if owner.is_on_floor():
 		max_speed = max_speed_default
 		get_node("Air")._jump_after_hook = false

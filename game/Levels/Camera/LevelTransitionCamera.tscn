@@ -123,7 +123,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.1 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -197,7 +197,7 @@ margin_top = -270.0
 margin_right = 480.0
 margin_bottom = 270.0
 rect_min_size = Vector2( 960, 540 )
-color = Color( 0, 0, 0, 1 )
+color = Color( 0, 0, 0, 0.784314 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

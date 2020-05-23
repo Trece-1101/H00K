@@ -25,7 +25,7 @@ func get_level_name() -> String:
 ################################################################################
 #### Metodos
 func _ready() -> void:
-	if !GlobalMusic.playing:
+	if not GlobalMusic.playing:
 		GlobalMusic.set_stream(load(music))
 		GlobalMusic.play()
 	
@@ -41,17 +41,15 @@ func _ready() -> void:
 		GamePerformance.init_level_performance(level_name, OS.get_unix_time())
 
 func close_last_door() -> void:
-	pass
-#	var room = get_node(close_door['room'])
-#	room.get_node(close_door['door']).instant_close_door()
+	var room = get_node(close_door['room'])
+	room.get_node(close_door['door']).instant_close_door()
 
 func saving_notice() -> void:
 	camera.saving()
 
 func _on_ExitArea_body_entered(body: Node) -> void:
-	body.disable_collider()
-	Game.set_player_last_state("Init")
-	get_tree().change_scene(next_scene)
+	body.toggle_is_active(false)
+	#get_tree().change_scene(next_scene)
 
 ################################################################################
 

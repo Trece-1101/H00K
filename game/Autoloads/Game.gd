@@ -2,9 +2,6 @@ extends Node
 
 ################################################################################
 #### Variables
-#var player_respawn_position: Vector2 = Vector2.ZERO setget set_player_respawn_position, get_player_respawn_position
-#var player_last_state: String = "Init" setget set_player_last_state, get_player_last_state
-#var player_current_room: String = "Room1" setget set_player_current_room, get_player_current_room
 var camera_start: Vector2 = Vector2.ZERO setget set_camera_start, get_camera_start
 var last_door_closed := {}
 var main_control := Settings.GAMEPAD
@@ -83,6 +80,7 @@ func init_level() -> void:
 	clear_last_door_closed()
 	set_player_current_room("Room1")
 	set_player_respawn_position(Vector2.ZERO)
+	set_player_last_state("Init")
 
 
 

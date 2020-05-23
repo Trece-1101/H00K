@@ -38,7 +38,6 @@ func set_is_active(value: bool) -> void:
 	is_active = value
 	if not player_collider:
 		return
-	#player_collider.disabled = not value
 	player_collider.call_deferred("disabled", not value)
 	## TODO: refactorizar esto cuando se implemente el daño
 	hook.set_is_active(value)
@@ -63,7 +62,7 @@ func _physics_process(_delta: float) -> void:
 		check_damage()
 
 func is_getting_input() -> bool:
-	if !Utils.get_aim_joystick_direction() == Vector2.ZERO:
+	if not Utils.get_aim_joystick_direction() == Vector2.ZERO:
 		return true
 	return false
 
@@ -76,14 +75,16 @@ func check_damage() -> void:
 		if collision.collider.is_in_group("Damage") and is_alive:
 			die()
 
+# TODO: sacar esto en produccion
 func test() -> void:
 	print("Hola mundo soy el player")
 
-func disable_collider() -> void:
-	can_move = false
-	set_is_active(false)
-	hook.set_is_active(false)
-	exiting = true
+func toggle_is_active(value: bool) -> void:
+	can_move = value
+	#set_is_active(false)
+	hook.set_is_active(value)
+	exiting = not value
+	is_alive = value
 
 func die() -> void:
 	is_alive = false
