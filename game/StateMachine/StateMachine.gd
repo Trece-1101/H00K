@@ -30,8 +30,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	state.unhandled_input(event)
 
 func _physics_process(delta: float) -> void:
-	if owner.get_can_move():
-		state.physics_process(delta)
+	state.physics_process(delta)
 
 func transition_to(target_state_path: String, msg: Dictionary = {}) -> void:
 	if not has_node(target_state_path):

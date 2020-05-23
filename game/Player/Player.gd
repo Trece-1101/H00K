@@ -11,8 +11,6 @@ export var can_slowmo: bool = true
 #### Variables
 var is_active := true setget set_is_active
 var is_alive: bool = true setget set_is_alive, get_is_alive
-var exiting: bool = false
-#var current_room: Room = null setget set_current_room, get_current_room
 
 #### variables onready
 onready var state_machine: StateMachine = $StateMachine
@@ -31,6 +29,7 @@ onready var die_sound: AudioStreamPlayer = $SFX/Die
 onready var impulse_sound: AudioStreamPlayer = $SFX/Impulse
 onready var level_camera := get_parent().get_node("LevelTransitionCamera")
 onready var can_move := true
+onready var exiting: bool = false
 ################################################################################
 
 ################################################################################
@@ -89,6 +88,6 @@ func disable_collider() -> void:
 func die() -> void:
 	is_alive = false
 	set_is_active(false)
-	GamePerformance.increment_death_count(Game.get_player_current_level())
+	GamePerformance.increment_death_count(Game.get_player_current_level_name())
 	self.state_machine.transition_to("Die")
 ################################################################################

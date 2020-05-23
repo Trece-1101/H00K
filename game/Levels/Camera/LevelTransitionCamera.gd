@@ -37,7 +37,7 @@ func _ready() -> void:
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
-	if Game.get_camera_start() == Vector2.ZERO:
+	if Game.get_camera_start() == Vector2.ZERO or Game.get_player_last_state() == "Init":
 		start_room_fila = start_room_fila
 		start_room_columna = start_room_columna
 	else:
@@ -55,14 +55,10 @@ func _ready() -> void:
 	var camera_y = (step_y * 0.5) + (step_y * (start_room_fila - 1))
 	
 	global_position = Vector2(camera_x, camera_y)
-	
-	#global_position.x = (step_x / 2) + (step_x * (start_room_columna - 1))
-	#global_position.y = (step_y / 2) + (step_y * (start_room_fila - 1))
 
 
 func _process(_delta: float) -> void:
 	if not transition and not player.exiting:
-		#if player.global_position.y < borders["top"]:
 		if player.border_detector.global_position.y < borders["top"]:
 			move_camera("top")
 		elif player.global_position.y > borders["bottom"]:

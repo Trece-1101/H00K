@@ -120,7 +120,7 @@ script = ExtResource( 12 )
 
 [node name="Debug" type="Node" parent="StateMachine"]
 script = ExtResource( 14 )
-speed = Vector2( 1800, 1800 )
+speed = Vector2( 1500, 1500 )
 
 [node name="SFX" type="Node" parent="."]
 

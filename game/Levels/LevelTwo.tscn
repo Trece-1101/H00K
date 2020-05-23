@@ -32,9 +32,6 @@ position = Vector2( 187.873, 256.206 )
 [node name="Spring2" parent="Room1/Objects" index="1" instance=ExtResource( 8 )]
 position = Vector2( 435.852, 383.922 )
 
-[node name="LevelTransitionCamera" parent="." instance=ExtResource( 1 )]
-position = Vector2( 480, 270 )
-
 [node name="TileMaps" type="Node" parent="."]
 
 [node name="World" type="TileMap" parent="TileMaps"]
@@ -57,5 +54,8 @@ tile_data = PoolIntArray( 1114120, 8, 0, 1114121, 8, 0, 1703964, 8, 0, 1703965, 
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 74.7158, 254.748 )
+
+[node name="LevelTransitionCamera" parent="." instance=ExtResource( 1 )]
+position = Vector2( 480, 270 )
 
 [editable path="Room1"]

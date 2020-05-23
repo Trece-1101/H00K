@@ -15,6 +15,9 @@ func unhandled_input(event: InputEvent) -> void:
 	move.unhandled_input(event)
 
 func physics_process(delta: float) -> void:
+	if not owner.get_can_move():
+		return
+	
 	owner.skin.scale.x = move.get_sprite_direction(owner.skin.scale.x)
 	owner.border_detector.position.x = owner.skin.scale.x * 16
 	

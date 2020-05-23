@@ -4,12 +4,14 @@ extends Node
 ################################################################################
 #### Export variables
 export var room_row_col: Vector2 = Vector2.ZERO
+export var last_room := false
 
 #### Variables
 var room_name: String = "Room"
 var sensor_left := 0
 var door: Door
 var already_save: bool = false
+
 
 #### Onready variables
 onready var respawn_point: Position2D = $SaveArea/RespawnPoint
@@ -26,6 +28,7 @@ func _ready() -> void:
 	
 	if get_node("Sensors"):
 		get_sensors()
+	
 
 func _get_room_name() -> String:
 	return room_name
@@ -36,6 +39,9 @@ func get_sensors() -> void:
 		door = get_node("Door")
 		door.instant_close_door()
 		sensor_left = sensors.size()
+	
+	manage_exit(sensor_left)
+
 
 func close_my_door() -> void:
 	door = get_node("Door")
@@ -57,7 +63,20 @@ func activate_sensor(value: int) -> void:
 	sensor_left -= value
 	if sensor_left <= 0:
 		door.open_door()
+	
+	manage_exit(sensor_left)
 
 func get_left_sensors() -> int:
 	return sensor_left
+
+func manage_exit(value: int) -> void:
+	if not last_room:
+		return
+	
+	var exit_area: Area2D = get_node("ExitArea")
+	if value <= 0:
+		exit_area.enable_collider()
+	else:
+		exit_area.disable_collider()
+
 ################################################################################
