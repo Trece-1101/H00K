@@ -130,4 +130,7 @@ position = Vector2( 1969.36, 156.839 )
 
 [editable path="Room2/SaveArea"]
 
+[node name="LevelTransitionCamera" parent="." instance=ExtResource( 1 )]
+position = Vector2( 480, 270 )
+
 [editable path="Room1"]

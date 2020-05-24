@@ -27,6 +27,8 @@ func enter(_msg: Dictionary = {}) -> void:
 	else:
 		owner.position = Game.get_player_respawn_position()
 	
+	#print(owner.position)
+	
 	play_animation_and_sound()
 
 func play_animation_and_sound() -> void:	

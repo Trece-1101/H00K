@@ -1,0 +1,242 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://game/Player/PlayerSkin.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/Sprites/skull.png" type="Texture" id=3]
+[ext_resource path="res://game/Levels/LevelTransition.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "transition"
+length = 8.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSkin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 38, 260 ), Vector2( 450, 260 ), Vector2( 450, 260 ), Vector2( 1500, 260 ) ]
+}
+tracks/1/type = "animation"
+tracks/1/path = NodePath("PlayerSkin/PlayerAnimation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": PoolStringArray( "run", "idlehook_mid" ),
+"times": PoolRealArray( 0, 4.5 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect2:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LevelCompleted:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 340, 150 ), Vector2( 340, 100 ), Vector2( 340, 25 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("LevelCompleted:rect_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.2, 0.2 ), Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("LevelCompleted:rect_rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("skull2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 432.69, 515.128 ), Vector2( 432.69, 515.128 ), Vector2( 432.69, 298.899 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("skull:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 432.69, 472.7 ), Vector2( 432.69, 472.7 ), Vector2( 432.69, 256.471 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Time:rect_position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 457.088, 450 ), Vector2( 457.088, 450 ), Vector2( 457.088, 233.771 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Death:rect_position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 457.088, 494 ), Vector2( 457.088, 494 ), Vector2( 457.088, 277.771 ) ]
+}
+tracks/10/type = "method"
+tracks/10/path = NodePath(".")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "load_level"
+} ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+size = 28
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 28
+font_data = ExtResource( 2 )
+
+[node name="LevelTransition" type="Node2D"]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 272.427 ],
+"_edit_vertical_guides_": [ 480.851 ]
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1000.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 1000, 600 )
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerSkin" parent="." instance=ExtResource( 1 )]
+position = Vector2( 38, 260 )
+
+[node name="PlayerSprite" parent="PlayerSkin" index="1"]
+position = Vector2( 14.6038, 14.6491 )
+scale = Vector2( 4.10337, 4.10337 )
+frame = 80
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "transition"
+anims/transition = SubResource( 1 )
+
+[node name="LevelCompleted" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 340.0
+margin_top = 150.0
+margin_right = 621.0
+margin_bottom = 186.0
+rect_scale = Vector2( 0.2, 0.2 )
+rect_pivot_offset = Vector2( 139.806, 1.03735 )
+custom_fonts/font = SubResource( 2 )
+text = "Nivel xx completado"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="Label" parent="."]
+margin_left = 457.088
+margin_top = 450.0
+margin_right = 557.088
+margin_bottom = 486.0
+custom_fonts/font = SubResource( 3 )
+text = "00:00"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Death" type="Label" parent="."]
+margin_left = 457.088
+margin_top = 494.0
+margin_right = 557.088
+margin_bottom = 530.0
+custom_fonts/font = SubResource( 3 )
+text = "x 20"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="skull" type="Sprite" parent="."]
+position = Vector2( 432.69, 472.7 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+
+[node name="skull2" type="Sprite" parent="."]
+position = Vector2( 432.69, 515.128 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_right = 1000.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[editable path="PlayerSkin"]

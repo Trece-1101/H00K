@@ -1,12 +1,18 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://game/Levels/Rooms/ExitArea.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8.29785, 48.4592 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 54.0758 )
 
 [node name="ExitArea" type="Area2D"]
 modulate = Color( 1, 0.886275, 0, 1 )
 z_index = 30
 collision_layer = 64
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -15,3 +21,10 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="PassLevel" type="AudioStreamPlayer" parent="."]
+
+[node name="ChangeSceneArea" type="Area2D" parent="."]
+position = Vector2( 133.348, 0 )
+collision_layer = 64
+
+[node name="SceneCollider" type="CollisionShape2D" parent="ChangeSceneArea"]
+shape = SubResource( 2 )

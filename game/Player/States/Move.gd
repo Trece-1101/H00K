@@ -57,11 +57,7 @@ func unhandled_input(event: InputEvent) -> void:
 		_state_machine.transition_to("Debug")
 
 
-func physics_process(delta: float) -> void:
-	if not owner.get_can_move():
-		_state_machine.transition_to("Move/Idle")
-		return
-	
+func physics_process(delta: float) -> void:	
 	if owner.is_on_floor():
 		max_speed = max_speed_default
 		get_node("Air")._jump_after_hook = false
@@ -71,7 +67,8 @@ func physics_process(delta: float) -> void:
 	
 	velocity = owner.move_and_slide_with_snap(velocity, Vector2.DOWN * 20.0, owner.FLOOR_NORMAL)
 
-	
+
+
 func _on_Hook_hooked_onto_target(target_global_position: Vector2, hooking_animation: String) -> void:
 	var to_target: Vector2 = target_global_position - owner.global_position
 	if owner.is_on_floor() and to_target.y > 0.0:
@@ -122,6 +119,9 @@ func apply_bumper_impulse(fall_speed: float) -> void:
 		fall_speed = spring_minimun_speed
 	velocity.y -= fall_speed * spring_impulse_multiplier
 	#print("fall speed: {fs} - velocity.y: {vy}".format({'fs': fall_speed, 'vy': velocity.y}))
+
+#func keep_running() -> void:
+#	velocity = 
 
 ## TODO: esto liquida el movimiento con KB
 ## SOLUCIONALO
