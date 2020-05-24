@@ -57,5 +57,5 @@ bus/6/name = "Spring"
 bus/6/solo = false
 bus/6/mute = false
 bus/6/bypass_fx = false
-bus/6/volume_db = -12.2557
+bus/6/volume_db = -21.8264
 bus/6/send = "Master"
