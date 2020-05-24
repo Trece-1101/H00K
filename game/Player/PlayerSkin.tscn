@@ -199,7 +199,7 @@ tracks/0/keys = {
 "values": [ 32, 33, 34, 35, 35, 35, 35, 35 ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=10]
 resource_name = "jump_fire_boots"
 loop = true
 step = 0.08
@@ -216,7 +216,7 @@ tracks/0/keys = {
 "values": [ 32, 33, 34, 35, 35, 35, 35, 35 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 0.4
 step = 0.08
 tracks/0/type = "value"
@@ -232,7 +232,7 @@ tracks/0/keys = {
 "values": [ 38, 39, 40, 41, 42 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 length = 0.4
 step = 0.08
 tracks/0/type = "value"
@@ -248,7 +248,7 @@ tracks/0/keys = {
 "values": [ 43, 44, 45, 46, 47 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 0.4
 step = 0.08
 tracks/0/type = "value"
@@ -264,7 +264,7 @@ tracks/0/keys = {
 "values": [ 48, 49, 50, 51, 52 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 length = 0.4
 step = 0.08
 tracks/0/type = "value"
@@ -280,7 +280,7 @@ tracks/0/keys = {
 "values": [ 53, 54, 55, 56, 57 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=15]
 length = 0.4
 step = 0.08
 tracks/0/type = "value"
@@ -296,7 +296,7 @@ tracks/0/keys = {
 "values": [ 58, 59, 60, 61, 62 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=16]
 length = 0.133333
 step = 0.0333333
 tracks/0/type = "value"
@@ -312,7 +312,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=17]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -375,7 +375,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=18]
 length = 0.6
 loop = true
 step = 0.06
@@ -392,7 +392,7 @@ tracks/0/keys = {
 "values": [ 80, 81, 82, 83, 84, 85, 86, 87, 88, 89 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=19]
 length = 0.38
 step = 0.04
 tracks/0/type = "value"
@@ -432,7 +432,7 @@ tracks/2/keys = {
 "values": [ 66, 67, 68, 69, 70, 71, 72, 73, 74, 75 ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=20]
 length = 0.16
 step = 0.08
 tracks/0/type = "value"
@@ -461,24 +461,24 @@ anims/idlehook_midbot = SubResource( 6 )
 anims/idlehook_midtop = SubResource( 7 )
 anims/idlehook_top = SubResource( 8 )
 anims/jump = SubResource( 9 )
-anims/jump_fire_boots = SubResource( 20 )
-anims/jumphook_bot = SubResource( 10 )
-anims/jumphook_mid = SubResource( 11 )
-anims/jumphook_midbot = SubResource( 12 )
-anims/jumphook_midtop = SubResource( 13 )
-anims/jumphook_top = SubResource( 14 )
-anims/ledge = SubResource( 15 )
-anims/reset_pose = SubResource( 16 )
-anims/run = SubResource( 17 )
-anims/spawn = SubResource( 18 )
-anims/wallslide = SubResource( 19 )
+anims/jump_fire_boots = SubResource( 10 )
+anims/jumphook_bot = SubResource( 11 )
+anims/jumphook_mid = SubResource( 12 )
+anims/jumphook_midbot = SubResource( 13 )
+anims/jumphook_midtop = SubResource( 14 )
+anims/jumphook_top = SubResource( 15 )
+anims/ledge = SubResource( 16 )
+anims/reset_pose = SubResource( 17 )
+anims/run = SubResource( 18 )
+anims/spawn = SubResource( 19 )
+anims/wallslide = SubResource( 20 )
 
 [node name="PlayerSprite" type="Sprite" parent="."]
 position = Vector2( 1, -18 )
 texture = ExtResource( 1 )
 vframes = 6
 hframes = 16
-frame = 32
+frame = 7
 __meta__ = {
 "_editor_description_": ""
 }

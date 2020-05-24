@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://game/Levels/LevelOne_v2.tres" type="TileSet" id=1]
+[ext_resource path="res://game/Levels/TileMaps/LevelOne_v2.tres" type="TileSet" id=1]
 [ext_resource path="res://game/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/UI/Debug/DebugPanel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game/Objects/HookTarget.tscn" type="PackedScene" id=4]
@@ -9,11 +9,12 @@
 [ext_resource path="res://game/UI/Debug/DebugDock.gd" type="Script" id=7]
 [ext_resource path="res://game/Levels/Rooms/SaveArea.tscn" type="PackedScene" id=8]
 [ext_resource path="res://game/Levels/Camera/LevelTransitionCamera.tscn" type="PackedScene" id=9]
-[ext_resource path="res://game/Levels/LevelOne.tres" type="TileSet" id=10]
+[ext_resource path="res://game/Levels/TileMaps/LevelOne.tres" type="TileSet" id=10]
 [ext_resource path="res://game/Objects/MovingPlatform.tscn" type="PackedScene" id=11]
 [ext_resource path="res://game/Enemies/Orugacop.tscn" type="PackedScene" id=12]
 [ext_resource path="res://game/Levels/Rooms/Room.gd" type="Script" id=13]
 [ext_resource path="res://game/Objects/Pathpoints.tscn" type="PackedScene" id=14]
+
 
 [node name="LevelPrototype" type="Node2D"]
 
