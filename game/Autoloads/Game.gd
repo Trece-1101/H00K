@@ -6,6 +6,8 @@ var camera_start: Vector2 = Vector2.ZERO setget set_camera_start, get_camera_sta
 var last_door_closed := {}
 var main_control := Settings.GAMEPAD
 
+var user = {"type": "", "name": ""}
+
 var player_state = {
 	"respawn_position": Vector2.ZERO,
 	"last_state": "Init",

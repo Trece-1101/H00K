@@ -1,0 +1,179 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://game/UI/Menus/BugMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/Fonts/Revamped.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16 Monospaced.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 28
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 12
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 18
+font_data = ExtResource( 2 )
+
+[node name="BugMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 860.0
+margin_bottom = 440.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 100.0
+margin_top = 120.202
+margin_right = 860.0
+margin_bottom = 156.202
+custom_fonts/font = SubResource( 1 )
+text = "Registro de Bug"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UserLabel" type="Label" parent="."]
+margin_left = 139.651
+margin_top = 174.801
+margin_right = 217.651
+margin_bottom = 200.801
+custom_fonts/font = SubResource( 2 )
+text = "Usuario"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UserName" type="LineEdit" parent="."]
+margin_left = 230.852
+margin_top = 168.151
+margin_right = 384.852
+margin_bottom = 204.151
+custom_fonts/font = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TipoBug" type="LineEdit" parent="."]
+margin_left = 256.725
+margin_top = 251.079
+margin_right = 410.725
+margin_bottom = 287.079
+custom_fonts/font = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BugLabel" type="Label" parent="."]
+margin_left = 143.451
+margin_top = 259.352
+margin_right = 221.451
+margin_bottom = 285.352
+custom_fonts/font = SubResource( 2 )
+text = "Tipo Bug"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DescriptionLabel" type="Label" parent="."]
+margin_left = 143.451
+margin_top = 326.802
+margin_right = 260.451
+margin_bottom = 352.802
+custom_fonts/font = SubResource( 2 )
+text = "Descripcion"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SendButton" type="Button" parent="."]
+margin_left = 704.904
+margin_top = 385.702
+margin_right = 851.904
+margin_bottom = 428.702
+custom_fonts/font = SubResource( 4 )
+text = "Enviar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DescriptionTextEdit" type="TextEdit" parent="."]
+margin_left = 274.5
+margin_top = 319.95
+margin_right = 543.5
+margin_bottom = 427.95
+custom_fonts/font = SubResource( 5 )
+wrap_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ErrorPopup" type="Popup" parent="."]
+margin_left = 535.851
+margin_top = 443.152
+margin_right = 860.851
+margin_bottom = 497.152
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="ErrorPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 0.0196078, 0.0196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ErrorPopup"]
+margin_left = 26.6002
+margin_top = 2.84998
+margin_right = 298.6
+margin_bottom = 51.85
+custom_fonts/font = SubResource( 6 )
+text = "El campo de bug y descripcion
+no puede estar vacio"
+align = 1
+valign = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+[connection signal="pressed" from="SendButton" to="." method="_on_SendButton_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

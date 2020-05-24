@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/spring.wav-328731a8696208abc9fdac1af5841b05.sample"
+
+[deps]
+
+source_file="res://assets/Sounds/SFX/spring.wav"
+dest_files=[ "res://.import/spring.wav-328731a8696208abc9fdac1af5841b05.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
