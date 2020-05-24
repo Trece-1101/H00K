@@ -7,6 +7,8 @@ func _ready() -> void:
 
 func enable_collider() -> void:
 	$CollisionShape2D.set_deferred("disabled", false)
+	$ChangeSceneArea/SceneCollider.set_deferred("disabled", false)
 
 func disable_collider() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
+	$ChangeSceneArea/SceneCollider.set_deferred("disabled", true)

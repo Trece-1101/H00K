@@ -49,7 +49,11 @@ func saving_notice() -> void:
 
 func _on_ExitArea_body_entered(body: Node) -> void:
 	body.toggle_is_active(false)
-	#get_tree().change_scene(next_scene)
+	camera.exit_level()
 
+func _on_ChangeSceneArea_body_entered(_body: Node) -> void:
+	get_tree().change_scene(next_scene)
 ################################################################################
+
+
 

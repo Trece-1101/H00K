@@ -1,9 +1,39 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/Sprites/Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://game/Player/PlayerSkin.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
+resource_name = "celebrate"
+length = 4.0
+loop = true
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 0.933333, 1.06667, 1.2, 1.33333, 1.46667, 1.6, 1.73333, 1.86667, 2.144, 2.211, 2.278, 2.345, 2.412, 2.479, 2.546, 2.613, 2.68, 2.747, 2.8, 2.867, 2.934, 3.001, 3.068, 3.135, 3.202, 3.269, 3.336, 3.403, 3.484, 3.551, 3.618, 3.685, 3.752, 3.819, 3.886, 3.953, 4.02, 4.087, 4.154, 4.221, 4.288, 4.355, 4.422, 4.489, 4.556, 4.623, 4.69, 4.757 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 8, 7, 8, 26, 27, 28, 30, 26, 27, 28, 30, 7, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 1.86667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, -18 ), Vector2( 1, -27 ), Vector2( 1, -18 ) ]
+}
+
+[sub_resource type="Animation" id=2]
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
@@ -55,8 +85,7 @@ tracks/3/keys = {
 "values": [ 1, 2, 3, 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle_stand"
+[sub_resource type="Animation" id=3]
 length = 0.5
 loop = true
 step = 0.08
@@ -73,8 +102,7 @@ tracks/0/keys = {
 "values": [ 7, 8, 9, 10 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "idlehook_mid"
+[sub_resource type="Animation" id=4]
 length = 0.48
 step = 0.08
 tracks/0/type = "value"
@@ -90,8 +118,7 @@ tracks/0/keys = {
 "values": [ 11, 12, 13, 14, 15, 65 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "idlehook_midbot"
+[sub_resource type="Animation" id=5]
 length = 0.48
 step = 0.08
 tracks/0/type = "value"
@@ -107,8 +134,7 @@ tracks/0/keys = {
 "values": [ 16, 17, 18, 19, 20, 48 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "idlehook_midtop"
+[sub_resource type="Animation" id=6]
 length = 0.48
 step = 0.08
 tracks/0/type = "value"
@@ -124,8 +150,7 @@ tracks/0/keys = {
 "values": [ 21, 22, 23, 24, 25, 53 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "idlehook_top"
+[sub_resource type="Animation" id=7]
 length = 0.48
 step = 0.08
 tracks/0/type = "value"
@@ -141,7 +166,7 @@ tracks/0/keys = {
 "values": [ 26, 27, 28, 29, 30, 58 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 0.62
 loop = true
 step = 0.08
@@ -158,8 +183,7 @@ tracks/0/keys = {
 "values": [ 32, 33, 34, 35, 36, 37 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "jumphook_bot"
+[sub_resource type="Animation" id=9]
 length = 0.4
 step = 0.08
 tracks/0/type = "value"
@@ -175,8 +199,7 @@ tracks/0/keys = {
 "values": [ 38, 39, 40, 41, 42 ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "jumphook_mid"
+[sub_resource type="Animation" id=10]
 length = 0.4
 step = 0.08
 tracks/0/type = "value"
@@ -192,8 +215,7 @@ tracks/0/keys = {
 "values": [ 43, 44, 45, 46, 47 ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "jumphook_midbot"
+[sub_resource type="Animation" id=11]
 length = 0.4
 step = 0.08
 tracks/0/type = "value"
@@ -209,8 +231,7 @@ tracks/0/keys = {
 "values": [ 48, 49, 50, 51, 52 ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "jumphook_midtop"
+[sub_resource type="Animation" id=12]
 length = 0.4
 step = 0.08
 tracks/0/type = "value"
@@ -226,8 +247,7 @@ tracks/0/keys = {
 "values": [ 53, 54, 55, 56, 57 ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "jumphook_top"
+[sub_resource type="Animation" id=13]
 length = 0.4
 step = 0.08
 tracks/0/type = "value"
@@ -243,7 +263,7 @@ tracks/0/keys = {
 "values": [ 58, 59, 60, 61, 62 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 length = 0.133333
 step = 0.0333333
 tracks/0/type = "value"
@@ -259,7 +279,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=15]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -322,7 +342,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=16]
 length = 0.6
 loop = true
 step = 0.06
@@ -339,7 +359,7 @@ tracks/0/keys = {
 "values": [ 80, 81, 82, 83, 84, 85, 86, 87, 88, 89 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=17]
 length = 0.38
 step = 0.04
 tracks/0/type = "value"
@@ -379,7 +399,7 @@ tracks/2/keys = {
 "values": [ 66, 67, 68, 69, 70, 71, 72, 73, 74, 75 ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=18]
 length = 0.16
 step = 0.08
 tracks/0/type = "value"
@@ -399,23 +419,24 @@ tracks/0/keys = {
 script = ExtResource( 3 )
 
 [node name="PlayerAnimation" type="AnimationPlayer" parent="."]
-anims/die = SubResource( 1 )
-anims/idle_stand = SubResource( 2 )
-anims/idlehook_mid = SubResource( 3 )
-anims/idlehook_midbot = SubResource( 4 )
-anims/idlehook_midtop = SubResource( 5 )
-anims/idlehook_top = SubResource( 6 )
-anims/jump = SubResource( 7 )
-anims/jumphook_bot = SubResource( 8 )
-anims/jumphook_mid = SubResource( 9 )
-anims/jumphook_midbot = SubResource( 10 )
-anims/jumphook_midtop = SubResource( 11 )
-anims/jumphook_top = SubResource( 12 )
-anims/ledge = SubResource( 13 )
-anims/reset_pose = SubResource( 14 )
-anims/run = SubResource( 15 )
-anims/spawn = SubResource( 16 )
-anims/wallslide = SubResource( 17 )
+anims/celebrate = SubResource( 1 )
+anims/die = SubResource( 2 )
+anims/idle_stand = SubResource( 3 )
+anims/idlehook_mid = SubResource( 4 )
+anims/idlehook_midbot = SubResource( 5 )
+anims/idlehook_midtop = SubResource( 6 )
+anims/idlehook_top = SubResource( 7 )
+anims/jump = SubResource( 8 )
+anims/jumphook_bot = SubResource( 9 )
+anims/jumphook_mid = SubResource( 10 )
+anims/jumphook_midbot = SubResource( 11 )
+anims/jumphook_midtop = SubResource( 12 )
+anims/jumphook_top = SubResource( 13 )
+anims/ledge = SubResource( 14 )
+anims/reset_pose = SubResource( 15 )
+anims/run = SubResource( 16 )
+anims/spawn = SubResource( 17 )
+anims/wallslide = SubResource( 18 )
 
 [node name="PlayerSprite" type="Sprite" parent="."]
 position = Vector2( 1, -18 )

@@ -40,6 +40,7 @@ func _ready() -> void:
 	if Game.get_camera_start() == Vector2.ZERO or Game.get_player_last_state() == "Init":
 		start_room_fila = start_room_fila
 		start_room_columna = start_room_columna
+		($AnimationPlayer as AnimationPlayer).play("enter_level")
 	else:
 		start_room_fila = int(Game.get_camera_start().x)
 		start_room_columna = int(Game.get_camera_start().y)
@@ -158,4 +159,7 @@ func _on_Timer_timeout() -> void:
 func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
 	get_tree().paused = false
 	player.apply_move_impulse(last_moved)
+
+func exit_level() -> void:
+	$AnimationPlayer.play("exit_level")
 ################################################################################
