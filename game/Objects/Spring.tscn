@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/Sprites/Objects/spring_frame4.png" type="Texture" id=1]
 [ext_resource path="res://assets/Sprites/Objects/spring_frame1.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/Sprites/Objects/spring_frame3.png" type="Texture" id=7]
 [ext_resource path="res://assets/Sprites/Objects/spring_frame5.png" type="Texture" id=8]
 [ext_resource path="res://game/Objects/Spring.gd" type="Script" id=9]
+[ext_resource path="res://assets/Sounds/SFX/spring.wav" type="AudioStream" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -40,5 +41,10 @@ animation = "idle"
 [node name="Ejecter" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -21.4618 )
 shape = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+pitch_scale = 0.95
+bus = "Spring"
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
