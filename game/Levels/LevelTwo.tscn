@@ -16,6 +16,66 @@
 script = ExtResource( 4 )
 level_name = "Level_Two"
 
+[node name="Room1" parent="." instance=ExtResource( 5 )]
+room_row_col = Vector2( 1, 1 )
+
+[node name="SaveArea" parent="Room1" index="1"]
+position = Vector2( 33.5674, 191.928 )
+
+[node name="Door" parent="Room1" index="2"]
+position = Vector2( 963.486, 268.014 )
+
+[node name="Sensor" parent="Room1/Sensors" index="0" instance=ExtResource( 9 )]
+position = Vector2( 304.206, 159.875 )
+
+[node name="Sensor2" parent="Room1/Sensors" index="1" instance=ExtResource( 9 )]
+position = Vector2( 779.849, 191.219 )
+
+[node name="HookTarget" parent="Room1/Targets" index="0" instance=ExtResource( 6 )]
+position = Vector2( 601.681, 184.025 )
+
+[node name="Spring" parent="Room1/Objects" index="0" instance=ExtResource( 8 )]
+position = Vector2( 187.873, 256.206 )
+
+[node name="Spring2" parent="Room1/Objects" index="1" instance=ExtResource( 8 )]
+position = Vector2( 435.852, 383.922 )
+
+[node name="Room2" parent="." instance=ExtResource( 5 )]
+
+[node name="Background" parent="Room2" index="0"]
+anchor_left = 0.00130208
+anchor_right = 1.0013
+margin_top = 2.48782
+margin_bottom = 2.48779
+
+[node name="SaveArea" parent="Room2" index="1"]
+position = Vector2( 993.451, 296.447 )
+
+[node name="Door" parent="Room2" index="2"]
+position = Vector2( 1920.91, 79.5493 )
+
+[node name="Sensor3" parent="Room2/Sensors" index="0" instance=ExtResource( 9 )]
+position = Vector2( 1513.36, 159.071 )
+timered = true
+reset_time = 5.0
+
+[node name="Sensor4" parent="Room2/Sensors" index="1" instance=ExtResource( 9 )]
+position = Vector2( 1191.51, 176.256 )
+timered = true
+reset_time = 4.0
+
+[node name="HookTarget3" parent="Room2/Targets" index="0" instance=ExtResource( 6 )]
+position = Vector2( 1706.66, 101.531 )
+
+[node name="HookTarget4" parent="Room2/Targets" index="1" instance=ExtResource( 6 )]
+position = Vector2( 1285.53, 145.827 )
+
+[node name="Spring3" parent="Room2/Objects" index="0" instance=ExtResource( 8 )]
+position = Vector2( 1231.83, 334.681 )
+
+[node name="Spring4" parent="Room2/Objects" index="1" instance=ExtResource( 8 )]
+position = Vector2( 1415.56, 272.222 )
+
 [node name="Room3" parent="." instance=ExtResource( 5 )]
 
 [node name="SaveArea" parent="Room3" index="1"]
@@ -41,62 +101,6 @@ wait_time = 0.1
 [node name="Pathpoints" parent="Room3/Objects/MovingPlatform2" instance=ExtResource( 11 )]
 mode = 1
 
-[node name="Room2" parent="." instance=ExtResource( 5 )]
-
-[node name="Background" parent="Room2" index="0"]
-anchor_left = 0.00130208
-anchor_right = 1.0013
-margin_top = 2.48782
-margin_bottom = 2.48779
-
-[node name="SaveArea" parent="Room2" index="1"]
-position = Vector2( 993.451, 296.447 )
-
-[node name="Door" parent="Room2" index="2"]
-position = Vector2( 1920.91, 79.5493 )
-
-[node name="Sensor3" parent="Room2/Sensors" index="0" instance=ExtResource( 9 )]
-position = Vector2( 1513.36, 159.071 )
-
-[node name="Sensor4" parent="Room2/Sensors" index="1" instance=ExtResource( 9 )]
-position = Vector2( 1191.51, 176.256 )
-
-[node name="HookTarget3" parent="Room2/Targets" index="0" instance=ExtResource( 6 )]
-position = Vector2( 1706.66, 101.531 )
-
-[node name="HookTarget4" parent="Room2/Targets" index="1" instance=ExtResource( 6 )]
-position = Vector2( 1285.53, 145.827 )
-
-[node name="Spring3" parent="Room2/Objects" index="0" instance=ExtResource( 8 )]
-position = Vector2( 1231.83, 334.681 )
-
-[node name="Spring4" parent="Room2/Objects" index="1" instance=ExtResource( 8 )]
-position = Vector2( 1415.56, 272.222 )
-
-[node name="Room1" parent="." instance=ExtResource( 5 )]
-room_row_col = Vector2( 1, 1 )
-
-[node name="SaveArea" parent="Room1" index="1"]
-position = Vector2( 33.5674, 191.928 )
-
-[node name="Door" parent="Room1" index="2"]
-position = Vector2( 963.486, 268.014 )
-
-[node name="Sensor" parent="Room1/Sensors" index="0" instance=ExtResource( 9 )]
-position = Vector2( 304.206, 159.875 )
-
-[node name="Sensor2" parent="Room1/Sensors" index="1" instance=ExtResource( 9 )]
-position = Vector2( 779.849, 191.219 )
-
-[node name="HookTarget" parent="Room1/Targets" index="0" instance=ExtResource( 6 )]
-position = Vector2( 601.681, 184.025 )
-
-[node name="Spring" parent="Room1/Objects" index="0" instance=ExtResource( 8 )]
-position = Vector2( 187.873, 256.206 )
-
-[node name="Spring2" parent="Room1/Objects" index="1" instance=ExtResource( 8 )]
-position = Vector2( 435.852, 383.922 )
-
 [node name="TileMaps" type="Node" parent="."]
 
 [node name="World" type="TileMap" parent="TileMaps"]
@@ -118,15 +122,15 @@ format = 1
 tile_data = PoolIntArray( 720995, 4, 1, 720996, 4, 1, 720997, 4, 1, 720998, 4, 1, 720999, 4, 1, 721000, 4, 1, 721001, 4, 1, 721002, 4, 1, 721003, 4, 1, 721004, 4, 1, 721005, 4, 1, 786530, -1073741820, 1, 852066, -1073741820, 1, 917602, -1073741820, 1, 983121, 4, 1, 983122, 4, 1, 983123, 4, 1, 983138, -1073741820, 1, 1048674, -1073741820, 1, 1114120, 8, 0, 1114121, 8, 0, 1114210, -1073741820, 1, 1179746, -1073741820, 1, 1245282, -1073741820, 1, 1310818, -1073741820, 1, 1376354, -1073741820, 1, 1441890, -1073741820, 1, 1507426, -1073741820, 1, 1572962, -1073741820, 1, 1638498, -1073741820, 1, 1703964, 8, 0, 1703965, 8, 0, 1703966, 8, 0, 1703967, 8, 0, 1703968, 8, 0, 1703969, 8, 0, 1703970, 8, 0, 1703971, 8, 0, 1703972, 8, 0, 1703973, 8, 0, 1703974, 8, 0, 1703975, 8, 0, 1704034, -1073741820, 1, 1769500, 9, 0, 1769501, 9, 0, 1769502, 9, 0, 1769503, 9, 0, 1769504, 9, 0, 1769505, 9, 0, 1769506, 9, 0, 1769507, 9, 0, 1769508, 9, 0, 1769509, 9, 0, 1769510, 9, 0, 1769511, 9, 0, 1769570, -1073741820, 1, 1835106, -1073741820, 1, 1900608, 8, 0, 1900609, 8, 0, 1900610, 8, 0, 1900611, 8, 0, 1900612, 8, 0, 1900613, 8, 0, 1900614, 8, 0, 1900615, 8, 0, 1900616, 8, 0, 1900617, 8, 0, 1900618, 8, 0, 1900619, 8, 0, 1900620, 8, 0, 1900621, 8, 0, 1900622, 8, 0, 1900623, 8, 0, 1900624, 8, 0, 1900628, 8, 0, 1900629, 8, 0, 1900630, 8, 0, 1900631, 8, 0, 1900632, 8, 0, 1900633, 8, 0, 1900634, 8, 0, 1900635, 8, 0, 1900636, 8, 0, 1900637, 8, 0, 1900638, 8, 0, 1900639, 8, 0, 1900640, 8, 0, 1900641, 8, 0, 1900642, 8, 0, 1966144, 9, 0, 1966145, 9, 0, 1966146, 9, 0, 1966147, 9, 0, 1966148, 9, 0, 1966149, 9, 0, 1966150, 9, 0, 1966151, 9, 0, 1966152, 9, 0, 1966153, 9, 0, 1966154, 9, 0, 1966155, 9, 0, 1966156, 9, 0, 1966157, 9, 0, 1966158, 9, 0, 1966159, 9, 0, 1966160, 9, 0, 1966164, 9, 0, 1966165, 9, 0, 1966166, 9, 0, 1966167, 9, 0, 1966168, 9, 0, 1966169, 9, 0, 1966170, 9, 0, 1966171, 9, 0, 1966172, 9, 0, 1966173, 9, 0, 1966174, 9, 0, 1966175, 9, 0, 1966176, 9, 0, 1966177, 9, 0, 1966178, 9, 0, 2031680, 10, 0, 2031681, 10, 0, 2031682, 10, 0, 2031683, 10, 0, 2031684, 10, 0, 2031685, 10, 0, 2031686, 10, 0, 2031687, 10, 0, 2031688, 10, 0, 2031689, 10, 0, 2031690, 10, 0, 2031691, 10, 0, 2031692, 10, 0, 2031693, 10, 0, 2031694, 10, 0, 2031695, 10, 0, 2031696, 10, 0, 2031700, 10, 0, 2031701, 10, 0, 2031702, 10, 0, 2031703, 10, 0, 2031704, 10, 0, 2031705, 10, 0, 2031706, 10, 0, 2031707, 10, 0, 2031708, 10, 0, 2031709, 10, 0, 2031710, 10, 0, 2031711, 10, 0, 2031712, 10, 0, 2031713, 10, 0, 2031714, 10, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1969.36, 156.839 )
+position = Vector2( 237.441, 317.747 )
 
 [node name="LevelTransitionCamera" parent="." instance=ExtResource( 1 )]
 position = Vector2( 480, 270 )
 
-[editable path="Room3"]
+[editable path="Room1"]
 
 [editable path="Room2"]
 
 [editable path="Room2/SaveArea"]
 
-[editable path="Room1"]
+[editable path="Room3"]

@@ -10,7 +10,7 @@ var descripcion: String
 func _ready() -> void:
 	user = Game.user["name"]
 	room = Game.get_player_current_room()
-	level = Game.get_player_current_level()
+	#level = Game.get_player_current_level()
 	
 	$UserName.text = user
 	$UserName.editable = false

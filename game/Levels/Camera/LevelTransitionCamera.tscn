@@ -42,7 +42,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 resource_name = "exit_level"
 length = 3.6
 tracks/0/type = "value"
@@ -267,7 +267,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/enter_level = SubResource( 3 )
-anims/exit_level = SubResource( 7 )
+anims/exit_level = SubResource( 4 )
 anims/saving = SubResource( 5 )
 anims/show_death_count = SubResource( 6 )
 
