@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/Sprites/Player/Player.png" type="Texture" id=1]
+[ext_resource path="res://assets/Tilesets/Thrusts.png" type="Texture" id=2]
 [ext_resource path="res://game/Player/PlayerSkin.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
@@ -202,7 +203,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=10]
 resource_name = "jump_fire_boots"
 loop = true
-step = 0.08
+step = 0.00833333
 tracks/0/type = "value"
 tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 2
@@ -210,10 +211,58 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.08, 0.16, 0.4, 0.48, 0.56, 0.72, 0.8 ),
+"times": PoolRealArray( 0, 0.0833333, 0.16, 0.4, 0.48, 0.56, 0.72, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 32, 33, 34, 35, 35, 35, 35, 35 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ThrustLeft:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0833333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ThrustRight:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.0833333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ThrustLeft:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.025, 0.0583333, 0.075 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ThrustRight:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.025, 0.0583333, 0.075 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -472,6 +521,22 @@ anims/reset_pose = SubResource( 17 )
 anims/run = SubResource( 18 )
 anims/spawn = SubResource( 19 )
 anims/wallslide = SubResource( 20 )
+
+[node name="ThrustLeft" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -1.997 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 2
+
+[node name="ThrustRight" type="Sprite" parent="."]
+visible = false
+position = Vector2( -10, -0.997 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 2
 
 [node name="PlayerSprite" type="Sprite" parent="."]
 position = Vector2( 1, -18 )
