@@ -36,12 +36,14 @@ func change_status(value: bool) -> void:
 	$Sprite.visible = !value
 	$PlayerHologram.scale.x = hologram_direction
 	$PlayerHologram.visible = value
-	$TimeLeft.visible = value
-	running_timer = value
 	if value:
 		room.activate_sensor(1)
 	else:
 		room.activate_sensor(-1)
+	
+	if timered:
+		$TimeLeft.visible = value
+		running_timer = value
 
 
 func _on_body_entered(body: Node) -> void:

@@ -120,9 +120,6 @@ func apply_bumper_impulse(fall_speed: float) -> void:
 	velocity.y -= fall_speed * spring_impulse_multiplier
 	#print("fall speed: {fs} - velocity.y: {vy}".format({'fs': fall_speed, 'vy': velocity.y}))
 
-#func keep_running() -> void:
-#	velocity = 
-
 ## TODO: esto liquida el movimiento con KB
 ## SOLUCIONALO
 static func get_move_direction() -> Vector2:
