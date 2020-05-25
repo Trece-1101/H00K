@@ -33,7 +33,7 @@ onready var anim_playing: String = ""
 
 ################################################################################
 #### Metodos
-func unhandled_input(event: InputEvent) -> void:	
+func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump") and owner.get_can_move():
 		var virtual_wall_normal: int
 		if check_if_can_wall_jump()["can"]:

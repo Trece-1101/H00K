@@ -202,7 +202,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=10]
 resource_name = "jump_fire_boots"
-loop = true
 step = 0.00833333
 tracks/0/type = "value"
 tracks/0/path = NodePath("PlayerSprite:frame")
