@@ -144,6 +144,7 @@ margin_top = 0.0
 margin_right = 510.0
 size_flags_vertical = 1
 text = "Level 2"
+level_to_load = "res://game/Levels/LevelTwo.tscn"
 
 [node name="Level3" parent="MainContainer/OptionsContainer/OptionPanel/GridContainer" instance=ExtResource( 7 )]
 margin_left = 520.0

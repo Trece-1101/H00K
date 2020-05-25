@@ -41,6 +41,7 @@ position = Vector2( 187.873, 256.206 )
 position = Vector2( 435.852, 383.922 )
 
 [node name="Room2" parent="." instance=ExtResource( 5 )]
+room_row_col = Vector2( 1, 2 )
 
 [node name="Background" parent="Room2" index="0"]
 anchor_left = 0.00130208
@@ -77,6 +78,7 @@ position = Vector2( 1231.83, 334.681 )
 position = Vector2( 1415.56, 272.222 )
 
 [node name="Room3" parent="." instance=ExtResource( 5 )]
+room_row_col = Vector2( 1, 3 )
 
 [node name="SaveArea" parent="Room3" index="1"]
 position = Vector2( 1961.23, 128.248 )
