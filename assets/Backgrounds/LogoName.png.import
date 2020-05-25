@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MainMenuFalopa.png-090a155e385ece59d4fee0a63560be5f.stex"
+path="res://.import/LogoName.png-6b33499c44234f477df01396346922e1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Backgrounds/MainMenuFalopa.png"
-dest_files=[ "res://.import/MainMenuFalopa.png-090a155e385ece59d4fee0a63560be5f.stex" ]
+source_file="res://assets/Backgrounds/LogoName.png"
+dest_files=[ "res://.import/LogoName.png-6b33499c44234f477df01396346922e1.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

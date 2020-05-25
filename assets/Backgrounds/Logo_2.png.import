@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ImagenFalopa.png-67d4bb4529c07d273119cd2531c82712.stex"
+path="res://.import/Logo_2.png-873e2d9e25f518fa8ef5fb0c8ef61969.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Backgrounds/ImagenFalopa.png"
-dest_files=[ "res://.import/ImagenFalopa.png-67d4bb4529c07d273119cd2531c82712.stex" ]
+source_file="res://assets/Backgrounds/Logo_2.png"
+dest_files=[ "res://.import/Logo_2.png-873e2d9e25f518fa8ef5fb0c8ef61969.stex" ]
 
 [params]
 
