@@ -277,6 +277,44 @@ text = "Iniciando Sesion"
 align = 1
 valign = 1
 
+[node name="Searching" type="Popup" parent="."]
+margin_left = 277.0
+margin_top = 407.0
+margin_right = 686.0
+margin_bottom = 450.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Searching"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.76944
+margin_top = -0.76944
+margin_right = -0.76944
+margin_bottom = -0.76944
+color = Color( 0.729412, 0.462745, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Searching/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -199.55
+margin_top = -11.6443
+margin_right = 200.45
+margin_bottom = 11.3557
+custom_fonts/font = SubResource( 6 )
+text = "Conectando"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
