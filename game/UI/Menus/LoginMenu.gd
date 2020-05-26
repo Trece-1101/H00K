@@ -25,8 +25,8 @@ func _on_Enter_button_down() -> void:
 	var result = BDRequest.LoginResult
 	#print(result)
 	if result[0] == 200:
-		## ACA DEVUELVE EL TIPO DE USUARIO Q ES Y DEBERIA SER GUARDADO EN UNA VARIABLE GLOBAL DEL JUEGO
-		## tipoUser = result[1] 
+		Game.set_user(result[1], user.text)
+		print(Game.get_user())
 		pop_up_show($OK)
 		ok_answer = true
 	else:

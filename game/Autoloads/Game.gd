@@ -19,6 +19,13 @@ var player_state = {
 
 ################################################################################
 #### Setters y Getters
+func set_user(utype: String, uname: String) -> void:
+	user["type"] = utype
+	user["name"] = uname
+
+func get_user():
+	return user
+
 func set_player_last_state(value: String) -> void:
 	player_state["last_state"] = value
 

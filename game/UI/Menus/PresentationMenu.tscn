@@ -151,7 +151,7 @@ __meta__ = {
 [node name="Studio" type="Label" parent="."]
 margin_left = -246.991
 margin_top = 47.5561
-margin_right = -4.99127
+margin_right = -4.991
 margin_bottom = 85.5561
 custom_fonts/font = SubResource( 1 )
 text = "333 Games"
