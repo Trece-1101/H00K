@@ -9,7 +9,7 @@ func _ready():
 	GetBugTypesRequest.connect("request_completed", self, "_GetBugTypes_request_completed")
 
 func GetBugTypes():
-	GetBugTypesRequest.request("http://localhost:3000/bugTypes")
+	GetBugTypesRequest.request("http://142.93.201.7:3000/bugTypes")
 
 func _GetBugTypes_request_completed(_result, response_code, _headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())

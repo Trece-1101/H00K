@@ -10,16 +10,16 @@ func _ready():
 	
 func SetGame(Nickname :String, NumRoom :String, Version :String, IdLevel :String, Tiempo :String, Muertes :String, Completo :String):
 	var headers = ["Content-Type: application/json"]
-	var query = JSON.print({"Nickname": Nickname, "IdRoom": NumRoom, "Version": Version, "IdLevel": IdLevel, "Tiempo": Tiempo, "Muertes": Muertes, "Completo": Completo})
-	GameRequest.request("http://localhost:3000/bug",headers,false,HTTPClient.METHOD_POST,query)
+	var query = JSON.print({"Nickname": Nickname, "NumRoom": NumRoom, "Version": Version, "IdLevel": IdLevel, "Tiempo": Tiempo, "Muertes": Muertes, "Completo": Completo})
+	GameRequest.request("http://142.93.201.7:3000/bug",headers,false,HTTPClient.METHOD_POST,query)
 
 func _GameRequest_request_completed(_result, response_code, _headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
 	if response_code == 200:
-		GameResult = json.result
+		GameResult = json.result['IdGame'] ##DEVUELVE EL NUMERO DE ID DEL GAME
 	else:
 		var msj = "Error %s on database connection" % response_code
-		GameResult = msj
+		GameResult = msj ##DEVUELVE MSJ DE ERROR SERIA BUENO MOSTRARLO POR PANTALLA
 	emit_signal("done")
 
 ### PARA IMPLEMENTAR HAY AGREGAR EL NODO

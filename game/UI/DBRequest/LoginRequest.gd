@@ -12,7 +12,7 @@ func _ready():
 func Login(user :String, password :String):
 	var headers = ["Content-Type: application/json"]
 	var query = JSON.print({"nickname": user, "password": password})
-	LoginRequest.request("http://localhost:3000/login",headers,false,HTTPClient.METHOD_POST,query)
+	LoginRequest.request("http://142.93.201.7:3000/login",headers,false,HTTPClient.METHOD_POST,query)
 
 func _LoginRequest_request_completed(_result, response_code, _headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
