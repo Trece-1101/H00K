@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://game/UI/Menus/BugMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/Fonts/Revamped.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16 Monospaced.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://game/UI/DBRequest/GetBugTypesRequest.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game/UI/DBRequest/BugRequest.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -90,11 +92,22 @@ __meta__ = {
 }
 
 [node name="TipoBug" type="LineEdit" parent="."]
+visible = false
 margin_left = 256.725
 margin_top = 251.079
 margin_right = 410.725
 margin_bottom = 287.079
 custom_fonts/font = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionButton" type="OptionButton" parent="."]
+margin_left = 258.0
+margin_top = 252.337
+margin_right = 411.0
+margin_bottom = 284.337
+text = "Elemento 0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -175,5 +188,9 @@ valign = 1
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="GetBugTypesRequest" parent="." instance=ExtResource( 5 )]
+
+[node name="BugRequest" parent="." instance=ExtResource( 6 )]
 [connection signal="pressed" from="SendButton" to="." method="_on_SendButton_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
