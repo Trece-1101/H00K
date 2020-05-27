@@ -5,9 +5,10 @@ extends Node
 #### Export variables
 export var room_row_col: Vector2 = Vector2.ZERO
 export var last_room := false
+export var version := 1
 
 #### Variables
-var room_name: String = "Room"
+var room_name:String = "Room"
 var sensor_left := 0
 var door: Door
 var already_save: bool = false
@@ -50,7 +51,7 @@ func close_my_door() -> void:
 func _on_SaveArea_body_entered(body: Node) -> void:
 	if body.name == 'Player':
 		Game.set_player_respawn_position(respawn_point.global_position)
-		Game.set_player_current_room(room_name)
+		Game.set_player_current_room(room_name, version)
 		Game.set_camera_start(room_row_col)
 		
 		level.saving_notice()

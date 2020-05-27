@@ -149,9 +149,9 @@ __meta__ = {
 }
 
 [node name="Studio" type="Label" parent="."]
-margin_left = -246.991
+margin_left = 359.518
 margin_top = 47.5561
-margin_right = -4.99127
+margin_right = 601.518
 margin_bottom = 85.5561
 custom_fonts/font = SubResource( 1 )
 text = "333 Games"
@@ -160,11 +160,10 @@ __meta__ = {
 }
 
 [node name="Presents" type="Label" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 margin_left = 360.746
-margin_top = 602.5
+margin_top = 419.205
 margin_right = 613.746
-margin_bottom = 640.5
+margin_bottom = 457.205
 custom_fonts/font = SubResource( 1 )
 text = "Presentan"
 __meta__ = {
@@ -172,7 +171,6 @@ __meta__ = {
 }
 
 [node name="Plus" type="Label" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 margin_left = 359.274
 margin_top = 123.08
 margin_right = 601.274
@@ -186,9 +184,9 @@ __meta__ = {
 }
 
 [node name="Powered" type="Label" parent="."]
-margin_left = 921.965
+margin_left = 299.495
 margin_top = 206.276
-margin_right = 1163.97
+margin_right = 541.5
 margin_bottom = 326.276
 custom_fonts/font = SubResource( 1 )
 text = "Godot
@@ -200,7 +198,7 @@ __meta__ = {
 }
 
 [node name="logo_3" type="Sprite" parent="."]
-position = Vector2( 1183.95, 264.343 )
+position = Vector2( 561.481, 264.343 )
 scale = Vector2( 0.450305, 0.450305 )
 texture = ExtResource( 3 )
 
@@ -228,7 +226,6 @@ __meta__ = {
 }
 
 [node name="Loading2" type="Label" parent="HBoxContainer"]
-visible = false
 margin_left = 76.0
 margin_top = 9.0
 margin_right = 85.0
@@ -240,7 +237,6 @@ __meta__ = {
 }
 
 [node name="Loading3" type="Label" parent="HBoxContainer"]
-visible = false
 margin_left = 89.0
 margin_top = 9.0
 margin_right = 98.0
@@ -252,7 +248,6 @@ __meta__ = {
 }
 
 [node name="Loading4" type="Label" parent="HBoxContainer"]
-visible = false
 margin_left = 102.0
 margin_top = 9.0
 margin_right = 111.0

@@ -6,7 +6,8 @@ export var next_scene: String
 
 onready var user := $LogPanel/ColorRect/UserInput
 onready var password := $LogPanel/ColorRect/PassInput
-onready var BDRequest := $LoginRequest
+onready var bd_request := $LoginRequest
+onready var log_request := $LogRequest
 
 func _ready() -> void:
 	user.grab_focus()
@@ -18,17 +19,25 @@ func _on_Salir_button_down() -> void:
 	get_tree().quit()
 
 func _on_Enter_button_down() -> void:
-	BDRequest.Login(user.text, password.text)
+	bd_request.Login(user.text, password.text)
 	$Searching.show()
 	toggle_insert(false)
-	yield(BDRequest, "done")
-	var result = BDRequest.LoginResult
-	#print(result)
+	yield(bd_request, "done")
+	var result = bd_request.get_login_result()
 	if result[0] == 200:
-		## ACA DEVUELVE EL TIPO DE USUARIO Q ES Y DEBERIA SER GUARDADO EN UNA VARIABLE GLOBAL DEL JUEGO
-		## tipoUser = result[1] 
-		pop_up_show($OK)
-		ok_answer = true
+		Game.set_user(result[1], user.text)
+		log_request.SetLog(user.text, OS.get_name())
+		yield(log_request, "done")
+		var log_result = log_request.get_log_result()
+		if log_result["result"]:
+			#print("log_id ", log_result)
+			Game.set_log_id(log_result["value"])
+			$OK/ColorRect/Label.text = "Iniciando sesion con ID {id}".format({"id": Game.get_log_id()})
+			pop_up_show($OK)
+			ok_answer = true
+		else:
+			$Error/ColorRect/Label.text = log_result["message"]
+			pop_up_show($Error)
 	else:
 		$Error/ColorRect/Label.text = result[1]
 		if result[0] != 401:

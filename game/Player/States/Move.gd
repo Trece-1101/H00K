@@ -53,7 +53,7 @@ func unhandled_input(event: InputEvent) -> void:
 			_state_machine.transition_to("Move/Air", {impulse = true, platform = true})
 
 	## TODO: solo DEBUG
-	if event.is_action_pressed("debug_move"):
+	if event.is_action_pressed("debug_move") and not Game.get_user()["type"] in Game.testers:
 		_state_machine.transition_to("Debug")
 
 

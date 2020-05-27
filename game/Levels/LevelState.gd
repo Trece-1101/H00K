@@ -40,6 +40,10 @@ func _ready() -> void:
 	if Game.get_player_last_state() == "Init":
 		GamePerformance.init_level_performance(level_name, OS.get_unix_time())
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		print("pausa")
+
 func close_last_door() -> void:
 	var room = get_node(close_door['room'])
 	room.get_node(close_door['door']).instant_close_door()

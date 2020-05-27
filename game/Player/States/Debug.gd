@@ -22,9 +22,7 @@ func unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("debug_move"):
 		_state_machine.transition_to("Move/Air", {"velocity": Vector2.ZERO})
-	
-	if event.is_action_pressed("debug_go_clic"):
-		owner.position += owner.get_local_mouse_position()
+
 
 func physics_process(delta: float) -> void:
 	var direction : Vector2 = get_move_direction()
