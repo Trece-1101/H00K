@@ -63,11 +63,14 @@ func make_login(uname: String, upass: String = "qwerty1234") -> void:
 			$Error/ColorRect/Label.text = log_result["message"]
 			pop_up_show($Error)
 	else:
-		$Error/ColorRect/Label.text = result[1]
-		if result[0] != 401:
-			$Error/ColorRect/Label.text = "Error conexion"
-		pop_up_show($Error)
-		ok_answer = false
+		if result[1] == "Usuario Incorrecto." and not is_tester:
+			print("crear usuario")
+		else:
+			$Error/ColorRect/Label.text = result[1]
+			if result[0] != 401:
+				$Error/ColorRect/Label.text = "Error conexion"
+			pop_up_show($Error)
+			ok_answer = false
 
 
 func pop_up_show(popup: Popup) -> void:

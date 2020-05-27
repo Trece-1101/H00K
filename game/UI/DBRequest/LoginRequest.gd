@@ -11,7 +11,7 @@ func get_login_result():
 func _ready() -> void:
 	login_request.connect("request_completed", self, "_LoginRequest_request_completed")
 
-func Login(user :String, password :String) -> void:
+func Login(user: String, password: String) -> void:
 	var headers = ["Content-Type: application/json"]
 	var query = JSON.print({"nickname": user, "password": password})
 	#print(query)
