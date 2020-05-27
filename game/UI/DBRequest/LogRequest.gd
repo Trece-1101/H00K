@@ -11,9 +11,10 @@ func get_log_result():
 func _ready() -> void:
 	log_request.connect("request_completed", self, "_LogRequest_request_completed")
 	
-func SetLog(Nickname: String, Plataforma: String) -> void:
+func SetLog(uname: String, platform: String) -> void:
 	var headers = ["Content-Type: application/json"]
-	var query = JSON.print({"Nickname": Nickname, "Plataforma": Plataforma})
+	var query = JSON.print({"Nickname": uname, "Plataforma": platform})
+	print(query)
 	log_request.request("http://142.93.201.7:3000/Log", headers, false, HTTPClient.METHOD_POST, query)
 
 func _LogRequest_request_completed(_result, response_code, _headers, body) -> void:

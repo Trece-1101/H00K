@@ -39,6 +39,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 next_scene = "res://game/UI/Menus/TesterMainMenu.tscn"
+is_tester = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0.133333 )

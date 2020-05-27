@@ -3,6 +3,7 @@ extends Control
 var ok_answer := false
 
 export var next_scene: String
+export var is_tester: bool = false
 
 onready var user := $LogPanel/ColorRect/UserInput
 onready var password := $LogPanel/ColorRect/PassInput
@@ -11,6 +12,7 @@ onready var log_request := $LogRequest
 
 func _ready() -> void:
 	user.grab_focus()
+	connect("press_send", $LogPanel/ColorRect/Enter, "_on_Enter_button_down")
 
 func load_next_scene() -> void:
 	get_tree().change_scene(next_scene)
@@ -19,14 +21,26 @@ func _on_Salir_button_down() -> void:
 	get_tree().quit()
 
 func _on_Enter_button_down() -> void:
-	bd_request.Login(user.text, password.text)
+	if is_tester:
+		make_login(user.text, password.text)
+	else:
+		make_login(user.text)
+
+func log_user() -> void:
+	make_login(user.text)
+
+func make_login(uname: String, upass: String = "qwerty1234") -> void:
+	# login_request
+	bd_request.Login(uname, upass)
 	$Searching.show()
 	toggle_insert(false)
 	yield(bd_request, "done")
 	var result = bd_request.get_login_result()
 	if result[0] == 200:
-		Game.set_user(result[1], user.text)
-		log_request.SetLog(user.text, OS.get_name())
+		# Guardo el nombre del usuario logueado
+		Game.set_user(result[1], uname)
+		# log_request
+		log_request.SetLog(Game.get_user()["name"], OS.get_name())
 		yield(log_request, "done")
 		var log_result = log_request.get_log_result()
 		if log_result["result"]:
@@ -44,6 +58,7 @@ func _on_Enter_button_down() -> void:
 			$Error/ColorRect/Label.text = "Error conexion"
 		pop_up_show($Error)
 		ok_answer = false
+
 
 func pop_up_show(popup: Popup) -> void:
 	$Searching.hide()
