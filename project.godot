@@ -134,6 +134,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/Levels/Rooms/Room.gd"
 }, {
+"base": "Resource",
+"class": "SaveUserData",
+"language": "GDScript",
+"path": "res://game/Player/SaveUserData.gd"
+}, {
 "base": "BehaviorBaseNode",
 "class": "Selector",
 "language": "GDScript",
@@ -210,6 +215,7 @@ _global_script_class_icons={
 "Player": "",
 "Repeater": "res://assets/Sprites/BehaviorTree/repeat.png",
 "Room": "",
+"SaveUserData": "",
 "Selector": "res://assets/Sprites/BehaviorTree/selector_icon.png",
 "Sequence": "res://assets/Sprites/BehaviorTree/sequence_icon.png",
 "State": "",
@@ -238,7 +244,7 @@ DrawingUtils="*res://game/Autoloads/DrawingUtils.gd"
 Game="*res://game/Autoloads/Game.gd"
 GlobalMusic="*res://game/Autoloads/GlobalMusic.tscn"
 GamePerformance="*res://game/Autoloads/GamePerformance.gd"
-GameSave="*res://game/Autoloads/GameSave.gd"
+GameSaver="*res://game/Autoloads/GameSaver.gd"
 
 [debug]
 

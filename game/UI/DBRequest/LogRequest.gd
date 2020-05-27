@@ -14,17 +14,15 @@ func _ready() -> void:
 func SetLog(uname: String, platform: String) -> void:
 	var headers = ["Content-Type: application/json"]
 	var query = JSON.print({"Nickname": uname, "Plataforma": platform})
-	print(query)
+	#print(query)
 	log_request.request("http://142.93.201.7:3000/Log", headers, false, HTTPClient.METHOD_POST, query)
 
 func _LogRequest_request_completed(_result, response_code, _headers, body) -> void:
 	var json = JSON.parse(body.get_string_from_utf8())
 	if response_code == 200:
 		log_result = {"result": true, "value": json.result['IdLog'], "message": ""}
-		#LogResult = [true, json.result['IdLog']] ##DEVUELVE EL NUMERO DE ID DEL LOG SERIA BUENO MOSTRARLO POR PANTALLA
 	else:
 		var msj = "Error %s on database connection" % response_code
 		log_result = {"result": false, "value": 0, "message": msj}
-		#LogResult = [false, msj] ##DEVUELVE MSJ DE ERROR SERIA BUENO MOSTRARLO POR PANTALLA
 	
 	emit_signal("done")

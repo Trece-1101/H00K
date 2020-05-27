@@ -3,11 +3,12 @@ extends Control
 signal press_send
 
 func load_user() -> void:
-	if not GameSave.check_directory(true) or not GameSave.check_user_data():
+	if not GameSaver.check_directory(true) or not GameSaver.check_user_data():
+		$LoginMenu.set_create_user(true)
 		$LoginMenu.show()
 	else:
 		$Sesion.visible = true
-		var user_data = GameSave.load_user()
-		Game.set_user(user_data["type"], user_data["name"])
-		$LogPanel/ColorRect/UserInput.text = Game.get_user()["name"]
+		var user_data = GameSaver.load_user()
+		Game.set_user(user_data[0], user_data[1])
+		$LoginMenu/LogPanel/ColorRect/UserInput.text = Game.get_user()["name"]
 		emit_signal("press_send")

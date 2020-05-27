@@ -1,6 +1,7 @@
 extends Control
 
 var ok_answer := false
+var create_user := false
 
 export var next_scene: String
 export var is_tester: bool = false
@@ -10,9 +11,15 @@ onready var password := $LogPanel/ColorRect/PassInput
 onready var bd_request := $LoginRequest
 onready var log_request := $LogRequest
 
+func set_create_user(value: bool) -> void:
+	create_user = value
+
+
 func _ready() -> void:
 	user.grab_focus()
-	connect("press_send", $LogPanel/ColorRect/Enter, "_on_Enter_button_down")
+	if get_parent().name == "PresentationMenu":
+		get_parent().connect("press_send", self, "log_user")
+	
 
 func load_next_scene() -> void:
 	get_tree().change_scene(next_scene)
@@ -31,14 +38,15 @@ func log_user() -> void:
 
 func make_login(uname: String, upass: String = "qwerty1234") -> void:
 	# login_request
-	bd_request.Login(uname, upass)
-	$Searching.show()
+	bd_request.Login(uname.to_lower(), upass.to_lower())
+	if visible:
+		$Searching.show()
 	toggle_insert(false)
 	yield(bd_request, "done")
 	var result = bd_request.get_login_result()
 	if result[0] == 200:
 		# Guardo el nombre del usuario logueado
-		Game.set_user(result[1], uname)
+		Game.set_user(result[1], uname.to_lower())
 		# log_request
 		log_request.SetLog(Game.get_user()["name"], OS.get_name())
 		yield(log_request, "done")
@@ -46,6 +54,8 @@ func make_login(uname: String, upass: String = "qwerty1234") -> void:
 		if log_result["result"]:
 			#print("log_id ", log_result)
 			Game.set_log_id(log_result["value"])
+			if create_user:
+				GameSaver.create_user(Game.get_user()["name"])
 			$OK/ColorRect/Label.text = "Iniciando sesion con ID {id}".format({"id": Game.get_log_id()})
 			pop_up_show($OK)
 			ok_answer = true
@@ -61,10 +71,11 @@ func make_login(uname: String, upass: String = "qwerty1234") -> void:
 
 
 func pop_up_show(popup: Popup) -> void:
-	$Searching.hide()
-	popup.show()
 	$Timer.start()
-	toggle_insert(false)
+	if visible:
+		$Searching.hide()
+		popup.show()
+		toggle_insert(false)
 
 func toggle_insert(value: bool) -> void:
 	user.editable = value

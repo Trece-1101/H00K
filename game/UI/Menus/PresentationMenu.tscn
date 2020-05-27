@@ -293,6 +293,10 @@ visible = false
 next_scene = "res://game/UI/Menus/MainMenu.tscn"
 is_tester = false
 
+[node name="LogPanel" parent="LoginMenu" index="3"]
+margin_top = -178.471
+margin_bottom = 92.5287
+
 [node name="User" parent="LoginMenu/LogPanel/ColorRect" index="0"]
 margin_top = -13.0758
 margin_bottom = 19.9242
@@ -311,6 +315,18 @@ visible = false
 margin_left = -128.147
 margin_right = 156.853
 text = "Log Usuario"
+
+[node name="Error" parent="LoginMenu" index="4"]
+margin_top = 361.573
+margin_bottom = 404.573
+
+[node name="OK" parent="LoginMenu" index="5"]
+margin_top = 361.573
+margin_bottom = 404.573
+
+[node name="Searching" parent="LoginMenu" index="6"]
+margin_top = 364.029
+margin_bottom = 407.029
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
