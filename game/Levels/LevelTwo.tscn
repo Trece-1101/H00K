@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://game/Levels/Camera/LevelTransitionCamera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/Levels/TileMaps/LevelOne.tres" type="TileSet" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://game/Objects/Sensor.tscn" type="PackedScene" id=9]
 [ext_resource path="res://game/Objects/MovingPlatform.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/Objects/Pathpoints.tscn" type="PackedScene" id=11]
+[ext_resource path="res://game/UI/Menus/BugMenu.tscn" type="PackedScene" id=12]
 
 [node name="LevelTwo" type="Node2D"]
 script = ExtResource( 4 )
@@ -128,6 +129,14 @@ position = Vector2( 237.441, 317.747 )
 
 [node name="LevelTransitionCamera" parent="." instance=ExtResource( 1 )]
 position = Vector2( 480, 270 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="BugMenu" parent="CanvasLayer" instance=ExtResource( 12 )]
+visible = false
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [editable path="Room1"]
 

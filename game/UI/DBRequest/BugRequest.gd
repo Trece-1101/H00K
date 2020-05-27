@@ -2,23 +2,42 @@ extends Node
 
 signal done
 
-onready var BugRequest = get_node("BugRequest")
-onready var BugResult
+onready var bug_request = get_node("BugRequest")
+onready var bug_result
 
-func _ready():
-	BugRequest.connect("request_completed", self, "_BugRequest_request_completed")
-	
-func SetBug(Nickname :String, NumRoom :String, Version :String, IdLevel :String, IdLog :String, IdTipoBug :String, Descripcion :String):
-	var headers = ["Content-Type: application/json"]
-	var query = JSON.print({"Nickname": Nickname, "NumRoom": NumRoom, "Version": Version, "IdLevel": IdLevel, "IdLog": IdLog, "IdTipoBug": IdTipoBug, "Descripcion": Descripcion})
-	BugRequest.request("http://142.93.201.7:3000/bug",headers,false,HTTPClient.METHOD_POST,query)
+func get_bug_result():
+	return bug_result
 
-func _BugRequest_request_completed(_result, response_code, _headers, body):
+func _ready() -> void:
+	bug_request.connect("request_completed", self, "_BugRequest_request_completed")
+
+func SetBug(
+	nickname: String, 
+	room: int, 
+	version: int, 
+	level: int, 
+	id_log: int, 
+	type_bug: int, 
+	description: String
+	) -> void:
+		var headers = ["Content-Type: application/json"]
+		var query = JSON.print({"Nickname": nickname, 
+			"NumRoom": room, 
+			"Version": version, 
+			"IdLevel": level, 
+			"IdLog": id_log, 
+			"IdTipoBug": type_bug, 
+			"Descripcion": description}
+			)
+		bug_request.request("http://142.93.201.7:3000/bug", headers, false, HTTPClient.METHOD_POST, query)
+
+func _BugRequest_request_completed(_result, response_code, _headers, body) -> void:
 	var json = JSON.parse(body.get_string_from_utf8())
 	if response_code == 200:
-		BugResult = [true, json.result['IdBug']] ##DEVUELVE EL NUMERO DE ID BUG SERIA BUENO MOSTRARLO POR PANTALLA
+		bug_result = {"response": true, "id_bug": json.result['IdBug'], "message": ""}
 	else:
 		var msj = "Error %s on database connection" % response_code
-		BugResult = msj ##DEVUELVE MSJ DE ERROR SERIA BUENO MOSTRARLO POR PANTALLA
+		bug_result = {"response": false, "id_bug": 0, "message": msj}
+	
 	emit_signal("done")
 
