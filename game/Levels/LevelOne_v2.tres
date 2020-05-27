@@ -21,16 +21,16 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+points = PoolVector2Array( 1.7294, 4.80112, 14.6163, 4.80972, 14.386, 15.8999, 1.92413, 15.9648 )
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+points = PoolVector2Array( 1.03816, 5.19054, 14.6683, 4.99583, 14.9928, 15.835, 1.23288, 15.9648 )
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+points = PoolVector2Array( 0.940002, 5.12564, 14.8947, 4.99583, 14.8618, 16.0085, 0.686462, 15.8528 )
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+points = PoolVector2Array( 0.10902, 5.56108, 16.2705, 5.62598, 16, 16, 0, 16 )
 
 [sub_resource type="AnimatedTexture" id=8]
 frames = 4
