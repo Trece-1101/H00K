@@ -143,6 +143,7 @@ margin_left = 260.0
 margin_top = 0.0
 margin_right = 510.0
 size_flags_vertical = 1
+disabled = true
 text = "Level 2"
 level_to_load = "res://game/Levels/LevelTwo.tscn"
 
@@ -151,6 +152,7 @@ margin_left = 520.0
 margin_top = 0.0
 margin_right = 770.0
 size_flags_vertical = 1
+disabled = true
 text = "Level 3"
 
 [node name="Level4" parent="MainContainer/OptionsContainer/OptionPanel/GridContainer" instance=ExtResource( 7 )]
@@ -158,6 +160,7 @@ margin_left = 0.0
 margin_top = 90.0
 margin_bottom = 170.0
 size_flags_vertical = 1
+disabled = true
 text = "Level 4"
 
 [node name="Level5" parent="MainContainer/OptionsContainer/OptionPanel/GridContainer" instance=ExtResource( 7 )]
@@ -166,6 +169,7 @@ margin_top = 90.0
 margin_right = 510.0
 margin_bottom = 170.0
 size_flags_vertical = 1
+disabled = true
 text = "Level 5"
 
 [node name="Level6" parent="MainContainer/OptionsContainer/OptionPanel/GridContainer" instance=ExtResource( 7 )]
@@ -174,6 +178,7 @@ margin_top = 90.0
 margin_right = 770.0
 margin_bottom = 170.0
 size_flags_vertical = 1
+disabled = true
 text = "Level 6"
 
 [node name="HSeparator4" type="HSeparator" parent="MainContainer"]

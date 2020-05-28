@@ -8,14 +8,17 @@ var main_control := Settings.GAMEPAD
 
 var user = {"type": "", "name": ""}
 var testers = ["QATester", "Tester"]
+var bug_testers = ["QATester"]
+var performers = ["Tester", "Jugador"]
 var log_id := 0
-var run_id := 0
 
 var player_state = {
 	"respawn_position": Vector2.ZERO,
 	"last_state": "Init",
 	"current_room": "Room1",
+	"last_room": "Room0",
 	"current_room_version": 1,
+	"last_room_version": 1,
 	"current_level": {"level_name": "", "level_number": 0},
 	"next_level": ""
 	}
@@ -36,12 +39,6 @@ func set_log_id(value: int) -> void:
 func get_log_id() -> int:
 	return log_id
 
-func set_run_id(value: int) -> void:
-	run_id = value
-
-func get_run_id() -> int:
-	return run_id
-
 func set_player_last_state(value: String) -> void:
 	player_state["last_state"] = value
 
@@ -61,8 +58,24 @@ func set_player_current_room(value: String, version: int) -> void:
 func get_player_current_room() -> String:
 	return player_state["current_room"]
 
+func get_player_current_room_int() -> int:
+	return int(player_state["current_room"].substr(4,-1))
+
+func get_player_last_room_int() -> int:
+	return int(player_state["last_room"].substr(4,-1))
+
 func get_player_current_room_v() -> int:
 	return player_state["current_room_version"]
+
+func set_player_last_room(value: String, version: int) -> void:
+	player_state["last_room"] = value
+	player_state["last_room_version"] = version
+
+func get_player_last_room() -> String:
+	return player_state["last_room"]
+
+func get_player_last_room_v() -> int:
+	return player_state["last_room_version"]
 
 func set_player_current_level(name: String, number: int) -> void:
 	player_state["current_level"]["level_name"] = name
@@ -111,12 +124,8 @@ func init_level() -> void:
 	set_player_respawn_position(Vector2.ZERO)
 	set_player_last_state("Init")
 
-func add_run() -> void:
-	run_id += 1
-
 func print_user_data() -> void:
-	print("usuario: ", user)
-	print("run: ", run_id)
+	print(user)
 	print("log: ", log_id)
 
 

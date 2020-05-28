@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://game/Objects/HookTarget.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/Levels/Camera/LevelTransitionCamera.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://game/Enemies/Orugacop.tscn" type="PackedScene" id=19]
 [ext_resource path="res://game/Levels/Rooms/ExitArea.tscn" type="PackedScene" id=20]
 [ext_resource path="res://game/UI/Menus/BugMenu.tscn" type="PackedScene" id=21]
+[ext_resource path="res://game/HTTP/HttpDbRequest.tscn" type="PackedScene" id=22]
 
 [node name="LevelOne" type="Node2D"]
 script = ExtResource( 8 )
@@ -1262,6 +1263,8 @@ layer = 10
 
 [node name="BugMenu" parent="CanvasLayer" instance=ExtResource( 21 )]
 visible = false
+
+[node name="HttpDbRequest" parent="." instance=ExtResource( 22 )]
 [connection signal="body_entered" from="Room28/ExitArea" to="." method="_on_ExitArea_body_entered"]
 [connection signal="body_entered" from="Room28/ExitArea/ChangeSceneArea" to="." method="_on_ChangeSceneArea_body_entered"]
 
