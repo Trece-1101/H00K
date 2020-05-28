@@ -49,6 +49,7 @@ func SetBug(
 			"IdTipoBug": type_bug, 
 			"Descripcion": description}
 			)
+			
 		send_request("bug", query)
 
 func SetPerformance(
@@ -67,6 +68,7 @@ func SetPerformance(
 			"Tiempo": time,
 			"Muertes": deaths,
 			"Completo": complete})
+			
 		send_request("game", query)
 
 func UpdatePerformance(id_game: int, time: String, deaths: int) -> void:
@@ -86,7 +88,7 @@ func _http_request_completed(_result, response_code, _headers, body) -> void:
 	if response_code == 200:
 		http_result = {"result": true, "value": response.result, "message": "OK"}
 	else:
-		var msj = "Error %s on database connection" % response_code
+		var msj: String = "Error %s on database connection" % response_code
 		http_result = {"result": false, "value": response.result, "message": msj}
 	
 	print(http_result)
