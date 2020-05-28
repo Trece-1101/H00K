@@ -50,15 +50,23 @@ func close_my_door() -> void:
 
 func _on_SaveArea_body_entered(body: Node) -> void:
 	if body.name == 'Player':
-		Game.set_player_respawn_position(respawn_point.global_position)
-		Game.set_player_current_room(room_name, version)
-		Game.set_camera_start(room_row_col)
-		
+		# Avisos
 		level.saving_notice()
 		$SaveArea/PassRoom.play()
 		$SaveArea/CollisionShape2D.set_deferred("disabled", true)
+		
+		Game.set_player_respawn_position(respawn_point.global_position)
+		Game.set_player_last_room(Game.get_player_current_room(), Game.get_player_current_room_v())
+		Game.set_player_current_room(room_name, version)
+		Game.set_camera_start(room_row_col)
+		
+		# Performance jugador local
 		GamePerformance.add_time(level.get_level_name(), OS.get_unix_time())
 		GamePerformance.get_time_performance(level.get_level_name())
+		
+		# Performance base de datos
+		level.close_performance_to_db()
+		level.send_performance_to_db(Game.get_player_current_room_int(), Game.get_player_current_room_v())
 
 func activate_sensor(value: int) -> void:
 	sensor_left -= value

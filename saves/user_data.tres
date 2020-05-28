@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://game/Player/SaveUserData.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+user_type = "Jugador"
+user_name = "jugador1"

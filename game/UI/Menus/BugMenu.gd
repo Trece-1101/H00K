@@ -12,13 +12,14 @@ onready var db_request := $HttpDbRequest
 #onready var bug_request := $BugRequest
 
 func _ready() -> void:
-	$OptionButton.grab_focus()
-	user = Game.user["name"]
-	
-	$UserName.text = user
-	$UserName.editable = false
-	
-	fill_properties()
+	if Game.get_user()["type"] in Game.bug_testers:
+		$OptionButton.grab_focus()
+		user = Game.user["name"]
+		
+		$UserName.text = user
+		$UserName.editable = false
+		
+		fill_properties()
 
 func fill_properties() -> void:
 	$LevelOption.clear()
@@ -29,7 +30,7 @@ func fill_properties() -> void:
 func fill_level_options() -> void:
 	var level_label = Game.get_player_current_level_name()
 	var level_id = Game.get_player_current_level_number()
-	#print(level_label, level_id)	
+	#print(level_label, level_id)
 	if level_label == "":
 		for i in range(levels):
 			var label = "{value}".format({"value": i + 1})
@@ -44,7 +45,8 @@ func fill_level_options() -> void:
 	else:
 		$LevelOption.add_item(level_label, level_id)
 		var room_label: String = Game.get_player_current_room()
-		var room_id: int = int(room_label.substr(4,-1))
+		var room_id: int = Game.get_player_current_room_int()
+		#var room_id: int = int(room_label.substr(4,-1))
 		#print(room_label, room_id)
 		$RoomOption.add_item(room_label, room_id)
 
@@ -62,7 +64,7 @@ func fill_bug_options() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("bug_menu") and Game.get_user()["type"] in Game.testers:
+	if event.is_action_pressed("bug_menu") and Game.get_user()["type"] in Game.bug_testers:
 		if visible:
 			get_tree().paused = false
 			visible = false

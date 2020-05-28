@@ -156,6 +156,7 @@ margin_bottom = 89.0
 margin_top = 97.0
 margin_right = 320.0
 margin_bottom = 142.0
+next_scene = "res://game/Levels/LevelOne_v2.tscn"
 
 [node name="LoadGameButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 7 )]
 margin_top = 150.0
