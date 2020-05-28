@@ -8,13 +8,10 @@ export var is_tester: bool = false
 
 onready var user := $LogPanel/ColorRect/UserInput
 onready var password := $LogPanel/ColorRect/PassInput
-onready var bd_request := $HttpDbRequest
-#onready var bd_request := $LoginRequest
-#onready var log_request := $LogRequest
+onready var db_request := $HttpDbRequest
 
 func set_create_user(value: bool) -> void:
 	create_user = value
-
 
 func _ready() -> void:
 	user.grab_focus()
@@ -39,20 +36,20 @@ func log_user() -> void:
 
 func make_login(uname: String, upass: String = "qwerty1234") -> void:
 	# login_request
-	bd_request.Login(uname.to_lower(), upass.to_lower())
+	db_request.Login(uname.to_lower(), upass.to_lower())
 	if visible:
 		$Searching.show()
 	toggle_insert(false)
-	yield(bd_request, "done")
-	var result = bd_request.get_result()
+	yield(db_request, "done")
+	var result = db_request.get_result()
 	#print(result)	
 	if result["result"]:
 		# Guardo el nombre del usuario logueado y el tipo de usuario
 		Game.set_user(result["value"]["Tipo"], uname.to_lower())
 		# log_request
-		bd_request.SetLog(Game.get_user()["name"], OS.get_name())
-		yield(bd_request, "done")
-		var log_result = bd_request.get_result()
+		db_request.SetLog(Game.get_user()["name"], OS.get_name())
+		yield(db_request, "done")
+		var log_result = db_request.get_result()
 		if log_result["result"]:
 			#print(log_result)
 			# Guardo el valor del log

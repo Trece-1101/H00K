@@ -6,8 +6,10 @@ var tipo_bug: String
 
 export var levels := 2
 
-onready var bg_get_bug_types := $GetBugTypesRequest
-onready var bug_request := $BugRequest
+onready var db_request := $HttpDbRequest
+
+#onready var bg_get_bug_types := $GetBugTypesRequest
+#onready var bug_request := $BugRequest
 
 func _ready() -> void:
 	$OptionButton.grab_focus()
@@ -48,12 +50,14 @@ func fill_level_options() -> void:
 
 
 func fill_bug_options() -> void:
-	bg_get_bug_types.GetBugTypes()
-	yield(bg_get_bug_types,"done")
-	var result = bg_get_bug_types.GetBugTypesResult
-	for i in range(0, result.size()):
-		var label = result[i]["descripcion"]
-		var id = result[i]["idtipobug"]
+	$OptionButton.clear()
+	db_request.GetBugTypes()
+	yield(db_request,"done")
+	var result = db_request.get_result()
+	#print(result)
+	for value in result["value"]:
+		var label = value["descripcion"]
+		var id = value["idtipobug"]
 		$OptionButton.add_item(label, id)
 
 
@@ -71,10 +75,10 @@ func _input(event: InputEvent) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_SendButton_pressed() -> void:
-	if $DescriptionTextEdit.text == "" or user == "":		
+	if $DescriptionTextEdit.text == "" or user == "":
 		pop_up("error", "El campo descripcion no puede estar vacio", true)
 	else:
-		bug_request.SetBug(
+		db_request.SetBug(
 			Game.get_user()["name"], #nickname
 			$RoomOption.get_selected_id(), #room
 			Game.get_player_current_room_v(), #room_version
@@ -85,13 +89,13 @@ func _on_SendButton_pressed() -> void:
 		)
 
 		pop_up("wait", "Enviando registro bug", false)
-		yield(bug_request, "done")
-		var request_result = bug_request.get_bug_result()
-		if request_result["response"]:
-			pop_up("ok", "Bug con ID: {id} registrado".format({"id":request_result["id_bug"]}), true)
+		yield(db_request, "done")
+		var result = db_request.get_result()
+		if result["result"]:
+			pop_up("ok", "Bug con ID: {id} registrado".format({"id":result["value"]["IdBug"]}), true)
 			$DescriptionTextEdit.text = ""
 		else:
-			pop_up("error", "Error '{error}' al registrar bug".format({"error":request_result["message"]}), true)
+			pop_up("error", "Error '{error}' al registrar bug".format({"error":result["message"]}), true)
 
 func pop_up(type: String, text: String, timer: bool) -> void:
 	$ErrorPopup.show()
