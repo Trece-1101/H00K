@@ -9,7 +9,6 @@ var main_control := Settings.GAMEPAD
 var user = {"type": "", "name": ""}
 var testers = ["QATester", "Tester"]
 var log_id := 0
-var run_id := 0
 
 var player_state = {
 	"respawn_position": Vector2.ZERO,
@@ -35,12 +34,6 @@ func set_log_id(value: int) -> void:
 
 func get_log_id() -> int:
 	return log_id
-
-func set_run_id(value: int) -> void:
-	run_id = value
-
-func get_run_id() -> int:
-	return run_id
 
 func set_player_last_state(value: String) -> void:
 	player_state["last_state"] = value
@@ -111,12 +104,8 @@ func init_level() -> void:
 	set_player_respawn_position(Vector2.ZERO)
 	set_player_last_state("Init")
 
-func add_run() -> void:
-	run_id += 1
-
 func print_user_data() -> void:
-	print("usuario: ", user)
-	print("run: ", run_id)
+	print(user)
 	print("log: ", log_id)
 
 

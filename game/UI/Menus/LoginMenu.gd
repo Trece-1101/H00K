@@ -8,8 +8,9 @@ export var is_tester: bool = false
 
 onready var user := $LogPanel/ColorRect/UserInput
 onready var password := $LogPanel/ColorRect/PassInput
-onready var bd_request := $LoginRequest
-onready var log_request := $LogRequest
+onready var bd_request := $HttpDbRequest
+#onready var bd_request := $LoginRequest
+#onready var log_request := $LogRequest
 
 func set_create_user(value: bool) -> void:
 	create_user = value
@@ -43,17 +44,19 @@ func make_login(uname: String, upass: String = "qwerty1234") -> void:
 		$Searching.show()
 	toggle_insert(false)
 	yield(bd_request, "done")
-	var result = bd_request.get_login_result()
-	if result[0] == 200:
-		# Guardo el nombre del usuario logueado
-		Game.set_user(result[1], uname.to_lower())
+	var result = bd_request.get_result()
+	#print(result)	
+	if result["result"]:
+		# Guardo el nombre del usuario logueado y el tipo de usuario
+		Game.set_user(result["value"]["Tipo"], uname.to_lower())
 		# log_request
-		log_request.SetLog(Game.get_user()["name"], OS.get_name())
-		yield(log_request, "done")
-		var log_result = log_request.get_log_result()
+		bd_request.SetLog(Game.get_user()["name"], OS.get_name())
+		yield(bd_request, "done")
+		var log_result = bd_request.get_result()
 		if log_result["result"]:
-			#print("log_id ", log_result)
-			Game.set_log_id(log_result["value"])
+			#print(log_result)
+			# Guardo el valor del log
+			Game.set_log_id(log_result["value"]["IdLog"])
 			if create_user:
 				GameSaver.create_user(Game.get_user()["name"])
 			$OK/ColorRect/Label.text = "Iniciando sesion con ID {id}".format({"id": Game.get_log_id()})
@@ -63,14 +66,44 @@ func make_login(uname: String, upass: String = "qwerty1234") -> void:
 			$Error/ColorRect/Label.text = log_result["message"]
 			pop_up_show($Error)
 	else:
-		if result[1] == "Usuario Incorrecto." and not is_tester:
+		if result["value"] == "Usuario Incorrecto." and not is_tester:
 			print("crear usuario")
 		else:
-			$Error/ColorRect/Label.text = result[1]
-			if result[0] != 401:
+			$Error/ColorRect/Label.text = result["message"]
+			if "401" in result["message"]:
 				$Error/ColorRect/Label.text = "Error conexion"
 			pop_up_show($Error)
 			ok_answer = false
+	
+	
+	
+#	if result[0] == 200:
+#		# Guardo el nombre del usuario logueado
+#		Game.set_user(result[1], uname.to_lower())
+#		# log_request
+#		log_request.SetLog(Game.get_user()["name"], OS.get_name())
+#		yield(log_request, "done")
+#		var log_result = log_request.get_log_result()
+#		if log_result["result"]:
+#			#print("log_id ", log_result)
+#			Game.set_log_id(log_result["value"])
+#			if create_user:
+#				GameSaver.create_user(Game.get_user()["name"])
+#			$OK/ColorRect/Label.text = "Iniciando sesion con ID {id}".format({"id": Game.get_log_id()})
+#			pop_up_show($OK)
+#			ok_answer = true
+#		else:
+#			$Error/ColorRect/Label.text = log_result["message"]
+#			pop_up_show($Error)
+#	else:
+#		if result[1] == "Usuario Incorrecto." and not is_tester:
+#			print("crear usuario")
+#		else:
+#			$Error/ColorRect/Label.text = result[1]
+#			if result[0] != 401:
+#				$Error/ColorRect/Label.text = "Error conexion"
+#			pop_up_show($Error)
+#			ok_answer = false
 
 
 func pop_up_show(popup: Popup) -> void:

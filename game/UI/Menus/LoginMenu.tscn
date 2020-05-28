@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/Fonts/Revamped.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Fonts/Jamma 8x16 Monospaced.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/Backgrounds/Main_Menu_01.png" type="Texture" id=5]
 [ext_resource path="res://game/UI/DBRequest/LoginRequest.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game/UI/DBRequest/LogRequest.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game/HTTP/HttpDbRequest.tscn" type="PackedScene" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -325,6 +326,8 @@ one_shot = true
 [node name="LoginRequest" parent="." instance=ExtResource( 6 )]
 
 [node name="LogRequest" parent="." instance=ExtResource( 7 )]
+
+[node name="HttpDbRequest" parent="." instance=ExtResource( 8 )]
 [connection signal="button_down" from="LogPanel/ColorRect/Enter" to="." method="_on_Enter_button_down"]
 [connection signal="button_down" from="LogPanel/ColorRect/Salir" to="." method="_on_Salir_button_down"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
