@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/Fonts/Revamped.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16 Monospaced.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/Backgrounds/logo_3.png" type="Texture" id=3]
 [ext_resource path="res://game/UI/Menus/PresentationMenu.gd" type="Script" id=4]
+[ext_resource path="res://game/UI/Menus/LoginMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Sounds/Music/presentation_1.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16.ttf" type="DynamicFontData" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 35
@@ -130,6 +133,24 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/9/type = "method"
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 7.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "load_user"
+} ]
+}
+
+[sub_resource type="DynamicFont" id=5]
+size = 20
+font_data = ExtResource( 7 )
 
 [node name="PresentationMenu" type="Control"]
 anchor_right = 1.0
@@ -149,9 +170,9 @@ __meta__ = {
 }
 
 [node name="Studio" type="Label" parent="."]
-margin_left = 359.518
+margin_left = -246.991
 margin_top = 47.5561
-margin_right = 601.518
+margin_right = -4.991
 margin_bottom = 85.5561
 custom_fonts/font = SubResource( 1 )
 text = "333 Games"
@@ -160,10 +181,11 @@ __meta__ = {
 }
 
 [node name="Presents" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 360.746
-margin_top = 419.205
+margin_top = 602.5
 margin_right = 613.746
-margin_bottom = 457.205
+margin_bottom = 640.5
 custom_fonts/font = SubResource( 1 )
 text = "Presentan"
 __meta__ = {
@@ -171,6 +193,7 @@ __meta__ = {
 }
 
 [node name="Plus" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 359.274
 margin_top = 123.08
 margin_right = 601.274
@@ -184,9 +207,9 @@ __meta__ = {
 }
 
 [node name="Powered" type="Label" parent="."]
-margin_left = 299.495
+margin_left = 921.965
 margin_top = 206.276
-margin_right = 541.5
+margin_right = 1163.97
 margin_bottom = 326.276
 custom_fonts/font = SubResource( 1 )
 text = "Godot
@@ -198,7 +221,7 @@ __meta__ = {
 }
 
 [node name="logo_3" type="Sprite" parent="."]
-position = Vector2( 561.481, 264.343 )
+position = Vector2( 1183.95, 264.343 )
 scale = Vector2( 0.450305, 0.450305 )
 texture = ExtResource( 3 )
 
@@ -226,6 +249,7 @@ __meta__ = {
 }
 
 [node name="Loading2" type="Label" parent="HBoxContainer"]
+visible = false
 margin_left = 76.0
 margin_top = 9.0
 margin_right = 85.0
@@ -237,6 +261,7 @@ __meta__ = {
 }
 
 [node name="Loading3" type="Label" parent="HBoxContainer"]
+visible = false
 margin_left = 89.0
 margin_top = 9.0
 margin_right = 98.0
@@ -248,6 +273,7 @@ __meta__ = {
 }
 
 [node name="Loading4" type="Label" parent="HBoxContainer"]
+visible = false
 margin_left = 102.0
 margin_top = 9.0
 margin_right = 111.0
@@ -261,3 +287,62 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "presentation"
 anims/presentation = SubResource( 4 )
+
+[node name="LoginMenu" parent="." instance=ExtResource( 5 )]
+visible = false
+next_scene = "res://game/UI/Menus/MainMenu.tscn"
+is_tester = false
+
+[node name="LogPanel" parent="LoginMenu" index="3"]
+margin_top = -178.471
+margin_bottom = 92.5287
+
+[node name="User" parent="LoginMenu/LogPanel/ColorRect" index="0"]
+margin_top = -13.0758
+margin_bottom = 19.9242
+
+[node name="Pass" parent="LoginMenu/LogPanel/ColorRect" index="1"]
+visible = false
+
+[node name="UserInput" parent="LoginMenu/LogPanel/ColorRect" index="2"]
+margin_top = -12.6757
+margin_bottom = 20.3243
+
+[node name="PassInput" parent="LoginMenu/LogPanel/ColorRect" index="3"]
+visible = false
+
+[node name="Title" parent="LoginMenu/LogPanel/ColorRect/ColorRect" index="0"]
+margin_left = -128.147
+margin_right = 156.853
+text = "Log Usuario"
+
+[node name="Error" parent="LoginMenu" index="4"]
+margin_top = 361.573
+margin_bottom = 404.573
+
+[node name="OK" parent="LoginMenu" index="5"]
+margin_top = 361.573
+margin_bottom = 404.573
+
+[node name="Searching" parent="LoginMenu" index="6"]
+margin_top = 364.029
+margin_bottom = 407.029
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+bus = "Music"
+
+[node name="Sesion" type="Label" parent="."]
+visible = false
+margin_left = 394.71
+margin_top = 486.938
+margin_right = 565.71
+margin_bottom = 512.938
+custom_fonts/font = SubResource( 5 )
+text = "Iniciando Sesion"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[editable path="LoginMenu"]

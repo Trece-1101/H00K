@@ -28,9 +28,13 @@ position = Vector2( 963.486, 268.014 )
 
 [node name="Sensor" parent="Room1/Sensors" index="0" instance=ExtResource( 9 )]
 position = Vector2( 304.206, 159.875 )
+timered = true
+reset_time = 3.0
 
 [node name="Sensor2" parent="Room1/Sensors" index="1" instance=ExtResource( 9 )]
 position = Vector2( 779.849, 191.219 )
+timered = true
+reset_time = 4.0
 
 [node name="HookTarget" parent="Room1/Targets" index="0" instance=ExtResource( 6 )]
 position = Vector2( 601.681, 184.025 )

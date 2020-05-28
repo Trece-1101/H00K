@@ -114,5 +114,9 @@ func init_level() -> void:
 func add_run() -> void:
 	run_id += 1
 
+func print_user_data() -> void:
+	print("usuario: ", user)
+	print("run: ", run_id)
+	print("log: ", log_id)
 
 

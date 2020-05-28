@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/Tilesets/Level/Level01.png" type="Texture" id=1]
 [ext_resource path="res://game/Objects/Sensor.gd" type="Script" id=2]
 [ext_resource path="res://assets/Sounds/SFX/activated_sensor_1.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/Sprites/Player/Player.png" type="Texture" id=4]
 [ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/Sounds/SFX/ticking_clock_2.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13.8301, 2.47991 )
@@ -52,6 +53,10 @@ frame = 6
 stream = ExtResource( 3 )
 volume_db = -30.0
 bus = "Sensor"
+
+[node name="Ticking" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "Clock"
 
 [node name="Timer" type="Timer" parent="."]
 

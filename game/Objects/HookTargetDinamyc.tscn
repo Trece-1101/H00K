@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://game/Objects/HookTarget.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/Objects/HookTargetDinamyc.gd" type="Script" id=2]
+[ext_resource path="res://assets/Sounds/SFX/open_hook.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/Sounds/SFX/close_hook.wav" type="AudioStream" id=4]
 
 [node name="HookTargetDinamyc" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -14,5 +16,15 @@ one_shot = true
 
 [node name="CloseTime" type="Timer" parent="." index="6"]
 one_shot = true
+
+[node name="Open" type="AudioStreamPlayer2D" parent="." index="7"]
+stream = ExtResource( 3 )
+max_distance = 500.0
+bus = "Spring"
+
+[node name="Close" type="AudioStreamPlayer2D" parent="." index="8"]
+stream = ExtResource( 4 )
+max_distance = 500.0
+bus = "Spring"
 [connection signal="timeout" from="OpenTime" to="." method="_on_TimerOpen_timeout"]
 [connection signal="timeout" from="CloseTime" to="." method="_on_TimerClose_timeout"]

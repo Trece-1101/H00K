@@ -16,16 +16,19 @@ func _ready() -> void:
 func _on_Timer_timeout() -> void:
 	._on_Timer_timeout()
 	open_time.start()
+	$Open.play()
 
 func _on_TimerOpen_timeout() -> void:
 	$AnimationPlayer.play("close")
 	self.is_active = false
 	close_time.start()
+	$Close.play()
 
 func _on_TimerClose_timeout() -> void:
 	$AnimationPlayer.play("go_open")
 	self.is_active = true
 	open_time.start()
+	
 
 func hooked_from(hook_position: Vector2) -> void:
 	.hooked_from(hook_position)

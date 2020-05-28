@@ -27,6 +27,7 @@ func _process(_delta: float) -> void:
 	
 	if room.get_left_sensors() == 0:
 		$TimeLeft.visible = false
+		$Ticking.stop()
 		set_process(false)
 
 
@@ -54,10 +55,12 @@ func _on_body_entered(body: Node) -> void:
 		if timered:
 			set_process(true)
 			$Timer.start()
+			$Ticking.play()
 
 
 func _on_Timer_timeout() -> void:
 	$Timer.stop()
+	$Ticking.stop()
 	if room.get_left_sensors() > 0:
 		change_status(false)
 ################################################################################

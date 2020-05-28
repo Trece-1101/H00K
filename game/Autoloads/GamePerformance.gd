@@ -2,10 +2,10 @@ extends Node
 
 ################################################################################
 var total_death_count: int = 0
-
 var levels_performance := []
-
 var level_performance := {}
+var total_time_elapsed := 0
+var total_rooms := 0
 ################################################################################
 func init_level_performance(level_name: String, enter: int) -> void:
 	level_performance["level"] = level_name
