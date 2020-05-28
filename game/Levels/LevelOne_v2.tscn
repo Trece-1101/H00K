@@ -5,8 +5,8 @@
 [ext_resource path="res://game/Levels/Rooms/Room.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game/UI/Debug/DebugPanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/Player/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://game/Levels/LevelOne.tres" type="TileSet" id=6]
-[ext_resource path="res://game/Levels/LevelOne_v2.tres" type="TileSet" id=7]
+[ext_resource path="res://game/Levels/TileMaps/LevelOne.tres" type="TileSet" id=6]
+[ext_resource path="res://game/Levels/TileMaps/LevelOne_v2.tres" type="TileSet" id=7]
 [ext_resource path="res://game/Levels/LevelState.gd" type="Script" id=8]
 [ext_resource path="res://game/UI/Debug/DebugDock.gd" type="Script" id=9]
 [ext_resource path="res://game/UI/Debug/FPSLabel.gd" type="Script" id=10]
@@ -14,12 +14,14 @@
 [ext_resource path="res://game/Objects/Sensor.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/Tilesets/Level/Fondol01.png" type="Texture" id=13]
 [ext_resource path="res://assets/Tilesets/Level/Fondo02.png" type="Texture" id=14]
-[ext_resource path="res://game/Levels/LevelOne_v2Ornaments.tres" type="TileSet" id=15]
+[ext_resource path="res://game/Levels/TileMaps/LevelOne_v2Ornaments.tres" type="TileSet" id=15]
 [ext_resource path="res://assets/Tilesets/Level/Puerta/Puerta.png" type="Texture" id=16]
 [ext_resource path="res://game/Objects/MovingPlatform.tscn" type="PackedScene" id=17]
 [ext_resource path="res://game/Objects/Pathpoints.tscn" type="PackedScene" id=18]
 [ext_resource path="res://game/Enemies/Orugacop.tscn" type="PackedScene" id=19]
 [ext_resource path="res://game/Levels/Rooms/ExitArea.tscn" type="PackedScene" id=20]
+
+
 
 [node name="LevelOne" type="Node2D"]
 script = ExtResource( 8 )
