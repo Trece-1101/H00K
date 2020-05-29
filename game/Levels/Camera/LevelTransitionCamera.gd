@@ -30,7 +30,7 @@ onready var transition := false
 ################################################################################
 #### Metodos
 func _ready() -> void:
-	pause_mode = Node.PAUSE_MODE_PROCESS	
+	pause_mode = Node.PAUSE_MODE_PROCESS
 	
 	if Game.get_main_controls() == Settings.GAMEPAD:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -137,7 +137,6 @@ func set_death_count_label() -> void:
 	$AnimationPlayer.stop()
 	$LabelDeathCount.text = "x{death}".format({"death": GamePerformance.get_player_death_count()})
 	($AnimationPlayer as AnimationPlayer).play("show_death_count")
-	#$AnimationPlayer.play("show_death_count")
 
 func camara_shake() -> void:
 	var shake_vector = shake_list[randi() % 20]

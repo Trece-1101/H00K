@@ -46,6 +46,7 @@ func _ready() -> void:
 
 func start_performance_to_db(room: int, version: int) -> void:
 	if Game.get_user()["type"] in Game.performers:
+		GamePerformance.init_db_room_performance()
 		db_request.SetPerformance(
 			Game.get_user()["name"], # nombre usuario
 			room, # salon
@@ -55,14 +56,26 @@ func start_performance_to_db(room: int, version: int) -> void:
 			0, # muertes
 			"false" # room completo
 		)
+		yield(db_request, "done")
+		Game.set_game_id(db_request.get_result()["value"]["IdGame"])
 
 func update_performance_to_db() -> void:
 	if Game.get_user()["type"] in Game.performers:
-		db_request.UpdatePerformance(0, "", 0)
+		GamePerformance.add_death_room_count()
+		GamePerformance.calculate_room_time()
+		db_request.UpdatePerformance(
+			Game.get_game_id(), 
+			GamePerformance.get_room_time(),
+			GamePerformance.get_room_death_count())
 
-func close_performance_to_db() -> void:
+func close_performance_to_db(exiting: bool = false) -> void:
 	if Game.get_user()["type"] in Game.performers:
-		db_request.ClosePerformance(0, "")
+		GamePerformance.calculate_room_time()
+		db_request.ClosePerformance(Game.get_game_id(), GamePerformance.get_room_time())
+		
+		if not exiting:
+			yield(db_request, "done")
+			start_performance_to_db(Game.get_player_current_room_int(), Game.get_player_current_room_v())
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -77,6 +90,7 @@ func saving_notice() -> void:
 
 func _on_ExitArea_body_entered(body: Node) -> void:
 	body.toggle_is_active(false)
+	close_performance_to_db(true)
 	camera.exit_level()
 
 func _on_ChangeSceneArea_body_entered(_body: Node) -> void:

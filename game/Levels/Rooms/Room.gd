@@ -66,7 +66,7 @@ func _on_SaveArea_body_entered(body: Node) -> void:
 		
 		# Performance base de datos
 		level.close_performance_to_db()
-		level.send_performance_to_db(Game.get_player_current_room_int(), Game.get_player_current_room_v())
+		#level.send_performance_to_db(Game.get_player_current_room_int(), Game.get_player_current_room_v())
 
 func activate_sensor(value: int) -> void:
 	sensor_left -= value

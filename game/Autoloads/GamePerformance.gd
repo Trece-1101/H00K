@@ -1,11 +1,20 @@
 extends Node
 
 ################################################################################
+#### Local performance
 var total_death_count: int = 0
 var levels_performance := []
 var level_performance := {}
 var total_time_elapsed := 0
 var total_rooms := 0
+
+#### Database performance
+var room_death_count := 0
+var room_time := 0
+var start_time := 0
+var end_time := 0
+################################################################################
+
 ################################################################################
 func init_level_performance(level_name: String, enter: int) -> void:
 	level_performance["level"] = level_name
@@ -22,7 +31,14 @@ func init_level_performance(level_name: String, enter: int) -> void:
 	
 	if not already_in:
 		levels_performance.append(level_performance)
+
+func init_db_room_performance() -> void:
+	room_death_count = 0
+	start_time = OS.get_unix_time()
+	end_time = 0
+	room_time = 0
 ################################################################################
+#### Setters y Getters
 func set_player_death_count(value: int) -> void:
 	total_death_count = value
 
@@ -49,8 +65,23 @@ func get_death_performance(level_name: String) -> int:
 			return level["deaths"]
 	
 	return 0
-################################################################################
 
+func get_room_death_count() -> int:
+	return room_death_count
+
+func add_death_room_count() -> void:
+	room_death_count += 1
+################################################################################
+func get_room_time() -> String:
+	var minutes = room_time * 0.0166666666666667
+	var seconds = room_time % 60
+	var str_room_time = "00:%02d:%02d" % [minutes, seconds]
+	return str_room_time
+
+func calculate_room_time() -> void:
+	end_time = OS.get_unix_time()
+	room_time += (end_time - start_time)
+	start_time = end_time
 ################################################################################
 #### Metodos
 func increment_death_count(level_name: String) -> void:
@@ -65,6 +96,4 @@ func add_time(level_name: String, exit: int) -> void:
 			level["exit"] = exit
 			level["time"] += level["exit"] - level["enter"]
 			level["enter"] = level["exit"]
-
-
 ################################################################################
