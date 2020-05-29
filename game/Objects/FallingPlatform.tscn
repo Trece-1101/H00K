@@ -9,7 +9,7 @@ extents = Vector2( 41.093, 8.42116 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 39.7708, 1.28155 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "fall"
 length = 0.2
 tracks/0/type = "value"
@@ -51,7 +51,7 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "shake"
 loop = true
 tracks/0/type = "value"
@@ -68,6 +68,7 @@ tracks/0/keys = {
 }
 
 [node name="FallingPlatform" type="KinematicBody2D"]
+z_index = 36
 collision_layer = 0
 script = ExtResource( 2 )
 
@@ -91,8 +92,8 @@ __meta__ = {
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fall = SubResource( 4 )
-anims/shake = SubResource( 5 )
+anims/fall = SubResource( 3 )
+anims/shake = SubResource( 4 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
