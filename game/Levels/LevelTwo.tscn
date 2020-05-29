@@ -142,6 +142,16 @@ visible = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_left = 419.571
+margin_top = 61.5753
+margin_right = 459.571
+margin_bottom = 75.5753
+text = "00:00:00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [editable path="Room1"]
 
 [editable path="Room2"]

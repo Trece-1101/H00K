@@ -71,37 +71,6 @@ func make_login(uname: String, upass: String = "qwerty1234") -> void:
 				$Error/ColorRect/Label.text = "Error conexion"
 			pop_up_show($Error)
 			ok_answer = false
-	
-	
-	
-#	if result[0] == 200:
-#		# Guardo el nombre del usuario logueado
-#		Game.set_user(result[1], uname.to_lower())
-#		# log_request
-#		log_request.SetLog(Game.get_user()["name"], OS.get_name())
-#		yield(log_request, "done")
-#		var log_result = log_request.get_log_result()
-#		if log_result["result"]:
-#			#print("log_id ", log_result)
-#			Game.set_log_id(log_result["value"])
-#			if create_user:
-#				GameSaver.create_user(Game.get_user()["name"])
-#			$OK/ColorRect/Label.text = "Iniciando sesion con ID {id}".format({"id": Game.get_log_id()})
-#			pop_up_show($OK)
-#			ok_answer = true
-#		else:
-#			$Error/ColorRect/Label.text = log_result["message"]
-#			pop_up_show($Error)
-#	else:
-#		if result[1] == "Usuario Incorrecto." and not is_tester:
-#			print("crear usuario")
-#		else:
-#			$Error/ColorRect/Label.text = result[1]
-#			if result[0] != 401:
-#				$Error/ColorRect/Label.text = "Error conexion"
-#			pop_up_show($Error)
-#			ok_answer = false
-
 
 func pop_up_show(popup: Popup) -> void:
 	$Timer.start()

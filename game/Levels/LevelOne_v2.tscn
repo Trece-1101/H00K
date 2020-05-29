@@ -1264,6 +1264,13 @@ layer = 10
 [node name="BugMenu" parent="CanvasLayer" instance=ExtResource( 21 )]
 visible = false
 
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="HttpDbRequest" parent="." instance=ExtResource( 22 )]
 [connection signal="body_entered" from="Room28/ExitArea" to="." method="_on_ExitArea_body_entered"]
 [connection signal="body_entered" from="Room28/ExitArea/ChangeSceneArea" to="." method="_on_ChangeSceneArea_body_entered"]

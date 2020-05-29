@@ -11,6 +11,7 @@ var testers = ["QATester", "Tester"]
 var bug_testers = ["QATester"]
 var performers = ["Tester", "Jugador"]
 var log_id := 0
+var game_id := 0
 
 var player_state = {
 	"respawn_position": Vector2.ZERO,
@@ -38,6 +39,12 @@ func set_log_id(value: int) -> void:
 
 func get_log_id() -> int:
 	return log_id
+
+func set_game_id(value: int) -> void:
+	game_id = value
+
+func get_game_id() -> int:
+	return game_id
 
 func set_player_last_state(value: String) -> void:
 	player_state["last_state"] = value
