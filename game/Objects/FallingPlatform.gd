@@ -9,6 +9,7 @@ func _on_PlayerDetector_body_entered(_body: Node) -> void:
 		activated = true
 		$Timer.start()
 
+
 func disable_collider() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
 	$PlayerDetector/CollisionShape2D.set_deferred("disabled", true)
