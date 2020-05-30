@@ -2,11 +2,15 @@ class_name LevelState
 extends Node2D
 
 ################################################################################
-#### Variables
-var close_door := {}
+#### Constantes
+const DB_REQUEST_NODE = preload("res://game/HTTP/HttpDbRequest.tscn")
+const BUG_MENU = preload("res://game/UI/Menus/BugMenu.tscn")
 
-var time_start = 0
-var time_now = 0
+#### Variables
+var db_request: Node
+var close_door := {}
+var time_start := 0
+var time_now := 0
 
 #### Variables Export
 export(String) var music
@@ -17,7 +21,8 @@ export(String) var next_level
 
 #### Variables onready
 onready var camera: Camera2D = $LevelTransitionCamera
-onready var db_request := $HttpDbRequest
+onready var is_performer:bool = Game.get_user()["type"] in Game.performers
+onready var is_bug_tester:bool = Game.get_user()["type"] in Game.bug_testers
 ################################################################################
 #### Setters y Getters
 func get_level_name() -> String:
@@ -31,13 +36,21 @@ func _ready() -> void:
 		GlobalMusic.play()
 	
 	close_door = Game.get_last_door_closed()
-	
 	if not close_door.empty() :
 		close_last_door()
 	
+	
 	Game.set_player_current_level(level_name, level_number)
 	Game.set_player_next_level(next_level)
-
+	
+	if is_performer:
+		db_request = DB_REQUEST_NODE.instance()
+		add_child(db_request)
+	
+	if is_bug_tester:
+		var bug_menu = BUG_MENU.instance()
+		$OnFrontView.add_child(bug_menu)
+	
 	if Game.get_player_last_state() == "Init":
 		GamePerformance.init_level_performance(level_name, OS.get_unix_time())
 		start_performance_to_db(Game.get_player_current_room_int(), Game.get_player_current_room_v())
@@ -45,7 +58,7 @@ func _ready() -> void:
 		update_performance_to_db()
 
 func start_performance_to_db(room: int, version: int) -> void:
-	if Game.get_user()["type"] in Game.performers:
+	if is_performer:
 		GamePerformance.init_db_room_performance()
 		db_request.SetPerformance(
 			Game.get_user()["name"], # nombre usuario
@@ -60,7 +73,7 @@ func start_performance_to_db(room: int, version: int) -> void:
 		Game.set_game_id(db_request.get_result()["value"]["IdGame"])
 
 func update_performance_to_db() -> void:
-	if Game.get_user()["type"] in Game.performers:
+	if is_performer:
 		GamePerformance.add_death_room_count()
 		GamePerformance.calculate_room_time()
 		db_request.UpdatePerformance(
@@ -69,7 +82,7 @@ func update_performance_to_db() -> void:
 			GamePerformance.get_room_death_count())
 
 func close_performance_to_db(exiting: bool = false) -> void:
-	if Game.get_user()["type"] in Game.performers:
+	if is_performer:
 		GamePerformance.calculate_room_time()
 		db_request.ClosePerformance(Game.get_game_id(), GamePerformance.get_room_time())
 		
@@ -89,8 +102,8 @@ func saving_notice() -> void:
 	camera.saving()
 
 func _on_ExitArea_body_entered(body: Node) -> void:
-	body.toggle_is_active(false)
 	close_performance_to_db(true)
+	body.toggle_is_active(false)
 	camera.exit_level()
 
 func _on_ChangeSceneArea_body_entered(_body: Node) -> void:

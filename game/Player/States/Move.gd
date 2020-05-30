@@ -57,9 +57,9 @@ func unhandled_input(event: InputEvent) -> void:
 		_state_machine.transition_to("Debug")
 
 
-func physics_process(delta: float) -> void:	
+func physics_process(delta: float) -> void:
 	if owner.is_on_floor():
-		max_speed = max_speed_default
+		max_speed.y = max_speed_default.y
 		get_node("Air")._jump_after_hook = false
 	
 	velocity = calculate_velocity(velocity, max_speed, acceleration, delta,
@@ -99,6 +99,7 @@ static func calculate_velocity(
 	var new_velocity: = old_velocity
 	
 	new_velocity += move_direction * acceleration_func * delta
+	
 	if is_jump_interrupted:
 		new_velocity.y = 0.0
 	new_velocity.x = clamp(new_velocity.x, -max_speed_func.x, max_speed_func.x)
@@ -119,6 +120,15 @@ func apply_bumper_impulse(fall_speed: float) -> void:
 		fall_speed = spring_minimun_speed
 	velocity.y -= fall_speed * spring_impulse_multiplier
 	#print("fall speed: {fs} - velocity.y: {vy}".format({'fs': fall_speed, 'vy': velocity.y}))
+
+func apply_accelerating_impulse(accel: float) -> void:
+	velocity.x += accel
+
+func modify_max_speed(new_max_speed: float) -> void:
+	max_speed.x = new_max_speed
+
+func reset_max_speed() -> void:
+	max_speed.x = max_speed_default.x
 
 ## TODO: esto liquida el movimiento con KB
 ## SOLUCIONALO

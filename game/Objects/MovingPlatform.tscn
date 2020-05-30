@@ -22,6 +22,8 @@ z_index = 36
 collision_layer = 128
 motion/sync_to_physics = true
 script = ExtResource( 1 )
+speed = 200.0
+wait_time = 1.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = SubResource( 1 )

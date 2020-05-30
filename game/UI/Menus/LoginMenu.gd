@@ -1,15 +1,23 @@
 extends Control
 
+################################################################################
+#### Variables
 var ok_answer := false
 var create_user := false
 
+#### Variables export
 export var next_scene: String
 export var is_tester: bool = false
 
+#### Variables onready
 onready var user := $LogPanel/ColorRect/UserInput
 onready var password := $LogPanel/ColorRect/PassInput
 onready var db_request := $HttpDbRequest
 
+################################################################################
+
+################################################################################
+#### Metodos
 func set_create_user(value: bool) -> void:
 	create_user = value
 
@@ -17,7 +25,6 @@ func _ready() -> void:
 	user.grab_focus()
 	if get_parent().name == "PresentationMenu":
 		get_parent().connect("press_send", self, "log_user")
-	
 
 func load_next_scene() -> void:
 	get_tree().change_scene(next_scene)
@@ -66,8 +73,8 @@ func make_login(uname: String, upass: String = "qwerty1234") -> void:
 		if result["value"] == "Usuario Incorrecto." and not is_tester:
 			print("crear usuario")
 		else:
-			$Error/ColorRect/Label.text = result["message"]
-			if "401" in result["message"]:
+			$Error/ColorRect/Label.text = result["value"]
+			if "401" in result["value"]:
 				$Error/ColorRect/Label.text = "Error conexion"
 			pop_up_show($Error)
 			ok_answer = false
