@@ -98,7 +98,7 @@ func _on_PlayerDetector_body_entered(body: Node) -> void:
 		blackboard.set("current_velocity", Vector2.ZERO)
 		$Updater.stop()
 		skin_animation.connect("animation_finished", self, "explode")
-		skin_animation.play("go_explode")
+		skin_animation.play("go_explode_bomborcop")
 
 func _on_Updater_timeout() -> void:
 	update_behavior_tree()

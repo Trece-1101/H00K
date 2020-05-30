@@ -7,7 +7,6 @@
 
 [node name="Bomborcop" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-velocity = Vector2( 100, 100 )
 
 [node name="EnemySkin" parent="." index="0"]
 modulate = Color( 1, 0.658824, 0.658824, 1 )
