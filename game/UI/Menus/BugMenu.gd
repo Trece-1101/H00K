@@ -8,9 +8,6 @@ export var levels := 2
 
 onready var db_request := $HttpDbRequest
 
-#onready var bg_get_bug_types := $GetBugTypesRequest
-#onready var bug_request := $BugRequest
-
 func _ready() -> void:
 	if Game.get_user()["type"] in Game.bug_testers:
 		$OptionButton.grab_focus()
