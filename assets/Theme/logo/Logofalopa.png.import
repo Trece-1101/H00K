@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Logofalopa.png-88bbec7579e0381789fe1b78052f8277.stex"
+path="res://.import/Logofalopa.png-18ed6e34e0ae9e304c796e74df3bdf1c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Theme/logo/Logofalopa.png"
-dest_files=[ "res://.import/Logofalopa.png-88bbec7579e0381789fe1b78052f8277.stex" ]
+source_file="res://assets/theme/logo/Logofalopa.png"
+dest_files=[ "res://.import/Logofalopa.png-18ed6e34e0ae9e304c796e74df3bdf1c.stex" ]
 
 [params]
 

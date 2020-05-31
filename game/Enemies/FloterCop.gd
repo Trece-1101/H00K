@@ -10,7 +10,6 @@ var nav_map: TileMap
 func _ready() -> void:
 	set_physics_process(false)
 	nav_map = get_parent().get_parent().get_node("NavMap")
-	print(nav_map)
 	
 	path = nav_map.find_path(self.global_position, $EndPosition.global_position)
 	if path:
