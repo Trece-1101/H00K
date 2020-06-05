@@ -10,6 +10,7 @@ var user = {"type": "", "name": ""}
 var testers = ["QATester", "Tester"]
 var bug_testers = ["QATester"]
 var performers = ["Tester", "Jugador"]
+var players = ["Jugador"]
 var log_id := 0
 var game_id := 0
 

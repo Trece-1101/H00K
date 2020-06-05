@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://game/UI/Menus/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
@@ -7,16 +8,20 @@ size = 30
 font_data = ExtResource( 2 )
 
 [node name="PauseMenu" type="Control"]
+pause_mode = 2
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+menu_scene = "res://game/UI/Menus/MainMenu.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.756863 )
+color = Color( 0, 0, 0, 0.941176 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -102,3 +107,6 @@ margin_right = 316.0
 margin_bottom = 220.0
 custom_fonts/font = SubResource( 1 )
 text = "Salir"
+[connection signal="button_up" from="Panel/VBoxContainer/Continue" to="." method="_on_Continue_button_up"]
+[connection signal="button_up" from="Panel/VBoxContainer/Menu" to="." method="_on_Menu_button_up"]
+[connection signal="button_up" from="Panel/VBoxContainer/Exit" to="." method="_on_Exit_button_up"]
