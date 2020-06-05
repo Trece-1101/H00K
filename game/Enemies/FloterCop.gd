@@ -13,6 +13,7 @@ func _ready() -> void:
 	
 	path = nav_map.find_path(self.global_position, $EndPosition.global_position)
 	if path:
+		$AudioStreamPlayer2D.play()
 		path.remove(0)
 
 
@@ -23,6 +24,7 @@ func _physics_process(delta: float) -> void:
 		var direction: Vector2 = (target - position).normalized()
 		
 		position += direction * speed * delta
+		
 		
 		if position.distance_to(target) < POINT_RADIUS:
 			path.remove(0)

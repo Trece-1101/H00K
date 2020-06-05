@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/floater_move.wav-9b34af3680d4ca74fd2d93ec3e3609ac.sample"
+
+[deps]
+
+source_file="res://assets/Sounds/SFX/floater_move.wav"
+dest_files=[ "res://.import/floater_move.wav-9b34af3680d4ca74fd2d93ec3e3609ac.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
