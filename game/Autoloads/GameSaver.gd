@@ -29,7 +29,6 @@ func check_file(file_path: String) -> bool:
 	return true
 
 func create_user(uname: String) -> void:
-	print("create_user")
 	var new_save = save_user_data.new()
 	new_save.user_name = uname
 	new_save.user_type = "Jugador"
@@ -48,8 +47,9 @@ func load_user():
 	var user_data = load_file("res://saves/user_data.tres")
 	return [user_data.user_type, user_data.user_name]
 
-func load_user_game_data():
-	return load_file("res://saves/slot_1.tres")
+func load_user_game_data(slot: String):
+	var path = slot + ".tres"
+	return load_file("res://saves/" + path)
 
 
 
