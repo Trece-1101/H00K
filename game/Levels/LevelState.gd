@@ -103,6 +103,7 @@ func saving_notice() -> void:
 
 func _on_ExitArea_body_entered(body: Node) -> void:
 	close_performance_to_db(true)
+	GamePerformance.add_time(level_name, OS.get_unix_time())
 	body.toggle_is_active(false)
 	camera.exit_level()
 

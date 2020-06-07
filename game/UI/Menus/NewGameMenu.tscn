@@ -1,12 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/Fonts/MainLabel.tres" type="DynamicFont" id=1]
-[ext_resource path="res://game/UI/Menus/Buttons/MenuButton.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/Backgrounds/Main_Menu_01.png" type="Texture" id=3]
-[ext_resource path="res://assets/Fonts/Seven Oh Ess 8x8.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16 Monospaced.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://game/UI/Menus/LoadGameMenu.gd" type="Script" id=6]
-[ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16 Monospaced.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://game/UI/Menus/Buttons/MenuButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/UI/Menus/NewGameMenu.gd" type="Script" id=4]
+[ext_resource path="res://assets/Fonts/MainLabel.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/Fonts/Seven Oh Ess 8x8.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/Backgrounds/Main_Menu_01.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "main_animation"
@@ -38,26 +37,24 @@ tracks/1/keys = {
 }
 
 [sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 5 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
-font_data = ExtResource( 4 )
+font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 7 )
-
-[node name="LoadGameMenu" type="Control"]
+[node name="NewGameMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 6 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRectRight" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.960784 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 3 )
+texture = ExtResource( 7 )
 flip_h = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -67,7 +64,7 @@ __meta__ = {
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 3 )
+texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -90,8 +87,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="VBoxContainer"]
 margin_right = 880.0
 margin_bottom = 58.0
-custom_fonts/font = ExtResource( 1 )
-text = "Cargar Partida"
+custom_fonts/font = ExtResource( 5 )
+text = "Nueva Partida"
 
 [node name="Buttons" type="VBoxContainer" parent="VBoxContainer"]
 margin_left = 265.0
@@ -156,7 +153,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadGame" type="Button" parent="VBoxContainer/Buttons/Slot1"]
+[node name="NewGame1" type="Button" parent="VBoxContainer/Buttons/Slot1"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -165,7 +162,7 @@ margin_left = -170.5
 margin_top = -34.0
 margin_right = 170.5
 custom_fonts/font = SubResource( 3 )
-text = "Cargar Partida"
+text = "Nueva Partida"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -234,7 +231,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadGame" type="Button" parent="VBoxContainer/Buttons/Slot2"]
+[node name="NewGame2" type="Button" parent="VBoxContainer/Buttons/Slot2"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -243,7 +240,7 @@ margin_left = -170.5
 margin_top = -34.0
 margin_right = 170.5
 custom_fonts/font = SubResource( 3 )
-text = "Cargar Partida"
+text = "Nueva Partida"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -312,7 +309,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadGame" type="Button" parent="VBoxContainer/Buttons/Slot3"]
+[node name="NewGame3" type="Button" parent="VBoxContainer/Buttons/Slot3"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -321,12 +318,12 @@ margin_left = -170.5
 margin_top = -34.0
 margin_right = 170.5
 custom_fonts/font = SubResource( 3 )
-text = "Cargar Partida"
+text = "Nueva Partida"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MenuButton" parent="VBoxContainer" instance=ExtResource( 2 )]
+[node name="MenuButton" parent="VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 451.0
 margin_right = 880.0
 margin_bottom = 496.0
@@ -342,50 +339,8 @@ position = Vector2( 150.798, 23.2617 )
 margin_top = 500.0
 margin_right = 880.0
 margin_bottom = 500.0
-
-[node name="NoSlot1" type="Label" parent="."]
-visible = false
-margin_left = 420.0
-margin_top = 135.0
-margin_right = 537.0
-margin_bottom = 180.0
-custom_fonts/font = SubResource( 4 )
-text = "No hay partida
-guardada"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NoSlot2" type="Label" parent="."]
-visible = false
-margin_left = 420.0
-margin_top = 256.001
-margin_right = 537.0
-margin_bottom = 301.001
-custom_fonts/font = SubResource( 4 )
-text = "No hay partida
-guardada"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NoSlot3" type="Label" parent="."]
-visible = false
-margin_left = 420.0
-margin_top = 372.002
-margin_right = 537.0
-margin_bottom = 417.002
-custom_fonts/font = SubResource( 4 )
-text = "No hay partida
-guardada"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="pressed" from="VBoxContainer/Buttons/Slot1/LoadGame" to="." method="_on_LoadGame_pressed"]
-[connection signal="pressed" from="VBoxContainer/Buttons/Slot2/LoadGame" to="." method="_on_LoadGame_pressed"]
-[connection signal="pressed" from="VBoxContainer/Buttons/Slot3/LoadGame" to="." method="_on_LoadGame_pressed"]
+[connection signal="pressed" from="VBoxContainer/Buttons/Slot1/NewGame1" to="." method="_on_NewGame1_pressed"]
+[connection signal="pressed" from="VBoxContainer/Buttons/Slot2/NewGame2" to="." method="_on_NewGame2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Buttons/Slot3/NewGame3" to="." method="_on_NewGame3_pressed"]
 
 [editable path="VBoxContainer/MenuButton"]

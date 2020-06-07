@@ -9,10 +9,11 @@ var main_control := Settings.GAMEPAD
 var user = {"type": "", "name": ""}
 var testers = ["QATester", "Tester"]
 var bug_testers = ["QATester"]
-var performers = ["Tester", "Jugador"]
+var performers = ["Tester"]
 var players = ["Jugador"]
 var log_id := 0
 var game_id := 0
+var current_slot := "slot_1"
 
 var player_state = {
 	"respawn_position": Vector2.ZERO,
@@ -121,6 +122,12 @@ func get_main_controls():
 
 func set_main_controls(value) -> void:
 	main_control = value
+
+func set_current_slot(value: String) -> void:
+	current_slot = value
+
+func get_current_slot() -> String:
+	return current_slot
 ################################################################################
 
 ################################################################################
@@ -128,7 +135,7 @@ func set_main_controls(value) -> void:
 func init_level() -> void:
 	set_camera_start(Vector2.ZERO)
 	clear_last_door_closed()
-	set_player_current_room("Room1", 0)
+	set_player_current_room("Room1", 1)
 	set_player_respawn_position(Vector2.ZERO)
 	set_player_last_state("Init")
 

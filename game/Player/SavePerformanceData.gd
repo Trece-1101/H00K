@@ -1,3 +1,4 @@
+class_name SavePerformanceData
 extends Resource
 
 export var respawn_position: Vector2
@@ -16,5 +17,5 @@ export var level_performance: Dictionary = {
 	"exit": 0,
 	"time": 0,
 }
+
 export var total_time_elapsed: int
-export var total_rooms := 0

@@ -16,6 +16,7 @@ resource_name = "Reverb"
 resource_name = "LowPassFilter"
 
 [resource]
+bus/0/mute = true
 bus/0/volume_db = -0.130497
 bus/1/name = "Sensor"
 bus/1/solo = false
