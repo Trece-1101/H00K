@@ -5,6 +5,7 @@ extends Node
 var camera_start: Vector2 = Vector2.ZERO setget set_camera_start, get_camera_start
 var last_door_closed := {}
 var main_control := Settings.GAMEPAD
+var main_volume := 1.0
 
 var user = {"type": "", "name": ""}
 var testers = ["QATester", "Tester"]
@@ -117,11 +118,17 @@ func clear_last_door_closed() -> void:
 func get_last_door_closed() -> Dictionary:
 	return last_door_closed
 
-func get_main_controls():
+func get_main_controls() -> int:
 	return main_control
 
-func set_main_controls(value) -> void:
+func set_main_controls(value: int) -> void:
 	main_control = value
+
+func get_main_volume() -> float:
+	return main_volume
+
+func set_main_volume(value: float) -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
 
 func set_current_slot(value: String) -> void:
 	current_slot = value
@@ -142,5 +149,7 @@ func init_level() -> void:
 func print_user_data() -> void:
 	print(user)
 	print("log: ", log_id)
+	print("Controller: ", main_control)
+	print("Volume: ", main_volume)
 
 

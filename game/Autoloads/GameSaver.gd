@@ -34,6 +34,8 @@ func create_user(uname: String) -> void:
 	var new_save = save_user_data.new()
 	new_save.user_name = uname
 	new_save.user_type = "Jugador"
+	new_save.controller = 1
+	new_save.main_volume = 0.0
 	
 	ResourceSaver.save("res://saves/user_data.tres", new_save)
 
@@ -47,7 +49,12 @@ func load_file(file_path):
 
 func load_user():
 	var user_data = load_file("res://saves/user_data.tres")
-	return [user_data.user_type, user_data.user_name]
+	return {
+		"user_type": user_data.user_type,
+		"user_name": user_data.user_name,
+		"controller": user_data.controller,
+		"main_volume": user_data.main_volume
+	}
 
 func load_user_game_data(slot: String):
 	var path = slot + ".tres"
