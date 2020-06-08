@@ -18,6 +18,7 @@ export(String) var level_name
 export(int) var level_number
 export(String) var next_scene
 export(String) var next_level
+export(String) var my_route
 
 #### Variables onready
 onready var camera: Camera2D = $LevelTransitionCamera
@@ -36,10 +37,10 @@ func _ready() -> void:
 		GlobalMusic.play()
 	
 	close_door = Game.get_last_door_closed()
-	if not close_door.empty() :
+	if not close_door.empty():
 		close_last_door()
 	
-	
+	Game.set_scene_to_load(my_route)
 	Game.set_player_current_level(level_name, level_number)
 	Game.set_player_next_level(next_level)
 	
@@ -53,8 +54,12 @@ func _ready() -> void:
 	
 	if Game.get_player_last_state() == "Init":
 		GamePerformance.init_level_performance(level_name, OS.get_unix_time())
+		GameSaver.update_performance_slot(Game.get_current_slot())
 		start_performance_to_db(Game.get_player_current_room_int(), Game.get_player_current_room_v())
+	elif Game.get_player_last_state() == "Load":
+		GamePerformance.adjust_time(level_name, OS.get_unix_time())
 	else:
+		GameSaver.update_performance_slot(Game.get_current_slot())
 		update_performance_to_db()
 
 func start_performance_to_db(room: int, version: int) -> void:
@@ -90,9 +95,6 @@ func close_performance_to_db(exiting: bool = false) -> void:
 			yield(db_request, "done")
 			start_performance_to_db(Game.get_player_current_room_int(), Game.get_player_current_room_v())
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
-		print("pausa")
 
 func close_last_door() -> void:
 	var room = get_node(close_door['room'])

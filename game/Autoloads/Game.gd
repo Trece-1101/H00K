@@ -10,11 +10,12 @@ var main_volume := 1.0
 var user = {"type": "", "name": ""}
 var testers = ["QATester", "Tester"]
 var bug_testers = ["QATester"]
-var performers = ["Tester"]
+var performers = ["Tester", "Jugador"]
 var players = ["Jugador"]
 var log_id := 0
 var game_id := 0
 var current_slot := "slot_1"
+var scene_to_load := ""
 
 var player_state = {
 	"respawn_position": Vector2.ZERO,
@@ -48,6 +49,12 @@ func set_game_id(value: int) -> void:
 
 func get_game_id() -> int:
 	return game_id
+
+func set_scene_to_load(value: String) -> void:
+	scene_to_load = value
+
+func get_scene_to_load() -> String:
+	return scene_to_load
 
 func set_player_last_state(value: String) -> void:
 	player_state["last_state"] = value
@@ -138,6 +145,11 @@ func get_current_slot() -> String:
 ################################################################################
 
 ################################################################################
+func reset_data() -> void:
+	set_player_respawn_position(Vector2.ZERO)
+	set_player_current_level("", 0)
+	set_player_current_room("Room1", 1)
+	set_player_last_state("Init")
 
 func init_level() -> void:
 	set_camera_start(Vector2.ZERO)

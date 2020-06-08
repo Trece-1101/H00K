@@ -62,7 +62,8 @@ func update_data_and_performance() -> void:
 	
 	# Performance jugador local
 	GamePerformance.add_time(level.get_level_name(), OS.get_unix_time())
-	GamePerformance.get_time_performance(level.get_level_name())
+	GameSaver.update_performance_slot(Game.get_current_slot())
+	GamePerformance.get_performance(level.get_level_name())
 	
 	# Performance base de datos
 	level.close_performance_to_db()

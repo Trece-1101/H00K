@@ -145,6 +145,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Deaths" type="Label" parent="VBoxContainer/Buttons/Slot1"]
+margin_left = 5.0
+margin_top = -0.848244
+margin_right = 163.0
+margin_bottom = 20.1518
+custom_fonts/font = SubResource( 2 )
+text = "Muertes"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TimeElapsed" type="Label" parent="VBoxContainer/Buttons/Slot1"]
 margin_left = 5.0
 margin_top = 20.0
@@ -156,7 +167,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadGame" type="Button" parent="VBoxContainer/Buttons/Slot1"]
+[node name="LoadGame1" type="Button" parent="VBoxContainer/Buttons/Slot1"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -223,6 +234,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Deaths" type="Label" parent="VBoxContainer/Buttons/Slot2"]
+margin_left = 5.0
+margin_top = -0.391769
+margin_right = 163.0
+margin_bottom = 20.6082
+custom_fonts/font = SubResource( 2 )
+text = "Muertes"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TimeElapsed" type="Label" parent="VBoxContainer/Buttons/Slot2"]
 margin_left = 5.0
 margin_top = 20.0
@@ -234,7 +256,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadGame" type="Button" parent="VBoxContainer/Buttons/Slot2"]
+[node name="LoadGame2" type="Button" parent="VBoxContainer/Buttons/Slot2"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -301,6 +323,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Deaths" type="Label" parent="VBoxContainer/Buttons/Slot3"]
+margin_left = 5.0
+margin_top = -0.942993
+margin_right = 163.0
+margin_bottom = 20.057
+custom_fonts/font = SubResource( 2 )
+text = "Muertes"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TimeElapsed" type="Label" parent="VBoxContainer/Buttons/Slot3"]
 margin_left = 5.0
 margin_top = 20.0
@@ -312,7 +345,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadGame" type="Button" parent="VBoxContainer/Buttons/Slot3"]
+[node name="LoadGame3" type="Button" parent="VBoxContainer/Buttons/Slot3"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -384,8 +417,8 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="VBoxContainer/Buttons/Slot1/LoadGame" to="." method="_on_LoadGame_pressed"]
-[connection signal="pressed" from="VBoxContainer/Buttons/Slot2/LoadGame" to="." method="_on_LoadGame_pressed"]
-[connection signal="pressed" from="VBoxContainer/Buttons/Slot3/LoadGame" to="." method="_on_LoadGame_pressed"]
+[connection signal="pressed" from="VBoxContainer/Buttons/Slot1/LoadGame1" to="." method="_on_LoadGame1_pressed"]
+[connection signal="pressed" from="VBoxContainer/Buttons/Slot2/LoadGame2" to="." method="_on_LoadGame2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Buttons/Slot3/LoadGame3" to="." method="_on_LoadGame3_pressed"]
 
 [editable path="VBoxContainer/MenuButton"]

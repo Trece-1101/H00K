@@ -24,6 +24,7 @@ func enter(_msg: Dictionary = {}) -> void:
 	owner.set_is_active(false)
 	if Game.get_player_respawn_position() == Vector2.ZERO:
 		owner.position = _start_position
+		Game.set_player_respawn_position(_start_position)
 	else:
 		owner.position = Game.get_player_respawn_position()
 	
