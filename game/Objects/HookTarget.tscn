@@ -1,8 +1,9 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/Objects/HookTarget.gd" type="Script" id=1]
-[ext_resource path="res://assets/Sprites/Npc/HookPoint.png" type="Texture" id=2]
+[ext_resource path="res://assets/Sprites/Npc/Hooks/HookPoint.png" type="Texture" id=2]
 [ext_resource path="res://assets/Sprites/light.png" type="Texture" id=3]
+
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
