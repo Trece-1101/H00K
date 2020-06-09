@@ -140,6 +140,11 @@ _global_script_classes=[ {
 "path": "res://game/Levels/Rooms/Room.gd"
 }, {
 "base": "Resource",
+"class": "SavePerformanceData",
+"language": "GDScript",
+"path": "res://game/Player/SavePerformanceData.gd"
+}, {
+"base": "Resource",
 "class": "SaveUserData",
 "language": "GDScript",
 "path": "res://game/Player/SaveUserData.gd"
@@ -221,6 +226,7 @@ _global_script_class_icons={
 "Player": "",
 "Repeater": "res://assets/Sprites/BehaviorTree/repeat.png",
 "Room": "",
+"SavePerformanceData": "",
 "SaveUserData": "",
 "Selector": "res://assets/Sprites/BehaviorTree/selector_icon.png",
 "Sequence": "res://assets/Sprites/BehaviorTree/sequence_icon.png",

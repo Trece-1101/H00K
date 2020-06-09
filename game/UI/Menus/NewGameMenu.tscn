@@ -1,0 +1,380 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16 Monospaced.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://game/UI/Menus/Buttons/MenuButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/UI/Menus/NewGameMenu.gd" type="Script" id=4]
+[ext_resource path="res://assets/Fonts/MainLabel.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/Fonts/Seven Oh Ess 8x8.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/Backgrounds/Main_Menu_01.png" type="Texture" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "main_animation"
+length = 30.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRectRight:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 10, 15, 20, 25, 30 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.960784 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.960784 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.960784 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.960784 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRectLeft:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5, 10, 15, 20, 25, 30 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.960784 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.960784 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.960784 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 6 )
+
+[node name="NewGameMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+next_scene = "res://game/Levels/LevelOne_v2.tscn"
+
+[node name="TextureRectRight" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.960784 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 7 )
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRectLeft" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "main_animation"
+anims/main_animation = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = 20.0
+margin_right = -40.0
+margin_bottom = -20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 880.0
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 5 )
+text = "Nueva Partida"
+
+[node name="Buttons" type="VBoxContainer" parent="VBoxContainer"]
+margin_left = 265.0
+margin_top = 62.0
+margin_right = 615.0
+margin_bottom = 447.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Slot1" type="Panel" parent="VBoxContainer/Buttons"]
+margin_top = 22.0
+margin_right = 350.0
+margin_bottom = 122.0
+rect_min_size = Vector2( 350, 100 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot" type="Label" parent="VBoxContainer/Buttons/Slot1"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -158.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 2 )
+text = "Slot 1"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level" type="Label" parent="VBoxContainer/Buttons/Slot1"]
+margin_left = 7.0
+margin_top = 44.0
+margin_right = 165.0
+margin_bottom = 65.0
+custom_fonts/font = SubResource( 2 )
+text = "Nivel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Room" type="Label" parent="VBoxContainer/Buttons/Slot1"]
+margin_left = 190.0
+margin_top = 44.0
+margin_right = 348.0
+margin_bottom = 65.0
+custom_fonts/font = SubResource( 2 )
+text = "Salon"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeElapsed" type="Label" parent="VBoxContainer/Buttons/Slot1"]
+margin_left = 5.0
+margin_top = 20.0
+margin_right = 163.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 2 )
+text = "Tiempo de partida"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Deaths" type="Label" parent="VBoxContainer/Buttons/Slot1"]
+margin_left = 5.0
+margin_top = 1.0063
+margin_right = 163.0
+margin_bottom = 22.0063
+custom_fonts/font = SubResource( 2 )
+text = "Muertes"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewGame1" type="Button" parent="VBoxContainer/Buttons/Slot1"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -170.5
+margin_top = -34.0
+margin_right = 170.5
+custom_fonts/font = SubResource( 3 )
+text = "Nueva Partida"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Buttons"]
+margin_top = 126.0
+margin_right = 350.0
+margin_bottom = 130.0
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/Buttons"]
+margin_top = 134.0
+margin_right = 350.0
+margin_bottom = 138.0
+
+[node name="Slot2" type="Panel" parent="VBoxContainer/Buttons"]
+margin_top = 142.0
+margin_right = 350.0
+margin_bottom = 242.0
+rect_min_size = Vector2( 350, 100 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot" type="Label" parent="VBoxContainer/Buttons/Slot2"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -158.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 2 )
+text = "Slot 2"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level" type="Label" parent="VBoxContainer/Buttons/Slot2"]
+margin_left = 7.0
+margin_top = 44.0
+margin_right = 165.0
+margin_bottom = 65.0
+custom_fonts/font = SubResource( 2 )
+text = "Nivel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Room" type="Label" parent="VBoxContainer/Buttons/Slot2"]
+margin_left = 190.0
+margin_top = 44.0
+margin_right = 348.0
+margin_bottom = 65.0
+custom_fonts/font = SubResource( 2 )
+text = "Salon"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Deaths" type="Label" parent="VBoxContainer/Buttons/Slot2"]
+margin_left = 5.0
+margin_top = -0.411438
+margin_right = 163.0
+margin_bottom = 20.5886
+custom_fonts/font = SubResource( 2 )
+text = "Muertes"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeElapsed" type="Label" parent="VBoxContainer/Buttons/Slot2"]
+margin_left = 5.0
+margin_top = 20.0
+margin_right = 163.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 2 )
+text = "Tiempo de partida"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewGame2" type="Button" parent="VBoxContainer/Buttons/Slot2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -170.5
+margin_top = -34.0
+margin_right = 170.5
+custom_fonts/font = SubResource( 3 )
+text = "Nueva Partida"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/Buttons"]
+margin_top = 246.0
+margin_right = 350.0
+margin_bottom = 250.0
+
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer/Buttons"]
+margin_top = 254.0
+margin_right = 350.0
+margin_bottom = 258.0
+
+[node name="Slot3" type="Panel" parent="VBoxContainer/Buttons"]
+margin_top = 262.0
+margin_right = 350.0
+margin_bottom = 362.0
+rect_min_size = Vector2( 350, 100 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot" type="Label" parent="VBoxContainer/Buttons/Slot3"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -158.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 2 )
+text = "Slot 3"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level" type="Label" parent="VBoxContainer/Buttons/Slot3"]
+margin_left = 7.0
+margin_top = 44.0
+margin_right = 165.0
+margin_bottom = 65.0
+custom_fonts/font = SubResource( 2 )
+text = "Nivel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Room" type="Label" parent="VBoxContainer/Buttons/Slot3"]
+margin_left = 190.0
+margin_top = 44.0
+margin_right = 348.0
+margin_bottom = 65.0
+custom_fonts/font = SubResource( 2 )
+text = "Salon"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Deaths" type="Label" parent="VBoxContainer/Buttons/Slot3"]
+margin_left = 5.0
+margin_top = 0.712219
+margin_right = 163.0
+margin_bottom = 21.7122
+custom_fonts/font = SubResource( 2 )
+text = "Muertes"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeElapsed" type="Label" parent="VBoxContainer/Buttons/Slot3"]
+margin_left = 5.0
+margin_top = 20.0
+margin_right = 163.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 2 )
+text = "Tiempo de partida"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewGame3" type="Button" parent="VBoxContainer/Buttons/Slot3"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -170.5
+margin_top = -34.0
+margin_right = 170.5
+custom_fonts/font = SubResource( 3 )
+text = "Nueva Partida"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButton" parent="VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 451.0
+margin_right = 880.0
+margin_bottom = 496.0
+next_scene = "res://game/UI/Menus/MainMenu.tscn"
+
+[node name="Label" parent="VBoxContainer/MenuButton" index="0"]
+text = "Volver"
+
+[node name="Sprite" parent="VBoxContainer/MenuButton" index="1"]
+position = Vector2( 150.798, 23.2617 )
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+margin_top = 500.0
+margin_right = 880.0
+margin_bottom = 500.0
+[connection signal="pressed" from="VBoxContainer/Buttons/Slot1/NewGame1" to="." method="_on_NewGame1_pressed"]
+[connection signal="pressed" from="VBoxContainer/Buttons/Slot2/NewGame2" to="." method="_on_NewGame2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Buttons/Slot3/NewGame3" to="." method="_on_NewGame3_pressed"]
+
+[editable path="VBoxContainer/MenuButton"]

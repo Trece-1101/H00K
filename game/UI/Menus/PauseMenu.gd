@@ -21,6 +21,8 @@ func _on_Exit_button_up() -> void:
 	get_tree().quit()
 
 func _on_Menu_button_up() -> void:
+	close()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene(menu_scene)
 
 func _on_Continue_button_up() -> void:
