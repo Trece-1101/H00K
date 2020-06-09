@@ -45,8 +45,8 @@ func toggle_slot(turn_on: bool, in_slot: Panel, in_label: Label, slot: String) -
 
 func convert_time(time: int) -> String:
 	var digit_format = "%02d"
-	var hours = digit_format % [time / 3600]
-	var minutes = digit_format % [time / 60]
+	var hours = digit_format % [time * 0.000277778]
+	var minutes = digit_format % [time * 0.0166666666666667]
 	var seconds = digit_format % [int(ceil(time)) % 60]
 	
 	return "{h}:{m}:{s}".format({"h": hours, "m": minutes, "s": seconds})

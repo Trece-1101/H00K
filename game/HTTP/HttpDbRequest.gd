@@ -30,6 +30,10 @@ func SetLog(uname: String, platform: String) -> void:
 	var query = JSON.print({"Nickname": uname, "Plataforma": platform})
 	send_request("Log", query, HTTPClient.METHOD_POST)
 
+func SetUser(uname: String) -> void:
+	var query = JSON.print({"Nickname": uname})
+	send_request("users", query, HTTPClient.METHOD_POST)
+
 func GetBugTypes():
 	http_request.request("http://142.93.201.7:3000/bugTypes")
 
