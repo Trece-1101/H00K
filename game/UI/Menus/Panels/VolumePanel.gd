@@ -2,6 +2,8 @@ extends OptionPanel
 
 #AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), lower_volume)
 
+var modifier := 5.0
+
 onready var indexes := {
 	"master": AudioServer.get_bus_index("Master"),
 	"music": AudioServer.get_bus_index("Music"),
@@ -19,11 +21,6 @@ func _ready() -> void:
 	update_volume_label("master")
 	update_volume_label("music")
 	update_volume_label("sfx")
-
-
-func update_volume_label(bus: String) -> void:
-	var label_text := "%01d" % [AudioServer.get_bus_volume_db(indexes[bus])]
-	labels[bus].text = label_text
 
 func _on_GeneralMinus_pressed() -> void:
 	change_volume(indexes["master"], false, "master")
@@ -48,10 +45,20 @@ func _on_EffectsPlus_pressed() -> void:
 	change_volume(indexes["sfx"], true, "sfx")
 
 func change_volume(index: int, up: bool, bus: String) -> void:
+	$AudioStreamPlayer.play()
 	var current_volume = AudioServer.get_bus_volume_db(index)
 	if up:
-		AudioServer.set_bus_volume_db(index, current_volume + 1)
+		AudioServer.set_bus_volume_db(index, current_volume + modifier)
 	else:
-		AudioServer.set_bus_volume_db(index, current_volume - 1)
+		AudioServer.set_bus_volume_db(index, current_volume - modifier)
 	
 	update_volume_label(bus)
+
+func update_volume_label(bus: String) -> void:
+	var label_text := "%01d" % [AudioServer.get_bus_volume_db(indexes[bus])]
+	labels[bus].text = label_text
+
+func _on_Apply_pressed() -> void:
+	._on_Apply_pressed()
+
+

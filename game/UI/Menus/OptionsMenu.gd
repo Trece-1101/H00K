@@ -2,7 +2,7 @@ extends Control
 
 export var menu := {"normal_player": "", "tester": ""}
 
-onready var return_button := $VBoxContainer/MenuButton
+onready var return_button := $VBoxContainer/ReturnButton
 onready var header_label := $VBoxContainer/CenterRow/VBoxContainer/Header
 
 onready var panels = {

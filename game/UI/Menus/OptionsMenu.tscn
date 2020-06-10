@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/Fonts/MainLabel.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts/SevenOh_8x16_Mono_32.tres" type="DynamicFont" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://game/UI/Menus/OptionsMenu.gd" type="Script" id=4]
 [ext_resource path="res://assets/Backgrounds/Main_Menu_01.png" type="Texture" id=5]
 [ext_resource path="res://game/UI/Menus/Buttons/SimpleButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/Sounds/SFX/Buttons/Interface_UI_04.wav" type="AudioStream" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "main_animation"
@@ -111,6 +112,9 @@ text = "Volumen"
 [node name="Sprite" parent="VBoxContainer/CenterRow/Buttons/Volume" index="1"]
 position = Vector2( 145.007, 23.2617 )
 
+[node name="AudioStreamPlayer" parent="VBoxContainer/CenterRow/Buttons/Volume" index="3"]
+stream = ExtResource( 7 )
+
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterRow"]
 margin_left = 304.0
 margin_right = 880.0
@@ -132,15 +136,10 @@ margin_bottom = 389.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MenuButton" parent="VBoxContainer" instance=ExtResource( 3 )]
+[node name="ReturnButton" parent="VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 455.0
 margin_right = 880.0
 margin_bottom = 500.0
-
-[node name="Label" parent="VBoxContainer/MenuButton" index="0"]
-text = "Volver"
 [connection signal="button_up" from="VBoxContainer/CenterRow/Buttons/Volume" to="." method="_on_Volume_button_up"]
 
 [editable path="VBoxContainer/CenterRow/Buttons/Volume"]
-
-[editable path="VBoxContainer/MenuButton"]
