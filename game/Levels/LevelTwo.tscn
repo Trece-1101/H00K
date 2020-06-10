@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://game/Levels/Camera/LevelTransitionCamera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/Levels/TileMaps/LevelOne.tres" type="TileSet" id=2]
@@ -11,8 +11,6 @@
 [ext_resource path="res://game/Objects/Sensor.tscn" type="PackedScene" id=9]
 [ext_resource path="res://game/Objects/MovingPlatform.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/Objects/Pathpoints.tscn" type="PackedScene" id=11]
-[ext_resource path="res://game/Objects/FallingPlatform.tscn" type="PackedScene" id=12]
-[ext_resource path="res://game/Objects/AcceleratingPlatform.tscn" type="PackedScene" id=13]
 [ext_resource path="res://game/Enemies/Bomborcop.tscn" type="PackedScene" id=14]
 [ext_resource path="res://game/Astar/NavMap.tscn" type="PackedScene" id=15]
 [ext_resource path="res://game/UI/Menus/PauseMenu.tscn" type="PackedScene" id=16]
@@ -56,12 +54,6 @@ position = Vector2( 187.873, 256.206 )
 
 [node name="Spring2" parent="Room1/Objects" index="1" instance=ExtResource( 8 )]
 position = Vector2( 435.852, 383.922 )
-
-[node name="FallingPlatform" parent="Room1/Objects" index="2" instance=ExtResource( 12 )]
-position = Vector2( 151.794, 219.853 )
-
-[node name="AcceleratingPlatform" parent="Room1/Objects" index="3" instance=ExtResource( 13 )]
-position = Vector2( 386.644, 167.441 )
 
 [node name="NavMap" parent="Room1" instance=ExtResource( 15 )]
 visible = false
