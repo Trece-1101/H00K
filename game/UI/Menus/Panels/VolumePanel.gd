@@ -1,7 +1,5 @@
 extends OptionPanel
 
-#AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), lower_volume)
-
 var modifier := 5.0
 
 onready var indexes := {
@@ -11,54 +9,51 @@ onready var indexes := {
 }
 
 onready var labels :={
-	"master": $VBoxContainer/MainVolume/GeneralValue,
-	"music": $VBoxContainer/MusicVolume/MusicValue,
-	"sfx": $VBoxContainer/EffectsVolume/EffectsValue
+	"Master": $VBoxContainer/MainVolume/GeneralValue,
+	"Music": $VBoxContainer/MusicVolume/MusicValue,
+	"Effects": $VBoxContainer/EffectsVolume/EffectsValue
 }
 
 
 func _ready() -> void:
-	update_volume_label("master")
-	update_volume_label("music")
-	update_volume_label("sfx")
+	update_volume_label("Master")
+	update_volume_label("Music")
+	update_volume_label("Effects")
 
 func _on_GeneralMinus_pressed() -> void:
-	change_volume(indexes["master"], false, "master")
+	change_volume("Master", false)
 
 
 func _on_GeneralPlus_pressed() -> void:
-	change_volume(indexes["master"], true, "master")
+	change_volume("Master", true)
 
 func _on_MusicMinus_pressed() -> void:
-	change_volume(indexes["music"], false, "music")
+	change_volume("Music", false)
 
 
 func _on_MusicPlus_pressed() -> void:
-	change_volume(indexes["music"], true, "music")
+	change_volume("Music", true)
 
 
 func _on_EffectsMinus_pressed() -> void:
-	change_volume(indexes["sfx"], false, "sfx")
+	change_volume("Effects", false)
 
 
 func _on_EffectsPlus_pressed() -> void:
-	change_volume(indexes["sfx"], true, "sfx")
+	change_volume("Effects", true)
 
-func change_volume(index: int, up: bool, bus: String) -> void:
+func change_volume(bus: String, up: bool) -> void:
 	$AudioStreamPlayer.play()
-	var current_volume = AudioServer.get_bus_volume_db(index)
-	if up:
-		AudioServer.set_bus_volume_db(index, current_volume + modifier)
-	else:
-		AudioServer.set_bus_volume_db(index, current_volume - modifier)
-	
+	Game.change_volume(bus, modifier, up)
 	update_volume_label(bus)
 
 func update_volume_label(bus: String) -> void:
-	var label_text := "%01d" % [AudioServer.get_bus_volume_db(indexes[bus])]
+	var label_text := "%01d" % [Game.get_volumes(bus)]
 	labels[bus].text = label_text
 
 func _on_Apply_pressed() -> void:
 	._on_Apply_pressed()
+	GameSaver.update_user_data()
+	
 
 

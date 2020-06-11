@@ -89,7 +89,7 @@ func ClosePerformance(id_game: int, time: String) -> void:
 func send_request(request_name: String, query: String, method: int) -> void:
 	var headers = ["Content-Type: application/json"]
 	var url := "http://142.93.201.7:3000/" + request_name
-	print(query)
+	#print(query)
 	http_request.request(url, headers, false, method, query)
 
 func _http_request_completed(_result, response_code, _headers, body) -> void:
@@ -100,5 +100,5 @@ func _http_request_completed(_result, response_code, _headers, body) -> void:
 		var msj: String = "Error %s on database connection" % response_code
 		http_result = {"result": false, "value": response.result, "message": msj}
 	
-	print(http_result)
+	#print_debug(http_result)
 	emit_signal("done")

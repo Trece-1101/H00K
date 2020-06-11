@@ -3,6 +3,8 @@ extends Node
 var save_user_data := SaveUserData
 var save_performance_data := SavePerformanceData
 
+
+#### Checkers
 func check_directory(create: bool) -> bool:
 	var dir = Directory.new()
 	if not dir.dir_exists("res://saves/"):
@@ -30,12 +32,22 @@ func check_file(file_path: String) -> bool:
 	
 	return true
 
+
+#### Creaters
 func create_user(uname: String) -> void:
 	var new_save = save_user_data.new()
 	new_save.user_name = uname
 	new_save.user_type = "Jugador"
-	new_save.controller = 1
-	new_save.main_volume = 0.0
+	new_save.controller = Settings.GAMEPAD
+	new_save.volumes = {
+		"Master": 0.0,
+		"Music": -8.0,
+		"Effects": 0.0
+		}
+	new_save.screen = {
+		"resolution": Game.get_screen()["resolution"],
+		"full_screen": Game.get_screen()["full_screen"]
+	}
 	
 	ResourceSaver.save("res://saves/user_data.tres", new_save)
 
@@ -46,10 +58,31 @@ func create_performance_slot(slot_name: String) -> void:
 	save_performance(slot_name)
 
 
+
+#### Updaters
 func update_performance_slot(slot_name: String) -> void:
 	if check_user_performance_data(slot_name):
 		save_performance(slot_name)
 
+func update_user_data() -> bool:
+	if check_user_data():
+		var new_update := save_user_data.new()
+		new_update.user_name = Game.get_user()["name"]
+		new_update.user_type = Game.get_user()["type"]
+		new_update.controller = Game.get_main_controls()
+		new_update.volumes["Master"] = Game.get_volumes("Master")
+		new_update.volumes["Music"] = Game.get_volumes("Music")
+		new_update.volumes["Effects"] = Game.get_volumes("Effects")
+		new_update.screen["resolution"] = Game.get_screen()["resolution"]
+		new_update.screen["full_screen"] = Game.get_screen()["full_screen"]
+
+
+		ResourceSaver.save("res://saves/user_data.tres", new_update)
+		return true
+
+	return false
+
+#### Savers
 func save_performance(slot_name: String) -> void:
 	var new_save = save_performance_data.new()
 	
@@ -74,6 +107,11 @@ func save_performance(slot_name: String) -> void:
 	Game.set_current_slot(slot_name)
 	ResourceSaver.save("res://saves/" + path, new_save)
 
+
+func save_user_game_data(_slot: String) -> void:
+	pass
+
+#### Loaders
 func load_performance(slot_name: String) -> Dictionary:
 	var path = slot_name + ".tres"
 	var performance_data = load_file("res://saves/" + path)
@@ -107,17 +145,6 @@ func load_details(slot_name: String) -> Dictionary:
 		"time_elapsed": performance_details.total_time_elapsed,
 	}
 
-func delete_performance_slot(slot_name: String) -> void:
-	var path = slot_name + ".tres"
-	var dir = Directory.new()
-	dir.remove("res://saves/" + path)
-
-func save_user_game_data(_slot: String) -> void:
-	pass
-
-func load_file(file_path):
-	var data = load(file_path)
-	return data
 
 func load_user() -> Dictionary:
 	var user_data = load_file("res://saves/user_data.tres")
@@ -125,7 +152,19 @@ func load_user() -> Dictionary:
 		"user_type": user_data.user_type,
 		"user_name": user_data.user_name,
 		"controller": user_data.controller,
-		"main_volume": user_data.main_volume
+		"volumes": user_data.volumes,
+		"screen": user_data.screen
 	}
+
+func load_file(file_path):
+	var data = load(file_path)
+	return data
+
+
+#### Deleters
+func delete_performance_slot(slot_name: String) -> void:
+	var path = slot_name + ".tres"
+	var dir = Directory.new()
+	dir.remove("res://saves/" + path)
 
 
