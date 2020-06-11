@@ -36,7 +36,7 @@ shape = SubResource( 1 )
 [node name="PlayerHologram" type="Sprite" parent="."]
 visible = false
 modulate = Color( 0, 0.505882, 1, 0.4 )
-position = Vector2( 0.89959, -20.7342 )
+position = Vector2( 0.89959, -24.3297 )
 texture = ExtResource( 4 )
 vframes = 6
 hframes = 16

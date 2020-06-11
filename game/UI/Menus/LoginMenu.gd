@@ -49,7 +49,6 @@ func make_login(uname: String, upass: String = "qwerty1234") -> void:
 	toggle_insert(false)
 	yield(db_request, "done")
 	var result = db_request.get_result()
-	#print(result)	
 	if result["result"]:
 		# Guardo el nombre del usuario logueado y el tipo de usuario
 		Game.set_user(result["value"]["Tipo"], uname.to_lower())

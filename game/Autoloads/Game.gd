@@ -5,7 +5,8 @@ extends Node
 var camera_start: Vector2 = Vector2.ZERO setget set_camera_start, get_camera_start
 var last_door_closed := {}
 var main_control := Settings.GAMEPAD
-var main_volume := 1.0
+var volumes := {"main_volume": 0.0, "music_volume": -8.0, "sfx_volume": 0.0}
+var screen := {"resolution": Vector2(960, 540), "full_screen": false}
 
 var user = {"type": "", "name": ""}
 var testers = ["QATester", "Tester"]
@@ -131,17 +132,37 @@ func get_main_controls() -> int:
 func set_main_controls(value: int) -> void:
 	main_control = value
 
-func get_main_volume() -> float:
-	return main_volume
+func get_volumes(bus: String) -> float:
+	return AudioServer.get_bus_volume_db(AudioServer.get_bus_index(bus))
 
-func set_main_volume(value: float) -> void:
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
+func set_volumes(bus: String, value: float) -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), value)
+
+func change_volume(bus: String, value: float, addition: bool) -> void:
+	var old_volume := AudioServer.get_bus_volume_db(AudioServer.get_bus_index(bus))
+	if addition:
+		AudioServer.set_bus_volume_db(
+			AudioServer.get_bus_index(bus),
+			old_volume + value
+			)
+	else:
+		AudioServer.set_bus_volume_db(
+			AudioServer.get_bus_index(bus),
+			old_volume - value
+			)
 
 func set_current_slot(value: String) -> void:
 	current_slot = value
 
 func get_current_slot() -> String:
 	return current_slot
+
+func get_screen() -> Dictionary:
+	return screen
+
+func set_screen(resolution: Vector2, full: bool) -> void:
+	screen.resolution = resolution
+	screen.full_screen = full
 ################################################################################
 
 ################################################################################
@@ -162,6 +183,7 @@ func print_user_data() -> void:
 	print(user)
 	print("log: ", log_id)
 	print("Controller: ", main_control)
-	print("Volume: ", main_volume)
+	print("Main_Volume: {mv} - Music_Volume: {sm} - SFX_volume: {sv}".format({"mv": volumes.main_volume, "sm": volumes.music_volume, "sv": volumes.sfx_volume}))
+	print("Resolucion: {res} - Full Screen: {f}".format({"res": screen.resolution, "f": screen.full_screen}))
 
 

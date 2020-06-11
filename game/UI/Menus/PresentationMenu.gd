@@ -16,7 +16,10 @@ func load_user() -> void:
 		var user_data = GameSaver.load_user()
 		Game.set_user(user_data["user_type"], user_data["user_name"])
 		Game.set_main_controls(user_data["controller"])
-		Game.set_main_volume(user_data["main_volume"])
+		Game.volumes["main_volume"] = user_data["volumes"]["Master"]
+		Game.volumes["music_volume"] = user_data["volumes"]["Music"]
+		Game.volumes["sfx_volume"] = user_data["volumes"]["Effects"]
+		Game.set_screen(user_data["screen"]["resolution"], user_data["screen"]["full_screen"])
 		$LoginMenu/LogPanel/ColorRect/UserInput.text = Game.get_user()["name"]
 		emit_signal("press_send")
 
