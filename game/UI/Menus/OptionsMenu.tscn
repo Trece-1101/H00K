@@ -263,7 +263,7 @@ margin_top = 123.0
 margin_bottom = 168.0
 
 [node name="Label" parent="VBoxContainer/CenterRow/Buttons/Volume" index="0"]
-text = "Volumen"
+text = "Sonido"
 
 [node name="Sprite" parent="VBoxContainer/CenterRow/Buttons/Volume" index="1"]
 position = Vector2( 164, 23.262 )

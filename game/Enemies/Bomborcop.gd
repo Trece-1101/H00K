@@ -67,6 +67,7 @@ func npc_movement() -> void:
 func get_move_direction() -> Vector2:
 	var move_direction = blackboard.get("move_direction")
 	var sign_direction = sign(move_direction.x)
+	$EnemySkin.scale.x = sign_direction
 
 	wall_detector.scale.x = move_direction.x
 	floor_detector.position.x = 15 if sign_direction == 1 else -15

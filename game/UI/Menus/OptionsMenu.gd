@@ -8,7 +8,7 @@ onready var header_label := $VBoxContainer/CenterRow/VBoxContainer/Header
 onready var panels = {
 	"volume_panel": "res://game/UI/Menus/Panels/VolumePanel.tscn",
 	"screen_panel": "res://game/UI/Menus/Panels/ScreenPanel.tscn",
-	"control_panel": ""
+	"control_panel": "res://game/UI/Menus/Panels/ControlPanel.tscn"
 }
 
 func _ready() -> void:
