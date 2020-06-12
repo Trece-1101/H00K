@@ -1,15 +1,12 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/Fonts/Bandwidth 8x16 Monospaced.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/Backgrounds/Credits_Programmers.png" type="Texture" id=2]
 [ext_resource path="res://game/UI/Menus/CreditsMenu.gd" type="Script" id=3]
 [ext_resource path="res://assets/Sounds/SFX/Buttons/Interface_UI_04.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16 Monospaced.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/Sprites/arrow_indicator.png" type="Texture" id=6]
 [ext_resource path="res://game/UI/Menus/Buttons/MenuButton.gd" type="Script" id=7]
-[ext_resource path="res://assets/Sprites/Npc/HookPoint.png" type="Texture" id=8]
 [ext_resource path="res://assets/Sounds/Music/credits_menu.ogg" type="AudioStream" id=9]
-[ext_resource path="res://assets/Backgrounds/Credits_Studio.png" type="Texture" id=10]
 [ext_resource path="res://game/Player/PlayerSkin.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=1]
@@ -98,38 +95,6 @@ tracks/2/keys = {
 "values": [ 4, 5 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Credits_Studio"
-length = 6.0
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 4, 6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-
-[sub_resource type="Animation" id=6]
-resource_name = "Credits_Prog"
-length = 13.0
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 7, 11, 13 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-
 [sub_resource type="Animation" id=7]
 resource_name = "Credits_Player"
 length = 23.2
@@ -140,7 +105,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.3, 4, 5.3, 5.5, 6.4, 6.9, 7.4, 8.3, 8.6, 11, 11.1, 13.4, 13.5, 15.4, 15.5, 19.1, 21 ),
+"times": PoolRealArray( 0, 2.3, 4, 5.3, 6, 6.4, 6.9, 7.4, 8.3, 9.2, 11, 11.1, 13.4, 14.1, 15.4, 15.5, 19.1, 21 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 100, 270 ), Vector2( 100, 270 ), Vector2( 860, 270 ), Vector2( 860, 270 ), Vector2( 100, 270 ), Vector2( 100, 270 ), Vector2( 100, 70 ), Vector2( 100, 270 ), Vector2( 100, 270 ), Vector2( 860, 270 ), Vector2( 860, 270 ), Vector2( 860, 470 ), Vector2( 860, 470 ), Vector2( 100, 470 ), Vector2( 100, 470 ), Vector2( 100, 270 ), Vector2( 100, 270 ), Vector2( 860, 270 ) ]
@@ -152,8 +117,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"clips": PoolStringArray( "celebrate", "idle_stand", "idle_stand", "idlehook_mid", "spawn", "idle_stand", "jump_fire_boots", "idle_stand", "idle_stand", "idlehook_mid", "spawn", "idle_stand", "idle_stand", "idle_stand", "jumphook_bot", "idle_stand", "idle_stand", "idle_stand", "idle_stand", "idlehook_mid", "spawn", "idle_stand", "idle_stand", "idlehook_top", "idle_stand", "idle_stand", "idle_stand", "celebrate", "celebrate", "die" ),
-"times": PoolRealArray( 0, 4, 4.5, 5, 5.5, 5.9, 6.4, 7.4, 7.9, 8.1, 8.6, 9.2, 9.7, 10.2, 10.7, 11.1, 11.6, 12.1, 12.6, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 21, 22.4 )
+"clips": PoolStringArray( "celebrate", "idle_stand", "idle_stand", "idlehook_mid", "spawn", "jump_fire_boots", "idle_stand", "idle_stand", "idlehook_mid", "spawn", "idle_stand", "idle_stand", "jumphook_bot", "idle_stand", "idle_stand", "idle_stand", "idle_stand", "idlehook_mid", "spawn", "idle_stand", "idlehook_top", "idle_stand", "idle_stand", "idle_stand", "celebrate", "celebrate", "die" ),
+"times": PoolRealArray( 0, 4, 4.5, 5, 6, 6.4, 7.4, 7.9, 8.1, 9.2, 9.7, 10.2, 10.7, 11.1, 11.6, 12.1, 12.6, 13, 14.1, 14.5, 15, 15.5, 16, 16.5, 17, 21, 22.4 )
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("PlayerSkin/PlayerSprite:flip_h")
@@ -162,7 +127,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 4, 5.5, 8.6, 13.5, 21 ),
+"times": PoolRealArray( 0, 4, 6, 9.2, 14.1, 21 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false, true, false, true ]
@@ -255,34 +220,8 @@ stream = ExtResource( 9 )
 autoplay = true
 bus = "Credits"
 
-[node name="CreditsStudio" type="Sprite" parent="."]
-visible = false
-self_modulate = Color( 1, 1, 1, 0.675 )
-position = Vector2( 470, 270 )
-texture = ExtResource( 10 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CreditsStudio"]
-anims/Credits_Studio = SubResource( 5 )
-
-[node name="CreditsProgrammers" type="Sprite" parent="."]
-visible = false
-self_modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 470, 270 )
-texture = ExtResource( 2 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CreditsProgrammers"]
-autoplay = "Credits_Prog"
-anims/Credits_Prog = SubResource( 6 )
-
-[node name="HookPoint" type="Sprite" parent="."]
-visible = false
-position = Vector2( 144.785, 297.141 )
-texture = ExtResource( 8 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="HookPoint"]
-
 [node name="PlayerSkin" parent="." instance=ExtResource( 11 )]
-position = Vector2( 100, 270 )
+position = Vector2( 460, 270 )
 scale = Vector2( 1.5, 1.5 )
 
 [node name="ThrustLeft" parent="PlayerSkin" index="1"]
@@ -290,6 +229,9 @@ frame = 3
 
 [node name="ThrustRight" parent="PlayerSkin" index="2"]
 frame = 3
+
+[node name="PlayerSprite" parent="PlayerSkin" index="3"]
+frame = 82
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Credits_Player"
