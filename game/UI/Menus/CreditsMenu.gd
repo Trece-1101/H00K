@@ -44,9 +44,9 @@ var credits = [
 		"https://godotengine.org",
 	],[
 		"Special thanks",
-		"My parents",
-		"My friends",
-		"My pet rabbit",
+		"",
+		"",
+		"",
 		"",
 		"",
 		"",

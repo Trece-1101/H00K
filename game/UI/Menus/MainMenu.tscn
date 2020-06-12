@@ -257,4 +257,4 @@ anims/menu_animated = SubResource( 5 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 autoplay = true
-bus = "Music"
+bus = "MainMenu"

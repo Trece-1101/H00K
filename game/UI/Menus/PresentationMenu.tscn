@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/Fonts/Revamped.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16 Monospaced.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://game/UI/Menus/LoginMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Sounds/Music/presentation_1.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://game/UI/Menus/Studio.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 35
@@ -169,16 +170,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Studio" type="Label" parent="."]
-margin_left = -246.991
-margin_top = 47.5561
-margin_right = -4.991
-margin_bottom = 85.5561
-custom_fonts/font = SubResource( 1 )
-text = "333 Games"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Studio" parent="." instance=ExtResource( 8 )]
 
 [node name="Presents" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0 )
