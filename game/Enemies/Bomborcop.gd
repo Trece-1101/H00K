@@ -33,7 +33,8 @@ func _ready() -> void:
 	blackboard.set("vel_increment", velocity_increment)
 	
 	blackboard.set("current_velocity", patrol_velocity)
-	blackboard.set("current_position", null)
+	#blackboard.set("current_position", null)
+	blackboard.set("current_position", global_position)
 	blackboard.set("move_direction", Vector2(-1.0, 1.0))
 	blackboard.set("last_move_direction", blackboard.get("move_direction"))
 	blackboard.set("last_know_player_position", null)
