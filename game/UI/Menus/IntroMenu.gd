@@ -3,11 +3,12 @@ extends Node2D
 ###INTRO MENU 
 
 const section_time := 2.0
-const line_time := 0.3
-const base_speed := 120
+const line_time := 0.8
+const base_speed := 40
 const speed_up_multiplier := 10.0
-const title_color := Color8(144, 28, 43)
+const title_color := Color8(203, 202, 202)
 const description_color := Color8(203, 202, 202)
+
 
 var scroll_speed := base_speed
 var speed_up := false
@@ -22,39 +23,43 @@ var section_timer := 0.0
 var line_timer := 0.0
 var curr_line := 0
 var lines := []
+var color_line = false
 
 var credits = [
 	[
-		"A game by 333 Games"
+		"Años antes de que la gran rebelión fuera reprimida",
+		 "un grupo insurgente de cientistas para militares", 
+		 "trabajaban en la creación de un nuevo tipo de androide",
+		 "su misión era desconocida."
 	],[
-		"Programming",
-		"Omar Bazzi",
-		"Fernando Sanchez"
+		"Por razones que no conocemos el grupo de",
+		 "cientistas se separaron y el destino de este",
+		 "nuevo androide es un misterio…",
+		 "hasta ahora."
+		
 	],[
-		"Art",
-		"Fernando Sanchez"
+		"100 años más tarde empezamos identificar disturbios",
+		"y anomalías en nuestros sistemas, todos causados por",
+		"un tipo de androide no registrado", 
+		"en nuestra base de datos."
+		
 	],[
-		"Music and SFX",
-		"Nicollas Krijanovsky"
+		"Su comportamiento es errático pero todo",
+		"indica que tiene un objetivo", 
+		"llegar a la matriz de nuestro sistema.",
+		"Tenemos fuertes sospechas que sea el mismo",
+		"androide del proyecto misterioso."
 	],[
-		"Testers",
-		"Omar Bazzi",
-		"Fernando Sanchez",
-		"Nicollas Krijanovsky"
+		"No tenemos ningún información adicional…",
+		"solo su nombre"
+	
 	],[
-		"Developed with Godot Engine",
-		"https://godotengine.org",
-	],[
-		"Special thanks",
 		"",
 		"",
 		"",
 		"",
-		"",
-		"",
-		"",
-		"",
-	]
+	],
+
 ]
 
 
@@ -92,7 +97,7 @@ func _process(delta):
 func finish():
 	if not finished:
 		finished = true
-		get_tree().change_scene("res://game/UI/Menus/MainMenu.tscn")
+		get_tree().change_scene("res://game/Levels/LevelOne_v2.tscn")
 
 
 func add_line():
