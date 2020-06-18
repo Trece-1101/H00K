@@ -90,5 +90,6 @@ func die() -> void:
 	is_alive = false
 	set_is_active(false)
 	GamePerformance.increment_death_count(Game.get_player_current_level_name())
+	GamePerformance.add_time(Game.get_player_current_level_name(), OS.get_unix_time())
 	self.state_machine.transition_to("Die")
 ################################################################################

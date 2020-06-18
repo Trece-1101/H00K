@@ -4,11 +4,11 @@
 [ext_resource path="res://assets/Sprites/arrow_indicator.png" type="Texture" id=2]
 [ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16 Monospaced.ttf" type="DynamicFontData" id=3]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 28
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=2]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:visible")
@@ -47,7 +47,7 @@ tracks/2/keys = {
 "values": [ 5, 4 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:visible")
@@ -103,7 +103,7 @@ margin_left = 10.0
 margin_right = 300.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 300, 40 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0.180392, 0.180392, 0.180392, 1 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 5
@@ -120,8 +120,8 @@ scale = Vector2( 0.0262602, 0.0256847 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/off_hover = SubResource( 1 )
-anims/on_hover = SubResource( 2 )
+anims/off_hover = SubResource( 2 )
+anims/on_hover = SubResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = "Button"

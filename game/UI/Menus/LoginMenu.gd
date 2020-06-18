@@ -49,7 +49,6 @@ func make_login(uname: String, upass: String = "qwerty1234") -> void:
 	toggle_insert(false)
 	yield(db_request, "done")
 	var result = db_request.get_result()
-	#print(result)	
 	if result["result"]:
 		# Guardo el nombre del usuario logueado y el tipo de usuario
 		Game.set_user(result["value"]["Tipo"], uname.to_lower())
@@ -58,7 +57,6 @@ func make_login(uname: String, upass: String = "qwerty1234") -> void:
 		yield(db_request, "done")
 		var log_result = db_request.get_result()
 		if log_result["result"]:
-			#print(log_result)
 			# Guardo el valor del log
 			Game.set_log_id(log_result["value"]["IdLog"])
 			if create_user:
@@ -71,7 +69,9 @@ func make_login(uname: String, upass: String = "qwerty1234") -> void:
 			pop_up_show($Error)
 	else:
 		if result["value"] == "Usuario Incorrecto." and not is_tester:
-			print("crear usuario")
+			$Searching.hide()
+			get_parent().user_name = uname.to_lower()
+			owner.get_node("NewUser").show()
 		else:
 			$Error/ColorRect/Label.text = result["value"]
 			if "401" in result["value"]:

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/HookPoint.png-13bcb133c4dfb73ff429ddc302dd3cc0.stex"
+path="res://.import/PlataformaPropulsoraV9.png-4dde50d6f97d7de92ff53b0c7ea34df4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Npc/HookPoint.png"
-dest_files=[ "res://.import/HookPoint.png-13bcb133c4dfb73ff429ddc302dd3cc0.stex" ]
+source_file="res://assets/Sprites/Objects/TrampolinV2/PlataformaPropulsoraV9.png"
+dest_files=[ "res://.import/PlataformaPropulsoraV9.png-4dde50d6f97d7de92ff53b0c7ea34df4.stex" ]
 
 [params]
 
