@@ -121,6 +121,7 @@ points = PoolVector2Array( 2151.07, 143.927, 2748.94, 144.029, 2748.98, 299.83, 
 mode = 1
 
 [node name="Room4" parent="." instance=ExtResource( 5 )]
+room_row_col = Vector2( 2, 3 )
 
 [node name="Background" parent="Room4" index="0"]
 margin_left = 1920.0
@@ -161,6 +162,7 @@ position = Vector2( 2390.6, 982.314 )
 position = Vector2( 2687.08, 983.128 )
 
 [node name="Room5" parent="." instance=ExtResource( 5 )]
+room_row_col = Vector2( 2, 4 )
 
 [node name="Background" parent="Room5" index="0"]
 margin_left = 2880.0
@@ -194,6 +196,7 @@ position = Vector2( 3440.66, 776.419 )
 position = Vector2( 3172.57, 961.11 )
 
 [node name="Room6" parent="." instance=ExtResource( 5 )]
+room_row_col = Vector2( 2, 5 )
 
 [node name="Background" parent="Room6" index="0"]
 margin_left = 3840.0
@@ -239,6 +242,7 @@ position = Vector2( 4057.64, 1039.98 )
 position = Vector2( 4200.47, 1039.98 )
 
 [node name="Room7" parent="." instance=ExtResource( 5 )]
+room_row_col = Vector2( 2, 6 )
 
 [node name="Background" parent="Room7" index="0"]
 margin_left = 4800.0
@@ -271,6 +275,7 @@ position = Vector2( 5622.95, 709.686 )
 position = Vector2( 5492.63, 630.807 )
 
 [node name="Room8" parent="." instance=ExtResource( 5 )]
+room_row_col = Vector2( 1, 6 )
 
 [node name="Background" parent="Room8" index="0"]
 margin_left = 4800.0
@@ -340,6 +345,7 @@ position = Vector2( 5410.92, 224.362 )
 position = Vector2( 5169.99, 224.362 )
 
 [node name="Room9" parent="." instance=ExtResource( 5 )]
+room_row_col = Vector2( 0, 6 )
 
 [node name="Background" parent="Room9" index="0"]
 margin_left = 4800.0
@@ -396,6 +402,7 @@ position = Vector2( 5356.76, -384.082 )
 start_velocity = Vector2( 30, 30 )
 
 [node name="Room10" parent="." instance=ExtResource( 5 )]
+room_row_col = Vector2( 0, 5 )
 
 [node name="Background" parent="Room10" index="0"]
 margin_left = 3840.0
@@ -435,6 +442,7 @@ position = Vector2( 4592.17, -175.234 )
 position = Vector2( 4101.79, -346.082 )
 
 [node name="Room11" parent="." instance=ExtResource( 5 )]
+room_row_col = Vector2( 0, 4 )
 
 [node name="SaveArea" parent="Room11" index="1"]
 position = Vector2( 3805, -465.68 )
