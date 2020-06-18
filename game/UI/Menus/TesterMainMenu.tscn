@@ -52,7 +52,7 @@ __meta__ = {
 margin_right = 880.0
 margin_bottom = 58.0
 custom_fonts/font = ExtResource( 7 )
-text = "Katanero Test Mode"
+text = "h.0.0.k Test Mode"
 
 [node name="CenterRow" type="HBoxContainer" parent="Menu"]
 margin_top = 62.0

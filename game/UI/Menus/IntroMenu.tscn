@@ -1,16 +1,16 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/Fonts/Bandwidth 8x16 Monospaced.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://game/UI/Menus/CreditsMenu.gd" type="Script" id=3]
+[ext_resource path="res://game/UI/Menus/IntroMenu.gd" type="Script" id=2]
+[ext_resource path="res://assets/Fonts/Jamma 8x16 Monospaced.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/Sounds/SFX/Buttons/Interface_UI_04.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16 Monospaced.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/Sprites/arrow_indicator.png" type="Texture" id=6]
 [ext_resource path="res://game/UI/Menus/Buttons/MenuButton.gd" type="Script" id=7]
-[ext_resource path="res://assets/Sounds/Music/credits_menu.ogg" type="AudioStream" id=9]
-[ext_resource path="res://game/Player/PlayerSkin.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/Sounds/Music/intro_menu.ogg" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=1]
-size = 35
+size = 20
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -95,48 +95,30 @@ tracks/2/keys = {
 "values": [ 4, 5 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "Credits_Player"
-length = 23.2
+[sub_resource type="DynamicFont" id=5]
+size = 43
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=6]
+length = 40.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("PlayerSkin:position")
+tracks/0/path = NodePath(".:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.3, 4, 5.3, 6, 6.4, 6.9, 7.4, 8.3, 9.2, 11, 11.1, 13.4, 14.1, 15.4, 15.5, 19.1, 21 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 25, 33 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 100, 270 ), Vector2( 100, 270 ), Vector2( 860, 270 ), Vector2( 860, 270 ), Vector2( 100, 270 ), Vector2( 100, 270 ), Vector2( 100, 70 ), Vector2( 100, 270 ), Vector2( 100, 270 ), Vector2( 860, 270 ), Vector2( 860, 270 ), Vector2( 860, 470 ), Vector2( 860, 470 ), Vector2( 100, 470 ), Vector2( 100, 470 ), Vector2( 100, 270 ), Vector2( 100, 270 ), Vector2( 860, 270 ) ]
-}
-tracks/1/type = "animation"
-tracks/1/path = NodePath("PlayerSkin/PlayerAnimation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"clips": PoolStringArray( "celebrate", "idle_stand", "idle_stand", "idlehook_mid", "spawn", "jump_fire_boots", "idle_stand", "idle_stand", "idlehook_mid", "spawn", "idle_stand", "idle_stand", "jumphook_bot", "idle_stand", "idle_stand", "idle_stand", "idle_stand", "idlehook_mid", "spawn", "idle_stand", "idlehook_top", "idle_stand", "idle_stand", "idle_stand", "celebrate", "celebrate", "die" ),
-"times": PoolRealArray( 0, 4, 4.5, 5, 6, 6.4, 7.4, 7.9, 8.1, 9.2, 9.7, 10.2, 10.7, 11.1, 11.6, 12.1, 12.6, 13, 14.1, 14.5, 15, 15.5, 16, 16.5, 17, 21, 22.4 )
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("PlayerSkin/PlayerSprite:flip_h")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 4, 6, 9.2, 14.1, 21 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false, true, false, true ]
+"values": [ Vector2( 1.385, 570 ), Vector2( 1.385, 570 ), Vector2( 1.385, 200 ) ]
 }
 
 [node name="Credits" type="Node2D"]
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 __meta__ = {
-"_editor_description_": "23 segundos de credito."
+"_editor_description_": "23 segundos de credito.
+144, 28, 43"
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -160,29 +142,32 @@ __meta__ = {
 
 [node name="Line" type="Label" parent="CreditsContainer"]
 anchor_right = 1.0
-margin_top = 539.574
-margin_bottom = 570.574
+margin_left = 1.38501
+margin_top = 536.343
+margin_right = 1.38501
+margin_bottom = 567.343
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
 text = "Credits line"
 align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SecundaryButton" type="Button" parent="."]
-margin_left = 812.452
+margin_left = 850.0
 margin_top = 488.937
-margin_right = 952.452
+margin_right = 950.0
 margin_bottom = 533.937
-rect_min_size = Vector2( 140, 45 )
+rect_min_size = Vector2( 100, 45 )
 flat = true
 expand_icon = true
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-next_scene = "res://game/UI/Menus/MainMenu.tscn"
+next_scene = "res://game/Levels/LevelOne_v2.tscn"
 
 [node name="Label" type="Label" parent="SecundaryButton"]
 margin_left = 3.32196
@@ -192,17 +177,16 @@ margin_bottom = 40.009
 rect_min_size = Vector2( 100, 40 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0.180392, 0.180392, 0.180392, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 4
-text = "Volver"
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 5
+text = "Skip"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Sprite" type="Sprite" parent="SecundaryButton"]
-visible = false
-position = Vector2( 116.646, 23.2617 )
+position = Vector2( 88, 25 )
 rotation = 3.14159
 scale = Vector2( 0.0262602, 0.0256847 )
 texture = ExtResource( 6 )
@@ -215,32 +199,33 @@ anims/on_hover = SubResource( 4 )
 stream = ExtResource( 4 )
 bus = "Button"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 9 )
+[node name="ProjectName" type="Label" parent="."]
+anchor_right = 1.0
+margin_left = 1.385
+margin_top = 200.0
+margin_right = 961.385
+margin_bottom = 327.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.564706, 0.109804, 0.168627, 1 )
+text = "Project: H.0.0.K"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ProjectName"]
+autoplay = "Intro"
+anims/Intro = SubResource( 6 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 autoplay = true
-bus = "Credits"
-
-[node name="PlayerSkin" parent="." instance=ExtResource( 11 )]
-position = Vector2( 460, 270 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="ThrustLeft" parent="PlayerSkin" index="1"]
-frame = 3
-
-[node name="ThrustRight" parent="PlayerSkin" index="2"]
-frame = 3
-
-[node name="PlayerSprite" parent="PlayerSkin" index="3"]
-frame = 82
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Credits_Player"
-anims/Credits_Player = SubResource( 7 )
+bus = "Intro"
 [connection signal="button_down" from="SecundaryButton" to="SecundaryButton" method="_on_MenuButton_button_down"]
 [connection signal="button_up" from="SecundaryButton" to="SecundaryButton" method="_on_button_up"]
 [connection signal="focus_entered" from="SecundaryButton" to="SecundaryButton" method="_on_MenuButton_focus_entered"]
 [connection signal="focus_exited" from="SecundaryButton" to="SecundaryButton" method="_on_MenuButton_focus_exited"]
 [connection signal="mouse_entered" from="SecundaryButton" to="SecundaryButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="SecundaryButton" to="SecundaryButton" method="_on_mouse_exited"]
-
-[editable path="PlayerSkin"]
