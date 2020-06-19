@@ -27,7 +27,7 @@ var credits = [
 	[
 		"Años antes de que la gran rebelión humana fuera reprimida por las",
 		 "inteligencias artificiales, un grupo insurgente de cientificos", 
-		 "trabajaba dia y noche en la creación de una tal 'arma definitiva'",
+		 "trabajaba dia y noche en la creación de un 'arma definitiva'",
 		 "su misión era desconocida pero primordial para la raza humana."
 	],[
 		"Por razones indeterminadas el grupo de cientificos se disolvio",
@@ -60,6 +60,8 @@ var credits = [
 
 ]
 
+func _ready() -> void:
+	GlobalMusic.play_music(GlobalMusic.musics.intro)
 
 func _process(delta):
 	var scroll_speed = base_speed * delta

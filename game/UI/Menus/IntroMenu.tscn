@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/Fonts/Bandwidth 8x16 Monospaced.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://game/UI/Menus/IntroMenu.gd" type="Script" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16 Monospaced.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/Sprites/arrow_indicator.png" type="Texture" id=6]
 [ext_resource path="res://game/UI/Menus/Buttons/MenuButton.gd" type="Script" id=7]
-[ext_resource path="res://assets/Sounds/Music/intro_menu.ogg" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -177,8 +176,8 @@ margin_bottom = 40.009
 rect_min_size = Vector2( 100, 40 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0.180392, 0.180392, 0.180392, 1 )
-custom_constants/shadow_offset_x = 3
-custom_constants/shadow_offset_y = 5
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 4
 text = "Skip"
 valign = 1
 __meta__ = {
@@ -186,6 +185,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="SecundaryButton"]
+visible = false
 position = Vector2( 88, 25 )
 rotation = 3.14159
 scale = Vector2( 0.0262602, 0.0256847 )
@@ -202,9 +202,9 @@ bus = "Button"
 [node name="ProjectName" type="Label" parent="."]
 anchor_right = 1.0
 margin_left = 1.385
-margin_top = 200.0
+margin_top = 570.0
 margin_right = 961.385
-margin_bottom = 327.0
+margin_bottom = 697.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.564706, 0.109804, 0.168627, 1 )
@@ -218,10 +218,6 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ProjectName"]
 autoplay = "Intro"
 anims/Intro = SubResource( 6 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
-autoplay = true
 [connection signal="button_down" from="SecundaryButton" to="SecundaryButton" method="_on_MenuButton_button_down"]
 [connection signal="button_up" from="SecundaryButton" to="SecundaryButton" method="_on_button_up"]
 [connection signal="focus_entered" from="SecundaryButton" to="SecundaryButton" method="_on_MenuButton_focus_entered"]
