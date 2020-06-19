@@ -3,6 +3,7 @@ extends Enemy
 const POINT_RADIUS := 2
 
 export var speed := 200
+export var nav_map_name: String
 
 var path
 var nav_map: TileMap
@@ -11,7 +12,7 @@ onready var started := false
 
 func _ready() -> void:
 	set_physics_process(false)
-	nav_map = get_parent().get_parent().get_node("NavMap")
+	nav_map = owner.get_node(nav_map_name)
 	
 	path = nav_map.find_path(self.global_position, $EndPosition.global_position)
 
