@@ -15,7 +15,6 @@
 [ext_resource path="res://game/Levels/Rooms/Room.gd" type="Script" id=13]
 [ext_resource path="res://game/Objects/Pathpoints.tscn" type="PackedScene" id=14]
 
-
 [node name="LevelPrototype" type="Node2D"]
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -165,6 +164,7 @@ position = Vector2( 2204.96, 296.985 )
 [node name="Pathpoints" parent="MovingPlatform" instance=ExtResource( 14 )]
 position = Vector2( 6.02563, 53.5184 )
 points = PoolVector2Array( 2217.01, 299.302, 2166.51, 303.935, 2103.5, 183.479, 2204.5, 70.436, 2330.05, 69.5094, 2292.53, 215.446 )
+mode = 0
 [connection signal="body_entered" from="Room1/SaveArea" to="Room1" method="_on_SaveArea_body_entered"]
 [connection signal="body_entered" from="Room2/SaveArea" to="Room2" method="_on_SaveArea_body_entered"]
 [connection signal="body_entered" from="Room3/SaveArea" to="Room3" method="_on_SaveArea_body_entered"]
