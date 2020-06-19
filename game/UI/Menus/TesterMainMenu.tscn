@@ -164,4 +164,3 @@ bus = "Music"
 layer = 10
 
 [node name="BugMenu" parent="CanvasLayer" instance=ExtResource( 8 )]
-visible = false

@@ -38,24 +38,22 @@ func GetBugTypes():
 	http_request.request("http://142.93.201.7:3000/bugTypes")
 
 func SetBug(
-	nickname: String, 
 	room: int, 
-	version: int, 
-	level: int, 
+	version: int,
+	id_level: int, 
 	id_log: int, 
 	type_bug: int, 
 	description: String
 	) -> void:
 		var query = JSON.print({
-			"Nickname": nickname, 
 			"NumRoom": room, 
 			"Version": version, 
-			"IdLevel": level, 
+			"IdLevel": id_level,
 			"IdLog": id_log, 
 			"IdTipoBug": type_bug, 
 			"Descripcion": description}
 			)
-		
+
 		send_request("bug", query, HTTPClient.METHOD_POST)
 
 func SetPerformance(
