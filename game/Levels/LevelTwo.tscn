@@ -22,7 +22,7 @@
 
 [node name="LevelTwo" type="Node2D"]
 script = ExtResource( 4 )
-music = "res://assets/Sounds/Music/level_one_1.ogg"
+music = "level_two"
 level_name = "Level_Two"
 
 [node name="OnFrontView" type="CanvasLayer" parent="."]

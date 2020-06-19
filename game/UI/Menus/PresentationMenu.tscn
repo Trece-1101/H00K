@@ -1,14 +1,12 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/Fonts/Revamped.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16 Monospaced.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/Backgrounds/logo_3.png" type="Texture" id=3]
 [ext_resource path="res://game/UI/Menus/PresentationMenu.gd" type="Script" id=4]
 [ext_resource path="res://game/UI/Menus/LoginMenu.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/Sounds/Music/presentation_1.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://game/UI/Menus/Buttons/ExitButton2.tscn" type="PackedScene" id=8]
-
 
 [sub_resource type="DynamicFont" id=1]
 size = 35
@@ -76,7 +74,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Studio:rect_position")
+tracks/4/path = NodePath("logo_3:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -85,10 +83,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -246.991, 47.5561 ), Vector2( 359.518, 47.5561 ) ]
+"values": [ Vector2( 1183.95, 264.343 ), Vector2( 561.481, 264.343 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("logo_3:position")
+tracks/5/path = NodePath("Powered:rect_position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -97,57 +95,57 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1183.95, 264.343 ), Vector2( 561.481, 264.343 ) ]
+"values": [ Vector2( 921.965, 206.276 ), Vector2( 299.495, 206.276 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Powered:rect_position")
+tracks/6/path = NodePath("Presents:rect_position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 12.5533, 1 ),
 "update": 0,
-"values": [ Vector2( 921.965, 206.276 ), Vector2( 299.495, 206.276 ) ]
+"values": [ Vector2( 360.746, 602.5 ), Vector2( 360.746, 419.205 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Presents:rect_position")
+tracks/7/path = NodePath("Presents:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
 "times": PoolRealArray( 0, 3.5 ),
-"transitions": PoolRealArray( 12.5533, 1 ),
+"transitions": PoolRealArray( 8.28211, 1 ),
 "update": 0,
-"values": [ Vector2( 360.746, 602.5 ), Vector2( 360.746, 419.205 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/8/type = "value"
-tracks/8/path = NodePath("Presents:modulate")
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 3.5 ),
-"transitions": PoolRealArray( 8.28211, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/9/type = "method"
-tracks/9/path = NodePath(".")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
 "times": PoolRealArray( 7.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "load_user"
 } ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Studio:rect_position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -245.238, 34.8685 ), Vector2( 364.211, 57.9949 ) ]
 }
 
 [sub_resource type="DynamicFont" id=5]
@@ -175,7 +173,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Studio" parent="." instance=ExtResource( 8 )]
+[node name="Studio" type="Label" parent="."]
+margin_left = -245.238
+margin_top = 34.8685
+margin_right = -3.2334
+margin_bottom = 154.868
+custom_fonts/font = SubResource( 1 )
+text = "333 Games"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Presents" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -324,11 +332,6 @@ margin_bottom = 404.573
 [node name="Searching" parent="LoginMenu" index="6"]
 margin_top = 364.029
 margin_bottom = 407.029
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-autoplay = true
-bus = "Music"
 
 [node name="Sesion" type="Label" parent="."]
 visible = false
