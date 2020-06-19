@@ -222,7 +222,6 @@ anims/Intro = SubResource( 6 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 autoplay = true
-bus = "Intro"
 [connection signal="button_down" from="SecundaryButton" to="SecundaryButton" method="_on_MenuButton_button_down"]
 [connection signal="button_up" from="SecundaryButton" to="SecundaryButton" method="_on_button_up"]
 [connection signal="focus_entered" from="SecundaryButton" to="SecundaryButton" method="_on_MenuButton_focus_entered"]
