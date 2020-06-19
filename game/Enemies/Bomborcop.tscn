@@ -36,12 +36,12 @@ position = Vector2( 0, -2.60864 )
 [node name="RightPlayerDetector" type="RayCast2D" parent="." index="2"]
 position = Vector2( 0, -7.2122 )
 enabled = true
-cast_to = Vector2( 100, 0 )
+cast_to = Vector2( 120, 0 )
 
 [node name="LeftPlayerDetector" type="RayCast2D" parent="." index="3"]
 position = Vector2( 0, -7.2122 )
 enabled = true
-cast_to = Vector2( -100, 0 )
+cast_to = Vector2( -120, 0 )
 
 [node name="WallDetector" type="RayCast2D" parent="." index="4"]
 modulate = Color( 0.0980392, 0.956863, 0, 1 )
@@ -65,7 +65,7 @@ script = ExtResource( 3 )
 [node name="BehaviorTree" parent="." index="11" instance=ExtResource( 4 )]
 
 [node name="Updater" type="Timer" parent="." index="12"]
-wait_time = 0.13
+wait_time = 0.1
 autostart = true
 [connection signal="timeout" from="Updater" to="." method="_on_Updater_timeout"]
 
