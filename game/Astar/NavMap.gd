@@ -14,6 +14,7 @@ var end_position : Vector2 = Vector2.ZERO # Posicion del hongo en el viewport
 var start_node: PathNode # Nodo correspondiente a la posicion del player
 var end_node: PathNode # Nodo correspondiente a la posicion del hongo
 
+onready var near_nodes_list := [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT, Vector2(-1, -1), Vector2(1, 1), Vector2(-1, 1), Vector2(1, -1)]
 #### Getter de debug para verificar lo que devuelve get_used_cells()
 func get_valid_tiles(show: bool = false):
 	if show:
@@ -79,24 +80,23 @@ func find_closer_nodes(current_node: PathNode) -> PathNode:
 	
 	var temp_nodes = [] # lista temporal para almacenar las posiciones c,f de los nodos que vamos a evaluar
 
-#	for new_pos in [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]:
-#		var node_pos_x = current_node.position.x + new_pos[0]
-#		var node_pos_y = current_node.position.y + new_pos[1]
-#		var node_pos = Vector2(node_pos_x, node_pos_y)
-#		temp_nodes.append(node_pos)
+	for new_pos in near_nodes_list:
+		var node_pos_x = current_node.position.x + new_pos[0]
+		var node_pos_y = current_node.position.y + new_pos[1]
+		temp_nodes.append(Vector2(node_pos_x, node_pos_y))
 
 # warning-ignore:unused_variable
-	var c : int = -1
-	for i in range(3):
-		var node_up : Vector2 = Vector2((current_node.position.x + c), current_node.position.y - 1) # nodos arriba
-		var node_center : Vector2 = Vector2((current_node.position.x + c), current_node.position.y) # nodos centro
-		var node_low : Vector2 = Vector2((current_node.position.x + c), current_node.position.y + 1) # nodos abajo 
-
-		temp_nodes.append(node_up)
-		temp_nodes.append(node_center)
-		temp_nodes.append(node_low)
-
-		c += 1
+#	var c : int = -1
+#	for i in range(3):
+#		var node_up : Vector2 = Vector2((current_node.position.x + c), current_node.position.y - 1) # nodos arriba
+#		var node_center : Vector2 = Vector2((current_node.position.x + c), current_node.position.y) # nodos centro
+#		var node_low : Vector2 = Vector2((current_node.position.x + c), current_node.position.y + 1) # nodos abajo 
+#
+#		temp_nodes.append(node_up)
+#		temp_nodes.append(node_center)
+#		temp_nodes.append(node_low)
+#
+#		c += 1
 	
 	#### Una vez que se abrieron todos los nodos aledaños hay que evaluarlos
 	for node_position in temp_nodes:
