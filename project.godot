@@ -249,7 +249,7 @@ _global_script_class_icons={
 [application]
 
 config/name="KataneroPrototype"
-run/main_scene="res://game/Levels/LevelTwo.tscn"
+run/main_scene="res://game/UI/Menus/PresentationMenu.tscn"
 config/icon="res://assets/Sprites/icon.png"
 
 [autoload]
