@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=5 format=2]
+[gd_resource type="AudioBusLayout" load_steps=6 format=2]
 
 [sub_resource type="AudioEffectPhaser" id=1]
 resource_name = "Phaser"
@@ -12,43 +12,72 @@ resource_name = "Filter"
 [sub_resource type="AudioEffectReverb" id=4]
 resource_name = "Reverb"
 
+[sub_resource type="AudioEffectLowPassFilter" id=5]
+resource_name = "LowPassFilter"
+
 [resource]
-bus/0/volume_db = 0.0672607
-bus/1/name = "Sensor"
+bus/0/volume_db = -0.130497
+bus/1/name = "Music"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = 0.0
+bus/1/volume_db = -8.00903
 bus/1/send = "Master"
-bus/1/effect/0/effect = SubResource( 1 )
-bus/1/effect/0/enabled = true
-bus/1/effect/1/effect = SubResource( 2 )
-bus/1/effect/1/enabled = true
-bus/1/effect/2/effect = SubResource( 3 )
-bus/1/effect/2/enabled = true
-bus/2/name = "Button"
+bus/2/name = "InGameMusic"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
-bus/2/volume_db = -5.04538
-bus/2/send = "Master"
-bus/2/effect/0/effect = SubResource( 4 )
-bus/2/effect/0/enabled = true
-bus/3/name = "Player"
+bus/2/volume_db = -14.6228
+bus/2/send = "Music"
+bus/3/name = "Effects"
 bus/3/solo = false
 bus/3/mute = false
 bus/3/bypass_fx = false
-bus/3/volume_db = -21.0931
+bus/3/volume_db = -0.130497
 bus/3/send = "Master"
-bus/4/name = "Music"
+bus/4/name = "Sensor"
 bus/4/solo = false
 bus/4/mute = false
 bus/4/bypass_fx = false
-bus/4/volume_db = -8.00903
-bus/4/send = "Master"
-bus/5/name = "InGameMusic"
+bus/4/volume_db = 0.0
+bus/4/send = "Effects"
+bus/4/effect/0/effect = SubResource( 1 )
+bus/4/effect/0/enabled = true
+bus/4/effect/1/effect = SubResource( 2 )
+bus/4/effect/1/enabled = true
+bus/4/effect/2/effect = SubResource( 3 )
+bus/4/effect/2/enabled = true
+bus/5/name = "Button"
 bus/5/solo = false
 bus/5/mute = false
 bus/5/bypass_fx = false
-bus/5/volume_db = -20.3764
-bus/5/send = "Master"
+bus/5/volume_db = -11.9576
+bus/5/send = "Effects"
+bus/5/effect/0/effect = SubResource( 4 )
+bus/5/effect/0/enabled = true
+bus/6/name = "Player"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = -21.0931
+bus/6/send = "Effects"
+bus/7/name = "Spring"
+bus/7/solo = false
+bus/7/mute = false
+bus/7/bypass_fx = false
+bus/7/volume_db = -21.8264
+bus/7/send = "Effects"
+bus/8/name = "Clock"
+bus/8/solo = false
+bus/8/mute = false
+bus/8/bypass_fx = false
+bus/8/volume_db = -19.6683
+bus/8/send = "Effects"
+bus/8/effect/0/effect = SubResource( 5 )
+bus/8/effect/0/enabled = true
+bus/9/name = "Enemy"
+bus/9/solo = false
+bus/9/mute = false
+bus/9/bypass_fx = false
+bus/9/volume_db = -6.91795
+bus/9/send = "Effects"

@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://game/UI/Menus/Panels/OptionPanel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/UI/Menus/Panels/ScreenPanel.gd" type="Script" id=2]
+[ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16 Monospaced.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/Sounds/SFX/Buttons/Interface_UI_04.wav" type="AudioStream" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[node name="ScreenPanel" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="ColorRect" parent="." index="0"]
+color = Color( 0, 0, 0, 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource( 4 )
+
+[node name="OptionButton" type="OptionButton" parent="." index="5"]
+margin_left = 195.435
+margin_top = 68.2427
+margin_right = 385.435
+margin_bottom = 117.243
+custom_fonts/font = SubResource( 1 )
+text = "Resolucion"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="." index="6"]
+margin_left = 202.812
+margin_top = 175.933
+margin_right = 387.812
+margin_bottom = 204.933
+custom_fonts/font = SubResource( 2 )
+text = "Pantalla Completa"
+[connection signal="item_selected" from="OptionButton" to="." method="_on_OptionButton_item_selected"]

@@ -9,6 +9,41 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "BehaviorBaseNode",
+"class": "ActionTask",
+"language": "GDScript",
+"path": "res://game/BehaviorTree/ActionTask.gd"
+}, {
+"base": "Node",
+"class": "BehaviorBaseNode",
+"language": "GDScript",
+"path": "res://game/BehaviorTree/BehaviorBaseNode.gd"
+}, {
+"base": "Node",
+"class": "BehaviorTree",
+"language": "GDScript",
+"path": "res://game/BehaviorTree/BehaviorTree.gd"
+}, {
+"base": "Node",
+"class": "Blackboard",
+"language": "GDScript",
+"path": "res://game/BehaviorTree/Blackboard.gd"
+}, {
+"base": "Control",
+"class": "BugMenu",
+"language": "GDScript",
+"path": "res://game/UI/Menus/BugMenu.gd"
+}, {
+"base": "BehaviorBaseNode",
+"class": "ConditionTask",
+"language": "GDScript",
+"path": "res://game/BehaviorTree/ConditionTask.gd"
+}, {
+"base": "BehaviorBaseNode",
+"class": "Decorator",
+"language": "GDScript",
+"path": "res://game/BehaviorTree/Decorator.gd"
+}, {
 "base": "Area2D",
 "class": "Door",
 "language": "GDScript",
@@ -23,6 +58,11 @@ _global_script_classes=[ {
 "class": "EnemyBase",
 "language": "GDScript",
 "path": "res://game/Enemies/EnemyBase.gd"
+}, {
+"base": "Decorator",
+"class": "Failer",
+"language": "GDScript",
+"path": "res://game/BehaviorTree/Failer.gd"
 }, {
 "base": "RayCast2D",
 "class": "FloorDetector",
@@ -39,6 +79,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/Objects/HookTarget.gd"
 }, {
+"base": "HookTarget",
+"class": "HookTargetDinamyc",
+"language": "GDScript",
+"path": "res://game/Objects/HookTargetDinamyc.gd"
+}, {
+"base": "Decorator",
+"class": "Inverter",
+"language": "GDScript",
+"path": "res://game/BehaviorTree/Inverter.gd"
+}, {
 "base": "Node2D",
 "class": "LevelState",
 "language": "GDScript",
@@ -49,10 +99,30 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/Levels/Camera/LevelTransitionCamera.gd"
 }, {
+"base": "Decorator",
+"class": "Limiter",
+"language": "GDScript",
+"path": "res://game/BehaviorTree/Limiter.gd"
+}, {
+"base": "Button",
+"class": "MenuCustomButton",
+"language": "GDScript",
+"path": "res://game/UI/Menus/Buttons/MenuButton.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "MovingPlatform",
 "language": "GDScript",
 "path": "res://game/Objects/MovingPlatform.gd"
+}, {
+"base": "Control",
+"class": "OptionPanel",
+"language": "GDScript",
+"path": "res://game/UI/Menus/Panels/OptionPanel.gd"
+}, {
+"base": "Node",
+"class": "PathNode",
+"language": "GDScript",
+"path": "res://game/Astar/PathNode.gd"
 }, {
 "base": "Line2D",
 "class": "PathPoints",
@@ -64,10 +134,35 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/Player/Player.gd"
 }, {
+"base": "Decorator",
+"class": "Repeater",
+"language": "GDScript",
+"path": "res://game/BehaviorTree/Repeater.gd"
+}, {
 "base": "Node",
 "class": "Room",
 "language": "GDScript",
 "path": "res://game/Levels/Rooms/Room.gd"
+}, {
+"base": "Resource",
+"class": "SavePerformanceData",
+"language": "GDScript",
+"path": "res://game/Player/SavePerformanceData.gd"
+}, {
+"base": "Resource",
+"class": "SaveUserData",
+"language": "GDScript",
+"path": "res://game/Player/SaveUserData.gd"
+}, {
+"base": "BehaviorBaseNode",
+"class": "Selector",
+"language": "GDScript",
+"path": "res://game/BehaviorTree/Selector.gd"
+}, {
+"base": "BehaviorBaseNode",
+"class": "Sequence",
+"language": "GDScript",
+"path": "res://game/BehaviorTree/Sequence.gd"
 }, {
 "base": "Node",
 "class": "State",
@@ -79,33 +174,82 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/StateMachine/StateMachine.gd"
 }, {
+"base": "Reference",
+"class": "Status",
+"language": "GDScript",
+"path": "res://game/BehaviorTree/Status.gd"
+}, {
+"base": "Decorator",
+"class": "Succeder",
+"language": "GDScript",
+"path": "res://game/BehaviorTree/Succeder.gd"
+}, {
+"base": "Reference",
+"class": "Tick",
+"language": "GDScript",
+"path": "res://game/BehaviorTree/Tick.gd"
+}, {
+"base": "Decorator",
+"class": "UntilFail",
+"language": "GDScript",
+"path": "res://game/BehaviorTree/UntilFail.gd"
+}, {
+"base": "Decorator",
+"class": "UntilSuccess",
+"language": "GDScript",
+"path": "res://game/BehaviorTree/UntilSuccess.gd"
+}, {
 "base": "Position2D",
 "class": "WallDetector",
 "language": "GDScript",
 "path": "res://game/Player/WallDetector.gd"
 } ]
 _global_script_class_icons={
+"ActionTask": "res://assets/Sprites/BehaviorTree/action_icon.png",
+"BehaviorBaseNode": "",
+"BehaviorTree": "res://assets/Sprites/BehaviorTree/root_icon.png",
+"Blackboard": "res://assets/Sprites/BehaviorTree/blackboard_icon.png",
+"BugMenu": "",
+"ConditionTask": "res://assets/Sprites/BehaviorTree/condition_icon.png",
+"Decorator": "",
 "Door": "",
 "Enemy": "",
 "EnemyBase": "",
+"Failer": "res://assets/Sprites/BehaviorTree/failer.png",
 "FloorDetector": "",
 "Hook": "",
 "HookTarget": "",
+"HookTargetDinamyc": "",
+"Inverter": "res://assets/Sprites/BehaviorTree/inverter_icon.png",
 "LevelState": "",
 "LevelTransitionCamera": "",
+"Limiter": "res://assets/Sprites/BehaviorTree/limiter.png",
+"MenuCustomButton": "",
 "MovingPlatform": "",
+"OptionPanel": "",
+"PathNode": "",
 "PathPoints": "",
 "Player": "",
+"Repeater": "res://assets/Sprites/BehaviorTree/repeat.png",
 "Room": "",
+"SavePerformanceData": "",
+"SaveUserData": "",
+"Selector": "res://assets/Sprites/BehaviorTree/selector_icon.png",
+"Sequence": "res://assets/Sprites/BehaviorTree/sequence_icon.png",
 "State": "",
 "StateMachine": "",
+"Status": "",
+"Succeder": "res://assets/Sprites/BehaviorTree/succeder.png",
+"Tick": "",
+"UntilFail": "res://assets/Sprites/BehaviorTree/repeat.png",
+"UntilSuccess": "res://assets/Sprites/BehaviorTree/repeat.png",
 "WallDetector": ""
 }
 
 [application]
 
 config/name="KataneroPrototype"
-run/main_scene="res://game/Levels/LevelOne_v2.tscn"
+run/main_scene="res://game/UI/Menus/PresentationMenu.tscn"
 config/icon="res://assets/Sprites/icon.png"
 
 [autoload]
@@ -117,6 +261,8 @@ Utils="*res://game/Autoloads/Utils.gd"
 DrawingUtils="*res://game/Autoloads/DrawingUtils.gd"
 Game="*res://game/Autoloads/Game.gd"
 GlobalMusic="*res://game/Autoloads/GlobalMusic.tscn"
+GamePerformance="*res://game/Autoloads/GamePerformance.gd"
+GameSaver="*res://game/Autoloads/GameSaver.gd"
 
 [debug]
 
@@ -260,6 +406,18 @@ debug_shake={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":77,"unicode":0,"echo":false,"script":null)
  ]
 }
+pause={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":11,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+bug_menu={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":true,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":10,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
 
 [layer_names]
 
@@ -271,6 +429,7 @@ debug_shake={
 2d_physics/layer_6="PassThrough"
 2d_physics/layer_7="SavePoint"
 2d_physics/layer_8="MovingPlatform"
+2d_physics/layer_9="Bumper"
 
 [rendering]
 

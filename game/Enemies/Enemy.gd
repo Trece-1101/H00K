@@ -23,7 +23,7 @@ func physics_process(_delta: float) -> void:
 	var movement: Vector2
 
 	movement = velocity * move_direction
-	
+
 	if is_on_floor():
 		movement.y = 0.0
 	else:
@@ -34,9 +34,15 @@ func physics_process(_delta: float) -> void:
 
 func _on_PlayerDetector_body_entered(body: Node) -> void:
 	if body.name == "Player":
-		velocity = Vector2.ZERO
-		skin_animation.connect("animation_finished", self, "explode")
-		skin_animation.play("go_explode")
+		go_explode()
+#		velocity = Vector2.ZERO
+#		skin_animation.connect("animation_finished", self, "explode")
+#		skin_animation.play("go_explode")
+
+func go_explode() -> void:
+	velocity = Vector2.ZERO
+	skin_animation.connect("animation_finished", self, "explode")
+	skin_animation.play("go_explode")
 
 func explode(_anim_name: String) -> void:
 	explosion_area.explode()

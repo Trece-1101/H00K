@@ -4,9 +4,11 @@ extends Node
 ################################################################################
 #### Export variables
 export var room_row_col: Vector2 = Vector2.ZERO
+export var last_room := false
+export var version := 1
 
 #### Variables
-var room_name: String = "Room"
+var room_name:String = "Room"
 var sensor_left := 0
 var door: Door
 var already_save: bool = false
@@ -27,8 +29,6 @@ func _ready() -> void:
 	if get_node("Sensors"):
 		get_sensors()
 
-func _get_room_name() -> String:
-	return room_name
 
 func get_sensors() -> void:
 	var sensors = get_node("Sensors").get_children()
@@ -36,25 +36,57 @@ func get_sensors() -> void:
 		door = get_node("Door")
 		door.instant_close_door()
 		sensor_left = sensors.size()
+	
+	manage_exit(sensor_left)
+
+
+func close_my_door() -> void:
+	door = get_node("Door")
+	door.close_door()
 
 func _on_SaveArea_body_entered(body: Node) -> void:
 	if body.name == 'Player':
-		Game.set_player_respawn_position(respawn_point.global_position)
-		Game.set_player_current_room(room_name)
-		Game.set_camera_start(room_row_col)
-		
+		# Avisos
 		level.saving_notice()
 		$SaveArea/PassRoom.play()
 		$SaveArea/CollisionShape2D.set_deferred("disabled", true)
 		
-#		if !already_save:
-#			level.saving_notice()
-#			already_save = true
-#			$SaveArea/PassRoom.play()
-#		print("saved at {rp}".format({'rp': respawn_point.global_position}))
+		update_data_and_performance()
 
-func activate_sensor() -> void:
-	sensor_left -= 1
+func update_data_and_performance() -> void:
+	# Data jugador local
+	Game.set_player_respawn_position(respawn_point.global_position)
+	Game.set_player_last_room(Game.get_player_current_room(), Game.get_player_current_room_v())
+	Game.set_player_current_room(room_name, version)
+	Game.set_camera_start(room_row_col)
+	
+	# Performance jugador local
+	GamePerformance.add_time(level.get_level_name(), OS.get_unix_time())
+	GameSaver.update_performance_slot(Game.get_current_slot())
+	GamePerformance.get_performance(level.get_level_name())
+	
+	# Performance base de datos
+	level.close_performance_to_db()
+	#level.send_performance_to_db(Game.get_player_current_room_int(), Game.get_player_current_room_v())
+
+func activate_sensor(value: int) -> void:
+	sensor_left -= value
 	if sensor_left <= 0:
 		door.open_door()
+	
+	manage_exit(sensor_left)
+
+func get_left_sensors() -> int:
+	return sensor_left
+
+func manage_exit(value: int) -> void:
+	if not last_room:
+		return
+	
+	var exit_area: Area2D = get_node("ExitArea")
+	if value <= 0:
+		exit_area.enable_collider()
+	else:
+		exit_area.disable_collider()
+
 ################################################################################

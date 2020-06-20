@@ -5,7 +5,6 @@
 [ext_resource path="res://game/UI/Menus/Buttons/MenuButton.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
-resource_name = "off_hover"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:visible")
@@ -45,7 +44,6 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-resource_name = "on_hover"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:visible")
@@ -102,9 +100,9 @@ margin_right = 300.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 300, 40 )
 custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 3
-custom_constants/shadow_offset_y = 5
+custom_colors/font_color_shadow = Color( 0.180392, 0.180392, 0.180392, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 4
 text = "Texto"
 valign = 1
 __meta__ = {
@@ -112,6 +110,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( 140.826, 23.2617 )
 rotation = 3.14159
 scale = Vector2( 0.0353419, 0.0345674 )

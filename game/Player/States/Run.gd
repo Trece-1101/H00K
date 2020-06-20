@@ -15,11 +15,15 @@ func unhandled_input(event: InputEvent) -> void:
 	move.unhandled_input(event)
 
 func physics_process(delta: float) -> void:
+	if not owner.get_can_move():
+		_state_machine.transition_to("Move/Zombie")
+	
 	owner.skin.scale.x = move.get_sprite_direction(owner.skin.scale.x)
 	owner.border_detector.position.x = owner.skin.scale.x * 16
 	
-	if !owner.get_is_alive():
-		owner.set_is_alive(true)
+	#	TODO: mmmmmmmm y esto???
+#	if not owner.get_is_alive():
+#		owner.set_is_alive(true)
 	
 	if owner.is_on_floor():
 		if move.get_move_direction().x == 0.0:

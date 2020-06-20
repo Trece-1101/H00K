@@ -11,13 +11,20 @@ export var arrive_push: float = 350.0
 export var jump_after_hook: bool = false
 
 #### variables
-var target_global_position: = Vector2.INF
-var velocity: = Vector2.ZERO
-var release_from_hook:bool = false
-var hooking_animation : String = ""
+var target_global_position := Vector2.INF
+var velocity := Vector2.ZERO
+var release_from_hook: bool = false setget set_release_from_hook, get_release_from_hook
+var hooking_animation: String = ""
+var sprite_offset := Vector2(1, -18)
 
-
+onready var ghost := preload("res://game/Player/Ghost.tscn")
 ################################################################################
+#### Setters y Getters
+func set_release_from_hook(value: bool) -> void:
+	release_from_hook = value
+
+func get_release_from_hook() -> bool:
+	return release_from_hook
 
 ################################################################################
 #### Metodos
@@ -58,7 +65,8 @@ func physics_process(delta: float) -> void:
 			{velocity = velocity * 0.6, can_jump_after_hook = jump_after_hook})
 			owner.impulse_sound.play()
 
-func enter(msg: Dictionary = {}) -> void:	
+func enter(msg: Dictionary = {}) -> void:
+	$GhostTimer.start()
 	release_from_hook = false
 	match msg:
 # warning-ignore:unassigned_variable
@@ -76,8 +84,17 @@ func enter(msg: Dictionary = {}) -> void:
 	owner.level_camera.camara_shake()
 
 func exit() -> void:
+	$GhostTimer.stop()
 	owner.skin.disconnect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
 	release_from_hook = false
 	target_global_position = Vector2.INF
 	velocity = Vector2.ZERO
-################################################################################
+
+func _on_GhostTimer_timeout() -> void:
+	var new_ghost := ghost.instance()
+	var new_ghost_texture: String = owner.hook.ghost_sprite
+	owner.get_parent().add_child(new_ghost)
+	new_ghost.global_position = owner.global_position + sprite_offset
+	new_ghost.scale.x = owner.skin.scale.x
+	new_ghost.texture = load(new_ghost_texture)
+################################################################################	

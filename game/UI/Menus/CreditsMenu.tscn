@@ -1,16 +1,240 @@
-[gd_scene format=2]
+[gd_scene load_steps=13 format=2]
 
-[node name="CreditsMenu" type="Control"]
+[ext_resource path="res://assets/Fonts/Bandwidth 8x16 Monospaced.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://game/UI/Menus/CreditsMenu.gd" type="Script" id=3]
+[ext_resource path="res://assets/Sounds/SFX/Buttons/Interface_UI_04.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16 Monospaced.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/Sprites/arrow_indicator.png" type="Texture" id=6]
+[ext_resource path="res://game/UI/Menus/Buttons/MenuButton.gd" type="Script" id=7]
+[ext_resource path="res://game/Player/PlayerSkin.tscn" type="PackedScene" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 35
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 28
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=3]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:custom_constants/shadow_offset_x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label:custom_constants/shadow_offset_y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 4 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:custom_constants/shadow_offset_x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label:custom_constants/shadow_offset_y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Credits_Player"
+length = 23.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSkin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.3, 4, 5.3, 6, 6.4, 6.9, 7.4, 8.3, 9.2, 11, 11.1, 13.4, 14.1, 15.4, 15.5, 19.1, 21 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 100, 270 ), Vector2( 100, 270 ), Vector2( 860, 270 ), Vector2( 860, 270 ), Vector2( 100, 270 ), Vector2( 100, 270 ), Vector2( 100, 70 ), Vector2( 100, 270 ), Vector2( 100, 270 ), Vector2( 860, 270 ), Vector2( 860, 270 ), Vector2( 860, 470 ), Vector2( 860, 470 ), Vector2( 100, 470 ), Vector2( 100, 470 ), Vector2( 100, 270 ), Vector2( 100, 270 ), Vector2( 860, 270 ) ]
+}
+tracks/1/type = "animation"
+tracks/1/path = NodePath("PlayerSkin/PlayerAnimation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": PoolStringArray( "celebrate", "idle_stand", "idle_stand", "idlehook_mid", "spawn", "jump_fire_boots", "idle_stand", "idle_stand", "idlehook_mid", "spawn", "idle_stand", "idle_stand", "jumphook_bot", "idle_stand", "idle_stand", "idle_stand", "idle_stand", "idlehook_mid", "spawn", "idle_stand", "idlehook_top", "idle_stand", "idle_stand", "idle_stand", "celebrate", "celebrate", "die" ),
+"times": PoolRealArray( 0, 4, 4.5, 5, 6, 6.4, 7.4, 7.9, 8.1, 9.2, 9.7, 10.2, 10.7, 11.1, 11.6, 12.1, 12.6, 13, 14.1, 14.5, 15, 15.5, 16, 16.5, 17, 21, 22.4 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerSkin/PlayerSprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4, 6, 9.2, 14.1, 21 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true ]
+}
+
+[node name="Credits" type="Node2D"]
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": "23 segundos de credito."
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 960.0
+margin_bottom = 540.0
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
-margin_left = 443.213
-margin_top = 278.697
-margin_right = 506.213
-margin_bottom = 292.697
-text = "CREDITOS"
+[node name="CreditsContainer" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 960.0
+margin_bottom = 540.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Line" type="Label" parent="CreditsContainer"]
+anchor_right = 1.0
+margin_top = 539.574
+margin_bottom = 570.574
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Credits line"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SecundaryButton" type="Button" parent="."]
+margin_left = 812.452
+margin_top = 488.937
+margin_right = 952.452
+margin_bottom = 533.937
+rect_min_size = Vector2( 140, 45 )
+flat = true
+expand_icon = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+next_scene = "res://game/UI/Menus/MainMenu.tscn"
+
+[node name="Label" type="Label" parent="SecundaryButton"]
+margin_left = 3.32196
+margin_top = 0.0090332
+margin_right = 143.322
+margin_bottom = 40.009
+rect_min_size = Vector2( 100, 40 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_shadow = Color( 0.180392, 0.180392, 0.180392, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 4
+text = "Volver"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="SecundaryButton"]
+visible = false
+position = Vector2( 116.646, 23.2617 )
+rotation = 3.14159
+scale = Vector2( 0.0262602, 0.0256847 )
+texture = ExtResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SecundaryButton"]
+anims/off_hover = SubResource( 3 )
+anims/on_hover = SubResource( 4 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SecundaryButton"]
+stream = ExtResource( 4 )
+bus = "Button"
+
+[node name="PlayerSkin" parent="." instance=ExtResource( 11 )]
+position = Vector2( 460, 270 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="ThrustLeft" parent="PlayerSkin" index="1"]
+frame = 3
+
+[node name="ThrustRight" parent="PlayerSkin" index="2"]
+frame = 3
+
+[node name="PlayerSprite" parent="PlayerSkin" index="3"]
+frame = 82
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Credits_Player"
+anims/Credits_Player = SubResource( 5 )
+[connection signal="button_down" from="SecundaryButton" to="SecundaryButton" method="_on_MenuButton_button_down"]
+[connection signal="button_up" from="SecundaryButton" to="SecundaryButton" method="_on_button_up"]
+[connection signal="focus_entered" from="SecundaryButton" to="SecundaryButton" method="_on_MenuButton_focus_entered"]
+[connection signal="focus_exited" from="SecundaryButton" to="SecundaryButton" method="_on_MenuButton_focus_exited"]
+[connection signal="mouse_entered" from="SecundaryButton" to="SecundaryButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="SecundaryButton" to="SecundaryButton" method="_on_mouse_exited"]
+
+[editable path="PlayerSkin"]

@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://game/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/Enemies/Bomborcop.gd" type="Script" id=2]
+[ext_resource path="res://game/BehaviorTree/Blackboard.gd" type="Script" id=3]
+[ext_resource path="res://game/Enemies/BomborcopBehaviorTree.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/Sprites/Npc/Bomborcop/Bomborcop1.png" type="Texture" id=5]
+[ext_resource path="res://assets/Sprites/Npc/Bomborcop/Bomborcop4.png" type="Texture" id=6]
+[ext_resource path="res://assets/Sprites/Npc/Bomborcop/Bomborcop3.png" type="Texture" id=7]
+[ext_resource path="res://assets/Sprites/Npc/Bomborcop/Bomborcop2.png" type="Texture" id=8]
+
+[sub_resource type="AnimatedTexture" id=1]
+frames = 4
+fps = 8.0
+frame_0/texture = ExtResource( 5 )
+frame_1/texture = ExtResource( 8 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 7 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 6 )
+frame_3/delay_sec = 0.0
+
+[node name="Bomborcop" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="EnemySkin" parent="." index="0"]
+modulate = Color( 1, 0.658824, 0.658824, 1 )
+
+[node name="Sprite" parent="EnemySkin" index="0"]
+position = Vector2( 0, 8 )
+texture = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 0, -2.60864 )
+
+[node name="RightPlayerDetector" type="RayCast2D" parent="." index="2"]
+position = Vector2( 0, -7.2122 )
+enabled = true
+cast_to = Vector2( 120, 0 )
+
+[node name="LeftPlayerDetector" type="RayCast2D" parent="." index="3"]
+position = Vector2( 0, -7.2122 )
+enabled = true
+cast_to = Vector2( -120, 0 )
+
+[node name="WallDetector" type="RayCast2D" parent="." index="4"]
+modulate = Color( 0.0980392, 0.956863, 0, 1 )
+position = Vector2( 0, -7.2122 )
+enabled = true
+cast_to = Vector2( 20, 0 )
+collision_mask = 2
+collide_with_areas = true
+
+[node name="FloorDetector" type="RayCast2D" parent="." index="5"]
+modulate = Color( 0.0980392, 0.956863, 0, 1 )
+position = Vector2( 24, 0 )
+enabled = true
+cast_to = Vector2( 0, 15 )
+collision_mask = 2
+collide_with_areas = true
+
+[node name="Blackboard" type="Node" parent="." index="10"]
+script = ExtResource( 3 )
+
+[node name="BehaviorTree" parent="." index="11" instance=ExtResource( 4 )]
+
+[node name="Updater" type="Timer" parent="." index="12"]
+wait_time = 0.1
+autostart = true
+[connection signal="timeout" from="Updater" to="." method="_on_Updater_timeout"]
+
+[editable path="EnemySkin"]

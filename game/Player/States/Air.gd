@@ -28,12 +28,13 @@ var _key_pushing: bool = false
 onready var move: = get_parent()
 onready var freeze_timer:Timer = $FreezeTimer
 onready var jump_delay: Timer = $JumpDelay
+onready var anim_playing: String = ""
 ################################################################################
 
 ################################################################################
 #### Metodos
-func unhandled_input(event: InputEvent) -> void:	
-	if event.is_action_pressed("jump"):
+func unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("jump") and owner.get_can_move():
 		var virtual_wall_normal: int
 		if check_if_can_wall_jump()["can"]:
 			virtual_wall_normal = check_if_can_wall_jump()["normal"]
@@ -47,6 +48,8 @@ func unhandled_input(event: InputEvent) -> void:
 				if _jump_after_hook:
 					move.velocity.y = 0.0
 					move.velocity = calculate_jump_velocity(move.hook_jump_impulse)
+					owner.skin.play("jump")
+					anim_playing = "jump"
 				else:
 					move.velocity = calculate_jump_velocity(move.jump_impulse)
 					
@@ -64,9 +67,10 @@ func unhandled_input(event: InputEvent) -> void:
 
 func physics_process(delta: float) -> void:
 	owner.skin.scale.x = move.get_sprite_direction(owner.skin.scale.x)
-		
-	if !owner.get_is_alive():
-			owner.set_is_alive(true)
+	
+#	TODO: mmmmmmmm y esto???
+#	if not owner.get_is_alive():
+#		owner.set_is_alive(true)
 	
 	_is_jump_interrupted = Input.is_action_just_released("jump") and move.velocity.y < 0.0
 	
@@ -86,7 +90,14 @@ func physics_process(delta: float) -> void:
 		_is_jump_interrupted)
 	
 	move.velocity = owner.move_and_slide(move.velocity, owner.FLOOR_NORMAL)
-	#Events.emit_signal("player_moved", owner)
+	
+	if move.velocity.y <= 0 and anim_playing == "fall":
+		owner.skin.play("jump")
+		anim_playing = "jump"
+	elif move.velocity.y > 0 and anim_playing == "jump":
+		owner.skin.play("fall")
+		anim_playing = "fall"
+	
 	
 	if owner.is_on_floor():
 		var target_state: String
@@ -113,9 +124,15 @@ func physics_process(delta: float) -> void:
 
 
 func enter(msg: Dictionary = {}) -> void:
-	move.enter(msg)	
+	move.enter(msg)
 	
-	owner.skin.play("jump")
+	if move.velocity.y <= 0:
+		owner.skin.play("jump")
+		anim_playing = "jump"
+	else:
+		owner.skin.play("fall")
+		anim_playing = "fall"
+	
 	owner.skin.connect("animation_finished", self, "_on_PlayerAnimation_animation_finished")
 	
 	move.acceleration.x = acceleration_x
@@ -158,6 +175,9 @@ func check_if_can_wall_jump() -> Dictionary:
 		result = {"can": false, "normal": 0}
 
 	return result
+
+func check_animation() -> void:
+	pass
 
 func jump() -> void:
 	move.velocity += calculate_jump_velocity(move.jump_impulse)

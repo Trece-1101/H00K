@@ -18,6 +18,8 @@ export var jump_impulse: float = 450.0
 export var fatality_impulse: float = 500.0
 export var hook_jump_impulse: float = 200.0
 export var transition_impulse: float = 150.0
+export var spring_impulse_multiplier: float = 2.2
+export var spring_minimun_speed: float = 200.0
 """
 Todos estos valores default seran asignados a las variables correspondientes
 al iniciar el juego/nivel
@@ -44,29 +46,29 @@ onready var max_speed: = max_speed_default
 ################################################################################
 #### metodos
 func unhandled_input(event: InputEvent) -> void:
-	if owner.is_on_floor() and event.is_action_pressed("jump"):
-		if !owner.floor_detector.is_in_platform():
+	if owner.is_on_floor() and event.is_action_pressed("jump") and owner.get_can_move():
+		if not owner.floor_detector.is_in_platform():
 			_state_machine.transition_to("Move/Air", {impulse = true})
 		else:
 			_state_machine.transition_to("Move/Air", {impulse = true, platform = true})
 
 	## TODO: solo DEBUG
-	if event.is_action_pressed("debug_move"):
+	if event.is_action_pressed("debug_move") and not Game.get_user()["type"] in Game.testers:
 		_state_machine.transition_to("Debug")
 
 
 func physics_process(delta: float) -> void:
 	if owner.is_on_floor():
-		max_speed = max_speed_default
+		max_speed.y = max_speed_default.y
 		get_node("Air")._jump_after_hook = false
 	
 	velocity = calculate_velocity(velocity, max_speed, acceleration, delta,
 	get_move_direction(), max_speed_fall)
 	
 	velocity = owner.move_and_slide_with_snap(velocity, Vector2.DOWN * 20.0, owner.FLOOR_NORMAL)
-	#velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
-	#Events.emit_signal("player_moved", owner)
-	
+
+
+
 func _on_Hook_hooked_onto_target(target_global_position: Vector2, hooking_animation: String) -> void:
 	var to_target: Vector2 = target_global_position - owner.global_position
 	if owner.is_on_floor() and to_target.y > 0.0:
@@ -97,6 +99,7 @@ static func calculate_velocity(
 	var new_velocity: = old_velocity
 	
 	new_velocity += move_direction * acceleration_func * delta
+	
 	if is_jump_interrupted:
 		new_velocity.y = 0.0
 	new_velocity.x = clamp(new_velocity.x, -max_speed_func.x, max_speed_func.x)
@@ -112,7 +115,30 @@ func apply_impulse(direction: String) -> void:
 	elif direction == "top":
 		velocity.y -= transition_impulse
 
+func apply_bumper_impulse(fall_speed: float) -> void:
+	if fall_speed < spring_minimun_speed:
+		fall_speed = spring_minimun_speed
+	velocity.y -= fall_speed * spring_impulse_multiplier
+	#print("fall speed: {fs} - velocity.y: {vy}".format({'fs': fall_speed, 'vy': velocity.y}))
+
+func apply_accelerating_impulse(accel: float) -> void:
+	velocity.x += accel
+
+func modify_max_speed(new_max_speed: float) -> void:
+	max_speed.x = new_max_speed
+
+func reset_max_speed() -> void:
+	max_speed.x = max_speed_default.x
+
+## TODO: esto liquida el movimiento con KB
+## SOLUCIONALO
 static func get_move_direction() -> Vector2:
+	return Vector2(Utils.get_aim_joystick_strenght().x, 1.0)
+#	return Vector2(
+#		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 1.0
+#	)
+
+static func get_move_kb_direction() -> Vector2:
 	return Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 1.0
 	)

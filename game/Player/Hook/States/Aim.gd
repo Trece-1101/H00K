@@ -21,7 +21,7 @@ func unhandled_input(event: InputEvent) -> void:
 		_state_machine.transition_to("Aim/Fire")
 
 func physics_process(_delta: float) -> void:
-	if can_aim:
+	if can_aim and owner.get_can_move():
 		var cast: Vector2 = owner.get_aim_direction() * owner.ray_cast.length
 		var angle: float = cast.angle()
 		owner.ray_cast.cast_to = cast

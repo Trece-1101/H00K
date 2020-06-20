@@ -21,4 +21,8 @@ z_index = 30
 [node name="Door" parent="." instance=ExtResource( 3 )]
 
 [node name="Sensors" type="Node" parent="."]
+
+[node name="Targets" type="Node" parent="."]
+
+[node name="Objects" type="Node" parent="."]
 [connection signal="body_entered" from="SaveArea" to="." method="_on_SaveArea_body_entered"]

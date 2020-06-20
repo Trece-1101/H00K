@@ -30,33 +30,37 @@ onready var transition := false
 ################################################################################
 #### Metodos
 func _ready() -> void:
-	pause_mode = Node.PAUSE_MODE_PROCESS	
+	pause_mode = Node.PAUSE_MODE_PROCESS
 	
 	if Game.get_main_controls() == Settings.GAMEPAD:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
-	if Game.get_camera_start() == Vector2.ZERO:
+	if Game.get_camera_start() == Vector2.ZERO or Game.get_player_last_state() == "Init":
 		start_room_fila = start_room_fila
 		start_room_columna = start_room_columna
+		($AnimationPlayer as AnimationPlayer).play("enter_level")
 	else:
 		start_room_fila = int(Game.get_camera_start().x)
 		start_room_columna = int(Game.get_camera_start().y)
 	
 	set_start_borders()
+	
 	if Game.get_player_last_state() == "Die":
 		set_death_count_label()
 	
 	create_shake_list()
 	
-	global_position.x = (step_x / 2) + (step_x * (start_room_columna - 1))
-	global_position.y = (step_y / 2) + (step_y * (start_room_fila - 1))
+	var camera_x = (step_x * 0.5) + (step_x * (start_room_columna - 1))
+	var camera_y = (step_y * 0.5) + (step_y * (start_room_fila - 1))
+	
+	global_position = Vector2(camera_x, camera_y)
 
 
 func _process(_delta: float) -> void:
-	if not transition:
-		if player.global_position.y < borders["top"]:
+	if not transition and not player.exiting:
+		if player.border_detector.global_position.y < borders["top"]:
 			move_camera("top")
 		elif player.global_position.y > borders["bottom"]:
 			move_camera("bottom")
@@ -131,9 +135,8 @@ func saving() -> void:
 
 func set_death_count_label() -> void:
 	$AnimationPlayer.stop()
-	$LabelDeathCount.text = "x{death}".format({"death": Game.get_player_death_count()})
+	$LabelDeathCount.text = "x{death}".format({"death": GamePerformance.get_player_death_count()})
 	($AnimationPlayer as AnimationPlayer).play("show_death_count")
-	#$AnimationPlayer.play("show_death_count")
 
 func camara_shake() -> void:
 	var shake_vector = shake_list[randi() % 20]
@@ -155,4 +158,7 @@ func _on_Timer_timeout() -> void:
 func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
 	get_tree().paused = false
 	player.apply_move_impulse(last_moved)
+
+func exit_level() -> void:
+	$AnimationPlayer.play("exit_level")
 ################################################################################

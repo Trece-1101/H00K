@@ -12,21 +12,57 @@ func set_hooking_angle(value: float) -> void:
 	hooking_angle = value
 
 func set_hooking_animation() -> void:
-	#hooking_animation = "jumphook_mid"
-	if ((hooking_angle >= -30.00 and hooking_angle <= 30.00) or 
-			(hooking_angle >= 165.00 and hooking_angle <= 190.00) or
-			(hooking_angle <= -165.00 and hooking_angle >= -190.00)):
+	# Yo se que esto es una chanchada logica pero a nivel eficiencia es mucho mejor
+	# Y necesito toda la eficiencia posible en esta porcion
+	if hooking_angle >= -30.00 and hooking_angle <= 30.00:
 		hooking_animation = "jumphook_mid"
-	elif (hooking_angle < -30.00 and hooking_angle >= -75.00) or (hooking_angle <= -120.00 and hooking_angle > -165.00):
+		owner.ghost_sprite = "res://assets/Sprites/Player/Frames/hook_mid.png"
+	elif hooking_angle >= 165.00 and hooking_angle <= 190.00:
+		hooking_animation = "jumphook_mid"
+		owner.ghost_sprite = "res://assets/Sprites/Player/Frames/hook_mid.png"
+	elif hooking_angle <= -165.00 and hooking_angle >= -190.00:
+		hooking_animation = "jumphook_mid"
+		owner.ghost_sprite = "res://assets/Sprites/Player/Frames/hook_mid.png"
+	elif hooking_angle < -30.00 and hooking_angle >= -75.00:
 		hooking_animation = "jumphook_midtop"
+		owner.ghost_sprite = "res://assets/Sprites/Player/Frames/hook_mid_top.png"
+	elif hooking_angle <= -120.00 and hooking_angle > -165.00:
+		hooking_animation = "jumphook_midtop"
+		owner.ghost_sprite = "res://assets/Sprites/Player/Frames/hook_mid_top.png"
 	elif (hooking_angle < -75.00 and hooking_angle > -120.00):
 		hooking_animation = "jumphook_top"
-	elif (hooking_angle > 30.00 and hooking_angle <= 75.00) or (hooking_angle > 120.00 and hooking_angle <= 165.00):
+		owner.ghost_sprite = "res://assets/Sprites/Player/Frames/hook_top.png"
+	elif hooking_angle > 30.00 and hooking_angle <= 75.00:
 		hooking_animation = "jumphook_midbot"
-	elif (hooking_angle > 75.00 and hooking_angle <= 120.00):
+		owner.ghost_sprite = "res://assets/Sprites/Player/Frames/hook_mid_bot.png"
+	elif hooking_angle > 120.00 and hooking_angle < 165.00:
+		hooking_animation = "jumphook_midbot"
+		owner.ghost_sprite = "res://assets/Sprites/Player/Frames/hook_mid_bot.png"
+	elif hooking_angle > 75.00 and hooking_angle <= 120.00:
 		hooking_animation = "jumphook_bot"
+		owner.ghost_sprite = "res://assets/Sprites/Player/Frames/hook_bot.png"
 	else:
 		print("error")
+
+#	if ((hooking_angle >= -30.00 and hooking_angle <= 30.00) or 
+#			(hooking_angle >= 165.00 and hooking_angle <= 190.00) or
+#			(hooking_angle <= -165.00 and hooking_angle >= -190.00)):
+#		hooking_animation = "jumphook_mid"
+#		owner.ghost_sprite = "res://assets/Sprites/Player/Frames/hook_mid.png"
+#	elif (hooking_angle < -30.00 and hooking_angle >= -75.00) or (hooking_angle <= -120.00 and hooking_angle > -165.00):
+#		hooking_animation = "jumphook_midtop"
+#		owner.ghost_sprite = "res://assets/Sprites/Player/Frames/hook_mid_top.png"
+#	elif (hooking_angle < -75.00 and hooking_angle > -120.00):
+#		hooking_animation = "jumphook_top"
+#		owner.ghost_sprite = "res://assets/Sprites/Player/Frames/hook_top.png"
+#	elif (hooking_angle > 30.00 and hooking_angle <= 75.00) or (hooking_angle > 120.00 and hooking_angle <= 165.00):
+#		hooking_animation = "jumphook_midbot"
+#		owner.ghost_sprite = "res://assets/Sprites/Player/Frames/hook_mid_bot.png"
+#	elif (hooking_angle > 75.00 and hooking_angle <= 120.00):
+#		hooking_animation = "jumphook_bot"
+#		owner.ghost_sprite = "res://assets/Sprites/Player/Frames/hook_bot.png"
+#	else:
+#		print("error")
 ################################################################################
 
 ################################################################################
@@ -38,14 +74,14 @@ func _on_Cooldown_timeout() -> void:
 	_state_machine.transition_to("Aim")
 
 func enter(_msg: Dictionary = {}) -> void:
-	owner.cooldown.connect("timeout", self, "_on_Cooldown_timeout", [], CONNECT_ONESHOT)	
+	owner.cooldown.connect("timeout", self, "_on_Cooldown_timeout", [], CONNECT_ONESHOT)
 	#owner.is_aiming = false
 	owner.cooldown.start()
 	#var target: HookTarget = owner.snap_detector.target
 	target = owner.snap_detector.target
 	if target:
 		owner.arrow.hook_position = target.global_position
-		target.hooked_from(owner.global_position)	
+		target.hooked_from(owner.global_position)
 	#var target: HookTarget = owner.get_hook_target()
 #	if target:
 #		owner.arrow.hook_position = target.global_position

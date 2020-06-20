@@ -3,5 +3,5 @@
 [ext_resource path="res://assets/Fonts/Seven Oh Ess 8x16 Monospaced.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 32
+size = 30
 font_data = ExtResource( 1 )
