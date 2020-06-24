@@ -78,7 +78,7 @@ func _on_SendButton_pressed() -> void:
 		pop_up("error", "El campo descripcion no puede estar vacio", true)
 	else:
 		db_request.SetBug(
-			Game.get_user()["name"], #nickname
+			#Game.get_user()["name"], #nickname
 			$RoomOption.get_selected_id(), #room
 			Game.get_player_current_room_v(), #room_version
 			$LevelOption.get_selected_id(), #level

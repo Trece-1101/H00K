@@ -62,8 +62,8 @@ func init_level_performance(level_name: String, enter: int) -> void:
 		levels_performance.append(level_performance)
 
 func get_performance(level_name: String) -> void:
-	get_time_performance(level_name, true)
-	get_death_performance(level_name, true)
+	get_time_performance(level_name, false)
+	get_death_performance(level_name, false)
 
 func get_time_performance(level_name: String, show: bool) -> String:
 	for level in levels_performance:

@@ -7,7 +7,6 @@ const speed_up_multiplier := 10.0
 const title_color := Color8(144, 28, 43)
 const description_color := Color8(203, 202, 202)
 
-var scroll_speed := base_speed
 var speed_up := false
 
 onready var line := $CreditsContainer/Line
@@ -23,27 +22,43 @@ var lines := []
 
 var credits = [
 	[
-		"A game by 333 Games"
-	],[
-		"Programming",
+		"Un juego de 333 Games"
+	],
+	[
+		"Programacion",
 		"Omar Bazzi",
 		"Fernando Sanchez"
-	],[
-		"Art",
+	],
+	[
+		"Arte",
 		"Fernando Sanchez"
-	],[
-		"Music and SFX",
+	],
+	[
+		"Musica y SFX",
 		"Nicollas Krijanovsky"
-	],[
+	],
+	[
+		"Diseño Niveles",
+		"Omar Bazzi",
+		"Nicollas Krijanovsky"
+	],
+	[
+		"Diseño Menus",
+		"Omar Bazzi",
+		"Nicollas Krijanovsky"
+	],
+	[
 		"Testers",
 		"Omar Bazzi",
 		"Fernando Sanchez",
 		"Nicollas Krijanovsky"
-	],[
-		"Developed with Godot Engine",
+	],
+	[
+		"Desarrollado con Godot Engine",
 		"https://godotengine.org",
-	],[
-		"Special thanks",
+	],
+	[
+		"Agradecimientos",
 		"",
 		"",
 		"",
@@ -55,6 +70,8 @@ var credits = [
 	]
 ]
 
+func _ready() -> void:
+	GlobalMusic.play_music(GlobalMusic.musics.credits)
 
 func _process(delta):
 	var scroll_speed = base_speed * delta

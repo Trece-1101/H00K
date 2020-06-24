@@ -9,8 +9,6 @@ const speed_up_multiplier := 10.0
 const title_color := Color8(203, 202, 202)
 const description_color := Color8(203, 202, 202)
 
-
-var scroll_speed := base_speed
 var speed_up := false
 
 onready var line := $CreditsContainer/Line
@@ -27,28 +25,28 @@ var color_line = false
 
 var credits = [
 	[
-		"Años antes de que la gran rebelión fuera reprimida",
-		 "un grupo insurgente de cientistas para militares", 
-		 "trabajaban en la creación de un nuevo tipo de androide",
-		 "su misión era desconocida."
+		"Años antes de que la gran rebelión humana fuera reprimida por las",
+		 "inteligencias artificiales, un grupo insurgente de cientificos", 
+		 "trabajaba dia y noche en la creación de un 'arma definitiva'",
+		 "su misión era desconocida pero primordial para la raza humana."
 	],[
-		"Por razones que no conocemos el grupo de",
-		 "cientistas se separaron y el destino de este",
-		 "nuevo androide es un misterio…",
-		 "hasta ahora."
+		"Por razones indeterminadas el grupo de cientificos se disolvio",
+		 "y no se supo mas de ellos ni de su proyecto",
+		 "La historia se transimitio entre generaciones",
+		 "como un misterio del cual nadie sabia mucho mas."
 		
 	],[
-		"100 años más tarde empezamos identificar disturbios",
-		"y anomalías en nuestros sistemas, todos causados por",
-		"un tipo de androide no registrado", 
-		"en nuestra base de datos."
+		"100 años han pasado desde aquel momento en el cual los humanos",
+		"fueron subyugados por las maquinas. Los sistemas de la rebelion",
+		"captaron anomalias en el sector de 'La ciudad inteligente',", 
+		"el fuerte impenetrable de las maquinas."
 		
 	],[
-		"Su comportamiento es errático pero todo",
-		"indica que tiene un objetivo", 
-		"llegar a la matriz de nuestro sistema.",
-		"Tenemos fuertes sospechas que sea el mismo",
-		"androide del proyecto misterioso."
+		"Los sistemas determinaron que la anomalia se debe a un androide",
+		"rebelde que no pertenece al registro de las inteligencias artificiales", 
+		"ha penetrado todas las barreras para ingresar a la ciudad.",
+		"Todo indica que este androide es el arma definitiva de los cientificos.",
+		"Activado por si solo por alguna extraña razon."
 	],[
 		"No tenemos ningún información adicional…",
 		"solo su nombre"
@@ -62,6 +60,8 @@ var credits = [
 
 ]
 
+func _ready() -> void:
+	GlobalMusic.play_music(GlobalMusic.musics.intro)
 
 func _process(delta):
 	var scroll_speed = base_speed * delta

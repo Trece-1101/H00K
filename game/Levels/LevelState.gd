@@ -32,9 +32,12 @@ func get_level_name() -> String:
 ################################################################################
 #### Metodos
 func _ready() -> void:
-	if not GlobalMusic.playing:
-		GlobalMusic.set_stream(load(music))
-		GlobalMusic.play()
+	if Game.get_player_last_state() == "Init":
+		GlobalMusic.play_music(GlobalMusic.musics[music])
+	
+#	if not GlobalMusic.playing:
+#		GlobalMusic.set_stream(load(music))
+#		GlobalMusic.play()
 	
 	close_door = Game.get_last_door_closed()
 	if not close_door.empty():

@@ -7,6 +7,9 @@ var user_name := ""
 
 const DB_REQUEST_NODE = preload("res://game/HTTP/HttpDbRequest.tscn")
 
+func _ready() -> void:
+	GlobalMusic.play_music(GlobalMusic.musics.presentation)
+
 func load_user() -> void:
 	if not GameSaver.check_directory(true) or not GameSaver.check_user_data():
 		$LoginMenu.set_create_user(true)

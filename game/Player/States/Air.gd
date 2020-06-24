@@ -48,7 +48,7 @@ func unhandled_input(event: InputEvent) -> void:
 				if _jump_after_hook:
 					move.velocity.y = 0.0
 					move.velocity = calculate_jump_velocity(move.hook_jump_impulse)
-					owner.skin.play("jump_fire_boots")
+					owner.skin.play("jump")
 					anim_playing = "jump"
 				else:
 					move.velocity = calculate_jump_velocity(move.jump_impulse)

@@ -19,6 +19,7 @@ onready var wall_detector = $WallDetector
 onready var floor_detector = $FloorDetector
 
 func _ready() -> void:
+	set_process(false)
 	player = owner.get_node("Player")
 	
 	blackboard.set("player_on_sight", false)
