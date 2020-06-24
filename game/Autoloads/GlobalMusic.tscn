@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://game/Autoloads/GlobalMusic.gd" type="Script" id=1]
 [ext_resource path="res://assets/Sounds/Music/presentation_1.wav" type="AudioStream" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/Sounds/Music/main_menu.ogg" type="AudioStream" id=4]
 [ext_resource path="res://assets/Sounds/Music/intro_menu.ogg" type="AudioStream" id=5]
 [ext_resource path="res://assets/Sounds/Music/level_one_1.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/Sounds/Music/level_two_1.ogg" type="AudioStream" id=7]
 
 [node name="GlobalMusic" type="Node"]
 pause_mode = 2
@@ -32,5 +33,5 @@ stream = ExtResource( 6 )
 bus = "InGameMusic"
 
 [node name="LevelTwo" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
+stream = ExtResource( 7 )
 bus = "InGameMusic"

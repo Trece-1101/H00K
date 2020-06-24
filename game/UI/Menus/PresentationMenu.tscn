@@ -15,7 +15,7 @@ outline_size = 8
 outline_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=2]
 size = 26
 outline_size = 8
 outline_color = Color( 0.231373, 0.231373, 0.231373, 1 )
@@ -215,7 +215,7 @@ margin_left = 389.523
 margin_top = 323.978
 margin_right = 631.527
 margin_bottom = 484.977
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 2 )
 text = "hecho con
 Godot
 Game

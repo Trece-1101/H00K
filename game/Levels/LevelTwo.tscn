@@ -41,7 +41,7 @@ layer = 10
 room_row_col = Vector2( 1, 1 )
 
 [node name="AnimatedSprite" parent="Room1/Background" index="0" instance=ExtResource( 21 )]
-frame = 2
+frame = 5
 
 [node name="SaveArea" parent="Room1" index="1"]
 position = Vector2( 33.5674, 191.928 )
@@ -82,6 +82,7 @@ margin_left = 958.75
 margin_right = 958.75
 
 [node name="AnimatedSprite" parent="Room2/Background" index="0" instance=ExtResource( 21 )]
+frame = 6
 
 [node name="SaveArea" parent="Room2" index="1"]
 position = Vector2( 993.451, 296.447 )
@@ -120,7 +121,7 @@ margin_right = 1920.0
 margin_bottom = 6.10352e-05
 
 [node name="AnimatedSprite" parent="Room3/Background" index="0" instance=ExtResource( 21 )]
-frame = 1
+frame = 4
 
 [node name="SaveArea" parent="Room3" index="1"]
 position = Vector2( 1961.23, 128.248 )
@@ -156,7 +157,7 @@ margin_right = 1920.0
 margin_bottom = 540.0
 
 [node name="AnimatedSprite" parent="Room4/Background" index="0" instance=ExtResource( 21 )]
-frame = 1
+frame = 4
 
 [node name="SaveArea" parent="Room4" index="1"]
 position = Vector2( 2473.19, 581.387 )
@@ -203,7 +204,7 @@ margin_right = 2880.0
 margin_bottom = 540.0
 
 [node name="AnimatedSprite" parent="Room5/Background" index="0" instance=ExtResource( 21 )]
-frame = 8
+frame = 2
 
 [node name="SaveArea" parent="Room5" index="1"]
 position = Vector2( 2915.78, 958.55 )
@@ -240,7 +241,7 @@ margin_right = 3840.0
 margin_bottom = 540.0
 
 [node name="AnimatedSprite" parent="Room6/Background" index="0" instance=ExtResource( 21 )]
-frame = 8
+frame = 2
 
 [node name="SaveArea" parent="Room6" index="1"]
 position = Vector2( 3876.57, 990.866 )
@@ -289,7 +290,7 @@ margin_right = 4800.0
 margin_bottom = 540.0
 
 [node name="AnimatedSprite" parent="Room7/Background" index="0" instance=ExtResource( 21 )]
-frame = 8
+frame = 2
 
 [node name="SaveArea" parent="Room7" index="1"]
 position = Vector2( 4836.08, 702.622 )
@@ -323,7 +324,7 @@ margin_left = 4800.0
 margin_right = 4800.0
 
 [node name="AnimatedSprite" parent="Room8/Background" index="0" instance=ExtResource( 21 )]
-frame = 2
+frame = 5
 
 [node name="SaveArea" parent="Room8" index="1"]
 position = Vector2( 5506.79, 503.587 )
@@ -398,7 +399,7 @@ margin_right = 4800.0
 margin_bottom = -540.0
 
 [node name="AnimatedSprite" parent="Room9/Background" index="0" instance=ExtResource( 21 )]
-frame = 7
+frame = 1
 
 [node name="SaveArea" parent="Room9" index="1"]
 position = Vector2( 4860.56, -36.5019 )
@@ -458,7 +459,7 @@ margin_right = 3840.0
 margin_bottom = -540.0
 
 [node name="AnimatedSprite" parent="Room10/Background" index="0" instance=ExtResource( 21 )]
-frame = 8
+frame = 2
 
 [node name="SaveArea" parent="Room10" index="1"]
 position = Vector2( 4764.89, -466.56 )
@@ -501,7 +502,7 @@ margin_right = 2880.0
 margin_bottom = -540.0
 
 [node name="AnimatedSprite" parent="Room11/Background" index="0" instance=ExtResource( 21 )]
-frame = 8
+frame = 2
 
 [node name="SaveArea" parent="Room11" index="1"]
 position = Vector2( 3805, -465.68 )
@@ -541,7 +542,6 @@ margin_right = 2880.0
 margin_bottom = -1080.0
 
 [node name="AnimatedSprite" parent="Room12/Background" index="0" instance=ExtResource( 21 )]
-frame = 0
 
 [node name="SaveArea" parent="Room12" index="1"]
 position = Vector2( 3625.47, -575.972 )
@@ -596,7 +596,7 @@ margin_right = 2880.0
 margin_bottom = -1620.0
 
 [node name="AnimatedSprite" parent="Room13/Background" index="0" instance=ExtResource( 21 )]
-frame = 1
+frame = 4
 
 [node name="SaveArea" parent="Room13" index="1"]
 position = Vector2( 2987.86, -1115 )
@@ -630,6 +630,7 @@ margin_right = 3840.0
 margin_bottom = -1620.0
 
 [node name="AnimatedSprite" parent="Room14/Background" index="0" instance=ExtResource( 21 )]
+frame = 6
 
 [node name="SaveArea" parent="Room14" index="1"]
 position = Vector2( 3878.44, -1505.79 )
@@ -679,7 +680,7 @@ margin_right = 4800.0
 margin_bottom = -1620.0
 
 [node name="AnimatedSprite" parent="Room15/Background" index="0" instance=ExtResource( 21 )]
-frame = 4
+frame = 7
 
 [node name="SaveArea" parent="Room15" index="1"]
 position = Vector2( 4837.19, -1281.22 )
@@ -725,7 +726,7 @@ margin_right = 5760.0
 margin_bottom = -1620.0
 
 [node name="AnimatedSprite" parent="Room16/Background" index="0" instance=ExtResource( 21 )]
-frame = 5
+frame = 8
 
 [node name="SaveArea" parent="Room16" index="1"]
 position = Vector2( 5795.14, -1552.55 )
@@ -761,6 +762,7 @@ margin_right = 6720.0
 margin_bottom = -1620.0
 
 [node name="AnimatedSprite" parent="Room17/Background" index="0" instance=ExtResource( 21 )]
+frame = 6
 
 [node name="SaveArea" parent="Room17" index="1"]
 position = Vector2( 6757.58, -1185.74 )
@@ -794,7 +796,7 @@ margin_right = 6720.0
 margin_bottom = -1080.0
 
 [node name="AnimatedSprite" parent="Room18/Background" index="0" instance=ExtResource( 21 )]
-frame = 1
+frame = 4
 
 [node name="SaveArea" parent="Room18" index="1"]
 position = Vector2( 7574.51, -1043.53 )
@@ -829,7 +831,7 @@ margin_right = 6720.0
 margin_bottom = -541.851
 
 [node name="AnimatedSprite" parent="Room19/Background" index="0" instance=ExtResource( 21 )]
-frame = 1
+frame = 4
 
 [node name="SaveArea" parent="Room19" index="1"]
 position = Vector2( 6834.35, -503.67 )
@@ -888,7 +890,7 @@ margin_right = 7680.0
 margin_bottom = -540.0
 
 [node name="AnimatedSprite" parent="Room20/Background" index="0" instance=ExtResource( 21 )]
-frame = 6
+frame = 0
 
 [node name="SaveArea" parent="Room20" index="1"]
 position = Vector2( 7715.23, -65.0443 )
