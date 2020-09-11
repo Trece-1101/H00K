@@ -8,15 +8,13 @@
 [ext_resource path="res://game/Objects/Door.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game/Levels/LevelState.gd" type="Script" id=7]
 
-
-
 [node name="PrototypeTransition" type="Node2D"]
 script = ExtResource( 7 )
 
 [node name="Room1" parent="." instance=ExtResource( 3 )]
 room_row_col = Vector2( 1, 1 )
 
-[node name="SaveArea" parent="Room1" index="0"]
+[node name="SaveArea" parent="Room1" index="1"]
 position = Vector2( 881.388, 447.156 )
 
 [node name="HookTarget" parent="Room1" instance=ExtResource( 5 )]
@@ -32,25 +30,25 @@ rotation = -1.5708
 [node name="Room2" parent="." instance=ExtResource( 3 )]
 room_row_col = Vector2( 1, 2 )
 
-[node name="SaveArea" parent="Room2" index="0"]
+[node name="SaveArea" parent="Room2" index="1"]
 position = Vector2( 998.993, 448.448 )
 
 [node name="Room3" parent="." instance=ExtResource( 3 )]
 room_row_col = Vector2( -1, 1 )
 
-[node name="SaveArea" parent="Room3" index="0"]
+[node name="SaveArea" parent="Room3" index="1"]
 position = Vector2( 553.649, -98.4265 )
 
 [node name="Room4" parent="." instance=ExtResource( 3 )]
 room_row_col = Vector2( 2, 1 )
 
-[node name="SaveArea" parent="Room4" index="0"]
+[node name="SaveArea" parent="Room4" index="1"]
 position = Vector2( 488.031, 650.025 )
 
 [node name="Room" parent="." instance=ExtResource( 3 )]
 room_row_col = Vector2( 1, -1 )
 
-[node name="SaveArea" parent="Room" index="0"]
+[node name="SaveArea" parent="Room" index="1"]
 position = Vector2( -46.0136, 142.801 )
 
 [node name="TileMap" type="TileMap" parent="."]
