@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://game/Levels/LevelState.gd" type="Script" id=1]
 [ext_resource path="res://game/Levels/Rooms/Room.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/Enemies/Bomborcop.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game/Levels/Camera/LevelTransitionCamera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/Levels/TileMaps/LevelTwo.tres" type="TileSet" id=5]
 [ext_resource path="res://game/Levels/TileMaps/LevelOne.tres" type="TileSet" id=6]
@@ -36,6 +37,15 @@ position = Vector2( 510.028, 290.731 )
 
 [node name="HookTarget2" parent="Room1/Targets" index="1" instance=ExtResource( 8 )]
 position = Vector2( 758.514, 188.98 )
+
+[node name="Bomborcop" parent="Room1" instance=ExtResource( 3 )]
+position = Vector2( 775.41, 444.721 )
+
+[node name="Bomborcop2" parent="Room1" instance=ExtResource( 3 )]
+position = Vector2( 405.932, 446.215 )
+
+[node name="Bomborcop3" parent="Room1" instance=ExtResource( 3 )]
+position = Vector2( 518.841, 436.575 )
 
 [node name="Room2" parent="." instance=ExtResource( 2 )]
 room_row_col = Vector2( 1, 2 )
