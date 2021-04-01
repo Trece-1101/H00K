@@ -10,8 +10,12 @@ Decisión, precisión, acción. El reto permanente de atravesar los salones de l
 ***Engine:*** Godot v3.1
 
 ***Lenguaje:*** GDScript
+
+***Plataforma:*** PC
+
+***Genero:*** Aventura - Plataformas
 ***
 ### ***Imagenes***
 ***
-### ***Gameplay***
+### ***Preview***
 [![Gameplay H00K](https://img.youtube.com/vi//0.jpg)]()
