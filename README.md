@@ -36,8 +36,10 @@ Decisión, precisión, acción. El reto permanente de atravesar los salones de l
 
 <img src="https://user-images.githubusercontent.com/22348284/113454802-7c758a00-93df-11eb-9c70-c1a54603ac04.gif" width=50% height=50%/>
 
-<img src="" width=50% height=50%/>
+<img src="https://user-images.githubusercontent.com/22348284/113455171-58ff0f00-93e0-11eb-96dc-68d14b2a8f56.gif" width=50% height=50%/>
 
-<img src="" width=50% height=50%/>
+<img src="https://user-images.githubusercontent.com/22348284/113455177-5e5c5980-93e0-11eb-861b-770aedeaa22d.gif" width=50% height=50%/>
 
-<img src="" width=50% height=50%/>
+<img src="https://user-images.githubusercontent.com/22348284/113455186-64ead100-93e0-11eb-8969-aa2bceac946f.gif" width=50% height=50%/>
+
+<img src="https://user-images.githubusercontent.com/22348284/113455221-72a05680-93e0-11eb-82df-161f82ec8561.gif" width=50% height=50%/>
