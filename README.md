@@ -16,7 +16,28 @@ Decisión, precisión, acción. El reto permanente de atravesar los salones de l
 ***Genero:*** Aventura - Plataformas
 ***
 ### ***Preview***
+(Click en la imagen para abrir video en youtube)
+
 [![Gameplay H00K](https://img.youtube.com/vi/RpeALUDG8dI/0.jpg)](https://www.youtube.com/watch?v=RpeALUDG8dI)
 ***
 ### ***Imagenes***
 
+<img src="https://user-images.githubusercontent.com/22348284/113454449-a37f8c00-93de-11eb-8ebe-1fcc5eb9f43e.gif" width=50% height=50%/>
+
+<img src="https://user-images.githubusercontent.com/22348284/113454479-b85c1f80-93de-11eb-998b-faecffb84b11.gif" width=50% height=50%/>
+
+<img src="https://user-images.githubusercontent.com/22348284/113454748-54862680-93df-11eb-8c2a-905247ed62cb.gif" width=50% height=50%/>
+
+<img src="https://user-images.githubusercontent.com/22348284/113454776-6d8ed780-93df-11eb-9f9a-e3645fa1539c.gif" width=50% height=50%/>
+
+<img src="https://user-images.githubusercontent.com/22348284/113454797-797a9980-93df-11eb-9eac-a9a307d6a80b.gif" width=50% height=50%/>
+
+<img src="https://user-images.githubusercontent.com/22348284/113454798-7b445d00-93df-11eb-88fb-f203083e7770.gif" width=50% height=50%/>
+
+<img src="https://user-images.githubusercontent.com/22348284/113454802-7c758a00-93df-11eb-9c70-c1a54603ac04.gif" width=50% height=50%/>
+
+<img src="" width=50% height=50%/>
+
+<img src="" width=50% height=50%/>
+
+<img src="" width=50% height=50%/>
