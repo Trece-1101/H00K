@@ -16,7 +16,7 @@ Decisión, precisión, acción. El reto permanente de atravesar los salones de l
 ***Genero:*** Aventura - Plataformas
 ***
 ### ***Preview***
-[![Gameplay H00K](https://img.youtube.com/vi//0.jpg)]()
+[![Gameplay H00K](https://img.youtube.com/vi/RpeALUDG8dI/0.jpg)](https://www.youtube.com/watch?v=RpeALUDG8dI)
 ***
 ### ***Imagenes***
 
