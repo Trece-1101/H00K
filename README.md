@@ -1,5 +1,5 @@
 # H.0.0.K.
-![Logo]()
+![miniatura hook 2](https://user-images.githubusercontent.com/22348284/113366357-4ed10800-932f-11eb-9fcd-44a9ca9e94e6.jpg)
 ***
 H.0.0.K. es un juego de plataformas 2D con cámara lateral, compuesto por niveles donde se puedes ver un salón por vez.
 Debes diagramar rápidamente tu estrategia y ejecutarla de la manera más precisa para ir avanzando los salones y así completar los niveles.
