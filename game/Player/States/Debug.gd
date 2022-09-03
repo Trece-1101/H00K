@@ -13,24 +13,26 @@ onready var sprinting:bool = false
 ################################################################################
 #### Metodos
 func unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_sprint"):
-		sprinting = not sprinting
-		if sprinting:
-			speed *= 2.0
-		else:
-			speed /= 2.0
-	
-	if event.is_action_pressed("debug_move"):
-		_state_machine.transition_to("Move/Air", {"velocity": Vector2.ZERO})
+	if OS.has_feature("debug"):
+		if event.is_action_pressed("debug_sprint"):
+			sprinting = not sprinting
+			if sprinting:
+				speed *= 2.0
+			else:
+				speed /= 2.0
+		
+		if event.is_action_pressed("debug_move"):
+			_state_machine.transition_to("Move/Air", {"velocity": Vector2.ZERO})
 
 
 func physics_process(delta: float) -> void:
-	var direction : Vector2 = get_move_direction()
-	#var multiplier: float
+	if OS.has_feature("debug"):
+		var direction : Vector2 = get_move_direction()
+		#var multiplier: float
 	
-	velocity = direction * speed
-	owner.position += velocity * delta
-	#Events.emit_signal("player_moved")
+		velocity = direction * speed
+		owner.position += velocity * delta
+		#Events.emit_signal("player_moved")
 
 func enter(_msg: Dictionary = {}) -> void:
 	owner.set_is_active(false)

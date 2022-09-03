@@ -66,7 +66,7 @@ func update_data_and_performance() -> void:
 	GamePerformance.get_performance(level.get_level_name())
 	
 	# Performance base de datos
-	level.close_performance_to_db()
+	#level.close_performance_to_db()
 	#level.send_performance_to_db(Game.get_player_current_room_int(), Game.get_player_current_room_v())
 
 func activate_sensor(value: int) -> void:

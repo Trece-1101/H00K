@@ -6,7 +6,7 @@ var hologram_direction: int = 1
 
 #### Variables export
 export(bool) var timered = false
-export(float) var reset_time = 10
+export(float) var reset_time = 10.0
 
 #### Variables onready
 onready var active: bool = false

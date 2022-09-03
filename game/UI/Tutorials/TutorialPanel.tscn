@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/Fonts/Jamma 8x16.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 23, 254 )
+
+[node name="TutorialPanel" type="Node2D"]
+z_index = 100
+z_as_relative = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 321.0
+margin_bottom = 172.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="ColorRect"]
+anchor_left = 0.02
+anchor_top = 0.02
+anchor_right = 0.98
+anchor_bottom = 0.98
+custom_fonts/font = SubResource( 1 )
+text = "Action
+------------
+Gamepad --> 
+Mouse --> 
+KB -->"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
