@@ -34,4 +34,4 @@ func _on_Apply_pressed() -> void:
 	OS.window_size = new_resolution
 	OS.window_fullscreen = is_full_screen
 	Game.set_screen(new_resolution, is_full_screen)
-	GameSaver.update_user_data()
+	#GameSaver.update_user_data()

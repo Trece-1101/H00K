@@ -57,12 +57,13 @@ func _ready() -> void:
 	
 	if Game.get_player_last_state() == "Init":
 		GamePerformance.init_level_performance(level_name, OS.get_unix_time())
-		GameSaver.update_performance_slot(Game.get_current_slot())
+		#.update_performance_slot(Game.get_current_slot())
 #		start_performance_to_db(Game.get_player_current_room_int(), Game.get_player_current_room_v())
 	elif Game.get_player_last_state() == "Load":
 		GamePerformance.adjust_time(level_name, OS.get_unix_time())
 	else:
-		GameSaver.update_performance_slot(Game.get_current_slot())
+		pass
+		#GameSaver.update_performance_slot(Game.get_current_slot())
 #		update_performance_to_db()
 
 #func start_performance_to_db(room: int, version: int) -> void:

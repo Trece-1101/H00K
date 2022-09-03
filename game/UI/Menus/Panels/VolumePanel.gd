@@ -53,7 +53,7 @@ func update_volume_label(bus: String) -> void:
 
 func _on_Apply_pressed() -> void:
 	._on_Apply_pressed()
-	GameSaver.update_user_data()
+	#GameSaver.update_user_data()
 	
 
 

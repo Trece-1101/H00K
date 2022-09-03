@@ -24,7 +24,7 @@ func _ready() -> void:
 func _on_Apply_pressed() -> void:
 	._on_Apply_pressed()
 	Game.set_main_controls(controls[$OptionButton.get_item_text(selected_control_index)])
-	GameSaver.update_user_data()
+	#GameSaver.update_user_data()
 
 
 func _on_OptionButton_item_selected(id: int) -> void:

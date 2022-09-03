@@ -14,8 +14,8 @@ onready var panels = {
 func _ready() -> void:
 	header_label.modulate = Color( 1, 1, 1, 0 )
 	return_button.next_scene = menu["normal_player"]
-	if Game.get_user()["type"] in Game.testers:
-		return_button.next_scene = menu["tester"]
+#	if Game.get_user()["type"] in Game.testers:
+#		return_button.next_scene = menu["tester"]
 
 func toogle_panel(header: String, panel: String) -> void:
 	var internal_panel = load(panel).instance()

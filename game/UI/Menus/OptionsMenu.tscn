@@ -333,14 +333,12 @@ margin_bottom = 500.0
 
 [node name="Label" parent="VBoxContainer/ReturnButton" index="0"]
 text = "Volver"
+
 [connection signal="button_up" from="VBoxContainer/CenterRow/Buttons/Volume" to="." method="_on_Volume_button_up"]
 [connection signal="button_up" from="VBoxContainer/CenterRow/Buttons/Screen" to="." method="_on_Screen_button_up"]
 [connection signal="button_up" from="VBoxContainer/CenterRow/Buttons/Control" to="." method="_on_Control_button_up"]
 
 [editable path="VBoxContainer/CenterRow/Buttons/Volume"]
-
 [editable path="VBoxContainer/CenterRow/Buttons/Screen"]
-
 [editable path="VBoxContainer/CenterRow/Buttons/Control"]
-
 [editable path="VBoxContainer/ReturnButton"]
