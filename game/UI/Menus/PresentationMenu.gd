@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func load_user() -> void:
 	if not can_connect:
-		get_tree().change_scene("res://game/UI/Menus/TesterMainMenu.tscn")
+		get_tree().change_scene("res://game/UI/Menus/WarningControlMenu.tscn")
 	
 	if not GameSaver.check_directory(true) or not GameSaver.check_user_data():
 		$LoginMenu.set_create_user(true)

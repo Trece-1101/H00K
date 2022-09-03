@@ -23,7 +23,7 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=4]
 resource_name = "presentation"
-length = 7.5
+length = 4.5
 step = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("HBoxContainer/Loading2:visible")
@@ -128,7 +128,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 7.5 ),
+"times": PoolRealArray( 4.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -173,10 +173,10 @@ __meta__ = {
 }
 
 [node name="Studio" type="Label" parent="."]
-margin_left = -245.238
-margin_top = 34.8685
-margin_right = -3.2334
-margin_bottom = 154.868
+margin_left = 364.211
+margin_top = 57.9949
+margin_right = 606.216
+margin_bottom = 177.994
 custom_fonts/font = SubResource( 1 )
 text = "333 Games"
 align = 1
@@ -185,11 +185,10 @@ __meta__ = {
 }
 
 [node name="Presents" type="Label" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 margin_left = 360.746
-margin_top = 602.5
+margin_top = 419.205
 margin_right = 613.746
-margin_bottom = 640.5
+margin_bottom = 457.205
 custom_fonts/font = SubResource( 1 )
 text = "Presentan"
 __meta__ = {
@@ -197,7 +196,6 @@ __meta__ = {
 }
 
 [node name="Plus" type="Label" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 margin_left = 359.274
 margin_top = 123.08
 margin_right = 601.274
@@ -211,9 +209,9 @@ __meta__ = {
 }
 
 [node name="Powered" type="Label" parent="."]
-margin_left = 921.965
+margin_left = 299.495
 margin_top = 206.276
-margin_right = 1163.97
+margin_right = 541.5
 margin_bottom = 326.276
 custom_fonts/font = SubResource( 1 )
 text = "Godot
@@ -225,7 +223,7 @@ __meta__ = {
 }
 
 [node name="logo_3" type="Sprite" parent="."]
-position = Vector2( 1183.95, 264.343 )
+position = Vector2( 561.481, 264.343 )
 scale = Vector2( 0.450305, 0.450305 )
 texture = ExtResource( 3 )
 

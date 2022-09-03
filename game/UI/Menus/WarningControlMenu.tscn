@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://game/UI/Menus/WarningControlMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/Fonts/Revamped.otf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 2 )
+
+[node name="WarningControlMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+menu = "res://game/UI/Menus/MainMenu.tscn"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -457.5
+margin_top = -183.0
+margin_right = 457.5
+margin_bottom = -51.0
+custom_fonts/font = SubResource( 1 )
+text = "Warning:
+This game can be played with Keyboard and Mouse
+But was designed for Gamepads and still is hard that way.
+
+Just saying... but if you enjoy pain...
+
+
+
+
+
+Press \"ENter\" to continue with pain
+or South button on a gamepad for a better ride"
+autowrap = true
