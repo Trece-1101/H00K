@@ -157,5 +157,6 @@ bus = "Player"
 stream = ExtResource( 21 )
 pitch_scale = 1.5
 bus = "Player"
+
 [connection signal="timeout" from="StateMachine/Move/Zombie/WaitRun" to="StateMachine/Move/Zombie" method="_on_WaitRun_timeout"]
 [connection signal="timeout" from="StateMachine/Hook/GhostTimer" to="StateMachine/Hook" method="_on_GhostTimer_timeout"]

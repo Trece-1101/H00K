@@ -33,6 +33,11 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -49,6 +54,11 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 1/tile_mode = 0
 1/occluder_offset = Vector2( 0, 0 )
 1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 2 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
 1/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -100,11 +110,9 @@ margin_left = -58.0
 margin_top = 2.0
 margin_right = -2.0
 margin_bottom = 22.0
+mouse_filter = 2
 theme = ExtResource( 7 )
 color = Color( 0, 0, 0, 0.403922 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="FPSLabel" type="Label" parent="UI/ColorRect"]
 anchor_right = 1.0
@@ -179,15 +187,13 @@ position = Vector2( 1911.81, 45.6373 )
 
 [node name="Orugacop" parent="Room2" instance=ExtResource( 15 )]
 position = Vector2( 1561.75, 256.341 )
+start_velocity = Vector2( 40, 40 )
 
 [node name="MovingPlatform" parent="Room2" instance=ExtResource( 16 )]
 position = Vector2( 1360.01, 281 )
-speed = 200.0
-wait_time = 1.0
 
 [node name="Pathpoints" parent="Room2/MovingPlatform" instance=ExtResource( 17 )]
 points = PoolVector2Array( 1359.48, 79.3949, 1720.62, 78.1344, 1719.99, 398.934, 1358.85, 400.825 )
-mode = 0
 
 [node name="Room3" type="Node" parent="."]
 script = ExtResource( 8 )
@@ -310,9 +316,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="DamageWorldTileMap" type="TileMap" parent="TileMaps" groups=[
-"Damage",
-]]
+[node name="DamageWorldTileMap" type="TileMap" parent="TileMaps" groups=["Damage"]]
 tile_set = SubResource( 3 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 8
@@ -330,6 +334,7 @@ initial_state = NodePath("../../../LevelOne/Player/StateMachine/Spawn")
 
 [node name="LevelTransitionCamera" parent="." instance=ExtResource( 9 )]
 position = Vector2( 480, 270 )
+
 [connection signal="body_entered" from="Room1/SaveArea" to="Room1" method="_on_SaveArea_body_entered"]
 [connection signal="body_entered" from="Room2/SaveArea" to="Room2" method="_on_SaveArea_body_entered"]
 [connection signal="body_entered" from="Room3/SaveArea" to="Room3" method="_on_SaveArea_body_entered"]
@@ -339,9 +344,6 @@ position = Vector2( 480, 270 )
 [connection signal="body_entered" from="Room7/SaveArea" to="Room7" method="_on_SaveArea_body_entered"]
 
 [editable path="Room1/SaveArea"]
-
 [editable path="Room2/SaveArea"]
-
 [editable path="Room4/SaveArea"]
-
 [editable path="Player"]

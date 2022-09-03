@@ -38,7 +38,7 @@ func set_is_active(value: bool) -> void:
 	is_active = value
 	if not player_collider:
 		return
-	player_collider.call_deferred("disabled", not value)
+	player_collider.set_deferred("disabled", not value)
 	## TODO: refactorizar esto cuando se implemente el daño
 	hook.set_is_active(value)
 
@@ -74,10 +74,6 @@ func check_damage() -> void:
 		var collision = get_slide_collision(i)
 		if collision.collider.is_in_group("Damage") and is_alive:
 			die()
-
-# TODO: sacar esto en produccion
-func test() -> void:
-	print("Hola mundo soy el player")
 
 func toggle_is_active(value: bool) -> void:
 	can_move = value

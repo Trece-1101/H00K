@@ -20,6 +20,7 @@ onready var buttons := {
 func _ready() -> void:
 	check_data_in_slots()
 
+
 func check_data_in_slots() -> void:	
 	for i in range(1, 4):
 		var slot := "slot_"

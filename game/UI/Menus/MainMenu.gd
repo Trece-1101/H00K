@@ -1,6 +1,7 @@
 extends Control
 
 func _ready() -> void:
+	$Menu/CenterRow/Buttons/LoadGameButton.disabled = true
 	GlobalMusic.play_music(GlobalMusic.musics.main_menu)
 	$Menu/CenterRow/Buttons/NewGameButton.grab_focus()
 	if Game.user.type in Game.players:

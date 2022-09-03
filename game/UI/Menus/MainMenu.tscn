@@ -83,9 +83,6 @@ tracks/1/keys = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 40.0
@@ -126,7 +123,7 @@ margin_bottom = 496.0
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
-margin_right = 320.0
+margin_right = 300.0
 margin_bottom = 434.0
 size_flags_horizontal = 5
 size_flags_vertical = 3
@@ -135,83 +132,83 @@ alignment = 1
 
 [node name="HSeparator4" type="HSeparator" parent="Menu/CenterRow/Buttons"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 61.0
-margin_right = 320.0
-margin_bottom = 65.0
+margin_top = 87.0
+margin_right = 300.0
+margin_bottom = 91.0
 
 [node name="HSeparator5" type="HSeparator" parent="Menu/CenterRow/Buttons"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 73.0
-margin_right = 320.0
-margin_bottom = 77.0
+margin_top = 99.0
+margin_right = 300.0
+margin_bottom = 103.0
 
 [node name="HSeparator6" type="HSeparator" parent="Menu/CenterRow/Buttons"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 85.0
-margin_right = 320.0
-margin_bottom = 89.0
+margin_top = 111.0
+margin_right = 300.0
+margin_bottom = 115.0
 
 [node name="NewGameButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 1 )]
-margin_top = 97.0
-margin_right = 320.0
-margin_bottom = 142.0
-next_scene = "res://game/UI/Menus/NewGameMenu.tscn"
+margin_top = 123.0
+margin_bottom = 168.0
+next_scene = "res://game/UI/Menus/IntroMenu.tscn"
 
 [node name="LoadGameButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 7 )]
+visible = false
 margin_top = 150.0
 margin_bottom = 195.0
 next_scene = "res://game/UI/Menus/LoadGameMenu.tscn"
 
 [node name="OptionsButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
-margin_top = 203.0
-margin_right = 320.0
-margin_bottom = 248.0
+margin_top = 176.0
+margin_right = 300.0
+margin_bottom = 221.0
 next_scene = "res://game/UI/Menus/OptionsMenu.tscn"
 
 [node name="CreditsButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 5 )]
-margin_top = 256.0
-margin_right = 320.0
-margin_bottom = 301.0
+margin_top = 229.0
+margin_right = 300.0
+margin_bottom = 274.0
 next_scene = "res://game/UI/Menus/CreditsMenu.tscn"
 
 [node name="HSeparator" type="HSeparator" parent="Menu/CenterRow/Buttons"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 309.0
-margin_right = 320.0
-margin_bottom = 313.0
+margin_top = 282.0
+margin_right = 300.0
+margin_bottom = 286.0
 
 [node name="HSeparator2" type="HSeparator" parent="Menu/CenterRow/Buttons"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 321.0
-margin_right = 320.0
-margin_bottom = 325.0
+margin_top = 294.0
+margin_right = 300.0
+margin_bottom = 298.0
 
 [node name="HSeparator3" type="HSeparator" parent="Menu/CenterRow/Buttons"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 333.0
-margin_right = 320.0
-margin_bottom = 337.0
+margin_top = 306.0
+margin_right = 300.0
+margin_bottom = 310.0
 
 [node name="HSeparator7" type="HSeparator" parent="Menu/CenterRow/Buttons"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 345.0
-margin_right = 320.0
-margin_bottom = 349.0
+margin_top = 318.0
+margin_right = 300.0
+margin_bottom = 322.0
 
 [node name="HSeparator8" type="HSeparator" parent="Menu/CenterRow/Buttons"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 357.0
-margin_right = 320.0
-margin_bottom = 361.0
+margin_top = 330.0
+margin_right = 300.0
+margin_bottom = 334.0
 
 [node name="HSeparator9" type="HSeparator" parent="Menu/CenterRow/Buttons"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 369.0
-margin_right = 320.0
-margin_bottom = 373.0
+margin_top = 342.0
+margin_right = 300.0
+margin_bottom = 346.0
 
 [node name="CenterContainer" type="CenterContainer" parent="Menu/CenterRow"]
-margin_left = 324.0
+margin_left = 304.0
 margin_right = 880.0
 margin_bottom = 434.0
 size_flags_horizontal = 3

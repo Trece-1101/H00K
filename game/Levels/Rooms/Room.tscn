@@ -11,9 +11,7 @@ script = ExtResource( 2 )
 modulate = Color( 0.784314, 0.345098, 0.972549, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+mouse_filter = 2
 
 [node name="SaveArea" parent="." instance=ExtResource( 1 )]
 z_index = 30
@@ -25,4 +23,5 @@ z_index = 30
 [node name="Targets" type="Node" parent="."]
 
 [node name="Objects" type="Node" parent="."]
+
 [connection signal="body_entered" from="SaveArea" to="." method="_on_SaveArea_body_entered"]

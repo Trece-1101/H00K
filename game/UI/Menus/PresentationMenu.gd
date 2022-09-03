@@ -5,12 +5,17 @@ signal press_send
 var db_request: Node
 var user_name := ""
 
+export var can_connect = false
+
 const DB_REQUEST_NODE = preload("res://game/HTTP/HttpDbRequest.tscn")
 
 func _ready() -> void:
 	GlobalMusic.play_music(GlobalMusic.musics.presentation)
 
 func load_user() -> void:
+	if not can_connect:
+		get_tree().change_scene("res://game/UI/Menus/TesterMainMenu.tscn")
+	
 	if not GameSaver.check_directory(true) or not GameSaver.check_user_data():
 		$LoginMenu.set_create_user(true)
 		$LoginMenu.show()

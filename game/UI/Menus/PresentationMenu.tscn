@@ -161,7 +161,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 4 )
 __meta__ = {
-"_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 479.679 ]
 }
 
@@ -393,9 +392,9 @@ margin_top = 34.8706
 margin_right = 160.948
 margin_bottom = 68.8706
 text = "OK"
+
 [connection signal="pressed" from="NewUser/ColorRect/Label/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="NewUser/ColorRect/Label/OK" to="." method="_on_OK_pressed"]
 
 [editable path="LoginMenu"]
-
 [editable path="NewUser/ColorRect/Label/OK"]

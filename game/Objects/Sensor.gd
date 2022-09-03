@@ -10,7 +10,7 @@ export(float) var reset_time = 10
 
 #### Variables onready
 onready var active: bool = false
-onready var room: Room = get_parent().get_parent()
+onready var room: Rooms = get_parent().get_parent()
 onready var running_timer := false
 ################################################################################
 

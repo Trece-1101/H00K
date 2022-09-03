@@ -6,7 +6,7 @@ var hook_position: = Vector2.ZERO setget set_hook_position
 var length: = 20.0 setget set_length
 
 #### onready variables
-onready var head: Line2D = $Head
+onready var head: Sprite = $Head
 onready var tail: Line2D = $Tail
 onready var tween: Tween = $Tween
 onready var start_length: float = head.position.x

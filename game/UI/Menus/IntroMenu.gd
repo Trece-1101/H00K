@@ -61,6 +61,11 @@ var credits = [
 ]
 
 func _ready() -> void:
+	var pads := Input.get_connected_joypads().size()
+	if pads > 0:
+		Settings.set_controls(0)
+	else:
+		Settings.set_controls(1)
 	GlobalMusic.play_music(GlobalMusic.musics.intro)
 
 func _process(delta):
