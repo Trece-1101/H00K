@@ -75,6 +75,11 @@ func check_damage() -> void:
 		if collision.collider.is_in_group("Damage") and is_alive:
 			die()
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("reset_room"):
+		die()
+
+
 func toggle_is_active(value: bool) -> void:
 	can_move = value
 	#set_is_active(false)

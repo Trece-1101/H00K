@@ -37,6 +37,8 @@ func get_is_active() -> bool:
 # Metodos
 func _ready() -> void:
 	timer.connect("timeout", self, "_on_Timer_timeout")
+	if is_one_shot:
+		$OneShotSprite.visible = true
 
 func focus_lost() -> void:
 	if is_active:

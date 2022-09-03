@@ -107,7 +107,7 @@ one_shot = true
 
 [node name="Wall" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 15 )
-wall_jump_strength = Vector2( 200, 400 )
+wall_jump_strength = Vector2( 200, 420 )
 slide_speed_incrementor = 1.5
 
 [node name="Zombie" type="Node" parent="StateMachine/Move"]
