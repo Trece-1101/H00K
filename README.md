@@ -6,6 +6,8 @@ Debes diagramar rápidamente tu estrategia y ejecutarla de la manera más precis
 Hay que intentar, fallar y volver a intentar, cualquier daño significa la destrucción… pero a no desesperar… tienes disponibles infinitas vidas para completar tu tarea.
 Es un juego del tipo intentó – error con muerte instantánea por cualquier daño y respawn inmediato. El desafío es constante y cada salón propone nuevos peligros.
 Decisión, precisión, acción. El reto permanente de atravesar los salones de la manera que el jugador decida. Intentar, fallar y volver a intentar. Explorar las distintas estrategias para obtener la recompensa. Controla tus frustraciones y tus ansiedades, el desafío te espera.
+
+**Podes jugar la version para navegadores (no optimizada) aca** --> https://nicebuggames.itch.io/h00k
 ***
 ***Engine:*** Godot v3.1
 
